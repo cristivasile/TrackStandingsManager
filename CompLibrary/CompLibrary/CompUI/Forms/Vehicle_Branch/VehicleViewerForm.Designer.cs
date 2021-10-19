@@ -31,7 +31,7 @@ namespace CompUI.Forms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VehicleViewerForm));
             this.vehicleFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.filterByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,27 +39,27 @@ namespace CompUI.Forms
             this.averagePositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // vehicleFlowPanel
             // 
             this.vehicleFlowPanel.Location = new System.Drawing.Point(12, 27);
             this.vehicleFlowPanel.Name = "vehicleFlowPanel";
-            this.vehicleFlowPanel.Size = new System.Drawing.Size(988, 483);
+            this.vehicleFlowPanel.Size = new System.Drawing.Size(1347, 861);
             this.vehicleFlowPanel.TabIndex = 0;
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.filterByToolStripMenuItem,
             this.sortByToolStripMenuItem,
             this.resetToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1012, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(1371, 24);
+            this.menuStrip.TabIndex = 1;
+            this.menuStrip.Text = "menuStrip1";
             // 
             // filterByToolStripMenuItem
             // 
@@ -100,14 +100,14 @@ namespace CompUI.Forms
             // 
             this.averagePositionToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.averagePositionToolStripMenuItem.Name = "averagePositionToolStripMenuItem";
-            this.averagePositionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.averagePositionToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.averagePositionToolStripMenuItem.Text = "Average position";
             // 
             // nameToolStripMenuItem
             // 
             this.nameToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.nameToolStripMenuItem.Name = "nameToolStripMenuItem";
-            this.nameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nameToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.nameToolStripMenuItem.Text = "Name";
             // 
             // resetToolStripMenuItem
@@ -121,17 +121,18 @@ namespace CompUI.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1012, 522);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1371, 900);
             this.Controls.Add(this.vehicleFlowPanel);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStrip);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "VehicleViewerForm";
             this.Text = "Vehicle Viewer";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,7 +141,7 @@ namespace CompUI.Forms
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel vehicleFlowPanel;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem filterByToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem brandToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoryToolStripMenuItem;

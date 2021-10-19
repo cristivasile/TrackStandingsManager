@@ -54,7 +54,7 @@ namespace CompUI
             this.helpButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.helpButton.BackColor = System.Drawing.Color.WhiteSmoke;
             this.helpButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.helpButton.Location = new System.Drawing.Point(177, 278);
+            this.helpButton.Location = new System.Drawing.Point(151, 248);
             this.helpButton.Name = "helpButton";
             this.helpButton.Size = new System.Drawing.Size(337, 120);
             this.helpButton.TabIndex = 2;
@@ -66,7 +66,7 @@ namespace CompUI
             this.competitionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.competitionButton.BackColor = System.Drawing.Color.WhiteSmoke;
             this.competitionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.competitionButton.Location = new System.Drawing.Point(406, 54);
+            this.competitionButton.Location = new System.Drawing.Point(354, 54);
             this.competitionButton.Name = "competitionButton";
             this.competitionButton.Size = new System.Drawing.Size(230, 120);
             this.competitionButton.TabIndex = 3;
@@ -78,7 +78,7 @@ namespace CompUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(690, 473);
+            this.ClientSize = new System.Drawing.Size(638, 443);
             this.Controls.Add(this.competitionButton);
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.vehicleButton);
