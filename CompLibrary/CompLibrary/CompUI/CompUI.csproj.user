@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Forms\MainMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\RandomChoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Vehicle_Branch\VehicleAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Vehicle_Branch\VehicleManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Vehicle_Branch\VehicleUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Vehicle_Branch\VehicleViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

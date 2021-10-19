@@ -1,0 +1,12 @@
+D:\Projects\CompetitionManager\CompLibrary\CompLibrary\CompLibrary\bin\Debug\net5.0\CompLibrary.deps.json
+D:\Projects\CompetitionManager\CompLibrary\CompLibrary\CompLibrary\bin\Debug\net5.0\CompLibrary.dll
+D:\Projects\CompetitionManager\CompLibrary\CompLibrary\CompLibrary\bin\Debug\net5.0\ref\CompLibrary.dll
+D:\Projects\CompetitionManager\CompLibrary\CompLibrary\CompLibrary\bin\Debug\net5.0\CompLibrary.pdb
+D:\Projects\CompetitionManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\CompLibrary.csproj.AssemblyReference.cache
+D:\Projects\CompetitionManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\CompLibrary.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\CompetitionManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\CompLibrary.AssemblyInfoInputs.cache
+D:\Projects\CompetitionManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\CompLibrary.AssemblyInfo.cs
+D:\Projects\CompetitionManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\CompLibrary.csproj.CoreCompileInputs.cache
+D:\Projects\CompetitionManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\CompLibrary.dll
+D:\Projects\CompetitionManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\ref\CompLibrary.dll
+D:\Projects\CompetitionManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\CompLibrary.pdb

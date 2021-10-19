@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompLibrary", "CompLibrary\CompLibrary.csproj", "{45C4B64A-FF1A-447B-961F-C41323D07EEC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompUI", "CompUI\CompUI.csproj", "{E87446A6-7CEF-4A8C-B54D-BB676C85B279}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45C4B64A-FF1A-447B-961F-C41323D07EEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C4B64A-FF1A-447B-961F-C41323D07EEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45C4B64A-FF1A-447B-961F-C41323D07EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45C4B64A-FF1A-447B-961F-C41323D07EEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E87446A6-7CEF-4A8C-B54D-BB676C85B279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E87446A6-7CEF-4A8C-B54D-BB676C85B279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E87446A6-7CEF-4A8C-B54D-BB676C85B279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E87446A6-7CEF-4A8C-B54D-BB676C85B279}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {409B99F8-213F-4130-9F00-1CFA3E436BF6}
+	EndGlobalSection
+EndGlobal
