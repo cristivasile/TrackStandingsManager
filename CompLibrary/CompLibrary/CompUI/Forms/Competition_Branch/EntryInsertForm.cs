@@ -16,5 +16,10 @@ namespace CompUI.Forms.Competition_Branch
         {
             InitializeComponent();
         }
+
+        private void brandTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
