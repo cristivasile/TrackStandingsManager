@@ -4,6 +4,9 @@
     <Compile Update="Forms\Competition_Branch\CompetitionManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Competition_Branch\EntryInsertForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Competition_Branch\NewCompetitionForm.cs">
       <SubType>Form</SubType>
     </Compile>

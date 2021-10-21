@@ -48,8 +48,9 @@ namespace CompUI
             // deleteButton
             // 
             this.deleteButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.deleteButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.deleteButton.FlatAppearance.BorderSize = 0;
+            this.deleteButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.deleteButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.deleteButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.deleteButton.Location = new System.Drawing.Point(684, 310);
@@ -62,8 +63,9 @@ namespace CompUI
             // updateButton
             // 
             this.updateButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.updateButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.updateButton.FlatAppearance.BorderSize = 0;
+            this.updateButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.updateButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.updateButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.updateButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.updateButton.Location = new System.Drawing.Point(528, 310);
@@ -165,8 +167,9 @@ namespace CompUI
             // cancelButton
             // 
             this.cancelButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cancelButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.cancelButton.FlatAppearance.BorderSize = 0;
+            this.cancelButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.cancelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cancelButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.cancelButton.Location = new System.Drawing.Point(31, 310);

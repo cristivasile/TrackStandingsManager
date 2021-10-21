@@ -38,6 +38,7 @@ namespace CompUI.Forms.Competition_Branch
             this.averagePositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vehicleFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.selectCompetitionLabel = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -48,7 +49,7 @@ namespace CompUI.Forms.Competition_Branch
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.scoreTypeOutputLabel = new System.Windows.Forms.Label();
             this.sortedTypeOutputLabel = new System.Windows.Forms.Label();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addEntryButton = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.competitionPicture)).BeginInit();
             this.descriptionContainer.SuspendLayout();
@@ -121,6 +122,14 @@ namespace CompUI.Forms.Competition_Branch
             this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
             this.resetToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.resetToolStripMenuItem.Text = "Reset";
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.BackColor = System.Drawing.Color.White;
+            this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.LightCoral;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.deleteToolStripMenuItem.Text = "Delete";
             // 
             // vehicleFlowPanel
             // 
@@ -220,13 +229,19 @@ namespace CompUI.Forms.Competition_Branch
             this.sortedTypeOutputLabel.TabIndex = 57;
             this.sortedTypeOutputLabel.Text = "<null>";
             // 
-            // deleteToolStripMenuItem
+            // addEntryButton
             // 
-            this.deleteToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.LightCoral;
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.deleteToolStripMenuItem.Text = "Delete";
+            this.addEntryButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.addEntryButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.addEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addEntryButton.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.addEntryButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.addEntryButton.Location = new System.Drawing.Point(782, 60);
+            this.addEntryButton.Name = "addEntryButton";
+            this.addEntryButton.Size = new System.Drawing.Size(107, 62);
+            this.addEntryButton.TabIndex = 58;
+            this.addEntryButton.Text = "New\r\nEntry\r\n";
+            this.addEntryButton.UseVisualStyleBackColor = true;
             // 
             // StandingsViewerForm
             // 
@@ -234,6 +249,7 @@ namespace CompUI.Forms.Competition_Branch
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1371, 900);
+            this.Controls.Add(this.addEntryButton);
             this.Controls.Add(this.sortedTypeOutputLabel);
             this.Controls.Add(this.scoreTypeOutputLabel);
             this.Controls.Add(this.descriptionContainer);
@@ -280,5 +296,6 @@ namespace CompUI.Forms.Competition_Branch
         private System.Windows.Forms.Label scoreTypeOutputLabel;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.Label sortedTypeOutputLabel;
+        private System.Windows.Forms.Button addEntryButton;
     }
 }

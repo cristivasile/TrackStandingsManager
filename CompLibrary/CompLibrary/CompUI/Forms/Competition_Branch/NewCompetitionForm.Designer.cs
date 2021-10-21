@@ -61,8 +61,9 @@ namespace CompUI.Forms.Competition_Branch
             // abortButton
             // 
             this.abortButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.abortButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.abortButton.FlatAppearance.BorderSize = 0;
+            this.abortButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.abortButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.abortButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.abortButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.abortButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.abortButton.Location = new System.Drawing.Point(37, 327);
@@ -75,8 +76,9 @@ namespace CompUI.Forms.Competition_Branch
             // updateButton
             // 
             this.updateButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.updateButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.updateButton.FlatAppearance.BorderSize = 0;
+            this.updateButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.updateButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.updateButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.updateButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.updateButton.Location = new System.Drawing.Point(827, 327);
@@ -155,7 +157,6 @@ namespace CompUI.Forms.Competition_Branch
             this.pointsButton.TabStop = true;
             this.pointsButton.Text = "Points";
             this.pointsButton.UseVisualStyleBackColor = true;
-            this.pointsButton.Checked = true;
             // 
             // timingsButton
             // 
@@ -207,6 +208,7 @@ namespace CompUI.Forms.Competition_Branch
             // ascendingButton
             // 
             this.ascendingButton.AutoSize = true;
+            this.ascendingButton.Checked = true;
             this.ascendingButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ascendingButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ascendingButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -214,9 +216,9 @@ namespace CompUI.Forms.Competition_Branch
             this.ascendingButton.Name = "ascendingButton";
             this.ascendingButton.Size = new System.Drawing.Size(90, 23);
             this.ascendingButton.TabIndex = 45;
+            this.ascendingButton.TabStop = true;
             this.ascendingButton.Text = "Ascending";
             this.ascendingButton.UseVisualStyleBackColor = true;
-            this.ascendingButton.Checked = true;
             // 
             // NewCompetitionForm
             // 

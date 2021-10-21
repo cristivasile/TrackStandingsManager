@@ -38,8 +38,9 @@ namespace CompUI.Forms.Competition_Branch
             // 
             this.seeStandingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.seeStandingsButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.seeStandingsButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.seeStandingsButton.FlatAppearance.BorderSize = 0;
+            this.seeStandingsButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.seeStandingsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.seeStandingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.seeStandingsButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.seeStandingsButton.Location = new System.Drawing.Point(344, 54);
             this.seeStandingsButton.Name = "seeStandingsButton";
@@ -51,8 +52,9 @@ namespace CompUI.Forms.Competition_Branch
             // addCompetitionButton
             // 
             this.addCompetitionButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.addCompetitionButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.addCompetitionButton.FlatAppearance.BorderSize = 0;
+            this.addCompetitionButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.addCompetitionButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.addCompetitionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addCompetitionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.addCompetitionButton.Location = new System.Drawing.Point(27, 54);
             this.addCompetitionButton.Name = "addCompetitionButton";

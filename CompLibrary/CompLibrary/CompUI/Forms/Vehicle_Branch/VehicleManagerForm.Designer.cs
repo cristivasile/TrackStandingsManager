@@ -37,8 +37,9 @@ namespace CompUI
             // addVehicleButton
             // 
             this.addVehicleButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.addVehicleButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.addVehicleButton.FlatAppearance.BorderSize = 0;
+            this.addVehicleButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.addVehicleButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.addVehicleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addVehicleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.addVehicleButton.Location = new System.Drawing.Point(33, 38);
             this.addVehicleButton.Name = "addVehicleButton";
@@ -51,8 +52,9 @@ namespace CompUI
             // 
             this.seeVehiclesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.seeVehiclesButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.seeVehiclesButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.seeVehiclesButton.FlatAppearance.BorderSize = 0;
+            this.seeVehiclesButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.seeVehiclesButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.seeVehiclesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.seeVehiclesButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.seeVehiclesButton.Location = new System.Drawing.Point(334, 38);
             this.seeVehiclesButton.Name = "seeVehiclesButton";

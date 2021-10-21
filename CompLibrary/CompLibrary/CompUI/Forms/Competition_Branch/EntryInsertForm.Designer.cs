@@ -56,6 +56,7 @@ namespace CompUI.Forms.Competition_Branch
             this.abortButton.BackColor = System.Drawing.Color.WhiteSmoke;
             this.abortButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.abortButton.FlatAppearance.BorderSize = 0;
+            this.abortButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.abortButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.abortButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.abortButton.Location = new System.Drawing.Point(30, 284);
@@ -70,6 +71,7 @@ namespace CompUI.Forms.Competition_Branch
             this.updateButton.BackColor = System.Drawing.Color.WhiteSmoke;
             this.updateButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.updateButton.FlatAppearance.BorderSize = 0;
+            this.updateButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.updateButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.updateButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.updateButton.Location = new System.Drawing.Point(598, 284);

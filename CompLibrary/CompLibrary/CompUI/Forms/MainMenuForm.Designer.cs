@@ -38,8 +38,9 @@ namespace CompUI
             // vehicleButton
             // 
             this.vehicleButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.vehicleButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.vehicleButton.FlatAppearance.BorderSize = 0;
+            this.vehicleButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.vehicleButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.vehicleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vehicleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.vehicleButton.Location = new System.Drawing.Point(55, 54);
             this.vehicleButton.Name = "vehicleButton";
@@ -53,6 +54,9 @@ namespace CompUI
             // 
             this.helpButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.helpButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.helpButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.helpButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.helpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.helpButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.helpButton.Location = new System.Drawing.Point(151, 248);
             this.helpButton.Name = "helpButton";
@@ -65,6 +69,9 @@ namespace CompUI
             // 
             this.competitionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.competitionButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.competitionButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.competitionButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.competitionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.competitionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.competitionButton.Location = new System.Drawing.Point(354, 54);
             this.competitionButton.Name = "competitionButton";
