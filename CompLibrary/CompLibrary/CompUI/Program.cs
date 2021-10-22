@@ -17,7 +17,16 @@ namespace CompUI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenuForm());
+
+            //Initializing DB Connection
+            CompLibrary.GlobalConfig.InitializeConnections(true);
+            //Initializing List variables
+            CompLibrary.GlobalConfig.InitializeLists();
+
+ 
+            Application.Run(new VehicleAddForm());
         }
+
+
     }
 }

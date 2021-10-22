@@ -9,6 +9,10 @@ namespace CompLibrary
     public class VehicleModel
     {
         /// <summary>
+        /// Unique identifier of a vehicle;
+        /// </summary>
+        public int Id { get; set; }
+        /// <summary>
         /// The brand of this vehicle.
         /// </summary>
         public string Brand { get; set; }
@@ -28,6 +32,14 @@ namespace CompLibrary
         /// </summary>
         public string ImagePath { get; set; }
 
-        public int MyProperty { get; set;}
+        public VehicleModel(){}
+
+        public VehicleModel(string Brand, string Model, string Category, string ImagePath = "")
+        {
+            this.Brand = Brand;
+            this.Model = Model;
+            this.Category = Category;
+            this.ImagePath = ImagePath;
+        }
     }
 }

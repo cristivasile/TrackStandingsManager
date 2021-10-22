@@ -38,10 +38,10 @@ namespace CompUI.Forms
             this.brandInsertLabel = new System.Windows.Forms.Label();
             this.modelInsertLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.competitionPicture = new System.Windows.Forms.PictureBox();
             this.nameInsertLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.vehiclePicture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.competitionPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // randomVehicleButton
@@ -133,13 +133,13 @@ namespace CompUI.Forms
             this.nameLabel.TabIndex = 30;
             this.nameLabel.Text = "Name:";
             // 
-            // pictureBox1
+            // competitionPicture
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(400, 91);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(206, 187);
-            this.pictureBox1.TabIndex = 29;
-            this.pictureBox1.TabStop = false;
+            this.competitionPicture.Location = new System.Drawing.Point(400, 91);
+            this.competitionPicture.Name = "competitionPicture";
+            this.competitionPicture.Size = new System.Drawing.Size(206, 187);
+            this.competitionPicture.TabIndex = 29;
+            this.competitionPicture.TabStop = false;
             // 
             // nameInsertLabel
             // 
@@ -159,7 +159,7 @@ namespace CompUI.Forms
             this.ClientSize = new System.Drawing.Size(670, 375);
             this.Controls.Add(this.nameInsertLabel);
             this.Controls.Add(this.nameLabel);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.competitionPicture);
             this.Controls.Add(this.modelInsertLabel);
             this.Controls.Add(this.brandInsertLabel);
             this.Controls.Add(this.ModelLabel);
@@ -173,7 +173,7 @@ namespace CompUI.Forms
             this.Name = "RandomChoiceForm";
             this.Text = "Use this";
             ((System.ComponentModel.ISupportInitialize)(this.vehiclePicture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.competitionPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,7 +189,7 @@ namespace CompUI.Forms
         private System.Windows.Forms.Label brandInsertLabel;
         private System.Windows.Forms.Label modelInsertLabel;
         private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox competitionPicture;
         private System.Windows.Forms.Label nameInsertLabel;
     }
 }

@@ -35,8 +35,8 @@ namespace CompUI.Forms.Competition_Branch
             this.vehicleLabel = new System.Windows.Forms.Label();
             this.scoreTextBox = new System.Windows.Forms.Label();
             this.timeTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.currentCompetitionLabel = new System.Windows.Forms.Label();
+            this.orLabel = new System.Windows.Forms.Label();
             this.vehicleTextBox = new System.Windows.Forms.TextBox();
             this.vehicleComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
@@ -112,26 +112,26 @@ namespace CompUI.Forms.Competition_Branch
             this.timeTextBox.TabIndex = 30;
             this.timeTextBox.TextChanged += new System.EventHandler(this.brandTextBox_TextChanged);
             // 
-            // label1
+            // currentCompetitionLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label1.Location = new System.Drawing.Point(172, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 30);
-            this.label1.TabIndex = 37;
-            this.label1.Text = "<null>";
+            this.currentCompetitionLabel.AutoSize = true;
+            this.currentCompetitionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.currentCompetitionLabel.Location = new System.Drawing.Point(172, 35);
+            this.currentCompetitionLabel.Name = "currentCompetitionLabel";
+            this.currentCompetitionLabel.Size = new System.Drawing.Size(75, 30);
+            this.currentCompetitionLabel.TabIndex = 37;
+            this.currentCompetitionLabel.Text = "<null>";
             // 
-            // label2
+            // orLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label2.Location = new System.Drawing.Point(425, 110);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(25, 21);
-            this.label2.TabIndex = 38;
-            this.label2.Text = "or";
+            this.orLabel.AutoSize = true;
+            this.orLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.orLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.orLabel.Location = new System.Drawing.Point(425, 110);
+            this.orLabel.Name = "orLabel";
+            this.orLabel.Size = new System.Drawing.Size(25, 21);
+            this.orLabel.TabIndex = 38;
+            this.orLabel.Text = "or";
             // 
             // vehicleTextBox
             // 
@@ -157,8 +157,8 @@ namespace CompUI.Forms.Competition_Branch
             this.ClientSize = new System.Drawing.Size(754, 355);
             this.Controls.Add(this.vehicleComboBox);
             this.Controls.Add(this.vehicleTextBox);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.orLabel);
+            this.Controls.Add(this.currentCompetitionLabel);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.abortButton);
             this.Controls.Add(this.updateButton);
@@ -183,8 +183,8 @@ namespace CompUI.Forms.Competition_Branch
         private System.Windows.Forms.Label vehicleLabel;
         private System.Windows.Forms.Label scoreTextBox;
         private System.Windows.Forms.TextBox timeTextBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label currentCompetitionLabel;
+        private System.Windows.Forms.Label orLabel;
         private System.Windows.Forms.TextBox vehicleTextBox;
         private System.Windows.Forms.ComboBox vehicleComboBox;
     }

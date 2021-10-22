@@ -41,7 +41,7 @@ namespace CompUI.Forms.Competition_Branch
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vehicleFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.selectCompetitionLabel = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.competitionSelectBox = new System.Windows.Forms.ComboBox();
             this.sortTypeLabel = new System.Windows.Forms.Label();
             this.scoreTypeLabel = new System.Windows.Forms.Label();
             this.competitionPicture = new System.Windows.Forms.PictureBox();
@@ -148,13 +148,13 @@ namespace CompUI.Forms.Competition_Branch
             this.selectCompetitionLabel.TabIndex = 30;
             this.selectCompetitionLabel.Text = "Select Competition:";
             // 
-            // comboBox1
+            // competitionSelectBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(211, 31);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(484, 38);
-            this.comboBox1.TabIndex = 31;
+            this.competitionSelectBox.FormattingEnabled = true;
+            this.competitionSelectBox.Location = new System.Drawing.Point(211, 31);
+            this.competitionSelectBox.Name = "competitionSelectBox";
+            this.competitionSelectBox.Size = new System.Drawing.Size(484, 38);
+            this.competitionSelectBox.TabIndex = 31;
             // 
             // sortTypeLabel
             // 
@@ -256,7 +256,7 @@ namespace CompUI.Forms.Competition_Branch
             this.Controls.Add(this.sortTypeLabel);
             this.Controls.Add(this.scoreTypeLabel);
             this.Controls.Add(this.competitionPicture);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.competitionSelectBox);
             this.Controls.Add(this.selectCompetitionLabel);
             this.Controls.Add(this.vehicleFlowPanel);
             this.Controls.Add(this.menuStrip);
@@ -287,7 +287,7 @@ namespace CompUI.Forms.Competition_Branch
         private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
         private System.Windows.Forms.FlowLayoutPanel vehicleFlowPanel;
         private System.Windows.Forms.Label selectCompetitionLabel;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox competitionSelectBox;
         private System.Windows.Forms.Label sortTypeLabel;
         private System.Windows.Forms.Label scoreTypeLabel;
         private System.Windows.Forms.PictureBox competitionPicture;

@@ -9,6 +9,10 @@ namespace CompLibrary
     public class CompetitionModel
     {
         /// <summary>
+        /// Unique identifier of a competition;
+        /// </summary>
+        public int Id{ get; set; }
+        /// <summary>
         /// The name of a competition.
         /// </summary>
         public string Name{ get; set; }

@@ -37,10 +37,10 @@ namespace CompUI
             this.modelTextBox = new System.Windows.Forms.TextBox();
             this.brandLabel = new System.Windows.Forms.Label();
             this.brandTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.selectVehicleLabel = new System.Windows.Forms.Label();
             this.vehicleSelectionComboBox = new System.Windows.Forms.ComboBox();
             this.vehiclePicture = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.titleLabel = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.vehiclePicture)).BeginInit();
             this.SuspendLayout();
@@ -127,16 +127,16 @@ namespace CompUI
             this.brandTextBox.Size = new System.Drawing.Size(237, 35);
             this.brandTextBox.TabIndex = 20;
             // 
-            // label1
+            // selectVehicleLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label1.Location = new System.Drawing.Point(425, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 30);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Select vehicle:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.selectVehicleLabel.AutoSize = true;
+            this.selectVehicleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.selectVehicleLabel.Location = new System.Drawing.Point(425, 20);
+            this.selectVehicleLabel.Name = "selectVehicleLabel";
+            this.selectVehicleLabel.Size = new System.Drawing.Size(143, 30);
+            this.selectVehicleLabel.TabIndex = 19;
+            this.selectVehicleLabel.Text = "Select vehicle:";
+            this.selectVehicleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // vehicleSelectionComboBox
             // 
@@ -154,15 +154,15 @@ namespace CompUI
             this.vehiclePicture.TabIndex = 15;
             this.vehiclePicture.TabStop = false;
             // 
-            // label2
+            // titleLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label2.Location = new System.Drawing.Point(31, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(245, 30);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "Manage existing vehicles";
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.titleLabel.Location = new System.Drawing.Point(31, 20);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(245, 30);
+            this.titleLabel.TabIndex = 29;
+            this.titleLabel.Text = "Manage existing vehicles";
             // 
             // cancelButton
             // 
@@ -185,7 +185,7 @@ namespace CompUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(833, 368);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.cancelButton);
@@ -195,7 +195,7 @@ namespace CompUI
             this.Controls.Add(this.modelTextBox);
             this.Controls.Add(this.brandLabel);
             this.Controls.Add(this.brandTextBox);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.selectVehicleLabel);
             this.Controls.Add(this.vehicleSelectionComboBox);
             this.Controls.Add(this.vehiclePicture);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -220,10 +220,10 @@ namespace CompUI
         private System.Windows.Forms.TextBox modelTextBox;
         private System.Windows.Forms.Label brandLabel;
         private System.Windows.Forms.TextBox brandTextBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label selectVehicleLabel;
         private System.Windows.Forms.ComboBox vehicleSelectionComboBox;
         private System.Windows.Forms.PictureBox vehiclePicture;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Button cancelButton;
     }
 }

@@ -9,7 +9,11 @@ namespace CompLibrary
     public class CompetitorModel
     {
         /// <summary>
-        /// The vehicle that this competitor is made of.
+        /// Unique identifier of a competitor;
+        /// </summary>
+        public int Id { get; set; }
+        /// <summary>
+        /// The vehicle that this competitor contains.
         /// </summary>
         public VehicleModel Vehicle { get; set; }
         /// <summary>
