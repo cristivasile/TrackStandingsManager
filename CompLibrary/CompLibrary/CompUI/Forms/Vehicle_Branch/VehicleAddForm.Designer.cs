@@ -1,8 +1,12 @@
 ﻿
+using System.Windows.Forms;
+
 namespace CompUI
 {
     partial class VehicleAddForm
     {
+        //TODO - Make borderless form draggable
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -41,6 +45,7 @@ namespace CompUI
             this.titleLabel = new System.Windows.Forms.Label();
             this.messagePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.removeCategoryButton = new System.Windows.Forms.Button();
+            this.imageInfoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.vehiclePicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -136,8 +141,13 @@ namespace CompUI
             this.vehiclePicture.Location = new System.Drawing.Point(32, 74);
             this.vehiclePicture.Name = "vehiclePicture";
             this.vehiclePicture.Size = new System.Drawing.Size(206, 187);
+            this.vehiclePicture.SizeMode = PictureBoxSizeMode.CenterImage;
             this.vehiclePicture.TabIndex = 15;
             this.vehiclePicture.TabStop = false;
+            this.vehiclePicture.Click += new System.EventHandler(this.vehiclePicture_Click);
+            this.vehiclePicture.Paint += new System.Windows.Forms.PaintEventHandler(this.vehiclePicture_Paint);
+            this.vehiclePicture.MouseLeave += new System.EventHandler(this.vehiclePicture_MouseLeave);
+            this.vehiclePicture.MouseHover += new System.EventHandler(this.vehiclePicture_MouseHover);
             // 
             // titleLabel
             // 
@@ -174,12 +184,27 @@ namespace CompUI
             this.removeCategoryButton.UseVisualStyleBackColor = false;
             this.removeCategoryButton.Click += new System.EventHandler(this.removeCategoryButton_Click);
             // 
+            // imageInfoLabel
+            // 
+            this.imageInfoLabel.AutoSize = true;
+            this.imageInfoLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.imageInfoLabel.Location = new System.Drawing.Point(52, 147);
+            this.imageInfoLabel.Name = "imageInfoLabel";
+            this.imageInfoLabel.Size = new System.Drawing.Size(160, 42);
+            this.imageInfoLabel.TabIndex = 33;
+            this.imageInfoLabel.Text = "Click to paste \r\nimage from clipboard";
+            this.imageInfoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.imageInfoLabel.Click += new System.EventHandler(this.vehiclePicture_Click);
+            this.imageInfoLabel.MouseLeave += new System.EventHandler(this.vehiclePicture_MouseLeave);
+            this.imageInfoLabel.MouseHover += new System.EventHandler(this.vehiclePicture_MouseHover);
+            // 
             // VehicleAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(850, 357);
+            this.Controls.Add(this.imageInfoLabel);
             this.Controls.Add(this.removeCategoryButton);
             this.Controls.Add(this.messagePanel);
             this.Controls.Add(this.titleLabel);
@@ -193,7 +218,7 @@ namespace CompUI
             this.Controls.Add(this.brandTextBox);
             this.Controls.Add(this.vehiclePicture);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "VehicleAddForm";
             this.Text = "New Vehicle";
@@ -217,5 +242,6 @@ namespace CompUI
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.FlowLayoutPanel messagePanel;
         private System.Windows.Forms.Button removeCategoryButton;
+        private System.Windows.Forms.Label imageInfoLabel;
     }
 }

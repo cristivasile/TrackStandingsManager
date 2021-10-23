@@ -32,7 +32,6 @@ namespace CompUI
                     );
 
 
-
                 //stores data in each storage object
                 foreach (IDataConnection storage in GlobalConfig.Connections)
                 {
@@ -44,7 +43,6 @@ namespace CompUI
                     if(categoryAdded)
                     Utilities.generateSuccess("Category added!", messagePanel);
                     
-
                     //add vehicle to json and list
                     storage.CreateVehicle(newVehicle);
                 }
@@ -90,7 +88,6 @@ namespace CompUI
                 Utilities.generateError("Category can not be empty!", messagePanel);
                 status = false;
             }
-
 
             //check if vehicle with this name already exists
             foreach(VehicleModel vehicle in GlobalData.vehicles)
@@ -141,6 +138,71 @@ namespace CompUI
                     categoryComboBox.DataSource = GlobalData.categories;
                 }
             }
+        }
+
+        private void vehiclePicture_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, vehiclePicture.ClientRectangle, 
+                Color.FromArgb(200, 246, 255), 3, ButtonBorderStyle.Solid,  //left
+                Color.FromArgb(200, 246, 255), 3, ButtonBorderStyle.Solid,  //top
+                Color.FromArgb(228, 246, 255), 3, ButtonBorderStyle.Solid,  //right
+                Color.FromArgb(228, 246, 255), 3, ButtonBorderStyle.Solid); //bottom
+        }
+
+        private void vehiclePicture_Click(object sender, EventArgs e)
+        {
+            //if there's an image in clipboard
+            if (Clipboard.ContainsImage())
+            {
+                vehiclePicture.Image = Clipboard.GetImage();
+
+
+                //for maintaining aspect ratio;
+                double ratio;
+                //if image is wider than a square
+                if (vehiclePicture.Image.Width > vehiclePicture.Image.Height)
+                {
+                    ratio = Convert.ToDouble(vehiclePicture.Image.Height) / Convert.ToDouble(vehiclePicture.Image.Width);
+                    vehiclePicture.Image = Utilities.ResizeImage(vehiclePicture.Image, vehiclePicture.Width, Convert.ToInt32(ratio*vehiclePicture.Height));
+                }
+                //else if image is taller than a square
+                else
+                {
+                    ratio = Convert.ToDouble(vehiclePicture.Image.Width) / Convert.ToDouble(vehiclePicture.Image.Height);
+                    vehiclePicture.Image = Utilities.ResizeImage(vehiclePicture.Image, Convert.ToInt32(ratio *vehiclePicture.Width), vehiclePicture.Height);
+
+                }
+
+                //Removes info label
+                imageInfoLabel.Text = "";
+
+
+                //empties hover and leave events
+                vehiclePicture.MouseHover -= vehiclePicture_MouseHover;
+                vehiclePicture.MouseLeave -= vehiclePicture_MouseLeave;
+
+                //TODO - save the image to disk and path to JSON
+            }
+            else
+            {
+                MessageBox.Show("No image in clipboard", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void vehiclePicture_MouseHover(object sender, EventArgs e)
+        {
+            vehiclePicture.BackColor = Color.Silver;
+            imageInfoLabel.BackColor = Color.Silver;
+        }
+
+        private void vehiclePicture_MouseLeave(object sender, EventArgs e)
+        {
+            vehiclePicture.BackColor = Color.White;
+            imageInfoLabel.BackColor = Color.White;
+        }
+
+        private void DoNothing()
+        {
         }
     }
 }
