@@ -17,19 +17,29 @@ namespace CompUI.Forms.Competition_Branch
             InitializeComponent();
         }
 
-        private void titleLabel_Click(object sender, EventArgs e)
+        private void TitleLabel_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void brandLabel_Click(object sender, EventArgs e)
+        private void BrandLabel_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void NewCompetitionForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.CompetitionManagerFormInstance.Enabled = true;
+        }
+
+        private void AbortButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -30,92 +30,92 @@ namespace CompUI.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VehicleViewerForm));
-            this.vehicleFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.filterByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.brandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sortByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.averagePositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip.SuspendLayout();
+            this.VehicleFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.MenuStrip = new System.Windows.Forms.MenuStrip();
+            this.FilterByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BrandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SortByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AveragePositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.NameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ResetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // vehicleFlowPanel
+            // VehicleFlowPanel
             // 
-            this.vehicleFlowPanel.Location = new System.Drawing.Point(12, 27);
-            this.vehicleFlowPanel.Name = "vehicleFlowPanel";
-            this.vehicleFlowPanel.Size = new System.Drawing.Size(1347, 861);
-            this.vehicleFlowPanel.TabIndex = 0;
+            this.VehicleFlowPanel.Location = new System.Drawing.Point(12, 27);
+            this.VehicleFlowPanel.Name = "VehicleFlowPanel";
+            this.VehicleFlowPanel.Size = new System.Drawing.Size(1347, 861);
+            this.VehicleFlowPanel.TabIndex = 0;
             // 
-            // menuStrip
+            // MenuStrip
             // 
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.filterByToolStripMenuItem,
-            this.sortByToolStripMenuItem,
-            this.resetToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1371, 24);
-            this.menuStrip.TabIndex = 1;
-            this.menuStrip.Text = "menuStrip1";
+            this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FilterByToolStripMenuItem,
+            this.SortByToolStripMenuItem,
+            this.ResetToolStripMenuItem});
+            this.MenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.MenuStrip.Name = "MenuStrip";
+            this.MenuStrip.Size = new System.Drawing.Size(1371, 24);
+            this.MenuStrip.TabIndex = 1;
+            this.MenuStrip.Text = "menuStrip1";
             // 
-            // filterByToolStripMenuItem
+            // FilterByToolStripMenuItem
             // 
-            this.filterByToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.brandToolStripMenuItem,
-            this.categoryToolStripMenuItem});
-            this.filterByToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.filterByToolStripMenuItem.Name = "filterByToolStripMenuItem";
-            this.filterByToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.filterByToolStripMenuItem.Text = "Filter by";
-            this.filterByToolStripMenuItem.Click += new System.EventHandler(this.filterByToolStripMenuItem_Click);
+            this.FilterByToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BrandToolStripMenuItem,
+            this.CategoryToolStripMenuItem});
+            this.FilterByToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.FilterByToolStripMenuItem.Name = "FilterByToolStripMenuItem";
+            this.FilterByToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.FilterByToolStripMenuItem.Text = "Filter by";
+            this.FilterByToolStripMenuItem.Click += new System.EventHandler(this.FilterByToolStripMenuItem_Click);
             // 
-            // brandToolStripMenuItem
+            // BrandToolStripMenuItem
             // 
-            this.brandToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.brandToolStripMenuItem.Name = "brandToolStripMenuItem";
-            this.brandToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.brandToolStripMenuItem.Text = "Brand";
+            this.BrandToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.BrandToolStripMenuItem.Name = "BrandToolStripMenuItem";
+            this.BrandToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.BrandToolStripMenuItem.Text = "Brand";
             // 
-            // categoryToolStripMenuItem
+            // CategoryToolStripMenuItem
             // 
-            this.categoryToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.categoryToolStripMenuItem.Name = "categoryToolStripMenuItem";
-            this.categoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.categoryToolStripMenuItem.Text = "Category";
+            this.CategoryToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.CategoryToolStripMenuItem.Name = "CategoryToolStripMenuItem";
+            this.CategoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.CategoryToolStripMenuItem.Text = "Category";
             // 
-            // sortByToolStripMenuItem
+            // SortByToolStripMenuItem
             // 
-            this.sortByToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.averagePositionToolStripMenuItem,
-            this.nameToolStripMenuItem});
-            this.sortByToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.sortByToolStripMenuItem.Name = "sortByToolStripMenuItem";
-            this.sortByToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.sortByToolStripMenuItem.Text = "Sort by";
+            this.SortByToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AveragePositionToolStripMenuItem,
+            this.NameToolStripMenuItem});
+            this.SortByToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.SortByToolStripMenuItem.Name = "SortByToolStripMenuItem";
+            this.SortByToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.SortByToolStripMenuItem.Text = "Sort by";
             // 
-            // averagePositionToolStripMenuItem
+            // AveragePositionToolStripMenuItem
             // 
-            this.averagePositionToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.averagePositionToolStripMenuItem.Name = "averagePositionToolStripMenuItem";
-            this.averagePositionToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.averagePositionToolStripMenuItem.Text = "Average position";
+            this.AveragePositionToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.AveragePositionToolStripMenuItem.Name = "AveragePositionToolStripMenuItem";
+            this.AveragePositionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AveragePositionToolStripMenuItem.Text = "Average position";
             // 
-            // nameToolStripMenuItem
+            // NameToolStripMenuItem
             // 
-            this.nameToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.nameToolStripMenuItem.Name = "nameToolStripMenuItem";
-            this.nameToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.nameToolStripMenuItem.Text = "Name";
+            this.NameToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.NameToolStripMenuItem.Name = "NameToolStripMenuItem";
+            this.NameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.NameToolStripMenuItem.Text = "Name";
             // 
-            // resetToolStripMenuItem
+            // ResetToolStripMenuItem
             // 
-            this.resetToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.resetToolStripMenuItem.Text = "Reset";
+            this.ResetToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ResetToolStripMenuItem.Name = "ResetToolStripMenuItem";
+            this.ResetToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.ResetToolStripMenuItem.Text = "Reset";
             // 
             // VehicleViewerForm
             // 
@@ -123,16 +123,17 @@ namespace CompUI.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1371, 900);
-            this.Controls.Add(this.vehicleFlowPanel);
-            this.Controls.Add(this.menuStrip);
+            this.Controls.Add(this.VehicleFlowPanel);
+            this.Controls.Add(this.MenuStrip);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip;
+            this.MainMenuStrip = this.MenuStrip;
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "VehicleViewerForm";
             this.Text = "Vehicle Viewer";
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VehicleViewerForm_FormClosed);
+            this.MenuStrip.ResumeLayout(false);
+            this.MenuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,14 +141,14 @@ namespace CompUI.Forms
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel vehicleFlowPanel;
-        private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem filterByToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem brandToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem categoryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sortByToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem averagePositionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
+        private System.Windows.Forms.FlowLayoutPanel VehicleFlowPanel;
+        private System.Windows.Forms.MenuStrip MenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem FilterByToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem BrandToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CategoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SortByToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AveragePositionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem NameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ResetToolStripMenuItem;
     }
 }

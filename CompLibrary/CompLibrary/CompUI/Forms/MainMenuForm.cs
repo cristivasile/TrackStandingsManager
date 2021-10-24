@@ -17,9 +17,25 @@ namespace CompUI
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void VehicleButton_Click(object sender, EventArgs e)
         {
+            Program.VehicleManagerFormInstance = new();
+            Program.VehicleManagerFormInstance.Show();
+            this.Hide();
+        }
 
+        private void GetRandomButton_Click(object sender, EventArgs e)
+        {
+            Program.RandomChoiceFormInstance = new();
+            Program.RandomChoiceFormInstance.Show();
+            this.Hide();
+        }
+
+        private void CompetitionButton_Click(object sender, EventArgs e)
+        {
+            Program.CompetitionManagerFormInstance = new();
+            Program.CompetitionManagerFormInstance.Show();
+            this.Hide();
         }
     }
 }

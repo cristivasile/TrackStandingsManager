@@ -17,9 +17,14 @@ namespace CompUI.Forms
             InitializeComponent();
         }
 
-        private void filterByToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FilterByToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void VehicleViewerForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.VehicleManagerFormInstance.Show();
         }
     }
 }

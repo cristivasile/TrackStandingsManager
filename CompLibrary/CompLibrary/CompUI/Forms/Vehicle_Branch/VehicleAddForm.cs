@@ -228,5 +228,10 @@ namespace CompUI
             }
         }
         // ------ //
+
+        private void VehicleAddForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.VehicleManagerFormInstance.Enabled = true;
+        }
     }
 }

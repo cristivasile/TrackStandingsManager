@@ -16,5 +16,10 @@ namespace CompUI.Forms
         {
             InitializeComponent();
         }
+
+        private void RandomChoiceForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.MainMenuFormInstance.Show();
+        }
     }
 }

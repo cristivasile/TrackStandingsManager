@@ -30,55 +30,57 @@ namespace CompUI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenuForm));
-            this.vehicleButton = new System.Windows.Forms.Button();
-            this.helpButton = new System.Windows.Forms.Button();
-            this.competitionButton = new System.Windows.Forms.Button();
+            this.VehicleButton = new System.Windows.Forms.Button();
+            this.GetRandomButton = new System.Windows.Forms.Button();
+            this.CompetitionButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // vehicleButton
+            // VehicleButton
             // 
-            this.vehicleButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.vehicleButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.vehicleButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.vehicleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vehicleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.vehicleButton.Location = new System.Drawing.Point(55, 54);
-            this.vehicleButton.Name = "vehicleButton";
-            this.vehicleButton.Size = new System.Drawing.Size(230, 120);
-            this.vehicleButton.TabIndex = 0;
-            this.vehicleButton.Text = "Vehicle\r\nManager";
-            this.vehicleButton.UseVisualStyleBackColor = false;
-            this.vehicleButton.Click += new System.EventHandler(this.button1_Click);
+            this.VehicleButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.VehicleButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.VehicleButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.VehicleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VehicleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.VehicleButton.Location = new System.Drawing.Point(55, 54);
+            this.VehicleButton.Name = "VehicleButton";
+            this.VehicleButton.Size = new System.Drawing.Size(230, 120);
+            this.VehicleButton.TabIndex = 0;
+            this.VehicleButton.Text = "Vehicle\r\nManager";
+            this.VehicleButton.UseVisualStyleBackColor = false;
+            this.VehicleButton.Click += new System.EventHandler(this.VehicleButton_Click);
             // 
-            // helpButton
+            // GetRandomButton
             // 
-            this.helpButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.helpButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.helpButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.helpButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.helpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.helpButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.helpButton.Location = new System.Drawing.Point(151, 248);
-            this.helpButton.Name = "helpButton";
-            this.helpButton.Size = new System.Drawing.Size(337, 120);
-            this.helpButton.TabIndex = 2;
-            this.helpButton.Text = "What should I do?";
-            this.helpButton.UseVisualStyleBackColor = false;
+            this.GetRandomButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.GetRandomButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.GetRandomButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.GetRandomButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.GetRandomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GetRandomButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.GetRandomButton.Location = new System.Drawing.Point(151, 248);
+            this.GetRandomButton.Name = "GetRandomButton";
+            this.GetRandomButton.Size = new System.Drawing.Size(337, 120);
+            this.GetRandomButton.TabIndex = 2;
+            this.GetRandomButton.Text = "What should I do?";
+            this.GetRandomButton.UseVisualStyleBackColor = false;
+            this.GetRandomButton.Click += new System.EventHandler(this.GetRandomButton_Click);
             // 
-            // competitionButton
+            // CompetitionButton
             // 
-            this.competitionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.competitionButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.competitionButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.competitionButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.competitionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.competitionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.competitionButton.Location = new System.Drawing.Point(354, 54);
-            this.competitionButton.Name = "competitionButton";
-            this.competitionButton.Size = new System.Drawing.Size(230, 120);
-            this.competitionButton.TabIndex = 3;
-            this.competitionButton.Text = "Competition\r\nManager\r\n";
-            this.competitionButton.UseVisualStyleBackColor = false;
+            this.CompetitionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CompetitionButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.CompetitionButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.CompetitionButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.CompetitionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CompetitionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.CompetitionButton.Location = new System.Drawing.Point(354, 54);
+            this.CompetitionButton.Name = "CompetitionButton";
+            this.CompetitionButton.Size = new System.Drawing.Size(230, 120);
+            this.CompetitionButton.TabIndex = 3;
+            this.CompetitionButton.Text = "Competition\r\nManager\r\n";
+            this.CompetitionButton.UseVisualStyleBackColor = false;
+            this.CompetitionButton.Click += new System.EventHandler(this.CompetitionButton_Click);
             // 
             // MainMenuForm
             // 
@@ -86,9 +88,9 @@ namespace CompUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(638, 443);
-            this.Controls.Add(this.competitionButton);
-            this.Controls.Add(this.helpButton);
-            this.Controls.Add(this.vehicleButton);
+            this.Controls.Add(this.CompetitionButton);
+            this.Controls.Add(this.GetRandomButton);
+            this.Controls.Add(this.VehicleButton);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
@@ -102,9 +104,9 @@ namespace CompUI
 
         #endregion
 
-        private System.Windows.Forms.Button vehicleButton;
-        private System.Windows.Forms.Button helpButton;
-        private System.Windows.Forms.Button competitionButton;
+        private System.Windows.Forms.Button VehicleButton;
+        private System.Windows.Forms.Button GetRandomButton;
+        private System.Windows.Forms.Button CompetitionButton;
     }
 }
 

@@ -30,218 +30,219 @@ namespace CompUI.Forms.Competition_Branch
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StandingsViewerForm));
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.filterByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.brandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sortByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.averagePositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.vehicleFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.selectCompetitionLabel = new System.Windows.Forms.Label();
-            this.competitionSelectBox = new System.Windows.Forms.ComboBox();
-            this.sortTypeLabel = new System.Windows.Forms.Label();
-            this.scoreTypeLabel = new System.Windows.Forms.Label();
-            this.competitionPicture = new System.Windows.Forms.PictureBox();
-            this.descriptionContainer = new System.Windows.Forms.GroupBox();
-            this.descriptionTextBox = new System.Windows.Forms.TextBox();
-            this.scoreTypeOutputLabel = new System.Windows.Forms.Label();
-            this.sortedTypeOutputLabel = new System.Windows.Forms.Label();
-            this.addEntryButton = new System.Windows.Forms.Button();
-            this.menuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.competitionPicture)).BeginInit();
-            this.descriptionContainer.SuspendLayout();
+            this.MenuStrip = new System.Windows.Forms.MenuStrip();
+            this.FilterByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BrandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SortByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AveragePositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.NameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ResetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.VehicleFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.SelectCompetitionLabel = new System.Windows.Forms.Label();
+            this.CompetitionSelectBox = new System.Windows.Forms.ComboBox();
+            this.SortTypeLabel = new System.Windows.Forms.Label();
+            this.ScoreTypeLabel = new System.Windows.Forms.Label();
+            this.CompetitionPicture = new System.Windows.Forms.PictureBox();
+            this.DescriptionContainer = new System.Windows.Forms.GroupBox();
+            this.DescriptionTextBox = new System.Windows.Forms.TextBox();
+            this.ScoreTypeOutputLabel = new System.Windows.Forms.Label();
+            this.SortedTypeOutputLabel = new System.Windows.Forms.Label();
+            this.AddEntryButton = new System.Windows.Forms.Button();
+            this.MenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CompetitionPicture)).BeginInit();
+            this.DescriptionContainer.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip
+            // MenuStrip
             // 
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.filterByToolStripMenuItem,
-            this.sortByToolStripMenuItem,
-            this.resetToolStripMenuItem,
-            this.deleteToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1371, 24);
-            this.menuStrip.TabIndex = 2;
-            this.menuStrip.Text = "menuStrip1";
+            this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FilterByToolStripMenuItem,
+            this.SortByToolStripMenuItem,
+            this.ResetToolStripMenuItem,
+            this.DeleteToolStripMenuItem});
+            this.MenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.MenuStrip.Name = "MenuStrip";
+            this.MenuStrip.Size = new System.Drawing.Size(1371, 24);
+            this.MenuStrip.TabIndex = 2;
+            this.MenuStrip.Text = "menuStrip1";
             // 
-            // filterByToolStripMenuItem
+            // FilterByToolStripMenuItem
             // 
-            this.filterByToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.brandToolStripMenuItem,
-            this.categoryToolStripMenuItem});
-            this.filterByToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.filterByToolStripMenuItem.Name = "filterByToolStripMenuItem";
-            this.filterByToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.filterByToolStripMenuItem.Text = "Filter by";
+            this.FilterByToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BrandToolStripMenuItem,
+            this.CategoryToolStripMenuItem});
+            this.FilterByToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.FilterByToolStripMenuItem.Name = "FilterByToolStripMenuItem";
+            this.FilterByToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.FilterByToolStripMenuItem.Text = "Filter by";
             // 
-            // brandToolStripMenuItem
+            // BrandToolStripMenuItem
             // 
-            this.brandToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.brandToolStripMenuItem.Name = "brandToolStripMenuItem";
-            this.brandToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.brandToolStripMenuItem.Text = "Brand";
+            this.BrandToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.BrandToolStripMenuItem.Name = "BrandToolStripMenuItem";
+            this.BrandToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.BrandToolStripMenuItem.Text = "Brand";
             // 
-            // categoryToolStripMenuItem
+            // CategoryToolStripMenuItem
             // 
-            this.categoryToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.categoryToolStripMenuItem.Name = "categoryToolStripMenuItem";
-            this.categoryToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.categoryToolStripMenuItem.Text = "Category";
+            this.CategoryToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.CategoryToolStripMenuItem.Name = "CategoryToolStripMenuItem";
+            this.CategoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.CategoryToolStripMenuItem.Text = "Category";
             // 
-            // sortByToolStripMenuItem
+            // SortByToolStripMenuItem
             // 
-            this.sortByToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.averagePositionToolStripMenuItem,
-            this.nameToolStripMenuItem});
-            this.sortByToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.sortByToolStripMenuItem.Name = "sortByToolStripMenuItem";
-            this.sortByToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.sortByToolStripMenuItem.Text = "Sort by";
+            this.SortByToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AveragePositionToolStripMenuItem,
+            this.NameToolStripMenuItem});
+            this.SortByToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.SortByToolStripMenuItem.Name = "SortByToolStripMenuItem";
+            this.SortByToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.SortByToolStripMenuItem.Text = "Sort by";
             // 
-            // averagePositionToolStripMenuItem
+            // AveragePositionToolStripMenuItem
             // 
-            this.averagePositionToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.averagePositionToolStripMenuItem.Name = "averagePositionToolStripMenuItem";
-            this.averagePositionToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.averagePositionToolStripMenuItem.Text = "Average position";
+            this.AveragePositionToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.AveragePositionToolStripMenuItem.Name = "AveragePositionToolStripMenuItem";
+            this.AveragePositionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AveragePositionToolStripMenuItem.Text = "Average position";
             // 
-            // nameToolStripMenuItem
+            // NameToolStripMenuItem
             // 
-            this.nameToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.nameToolStripMenuItem.Name = "nameToolStripMenuItem";
-            this.nameToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.nameToolStripMenuItem.Text = "Name";
+            this.NameToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.NameToolStripMenuItem.Name = "NameToolStripMenuItem";
+            this.NameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.NameToolStripMenuItem.Text = "Name";
             // 
-            // resetToolStripMenuItem
+            // ResetToolStripMenuItem
             // 
-            this.resetToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.resetToolStripMenuItem.Text = "Reset";
+            this.ResetToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ResetToolStripMenuItem.Name = "ResetToolStripMenuItem";
+            this.ResetToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.ResetToolStripMenuItem.Text = "Reset";
             // 
-            // deleteToolStripMenuItem
+            // DeleteToolStripMenuItem
             // 
-            this.deleteToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.LightCoral;
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.deleteToolStripMenuItem.Text = "Delete";
+            this.DeleteToolStripMenuItem.BackColor = System.Drawing.Color.White;
+            this.DeleteToolStripMenuItem.ForeColor = System.Drawing.Color.LightCoral;
+            this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.DeleteToolStripMenuItem.Text = "Delete";
             // 
-            // vehicleFlowPanel
+            // VehicleFlowPanel
             // 
-            this.vehicleFlowPanel.Location = new System.Drawing.Point(12, 178);
-            this.vehicleFlowPanel.Name = "vehicleFlowPanel";
-            this.vehicleFlowPanel.Size = new System.Drawing.Size(1347, 703);
-            this.vehicleFlowPanel.TabIndex = 3;
+            this.VehicleFlowPanel.Location = new System.Drawing.Point(12, 178);
+            this.VehicleFlowPanel.Name = "VehicleFlowPanel";
+            this.VehicleFlowPanel.Size = new System.Drawing.Size(1347, 703);
+            this.VehicleFlowPanel.TabIndex = 3;
             // 
-            // selectCompetitionLabel
+            // SelectCompetitionLabel
             // 
-            this.selectCompetitionLabel.AutoSize = true;
-            this.selectCompetitionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.selectCompetitionLabel.Location = new System.Drawing.Point(12, 34);
-            this.selectCompetitionLabel.Name = "selectCompetitionLabel";
-            this.selectCompetitionLabel.Size = new System.Drawing.Size(193, 30);
-            this.selectCompetitionLabel.TabIndex = 30;
-            this.selectCompetitionLabel.Text = "Select Competition:";
+            this.SelectCompetitionLabel.AutoSize = true;
+            this.SelectCompetitionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.SelectCompetitionLabel.Location = new System.Drawing.Point(12, 34);
+            this.SelectCompetitionLabel.Name = "SelectCompetitionLabel";
+            this.SelectCompetitionLabel.Size = new System.Drawing.Size(193, 30);
+            this.SelectCompetitionLabel.TabIndex = 30;
+            this.SelectCompetitionLabel.Text = "Select Competition:";
             // 
-            // competitionSelectBox
+            // CompetitionSelectBox
             // 
-            this.competitionSelectBox.FormattingEnabled = true;
-            this.competitionSelectBox.Location = new System.Drawing.Point(211, 31);
-            this.competitionSelectBox.Name = "competitionSelectBox";
-            this.competitionSelectBox.Size = new System.Drawing.Size(484, 38);
-            this.competitionSelectBox.TabIndex = 31;
+            this.CompetitionSelectBox.FormattingEnabled = true;
+            this.CompetitionSelectBox.Location = new System.Drawing.Point(211, 31);
+            this.CompetitionSelectBox.Name = "CompetitionSelectBox";
+            this.CompetitionSelectBox.Size = new System.Drawing.Size(484, 38);
+            this.CompetitionSelectBox.TabIndex = 31;
             // 
-            // sortTypeLabel
+            // SortTypeLabel
             // 
-            this.sortTypeLabel.AutoSize = true;
-            this.sortTypeLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.sortTypeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.sortTypeLabel.Location = new System.Drawing.Point(966, 112);
-            this.sortTypeLabel.Name = "sortTypeLabel";
-            this.sortTypeLabel.Size = new System.Drawing.Size(69, 25);
-            this.sortTypeLabel.TabIndex = 53;
-            this.sortTypeLabel.Text = "Sorted:";
-            this.sortTypeLabel.Click += new System.EventHandler(this.sortTypeLabel_Click);
+            this.SortTypeLabel.AutoSize = true;
+            this.SortTypeLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SortTypeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.SortTypeLabel.Location = new System.Drawing.Point(966, 112);
+            this.SortTypeLabel.Name = "SortTypeLabel";
+            this.SortTypeLabel.Size = new System.Drawing.Size(69, 25);
+            this.SortTypeLabel.TabIndex = 53;
+            this.SortTypeLabel.Text = "Sorted:";
+            this.SortTypeLabel.Click += new System.EventHandler(this.SortTypeLabel_Click);
             // 
-            // scoreTypeLabel
+            // ScoreTypeLabel
             // 
-            this.scoreTypeLabel.AutoSize = true;
-            this.scoreTypeLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.scoreTypeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.scoreTypeLabel.Location = new System.Drawing.Point(966, 60);
-            this.scoreTypeLabel.Name = "scoreTypeLabel";
-            this.scoreTypeLabel.Size = new System.Drawing.Size(100, 25);
-            this.scoreTypeLabel.TabIndex = 51;
-            this.scoreTypeLabel.Text = "Score type:";
+            this.ScoreTypeLabel.AutoSize = true;
+            this.ScoreTypeLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ScoreTypeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ScoreTypeLabel.Location = new System.Drawing.Point(966, 60);
+            this.ScoreTypeLabel.Name = "ScoreTypeLabel";
+            this.ScoreTypeLabel.Size = new System.Drawing.Size(100, 25);
+            this.ScoreTypeLabel.TabIndex = 51;
+            this.ScoreTypeLabel.Text = "Score type:";
             // 
-            // competitionPicture
+            // CompetitionPicture
             // 
-            this.competitionPicture.Location = new System.Drawing.Point(1172, 27);
-            this.competitionPicture.Name = "competitionPicture";
-            this.competitionPicture.Size = new System.Drawing.Size(187, 141);
-            this.competitionPicture.TabIndex = 46;
-            this.competitionPicture.TabStop = false;
+            this.CompetitionPicture.Location = new System.Drawing.Point(1172, 27);
+            this.CompetitionPicture.Name = "CompetitionPicture";
+            this.CompetitionPicture.Size = new System.Drawing.Size(187, 141);
+            this.CompetitionPicture.TabIndex = 46;
+            this.CompetitionPicture.TabStop = false;
             // 
-            // descriptionContainer
+            // DescriptionContainer
             // 
-            this.descriptionContainer.Controls.Add(this.descriptionTextBox);
-            this.descriptionContainer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.descriptionContainer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.descriptionContainer.Location = new System.Drawing.Point(12, 75);
-            this.descriptionContainer.Name = "descriptionContainer";
-            this.descriptionContainer.Size = new System.Drawing.Size(683, 97);
-            this.descriptionContainer.TabIndex = 55;
-            this.descriptionContainer.TabStop = false;
-            this.descriptionContainer.Text = "Description";
+            this.DescriptionContainer.Controls.Add(this.DescriptionTextBox);
+            this.DescriptionContainer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DescriptionContainer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.DescriptionContainer.Location = new System.Drawing.Point(12, 75);
+            this.DescriptionContainer.Name = "DescriptionContainer";
+            this.DescriptionContainer.Size = new System.Drawing.Size(683, 97);
+            this.DescriptionContainer.TabIndex = 55;
+            this.DescriptionContainer.TabStop = false;
+            this.DescriptionContainer.Text = "Description";
             // 
-            // descriptionTextBox
+            // DescriptionTextBox
             // 
-            this.descriptionTextBox.Location = new System.Drawing.Point(16, 28);
-            this.descriptionTextBox.Multiline = true;
-            this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.Size = new System.Drawing.Size(656, 58);
-            this.descriptionTextBox.TabIndex = 0;
+            this.DescriptionTextBox.Location = new System.Drawing.Point(16, 28);
+            this.DescriptionTextBox.Multiline = true;
+            this.DescriptionTextBox.Name = "DescriptionTextBox";
+            this.DescriptionTextBox.Size = new System.Drawing.Size(656, 58);
+            this.DescriptionTextBox.TabIndex = 0;
             // 
-            // scoreTypeOutputLabel
+            // ScoreTypeOutputLabel
             // 
-            this.scoreTypeOutputLabel.AutoSize = true;
-            this.scoreTypeOutputLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.scoreTypeOutputLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.scoreTypeOutputLabel.Location = new System.Drawing.Point(1072, 60);
-            this.scoreTypeOutputLabel.Name = "scoreTypeOutputLabel";
-            this.scoreTypeOutputLabel.Size = new System.Drawing.Size(64, 25);
-            this.scoreTypeOutputLabel.TabIndex = 56;
-            this.scoreTypeOutputLabel.Text = "<null>";
+            this.ScoreTypeOutputLabel.AutoSize = true;
+            this.ScoreTypeOutputLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ScoreTypeOutputLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ScoreTypeOutputLabel.Location = new System.Drawing.Point(1072, 60);
+            this.ScoreTypeOutputLabel.Name = "ScoreTypeOutputLabel";
+            this.ScoreTypeOutputLabel.Size = new System.Drawing.Size(64, 25);
+            this.ScoreTypeOutputLabel.TabIndex = 56;
+            this.ScoreTypeOutputLabel.Text = "<null>";
             // 
-            // sortedTypeOutputLabel
+            // SortedTypeOutputLabel
             // 
-            this.sortedTypeOutputLabel.AutoSize = true;
-            this.sortedTypeOutputLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.sortedTypeOutputLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.sortedTypeOutputLabel.Location = new System.Drawing.Point(1072, 112);
-            this.sortedTypeOutputLabel.Name = "sortedTypeOutputLabel";
-            this.sortedTypeOutputLabel.Size = new System.Drawing.Size(64, 25);
-            this.sortedTypeOutputLabel.TabIndex = 57;
-            this.sortedTypeOutputLabel.Text = "<null>";
+            this.SortedTypeOutputLabel.AutoSize = true;
+            this.SortedTypeOutputLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SortedTypeOutputLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.SortedTypeOutputLabel.Location = new System.Drawing.Point(1072, 112);
+            this.SortedTypeOutputLabel.Name = "SortedTypeOutputLabel";
+            this.SortedTypeOutputLabel.Size = new System.Drawing.Size(64, 25);
+            this.SortedTypeOutputLabel.TabIndex = 57;
+            this.SortedTypeOutputLabel.Text = "<null>";
             // 
-            // addEntryButton
+            // AddEntryButton
             // 
-            this.addEntryButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.addEntryButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.addEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addEntryButton.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.addEntryButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.addEntryButton.Location = new System.Drawing.Point(782, 60);
-            this.addEntryButton.Name = "addEntryButton";
-            this.addEntryButton.Size = new System.Drawing.Size(107, 62);
-            this.addEntryButton.TabIndex = 58;
-            this.addEntryButton.Text = "New\r\nEntry\r\n";
-            this.addEntryButton.UseVisualStyleBackColor = true;
+            this.AddEntryButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.AddEntryButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.AddEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddEntryButton.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AddEntryButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.AddEntryButton.Location = new System.Drawing.Point(782, 60);
+            this.AddEntryButton.Name = "AddEntryButton";
+            this.AddEntryButton.Size = new System.Drawing.Size(107, 62);
+            this.AddEntryButton.TabIndex = 58;
+            this.AddEntryButton.Text = "New\r\nEntry\r\n";
+            this.AddEntryButton.UseVisualStyleBackColor = true;
+            this.AddEntryButton.Click += new System.EventHandler(this.AddEntryButton_Click);
             // 
             // StandingsViewerForm
             // 
@@ -249,27 +250,28 @@ namespace CompUI.Forms.Competition_Branch
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1371, 900);
-            this.Controls.Add(this.addEntryButton);
-            this.Controls.Add(this.sortedTypeOutputLabel);
-            this.Controls.Add(this.scoreTypeOutputLabel);
-            this.Controls.Add(this.descriptionContainer);
-            this.Controls.Add(this.sortTypeLabel);
-            this.Controls.Add(this.scoreTypeLabel);
-            this.Controls.Add(this.competitionPicture);
-            this.Controls.Add(this.competitionSelectBox);
-            this.Controls.Add(this.selectCompetitionLabel);
-            this.Controls.Add(this.vehicleFlowPanel);
-            this.Controls.Add(this.menuStrip);
+            this.Controls.Add(this.AddEntryButton);
+            this.Controls.Add(this.SortedTypeOutputLabel);
+            this.Controls.Add(this.ScoreTypeOutputLabel);
+            this.Controls.Add(this.DescriptionContainer);
+            this.Controls.Add(this.SortTypeLabel);
+            this.Controls.Add(this.ScoreTypeLabel);
+            this.Controls.Add(this.CompetitionPicture);
+            this.Controls.Add(this.CompetitionSelectBox);
+            this.Controls.Add(this.SelectCompetitionLabel);
+            this.Controls.Add(this.VehicleFlowPanel);
+            this.Controls.Add(this.MenuStrip);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "StandingsViewerForm";
             this.Text = "Standings Viewer";
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.competitionPicture)).EndInit();
-            this.descriptionContainer.ResumeLayout(false);
-            this.descriptionContainer.PerformLayout();
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StandingsViewerForm_FormClosed);
+            this.MenuStrip.ResumeLayout(false);
+            this.MenuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CompetitionPicture)).EndInit();
+            this.DescriptionContainer.ResumeLayout(false);
+            this.DescriptionContainer.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,25 +279,25 @@ namespace CompUI.Forms.Competition_Branch
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem filterByToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem brandToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem categoryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sortByToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem averagePositionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
-        private System.Windows.Forms.FlowLayoutPanel vehicleFlowPanel;
-        private System.Windows.Forms.Label selectCompetitionLabel;
-        private System.Windows.Forms.ComboBox competitionSelectBox;
-        private System.Windows.Forms.Label sortTypeLabel;
-        private System.Windows.Forms.Label scoreTypeLabel;
-        private System.Windows.Forms.PictureBox competitionPicture;
-        private System.Windows.Forms.GroupBox descriptionContainer;
-        private System.Windows.Forms.TextBox descriptionTextBox;
-        private System.Windows.Forms.Label scoreTypeOutputLabel;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.Label sortedTypeOutputLabel;
-        private System.Windows.Forms.Button addEntryButton;
+        private System.Windows.Forms.MenuStrip MenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem FilterByToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem BrandToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CategoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SortByToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AveragePositionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem NameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ResetToolStripMenuItem;
+        private System.Windows.Forms.FlowLayoutPanel VehicleFlowPanel;
+        private System.Windows.Forms.Label SelectCompetitionLabel;
+        private System.Windows.Forms.ComboBox CompetitionSelectBox;
+        private System.Windows.Forms.Label SortTypeLabel;
+        private System.Windows.Forms.Label ScoreTypeLabel;
+        private System.Windows.Forms.PictureBox CompetitionPicture;
+        private System.Windows.Forms.GroupBox DescriptionContainer;
+        private System.Windows.Forms.TextBox DescriptionTextBox;
+        private System.Windows.Forms.Label ScoreTypeOutputLabel;
+        private System.Windows.Forms.ToolStripMenuItem DeleteToolStripMenuItem;
+        private System.Windows.Forms.Label SortedTypeOutputLabel;
+        private System.Windows.Forms.Button AddEntryButton;
     }
 }

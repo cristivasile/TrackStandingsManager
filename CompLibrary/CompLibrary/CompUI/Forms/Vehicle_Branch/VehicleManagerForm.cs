@@ -17,9 +17,23 @@ namespace CompUI
             InitializeComponent();
         }
 
-        private void seeVehiclesButton_Click(object sender, EventArgs e)
+        private void VehicleManagerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Program.MainMenuFormInstance.Show();
+        }
 
+        private void AddVehicleButton_Click(object sender, EventArgs e)
+        {
+            Program.VehicleAddFormInstance = new();
+            Program.VehicleAddFormInstance.Show();
+            this.Enabled = false;
+        }
+
+        private void SeeVehiclesButton_Click(object sender, EventArgs e)
+        {
+            Program.VehicleViewerFormInstance = new();
+            Program.VehicleViewerFormInstance.Show();
+            this.Hide();
         }
     }
 }

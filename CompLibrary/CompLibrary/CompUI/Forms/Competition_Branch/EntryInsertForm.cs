@@ -17,9 +17,19 @@ namespace CompUI.Forms.Competition_Branch
             InitializeComponent();
         }
 
-        private void brandTextBox_TextChanged(object sender, EventArgs e)
+        private void BrandTextBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void EntryInsertForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.StandingsViewerFormInstance.Enabled = true;
+        }
+
+        private void AbortButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

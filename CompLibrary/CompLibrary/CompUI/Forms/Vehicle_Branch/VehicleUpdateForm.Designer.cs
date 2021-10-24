@@ -29,69 +29,69 @@ namespace CompUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.deleteButton = new System.Windows.Forms.Button();
-            this.updateButton = new System.Windows.Forms.Button();
-            this.categoryComboBox = new System.Windows.Forms.ComboBox();
-            this.categoryLabel = new System.Windows.Forms.Label();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.UpdateButton = new System.Windows.Forms.Button();
+            this.CategoryComboBox = new System.Windows.Forms.ComboBox();
+            this.CategoryLabel = new System.Windows.Forms.Label();
             this.ModelLabel = new System.Windows.Forms.Label();
-            this.modelTextBox = new System.Windows.Forms.TextBox();
-            this.brandLabel = new System.Windows.Forms.Label();
-            this.brandTextBox = new System.Windows.Forms.TextBox();
-            this.selectVehicleLabel = new System.Windows.Forms.Label();
-            this.vehicleSelectionComboBox = new System.Windows.Forms.ComboBox();
-            this.vehiclePicture = new System.Windows.Forms.PictureBox();
-            this.titleLabel = new System.Windows.Forms.Label();
-            this.cancelButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.vehiclePicture)).BeginInit();
+            this.ModelTextBox = new System.Windows.Forms.TextBox();
+            this.BrandLabel = new System.Windows.Forms.Label();
+            this.BrandTextBox = new System.Windows.Forms.TextBox();
+            this.SelectVehicleLabel = new System.Windows.Forms.Label();
+            this.VehicleSelectionComboBox = new System.Windows.Forms.ComboBox();
+            this.VehiclePicture = new System.Windows.Forms.PictureBox();
+            this.TitleLabel = new System.Windows.Forms.Label();
+            this.AbortButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.VehiclePicture)).BeginInit();
             this.SuspendLayout();
             // 
-            // deleteButton
+            // DeleteButton
             // 
-            this.deleteButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.deleteButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.deleteButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.deleteButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.deleteButton.Location = new System.Drawing.Point(684, 310);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(125, 40);
-            this.deleteButton.TabIndex = 28;
-            this.deleteButton.Text = "Remove";
-            this.deleteButton.UseVisualStyleBackColor = false;
+            this.DeleteButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.DeleteButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.DeleteButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DeleteButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.DeleteButton.Location = new System.Drawing.Point(684, 310);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(125, 40);
+            this.DeleteButton.TabIndex = 28;
+            this.DeleteButton.Text = "Remove";
+            this.DeleteButton.UseVisualStyleBackColor = false;
             // 
-            // updateButton
+            // UpdateButton
             // 
-            this.updateButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.updateButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.updateButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updateButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.updateButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.updateButton.Location = new System.Drawing.Point(528, 310);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(125, 40);
-            this.updateButton.TabIndex = 27;
-            this.updateButton.Text = "Modify";
-            this.updateButton.UseVisualStyleBackColor = false;
+            this.UpdateButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.UpdateButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.UpdateButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.UpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.UpdateButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.UpdateButton.Location = new System.Drawing.Point(528, 310);
+            this.UpdateButton.Name = "UpdateButton";
+            this.UpdateButton.Size = new System.Drawing.Size(125, 40);
+            this.UpdateButton.TabIndex = 27;
+            this.UpdateButton.Text = "Modify";
+            this.UpdateButton.UseVisualStyleBackColor = false;
             // 
-            // categoryComboBox
+            // CategoryComboBox
             // 
-            this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(425, 242);
-            this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(237, 38);
-            this.categoryComboBox.TabIndex = 25;
+            this.CategoryComboBox.FormattingEnabled = true;
+            this.CategoryComboBox.Location = new System.Drawing.Point(425, 242);
+            this.CategoryComboBox.Name = "CategoryComboBox";
+            this.CategoryComboBox.Size = new System.Drawing.Size(237, 38);
+            this.CategoryComboBox.TabIndex = 25;
             // 
-            // categoryLabel
+            // CategoryLabel
             // 
-            this.categoryLabel.AutoSize = true;
-            this.categoryLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.categoryLabel.Location = new System.Drawing.Point(285, 242);
-            this.categoryLabel.Name = "categoryLabel";
-            this.categoryLabel.Size = new System.Drawing.Size(101, 30);
-            this.categoryLabel.TabIndex = 24;
-            this.categoryLabel.Text = "Category:";
+            this.CategoryLabel.AutoSize = true;
+            this.CategoryLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.CategoryLabel.Location = new System.Drawing.Point(285, 242);
+            this.CategoryLabel.Name = "CategoryLabel";
+            this.CategoryLabel.Size = new System.Drawing.Size(101, 30);
+            this.CategoryLabel.TabIndex = 24;
+            this.CategoryLabel.Text = "Category:";
             // 
             // ModelLabel
             // 
@@ -103,108 +103,109 @@ namespace CompUI
             this.ModelLabel.TabIndex = 23;
             this.ModelLabel.Text = "Model:";
             // 
-            // modelTextBox
+            // ModelTextBox
             // 
-            this.modelTextBox.Location = new System.Drawing.Point(425, 162);
-            this.modelTextBox.Name = "modelTextBox";
-            this.modelTextBox.Size = new System.Drawing.Size(237, 35);
-            this.modelTextBox.TabIndex = 22;
+            this.ModelTextBox.Location = new System.Drawing.Point(425, 162);
+            this.ModelTextBox.Name = "ModelTextBox";
+            this.ModelTextBox.Size = new System.Drawing.Size(237, 35);
+            this.ModelTextBox.TabIndex = 22;
             // 
-            // brandLabel
+            // BrandLabel
             // 
-            this.brandLabel.AutoSize = true;
-            this.brandLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.brandLabel.Location = new System.Drawing.Point(285, 82);
-            this.brandLabel.Name = "brandLabel";
-            this.brandLabel.Size = new System.Drawing.Size(72, 30);
-            this.brandLabel.TabIndex = 21;
-            this.brandLabel.Text = "Brand:";
+            this.BrandLabel.AutoSize = true;
+            this.BrandLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.BrandLabel.Location = new System.Drawing.Point(285, 82);
+            this.BrandLabel.Name = "BrandLabel";
+            this.BrandLabel.Size = new System.Drawing.Size(72, 30);
+            this.BrandLabel.TabIndex = 21;
+            this.BrandLabel.Text = "Brand:";
             // 
-            // brandTextBox
+            // BrandTextBox
             // 
-            this.brandTextBox.Location = new System.Drawing.Point(425, 82);
-            this.brandTextBox.Name = "brandTextBox";
-            this.brandTextBox.Size = new System.Drawing.Size(237, 35);
-            this.brandTextBox.TabIndex = 20;
+            this.BrandTextBox.Location = new System.Drawing.Point(425, 82);
+            this.BrandTextBox.Name = "BrandTextBox";
+            this.BrandTextBox.Size = new System.Drawing.Size(237, 35);
+            this.BrandTextBox.TabIndex = 20;
             // 
-            // selectVehicleLabel
+            // SelectVehicleLabel
             // 
-            this.selectVehicleLabel.AutoSize = true;
-            this.selectVehicleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.selectVehicleLabel.Location = new System.Drawing.Point(425, 20);
-            this.selectVehicleLabel.Name = "selectVehicleLabel";
-            this.selectVehicleLabel.Size = new System.Drawing.Size(143, 30);
-            this.selectVehicleLabel.TabIndex = 19;
-            this.selectVehicleLabel.Text = "Select vehicle:";
-            this.selectVehicleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SelectVehicleLabel.AutoSize = true;
+            this.SelectVehicleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.SelectVehicleLabel.Location = new System.Drawing.Point(425, 20);
+            this.SelectVehicleLabel.Name = "SelectVehicleLabel";
+            this.SelectVehicleLabel.Size = new System.Drawing.Size(143, 30);
+            this.SelectVehicleLabel.TabIndex = 19;
+            this.SelectVehicleLabel.Text = "Select vehicle:";
+            this.SelectVehicleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // vehicleSelectionComboBox
+            // VehicleSelectionComboBox
             // 
-            this.vehicleSelectionComboBox.FormattingEnabled = true;
-            this.vehicleSelectionComboBox.Location = new System.Drawing.Point(574, 17);
-            this.vehicleSelectionComboBox.Name = "vehicleSelectionComboBox";
-            this.vehicleSelectionComboBox.Size = new System.Drawing.Size(237, 38);
-            this.vehicleSelectionComboBox.TabIndex = 16;
+            this.VehicleSelectionComboBox.FormattingEnabled = true;
+            this.VehicleSelectionComboBox.Location = new System.Drawing.Point(574, 17);
+            this.VehicleSelectionComboBox.Name = "VehicleSelectionComboBox";
+            this.VehicleSelectionComboBox.Size = new System.Drawing.Size(237, 38);
+            this.VehicleSelectionComboBox.TabIndex = 16;
             // 
-            // vehiclePicture
+            // VehiclePicture
             // 
-            this.vehiclePicture.Location = new System.Drawing.Point(31, 90);
-            this.vehiclePicture.Name = "vehiclePicture";
-            this.vehiclePicture.Size = new System.Drawing.Size(206, 187);
-            this.vehiclePicture.TabIndex = 15;
-            this.vehiclePicture.TabStop = false;
+            this.VehiclePicture.Location = new System.Drawing.Point(31, 90);
+            this.VehiclePicture.Name = "VehiclePicture";
+            this.VehiclePicture.Size = new System.Drawing.Size(206, 187);
+            this.VehiclePicture.TabIndex = 15;
+            this.VehiclePicture.TabStop = false;
             // 
-            // titleLabel
+            // TitleLabel
             // 
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.titleLabel.Location = new System.Drawing.Point(31, 20);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(245, 30);
-            this.titleLabel.TabIndex = 29;
-            this.titleLabel.Text = "Manage existing vehicles";
+            this.TitleLabel.AutoSize = true;
+            this.TitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.TitleLabel.Location = new System.Drawing.Point(31, 20);
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Size = new System.Drawing.Size(245, 30);
+            this.TitleLabel.TabIndex = 29;
+            this.TitleLabel.Text = "Manage existing vehicles";
             // 
-            // cancelButton
+            // AbortButton
             // 
-            this.cancelButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cancelButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.cancelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cancelButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.cancelButton.Location = new System.Drawing.Point(31, 310);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(125, 40);
-            this.cancelButton.TabIndex = 26;
-            this.cancelButton.Text = "Exit";
-            this.cancelButton.UseVisualStyleBackColor = false;
-            this.cancelButton.Click += new System.EventHandler(this.addButton_Click);
+            this.AbortButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.AbortButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.AbortButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.AbortButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AbortButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AbortButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.AbortButton.Location = new System.Drawing.Point(31, 310);
+            this.AbortButton.Name = "AbortButton";
+            this.AbortButton.Size = new System.Drawing.Size(125, 40);
+            this.AbortButton.TabIndex = 26;
+            this.AbortButton.Text = "Exit";
+            this.AbortButton.UseVisualStyleBackColor = false;
+            this.AbortButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // VehicleUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(833, 368);
-            this.Controls.Add(this.titleLabel);
-            this.Controls.Add(this.deleteButton);
-            this.Controls.Add(this.updateButton);
-            this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.categoryComboBox);
-            this.Controls.Add(this.categoryLabel);
+            this.Controls.Add(this.TitleLabel);
+            this.Controls.Add(this.DeleteButton);
+            this.Controls.Add(this.UpdateButton);
+            this.Controls.Add(this.AbortButton);
+            this.Controls.Add(this.CategoryComboBox);
+            this.Controls.Add(this.CategoryLabel);
             this.Controls.Add(this.ModelLabel);
-            this.Controls.Add(this.modelTextBox);
-            this.Controls.Add(this.brandLabel);
-            this.Controls.Add(this.brandTextBox);
-            this.Controls.Add(this.selectVehicleLabel);
-            this.Controls.Add(this.vehicleSelectionComboBox);
-            this.Controls.Add(this.vehiclePicture);
+            this.Controls.Add(this.ModelTextBox);
+            this.Controls.Add(this.BrandLabel);
+            this.Controls.Add(this.BrandTextBox);
+            this.Controls.Add(this.SelectVehicleLabel);
+            this.Controls.Add(this.VehicleSelectionComboBox);
+            this.Controls.Add(this.VehiclePicture);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "VehicleUpdateForm";
             this.Text = "VehicleUpdateForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VehicleUpdateForm_FormClosed);
             this.Load += new System.EventHandler(this.VehicleUpdateForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.vehiclePicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VehiclePicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,18 +213,18 @@ namespace CompUI
 
         #endregion
 
-        private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.Button updateButton;
-        private System.Windows.Forms.ComboBox categoryComboBox;
-        private System.Windows.Forms.Label categoryLabel;
+        private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.Button UpdateButton;
+        private System.Windows.Forms.ComboBox CategoryComboBox;
+        private System.Windows.Forms.Label CategoryLabel;
         private System.Windows.Forms.Label ModelLabel;
-        private System.Windows.Forms.TextBox modelTextBox;
-        private System.Windows.Forms.Label brandLabel;
-        private System.Windows.Forms.TextBox brandTextBox;
-        private System.Windows.Forms.Label selectVehicleLabel;
-        private System.Windows.Forms.ComboBox vehicleSelectionComboBox;
-        private System.Windows.Forms.PictureBox vehiclePicture;
-        private System.Windows.Forms.Label titleLabel;
-        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.TextBox ModelTextBox;
+        private System.Windows.Forms.Label BrandLabel;
+        private System.Windows.Forms.TextBox BrandTextBox;
+        private System.Windows.Forms.Label SelectVehicleLabel;
+        private System.Windows.Forms.ComboBox VehicleSelectionComboBox;
+        private System.Windows.Forms.PictureBox VehiclePicture;
+        private System.Windows.Forms.Label TitleLabel;
+        private System.Windows.Forms.Button AbortButton;
     }
 }

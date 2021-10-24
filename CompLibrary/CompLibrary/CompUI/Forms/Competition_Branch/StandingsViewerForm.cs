@@ -17,9 +17,21 @@ namespace CompUI.Forms.Competition_Branch
             InitializeComponent();
         }
 
-        private void sortTypeLabel_Click(object sender, EventArgs e)
+        private void SortTypeLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void StandingsViewerForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.CompetitionManagerFormInstance.Show();
+        }
+
+        private void AddEntryButton_Click(object sender, EventArgs e)
+        {
+            Program.EntryInsertFormInstance = new();
+            Program.EntryInsertFormInstance.Show();
+            this.Enabled = false;
         }
     }
 }

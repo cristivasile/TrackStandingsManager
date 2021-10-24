@@ -16,5 +16,24 @@ namespace CompUI.Forms.Competition_Branch
         {
             InitializeComponent();
         }
+
+        private void CompetitionManagerForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.MainMenuFormInstance.Show();
+        }
+
+        private void AddCompetitionButton_Click(object sender, EventArgs e)
+        {
+            Program.NewCompetitionFormInstance = new();
+            Program.NewCompetitionFormInstance.Show();
+            this.Enabled = false;
+        }
+
+        private void SeeStandingsButton_Click(object sender, EventArgs e)
+        {
+            Program.StandingsViewerFormInstance = new();
+            Program.StandingsViewerFormInstance.Show();
+            this.Hide();
+        }
     }
 }

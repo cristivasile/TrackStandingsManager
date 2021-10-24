@@ -48,7 +48,7 @@ namespace CompUI
             ((System.ComponentModel.ISupportInitialize)(this.VehiclePicture)).BeginInit();
             this.SuspendLayout();
             // 
-            // abortButton
+            // AbortButton
             // 
             this.AbortButton.BackColor = System.Drawing.Color.WhiteSmoke;
             this.AbortButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
@@ -57,14 +57,14 @@ namespace CompUI
             this.AbortButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AbortButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.AbortButton.Location = new System.Drawing.Point(697, 307);
-            this.AbortButton.Name = "abortButton";
+            this.AbortButton.Name = "AbortButton";
             this.AbortButton.Size = new System.Drawing.Size(125, 40);
             this.AbortButton.TabIndex = 28;
             this.AbortButton.Text = "Exit";
             this.AbortButton.UseVisualStyleBackColor = false;
             this.AbortButton.Click += new System.EventHandler(this.AbortButton_Click);
             // 
-            // insertButton
+            // InsertButton
             // 
             this.InsertButton.BackColor = System.Drawing.Color.WhiteSmoke;
             this.InsertButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
@@ -73,28 +73,28 @@ namespace CompUI
             this.InsertButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.InsertButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.InsertButton.Location = new System.Drawing.Point(16, 307);
-            this.InsertButton.Name = "insertButton";
+            this.InsertButton.Name = "InsertButton";
             this.InsertButton.Size = new System.Drawing.Size(125, 40);
             this.InsertButton.TabIndex = 27;
             this.InsertButton.Text = "Add";
             this.InsertButton.UseVisualStyleBackColor = false;
             this.InsertButton.Click += new System.EventHandler(this.InsertButton_Click);
             // 
-            // categoryComboBox
+            // CategoryComboBox
             // 
             this.CategoryComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.CategoryComboBox.FormattingEnabled = true;
             this.CategoryComboBox.Location = new System.Drawing.Point(410, 239);
-            this.CategoryComboBox.Name = "categoryComboBox";
+            this.CategoryComboBox.Name = "CategoryComboBox";
             this.CategoryComboBox.Size = new System.Drawing.Size(237, 38);
             this.CategoryComboBox.TabIndex = 25;
             // 
-            // categoryLabel
+            // CategoryLabel
             // 
             this.CategoryLabel.AutoSize = true;
             this.CategoryLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.CategoryLabel.Location = new System.Drawing.Point(270, 239);
-            this.CategoryLabel.Name = "categoryLabel";
+            this.CategoryLabel.Name = "CategoryLabel";
             this.CategoryLabel.Size = new System.Drawing.Size(101, 30);
             this.CategoryLabel.TabIndex = 24;
             this.CategoryLabel.Text = "Category:";
@@ -109,36 +109,36 @@ namespace CompUI
             this.ModelLabel.TabIndex = 23;
             this.ModelLabel.Text = "Model:";
             // 
-            // modelTextBox
+            // ModelTextBox
             // 
             this.ModelTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.ModelTextBox.Location = new System.Drawing.Point(410, 159);
-            this.ModelTextBox.Name = "modelTextBox";
+            this.ModelTextBox.Name = "ModelTextBox";
             this.ModelTextBox.Size = new System.Drawing.Size(237, 35);
             this.ModelTextBox.TabIndex = 22;
             // 
-            // brandLabel
+            // BrandLabel
             // 
             this.BrandLabel.AutoSize = true;
             this.BrandLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.BrandLabel.Location = new System.Drawing.Point(270, 79);
-            this.BrandLabel.Name = "brandLabel";
+            this.BrandLabel.Name = "BrandLabel";
             this.BrandLabel.Size = new System.Drawing.Size(72, 30);
             this.BrandLabel.TabIndex = 21;
             this.BrandLabel.Text = "Brand:";
             // 
-            // brandTextBox
+            // BrandTextBox
             // 
             this.BrandTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.BrandTextBox.Location = new System.Drawing.Point(410, 79);
-            this.BrandTextBox.Name = "brandTextBox";
+            this.BrandTextBox.Name = "BrandTextBox";
             this.BrandTextBox.Size = new System.Drawing.Size(237, 35);
             this.BrandTextBox.TabIndex = 20;
             // 
-            // vehiclePicture
+            // VehiclePicture
             // 
             this.VehiclePicture.Location = new System.Drawing.Point(16, 82);
-            this.VehiclePicture.Name = "vehiclePicture";
+            this.VehiclePicture.Name = "VehiclePicture";
             this.VehiclePicture.Size = new System.Drawing.Size(206, 187);
             this.VehiclePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.VehiclePicture.TabIndex = 15;
@@ -148,26 +148,26 @@ namespace CompUI
             this.VehiclePicture.MouseLeave += new System.EventHandler(this.VehiclePicture_MouseLeave);
             this.VehiclePicture.MouseHover += new System.EventHandler(this.VehiclePicture_MouseHover);
             // 
-            // titleLabel
+            // TitleLabel
             // 
             this.TitleLabel.AutoSize = true;
             this.TitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.TitleLabel.Location = new System.Drawing.Point(16, 26);
-            this.TitleLabel.Name = "titleLabel";
+            this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(125, 30);
             this.TitleLabel.TabIndex = 29;
             this.TitleLabel.Text = "New vehicle";
             // 
-            // messagePanel
+            // MessagePanel
             // 
             this.MessagePanel.AutoScroll = true;
             this.MessagePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.MessagePanel.Location = new System.Drawing.Point(188, 307);
-            this.MessagePanel.Name = "messagePanel";
+            this.MessagePanel.Name = "MessagePanel";
             this.MessagePanel.Size = new System.Drawing.Size(459, 40);
             this.MessagePanel.TabIndex = 31;
             // 
-            // removeCategoryButton
+            // RemoveCategoryButton
             // 
             this.RemoveCategoryButton.BackColor = System.Drawing.Color.LightCoral;
             this.RemoveCategoryButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
@@ -176,19 +176,19 @@ namespace CompUI
             this.RemoveCategoryButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.RemoveCategoryButton.ForeColor = System.Drawing.Color.White;
             this.RemoveCategoryButton.Location = new System.Drawing.Point(673, 245);
-            this.RemoveCategoryButton.Name = "removeCategoryButton";
+            this.RemoveCategoryButton.Name = "RemoveCategoryButton";
             this.RemoveCategoryButton.Size = new System.Drawing.Size(90, 27);
             this.RemoveCategoryButton.TabIndex = 32;
             this.RemoveCategoryButton.Text = "Remove";
             this.RemoveCategoryButton.UseVisualStyleBackColor = false;
             this.RemoveCategoryButton.Click += new System.EventHandler(this.RemoveCategoryButton_Click);
             // 
-            // imageInfoLabel
+            // ImageInfoLabel
             // 
             this.ImageInfoLabel.AutoSize = true;
             this.ImageInfoLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ImageInfoLabel.Location = new System.Drawing.Point(36, 155);
-            this.ImageInfoLabel.Name = "imageInfoLabel";
+            this.ImageInfoLabel.Name = "ImageInfoLabel";
             this.ImageInfoLabel.Size = new System.Drawing.Size(160, 42);
             this.ImageInfoLabel.TabIndex = 33;
             this.ImageInfoLabel.Text = "Click to paste \r\nimage from clipboard";
@@ -197,11 +197,11 @@ namespace CompUI
             this.ImageInfoLabel.MouseLeave += new System.EventHandler(this.VehiclePicture_MouseLeave);
             this.ImageInfoLabel.MouseHover += new System.EventHandler(this.VehiclePicture_MouseHover);
             // 
-            // decorationPanelTop
+            // DecorationPanelTop
             // 
             this.DecorationPanelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.DecorationPanelTop.Location = new System.Drawing.Point(-2, -1);
-            this.DecorationPanelTop.Name = "decorationPanelTop";
+            this.DecorationPanelTop.Name = "DecorationPanelTop";
             this.DecorationPanelTop.Size = new System.Drawing.Size(852, 25);
             this.DecorationPanelTop.TabIndex = 34;
             this.DecorationPanelTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VehicleAddForm_MouseDown);
@@ -230,6 +230,7 @@ namespace CompUI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "VehicleAddForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VehicleAddForm_FormClosed);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VehicleAddForm_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.VehiclePicture)).EndInit();
             this.ResumeLayout(false);

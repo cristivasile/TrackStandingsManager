@@ -17,14 +17,19 @@ namespace CompUI
             InitializeComponent();
         }
 
-        private void addButton_Click(object sender, EventArgs e)
+        private void AddButton_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void VehicleUpdateForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void VehicleUpdateForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //TODO - Wire up vehicle update form
         }
     }
 }

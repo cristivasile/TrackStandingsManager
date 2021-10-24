@@ -30,38 +30,40 @@ namespace CompUI.Forms.Competition_Branch
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CompetitionManagerForm));
-            this.seeStandingsButton = new System.Windows.Forms.Button();
-            this.addCompetitionButton = new System.Windows.Forms.Button();
+            this.SeeStandingsButton = new System.Windows.Forms.Button();
+            this.AddCompetitionButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // seeStandingsButton
+            // SeeStandingsButton
             // 
-            this.seeStandingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.seeStandingsButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.seeStandingsButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.seeStandingsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.seeStandingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.seeStandingsButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.seeStandingsButton.Location = new System.Drawing.Point(344, 54);
-            this.seeStandingsButton.Name = "seeStandingsButton";
-            this.seeStandingsButton.Size = new System.Drawing.Size(230, 120);
-            this.seeStandingsButton.TabIndex = 4;
-            this.seeStandingsButton.Text = "See\r\nStandings\r\n";
-            this.seeStandingsButton.UseVisualStyleBackColor = false;
+            this.SeeStandingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SeeStandingsButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.SeeStandingsButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.SeeStandingsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.SeeStandingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SeeStandingsButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.SeeStandingsButton.Location = new System.Drawing.Point(344, 54);
+            this.SeeStandingsButton.Name = "SeeStandingsButton";
+            this.SeeStandingsButton.Size = new System.Drawing.Size(230, 120);
+            this.SeeStandingsButton.TabIndex = 4;
+            this.SeeStandingsButton.Text = "See\r\nStandings\r\n";
+            this.SeeStandingsButton.UseVisualStyleBackColor = false;
+            this.SeeStandingsButton.Click += new System.EventHandler(this.SeeStandingsButton_Click);
             // 
-            // addCompetitionButton
+            // AddCompetitionButton
             // 
-            this.addCompetitionButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.addCompetitionButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.addCompetitionButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.addCompetitionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addCompetitionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.addCompetitionButton.Location = new System.Drawing.Point(27, 54);
-            this.addCompetitionButton.Name = "addCompetitionButton";
-            this.addCompetitionButton.Size = new System.Drawing.Size(230, 120);
-            this.addCompetitionButton.TabIndex = 3;
-            this.addCompetitionButton.Text = "Add\r\nCompetition";
-            this.addCompetitionButton.UseVisualStyleBackColor = false;
+            this.AddCompetitionButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.AddCompetitionButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.AddCompetitionButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.AddCompetitionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddCompetitionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.AddCompetitionButton.Location = new System.Drawing.Point(27, 54);
+            this.AddCompetitionButton.Name = "AddCompetitionButton";
+            this.AddCompetitionButton.Size = new System.Drawing.Size(230, 120);
+            this.AddCompetitionButton.TabIndex = 3;
+            this.AddCompetitionButton.Text = "Add\r\nCompetition";
+            this.AddCompetitionButton.UseVisualStyleBackColor = false;
+            this.AddCompetitionButton.Click += new System.EventHandler(this.AddCompetitionButton_Click);
             // 
             // CompetitionManagerForm
             // 
@@ -69,21 +71,22 @@ namespace CompUI.Forms.Competition_Branch
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(603, 221);
-            this.Controls.Add(this.seeStandingsButton);
-            this.Controls.Add(this.addCompetitionButton);
+            this.Controls.Add(this.SeeStandingsButton);
+            this.Controls.Add(this.AddCompetitionButton);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "CompetitionManagerForm";
             this.Text = "Competition Manager";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CompetitionManagerForm_FormClosed);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button seeStandingsButton;
-        private System.Windows.Forms.Button addCompetitionButton;
+        private System.Windows.Forms.Button SeeStandingsButton;
+        private System.Windows.Forms.Button AddCompetitionButton;
     }
 }

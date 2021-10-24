@@ -30,39 +30,40 @@ namespace CompUI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VehicleManagerForm));
-            this.addVehicleButton = new System.Windows.Forms.Button();
-            this.seeVehiclesButton = new System.Windows.Forms.Button();
+            this.AddVehicleButton = new System.Windows.Forms.Button();
+            this.SeeVehiclesButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // addVehicleButton
+            // AddVehicleButton
             // 
-            this.addVehicleButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.addVehicleButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.addVehicleButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.addVehicleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addVehicleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.addVehicleButton.Location = new System.Drawing.Point(33, 38);
-            this.addVehicleButton.Name = "addVehicleButton";
-            this.addVehicleButton.Size = new System.Drawing.Size(230, 120);
-            this.addVehicleButton.TabIndex = 1;
-            this.addVehicleButton.Text = "Add\r\nVehicle\r\n";
-            this.addVehicleButton.UseVisualStyleBackColor = false;
+            this.AddVehicleButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.AddVehicleButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.AddVehicleButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.AddVehicleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddVehicleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.AddVehicleButton.Location = new System.Drawing.Point(33, 38);
+            this.AddVehicleButton.Name = "AddVehicleButton";
+            this.AddVehicleButton.Size = new System.Drawing.Size(230, 120);
+            this.AddVehicleButton.TabIndex = 1;
+            this.AddVehicleButton.Text = "Add\r\nVehicle\r\n";
+            this.AddVehicleButton.UseVisualStyleBackColor = false;
+            this.AddVehicleButton.Click += new System.EventHandler(this.AddVehicleButton_Click);
             // 
-            // seeVehiclesButton
+            // SeeVehiclesButton
             // 
-            this.seeVehiclesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.seeVehiclesButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.seeVehiclesButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.seeVehiclesButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.seeVehiclesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.seeVehiclesButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.seeVehiclesButton.Location = new System.Drawing.Point(334, 38);
-            this.seeVehiclesButton.Name = "seeVehiclesButton";
-            this.seeVehiclesButton.Size = new System.Drawing.Size(230, 120);
-            this.seeVehiclesButton.TabIndex = 2;
-            this.seeVehiclesButton.Text = "See all\r\nVehicles\r\n";
-            this.seeVehiclesButton.UseVisualStyleBackColor = false;
-            this.seeVehiclesButton.Click += new System.EventHandler(this.seeVehiclesButton_Click);
+            this.SeeVehiclesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SeeVehiclesButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.SeeVehiclesButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.SeeVehiclesButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.SeeVehiclesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SeeVehiclesButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.SeeVehiclesButton.Location = new System.Drawing.Point(334, 38);
+            this.SeeVehiclesButton.Name = "SeeVehiclesButton";
+            this.SeeVehiclesButton.Size = new System.Drawing.Size(230, 120);
+            this.SeeVehiclesButton.TabIndex = 2;
+            this.SeeVehiclesButton.Text = "See all\r\nVehicles\r\n";
+            this.SeeVehiclesButton.UseVisualStyleBackColor = false;
+            this.SeeVehiclesButton.Click += new System.EventHandler(this.SeeVehiclesButton_Click);
             // 
             // VehicleManagerForm
             // 
@@ -70,21 +71,22 @@ namespace CompUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(598, 201);
-            this.Controls.Add(this.seeVehiclesButton);
-            this.Controls.Add(this.addVehicleButton);
+            this.Controls.Add(this.SeeVehiclesButton);
+            this.Controls.Add(this.AddVehicleButton);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "VehicleManagerForm";
             this.Text = "Vehicle Manager";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VehicleManagerForm_FormClosed);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button addVehicleButton;
-        private System.Windows.Forms.Button seeVehiclesButton;
+        private System.Windows.Forms.Button AddVehicleButton;
+        private System.Windows.Forms.Button SeeVehiclesButton;
     }
 }
