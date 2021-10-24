@@ -218,7 +218,6 @@ namespace CompUI
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool ReleaseCapture();
 
-
         private void VehicleAddForm_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -234,19 +233,15 @@ namespace CompUI
             Program.VehicleManagerFormInstance.Enabled = true;
         }
 
-        private void VehicleAddForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void MinimizeButton_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
     }
 }

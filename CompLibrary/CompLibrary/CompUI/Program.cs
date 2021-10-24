@@ -42,6 +42,5 @@ namespace CompUI
             Application.Run(MainMenuFormInstance);
         }
 
-
     }
 }
