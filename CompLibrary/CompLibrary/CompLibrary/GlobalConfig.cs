@@ -13,8 +13,8 @@ namespace CompLibrary
             if (JSON)
             {
                 //creates required folders
-                JsonConnectorProcessor.createJsonDirectories();
-                JsonConnector conn = new JsonConnector();
+                JsonConnectorProcessor.CreateJsonDirectories();
+                JsonConnector conn = new();
                 Connections.Add(conn);
             }
         }
@@ -26,8 +26,8 @@ namespace CompLibrary
         {
                 foreach (IDataConnection storage in GlobalConfig.Connections)
                 {
-                    GlobalData.categories = storage.ReadCategories();
-                    GlobalData.vehicles = storage.ReadVehicles();
+                    GlobalData.Categories = storage.ReadCategories();
+                    GlobalData.Vehicles = storage.ReadVehicles();
                 }
         }
 
@@ -35,7 +35,7 @@ namespace CompLibrary
         /// Returns application directory
         /// </summary>
         /// <returns></returns>
-        public static string getAppDirectory()
+        public static string GetAppDirectory()
         {
             return $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\TrackStandingsManager";
         }

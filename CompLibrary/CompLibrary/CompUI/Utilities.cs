@@ -19,9 +19,9 @@ namespace CompUI
         /// <param name="error">Error message</param>
         /// <param name="parent">Panel to append to</param>
         
-        public static void generateError(string error, FlowLayoutPanel parent)
+        public static void GenerateError(string error, FlowLayoutPanel parent)
         {
-            Label newError = new Label();
+            Label newError = new();
             newError.Text = error;
             newError.Font = new Font("Consolas", 10);
             newError.ForeColor = System.Drawing.Color.Red;
@@ -35,9 +35,9 @@ namespace CompUI
         /// </summary>
         /// <param name="success">Success message</param>
         /// <param name="panel">Panel to append to</param>
-        public static void generateSuccess(string success, FlowLayoutPanel parent)
+        public static void GenerateSuccess(string success, FlowLayoutPanel parent)
         {
-            Label newSuccess = new Label();
+            Label newSuccess = new();
             newSuccess.Text = success;
             newSuccess.Font = new Font("Consolas", 10);
             newSuccess.ForeColor = System.Drawing.Color.Green;
@@ -69,14 +69,32 @@ namespace CompUI
                 graphics.SmoothingMode = SmoothingMode.HighQuality;
                 graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
 
-                using (var wrapMode = new ImageAttributes())
-                {
-                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
-                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
-                }
+                using var wrapMode = new ImageAttributes();
+                wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
             }
 
             return destImage;
         }
+
+        public static void ResizeToFit(this PictureBox target)
+        {
+            //for maintaining aspect ratio;
+            double ratio;
+            //if image is wider than a square
+            if (target.Image.Width > target.Image.Height)
+            {
+                ratio = Convert.ToDouble(target.Image.Height) / Convert.ToDouble(target.Image.Width);
+                target.Image = Utilities.ResizeImage(target.Image, target.Width, Convert.ToInt32(ratio * target.Height));
+            }
+            //else if image is taller than a square
+            else
+            {
+                ratio = Convert.ToDouble(target.Image.Width) / Convert.ToDouble(target.Image.Height);
+                target.Image = Utilities.ResizeImage(target.Image, Convert.ToInt32(ratio * target.Width), target.Height);
+            }
+
+        }
+
     }
 }

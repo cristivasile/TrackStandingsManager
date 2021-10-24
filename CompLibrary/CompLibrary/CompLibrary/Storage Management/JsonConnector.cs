@@ -12,8 +12,8 @@ namespace CompLibrary
 {
     public class JsonConnector : IDataConnection
     {
-        string vehiclesFile = "vehicles.json";
-        string categoriesFile = "categories.json";
+        private readonly string vehiclesFile = "vehicles.json";
+        private readonly string categoriesFile = "categories.json";
         /// <summary>
         /// Saves a new vehicle to JSON
         /// </summary>
@@ -21,19 +21,19 @@ namespace CompLibrary
         /// <returns>The vehicle information + id</returns>
         public void CreateVehicle(VehicleModel newVehicle)
         {
-            //if vehicles already exist we can use last known Id and increment it
-            if (GlobalData.vehicles.Count() != 0)
+            //if vehicles already exist in our list we can use last known Id and increment it
+            if (GlobalData.Vehicles.Count != 0)
             {
-                newVehicle.Id = GlobalData.vehicles[GlobalData.vehicles.Count() - 1].Id + 1;
+                newVehicle.Id = GlobalData.Vehicles[^1].Id + 1; // ^1 = last element
             }
             //otherwise, we assign 0
             else
             {
                 newVehicle.Id = 0;
             }
-            GlobalData.vehicles.Add(newVehicle);
+            GlobalData.Vehicles.Add(newVehicle);
 
-            vehiclesFile.getFilePath().writeToFile(GlobalData.vehicles.getJsonString());
+            vehiclesFile.GetFilePath().WriteToFile(GlobalData.Vehicles.GetJsonString());
         }
 
         /// <summary>
@@ -42,8 +42,8 @@ namespace CompLibrary
         /// <returns>A list of all vehicles</returns>
         public List<VehicleModel> ReadVehicles()
         {
-           vehiclesFile.createFileIfNull();
-           return vehiclesFile.getFilePath().readFromFile().deserializeData<List<VehicleModel>>();
+           vehiclesFile.CreateFileIfNull();
+           return vehiclesFile.GetFilePath().ReadFromFile().DeserializeData<List<VehicleModel>>();
         }
 
         /// <summary>
@@ -54,17 +54,17 @@ namespace CompLibrary
         {
 
             //category special formatting: first letter uppercase
-            newCategory = newCategory.firstLetterUpper();
+            newCategory = newCategory.FirstLetterUpper();
 
             //we search to see if the category already exists
-            foreach(string category in GlobalData.categories)
+            foreach(string category in GlobalData.Categories)
             //if it does, we stop
                 if(category == newCategory)
                     return false;
 
             //otherwise, we add it
-            GlobalData.categories.Add(newCategory);
-            categoriesFile.getFilePath().writeToFile(GlobalData.categories.getJsonString());
+            GlobalData.Categories.Add(newCategory);
+            categoriesFile.GetFilePath().WriteToFile(GlobalData.Categories.GetJsonString());
 
             return true;
 
@@ -77,8 +77,8 @@ namespace CompLibrary
         /// <returns>List of all categories</returns>
         public BindingList<string> ReadCategories()
         {
-            categoriesFile.createFileIfNull(GlobalData.defaultCategories);
-            return categoriesFile.getFilePath().readFromFile().deserializeData<BindingList<String>>();
+            categoriesFile.CreateFileIfNull(GlobalData.DefaultCategories);
+            return categoriesFile.GetFilePath().ReadFromFile().DeserializeData<BindingList<String>>();
         }
 
         /// <summary>
@@ -88,14 +88,14 @@ namespace CompLibrary
         public bool RemoveCategory(string toBeDeleted)
         {
             // we search for the category in the list
-            foreach(string category in GlobalData.categories)
+            foreach(string category in GlobalData.Categories)
             {
 
                 //if we find it, we delete it and update the json file
                 if(category.ToLower() == toBeDeleted.ToLower())
                 {
-                    GlobalData.categories.Remove(category);
-                    categoriesFile.getFilePath().writeToFile(GlobalData.categories.getJsonString());
+                    GlobalData.Categories.Remove(category);
+                    categoriesFile.GetFilePath().WriteToFile(GlobalData.Categories.GetJsonString());
                     return true;
                 }
             }

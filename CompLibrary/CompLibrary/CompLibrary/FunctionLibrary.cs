@@ -8,9 +8,9 @@ namespace CompLibrary
 {
     public static class FunctionLibrary
     {
-        public static string firstLetterUpper(this string input)
+        public static string FirstLetterUpper(this string input)
         {
-            return char.ToUpper(input[0]) + input.Substring(1);
+            return char.ToUpper(input[0]) + input[1..];
         }
     }
 }

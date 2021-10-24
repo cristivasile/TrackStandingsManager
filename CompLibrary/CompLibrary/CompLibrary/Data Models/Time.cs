@@ -27,7 +27,7 @@ namespace CompLibrary
         /// Returns the time calculated in seconds.
         /// </summary>
         /// <returns></returns>
-        public double getTimeInSeconds()
+        public double GetTimeInSeconds()
         {
             return Convert.ToDouble(Minutes) * 60 + Convert.ToDouble(Seconds) + Convert.ToDouble(Milliseconds) / 1000;
         }

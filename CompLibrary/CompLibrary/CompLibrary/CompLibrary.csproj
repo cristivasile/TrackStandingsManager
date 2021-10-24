@@ -10,4 +10,8 @@
     <PackageReference Include="System.IO.FileSystem.AccessControl" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Image management\" />
+  </ItemGroup>
+
 </Project>

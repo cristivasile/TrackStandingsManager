@@ -9,11 +9,11 @@ namespace CompLibrary
         /// All categories stored locally
         /// Note: it is binding to work better with combo boxes
         /// </summary>
-        public static BindingList<string> categories { get; set; } = new BindingList<string>();
+        public static BindingList<string> Categories { get; set; } = new BindingList<string>();
         /// <summary>
         /// Default values for categories
         /// </summary>
-        public static List<string> defaultCategories { get; set; } = new List<string>()
+        public static List<string> DefaultCategories { get; set; } = new List<string>()
         {
             "Coupe",
             "Sedan",
@@ -30,7 +30,7 @@ namespace CompLibrary
         /// <summary>
         /// vehicles stored locally
         /// </summary>
-        public static List<VehicleModel> vehicles { get; set; } = new List<VehicleModel>();
+        public static List<VehicleModel> Vehicles { get; set; } = new List<VehicleModel>();
 
     }
 }
