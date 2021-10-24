@@ -19,7 +19,9 @@ namespace CompUI
             Application.SetCompatibleTextRenderingDefault(false);
 
             //Initializing DB Connection
-            CompLibrary.GlobalConfig.InitializeConnections(true);
+            CompLibrary.GlobalConfig.InitializeDataConnections(true);
+            //Initializing image storage connection
+            CompLibrary.GlobalConfig.InitializeImageConnections();
             //Initializing List variables
             CompLibrary.GlobalConfig.InitializeLists();
 

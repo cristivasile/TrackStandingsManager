@@ -31,6 +31,6 @@ namespace CompLibrary
         /// vehicles stored locally
         /// </summary>
         public static List<VehicleModel> Vehicles { get; set; } = new List<VehicleModel>();
-
+        public const string defaultVehicleImagePath = "lol";
     }
 }

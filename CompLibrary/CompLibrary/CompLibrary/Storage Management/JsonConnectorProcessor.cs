@@ -18,7 +18,7 @@ namespace CompLibrary
         /// <returns></returns>
         public static string GetFilePath(this string FileName)
 
-        => $"{GlobalConfig.GetAppDirectory()}\\JsonStorage\\{FileName}";
+        => $"{FunctionLibrary.GetAppDirectory()}\\JsonStorage\\{FileName}";
 
 
         /// <summary>
@@ -27,14 +27,14 @@ namespace CompLibrary
         public static void CreateJsonDirectories()
         {
             //checks if main app directory exists
-            if (!Directory.Exists(GlobalConfig.GetAppDirectory()))
+            if (!Directory.Exists(FunctionLibrary.GetAppDirectory()))
             {
-                Directory.CreateDirectory(GlobalConfig.GetAppDirectory());
+                Directory.CreateDirectory(FunctionLibrary.GetAppDirectory());
             }
             //checks if json storage directory exists
-            if (!Directory.Exists($"{GlobalConfig.GetAppDirectory()}\\jsonStorage"))
+            if (!Directory.Exists($"{FunctionLibrary.GetAppDirectory()}\\jsonStorage"))
             {
-                Directory.CreateDirectory($"{GlobalConfig.GetAppDirectory()}\\jsonStorage");
+                Directory.CreateDirectory($"{FunctionLibrary.GetAppDirectory()}\\jsonStorage");
             }
         }
 

@@ -22,14 +22,20 @@ namespace CompUI
         {
             if (CheckData())
             {
-                //TODO - add image functionality
-                //work with lastImageInserted
+                string imagePath = "";
+                if(VehiclePicture.Image != null)
+                {
+                    //TODO - decide how big the image should be and resize it if needed
+                    imagePath = GlobalConfig.ImageStorage.Save(lastImageInserted);
+                }
+
 
                 //creates a new vehicle with the data provided
                 VehicleModel newVehicle = new(
                     BrandTextBox.Text.Trim(),
                     ModelTextBox.Text.Trim(),
-                    CategoryComboBox.Text.Trim()
+                    CategoryComboBox.Text.Trim(),
+                    imagePath
                     );
 
 
@@ -55,6 +61,16 @@ namespace CompUI
                 BrandTextBox.Text = "";
                 ModelTextBox.Text = "";
                 CategoryComboBox.Text = "";
+
+                //resets image info label
+                ImageInfoLabel.Text = "Click to paste \nimage from clipboard";
+
+                //resets image frame
+                VehiclePicture.Image = null;
+
+                //resets hover effect
+                VehiclePicture.MouseHover += VehiclePicture_MouseHover;
+                VehiclePicture.MouseLeave += VehiclePicture_MouseLeave;
             }
         }
 
@@ -169,6 +185,7 @@ namespace CompUI
                 VehiclePicture.MouseHover -= VehiclePicture_MouseHover;
                 VehiclePicture.MouseLeave -= VehiclePicture_MouseLeave;
 
+                VehiclePicture.BackColor = Color.White;
             }
             else
             {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompLibrary.Image_management;
+using System;
 using System.Collections.Generic;
 
 
@@ -6,9 +7,14 @@ namespace CompLibrary
 {
     public static class GlobalConfig
     {
-
+        
         public static List<IDataConnection> Connections { get; private set; } = new List<IDataConnection>();
-        public static void InitializeConnections(bool JSON)
+        public static IImagesConnection ImageStorage { get; private set; }
+
+        /// <summary>
+        /// Initializes data storage connections
+        /// </summary>
+        public static void InitializeDataConnections(bool JSON)
         {
             if (JSON)
             {
@@ -17,6 +23,16 @@ namespace CompLibrary
                 JsonConnector conn = new();
                 Connections.Add(conn);
             }
+        }
+
+        /// <summary>
+        /// Initializes image storage connections
+        /// </summary>
+        public static void InitializeImageConnections()
+        {
+            //creates required folders
+            DiskConnectorProcessor.CreateImageDirectories();
+            ImageStorage = new DiskConnector();
         }
 
         /// <summary>
@@ -31,13 +47,5 @@ namespace CompLibrary
                 }
         }
 
-        /// <summary>
-        /// Returns application directory
-        /// </summary>
-        /// <returns></returns>
-        public static string GetAppDirectory()
-        {
-            return $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\TrackStandingsManager";
-        }
     }
 }

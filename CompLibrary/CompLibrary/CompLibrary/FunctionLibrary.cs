@@ -12,5 +12,14 @@ namespace CompLibrary
         {
             return char.ToUpper(input[0]) + input[1..];
         }
+
+        /// <summary>
+        /// Returns application directory
+        /// </summary>
+        /// <returns></returns>
+        public static string GetAppDirectory()
+        {
+            return $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\TrackStandingsManager";
+        }
     }
 }

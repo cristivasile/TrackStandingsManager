@@ -5,8 +5,6 @@ namespace CompUI
 {
     partial class VehicleAddForm
     {
-        //TODO - Make borderless form draggable
-
         /// <summary>
         /// Required designer variable.
         /// </summary>

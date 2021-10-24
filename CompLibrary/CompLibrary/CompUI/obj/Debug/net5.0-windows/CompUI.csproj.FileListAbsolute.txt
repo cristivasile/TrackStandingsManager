@@ -30,4 +30,3 @@ D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Debug\net5.
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Debug\net5.0-windows\CompLibrary.dll
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Debug\net5.0-windows\CompLibrary.pdb
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Debug\net5.0-windows\CompUI.dll.config
-D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.csproj.CopyComplete
