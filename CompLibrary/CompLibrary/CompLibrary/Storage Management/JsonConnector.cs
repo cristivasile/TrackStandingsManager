@@ -19,15 +19,21 @@ namespace CompLibrary
         /// </summary>
         /// <param name="newVehicle">The vehicle information</param>
         /// <returns>The vehicle information + id</returns>
-        public VehicleModel CreateVehicle(VehicleModel newVehicle)
+        public void CreateVehicle(VehicleModel newVehicle)
         {
-            newVehicle.Id = GlobalData.vehicles.Count();
+            //if vehicles already exist we can use last known Id and increment it
+            if (GlobalData.vehicles.Count() != 0)
+            {
+                newVehicle.Id = GlobalData.vehicles[GlobalData.vehicles.Count() - 1].Id + 1;
+            }
+            //otherwise, we assign 0
+            else
+            {
+                newVehicle.Id = 0;
+            }
             GlobalData.vehicles.Add(newVehicle);
 
-            string writeToFile = JsonConvert.SerializeObject(GlobalData.vehicles);
-            File.WriteAllText(vehiclesFile.GetFilePath(), writeToFile);
-
-            return newVehicle;
+            vehiclesFile.getFilePath().writeToFile(GlobalData.vehicles.getJsonString());
         }
 
         /// <summary>
@@ -36,9 +42,8 @@ namespace CompLibrary
         /// <returns>A list of all vehicles</returns>
         public List<VehicleModel> ReadVehicles()
         {
-           CompLibrary.JsonConnectorProcessor.createFileIfNull(vehiclesFile);
-           string readFromFile = File.ReadAllText(vehiclesFile.GetFilePath());
-           return JsonConvert.DeserializeObject<List<VehicleModel>>(readFromFile);
+           vehiclesFile.createFileIfNull();
+           return vehiclesFile.getFilePath().readFromFile().deserializeData<List<VehicleModel>>();
         }
 
         /// <summary>
@@ -59,9 +64,8 @@ namespace CompLibrary
 
             //otherwise, we add it
             GlobalData.categories.Add(newCategory);
+            categoriesFile.getFilePath().writeToFile(GlobalData.categories.getJsonString());
 
-            string WriteToFile = JsonConvert.SerializeObject(GlobalData.categories);
-            File.WriteAllText(categoriesFile.GetFilePath(), WriteToFile);
             return true;
 
             
@@ -73,9 +77,8 @@ namespace CompLibrary
         /// <returns>List of all categories</returns>
         public BindingList<string> ReadCategories()
         {
-            CompLibrary.JsonConnectorProcessor.createFileIfNull(categoriesFile, GlobalData.defaultCategories);
-            string readFromFile = File.ReadAllText(categoriesFile.GetFilePath());
-            return JsonConvert.DeserializeObject<BindingList<String>>(readFromFile);
+            categoriesFile.createFileIfNull(GlobalData.defaultCategories);
+            return categoriesFile.getFilePath().readFromFile().deserializeData<BindingList<String>>();
         }
 
         /// <summary>
@@ -89,13 +92,10 @@ namespace CompLibrary
             {
 
                 //if we find it, we delete it and update the json file
-                if(category == toBeDeleted.ToLower())
+                if(category.ToLower() == toBeDeleted.ToLower())
                 {
                     GlobalData.categories.Remove(category);
-
-                    string WriteToFile = JsonConvert.SerializeObject(GlobalData.categories);
-                    File.WriteAllText(categoriesFile.GetFilePath(), WriteToFile);
-
+                    categoriesFile.getFilePath().writeToFile(GlobalData.categories.getJsonString());
                     return true;
                 }
             }

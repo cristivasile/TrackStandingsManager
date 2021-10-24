@@ -1,12 +1,6 @@
 ﻿using CompLibrary;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CompUI
@@ -26,9 +20,9 @@ namespace CompUI
                 //TODO - add image functionality
                 //creates a new vehicle with the data provided
                 VehicleModel newVehicle = new VehicleModel(
-                    brandTextBox.Text,
-                    modelTextBox.Text,
-                    categoryComboBox.Text
+                    brandTextBox.Text.Trim(),
+                    modelTextBox.Text.Trim(),
+                    categoryComboBox.Text.Trim()
                     );
 
 
@@ -37,11 +31,11 @@ namespace CompUI
                 {
                     
                     //check if category exists
-                    bool categoryAdded = storage.CreateCategory(categoryComboBox.Text);
+                    bool categoryAdded = storage.CreateCategory(categoryComboBox.Text.Trim());
 
                     //if successful, display message
                     if(categoryAdded)
-                    Utilities.generateSuccess("Category added!", messagePanel);
+                    Utilities.generateSuccess("Category created!", messagePanel);
                     
                     //add vehicle to json and list
                     storage.CreateVehicle(newVehicle);
@@ -91,8 +85,8 @@ namespace CompUI
 
             //check if vehicle with this name already exists
             foreach(VehicleModel vehicle in GlobalData.vehicles)
-                if((vehicle.Brand.ToLower()==brandTextBox.Text.ToLower())
-                  &&vehicle.Model.ToLower()==modelTextBox.Text.ToLower())
+                if((vehicle.Brand.ToLower().Trim()==brandTextBox.Text.ToLower().Trim())
+                  &&vehicle.Model.ToLower().Trim()== modelTextBox.Text.ToLower().Trim())
                 {
                     Utilities.generateError("Vehicle already exists!", messagePanel);
                     status = false;
@@ -201,8 +195,28 @@ namespace CompUI
             imageInfoLabel.BackColor = Color.White;
         }
 
-        private void DoNothing()
+
+
+        //source https://stackoverflow.com/questions/1592876/make-a-borderless-form-movable
+        // ------ //
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+
+        private void VehicleAddForm_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
+        // ------ //
     }
 }

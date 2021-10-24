@@ -10,7 +10,7 @@ namespace CompLibrary
     public interface IDataConnection
     {
 
-        VehicleModel CreateVehicle(VehicleModel newVehicle);
+        void CreateVehicle(VehicleModel newVehicle);
         List<VehicleModel> ReadVehicles();
         bool CreateCategory(string newCategory);
         BindingList<string> ReadCategories();

@@ -46,6 +46,7 @@ namespace CompUI
             this.messagePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.removeCategoryButton = new System.Windows.Forms.Button();
             this.imageInfoLabel = new System.Windows.Forms.Label();
+            this.decorationPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.vehiclePicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@ namespace CompUI
             this.abortButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.abortButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.abortButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.abortButton.Location = new System.Drawing.Point(713, 299);
+            this.abortButton.Location = new System.Drawing.Point(697, 307);
             this.abortButton.Name = "abortButton";
             this.abortButton.Size = new System.Drawing.Size(125, 40);
             this.abortButton.TabIndex = 28;
@@ -73,7 +74,7 @@ namespace CompUI
             this.insertButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.insertButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.insertButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.insertButton.Location = new System.Drawing.Point(32, 299);
+            this.insertButton.Location = new System.Drawing.Point(16, 307);
             this.insertButton.Name = "insertButton";
             this.insertButton.Size = new System.Drawing.Size(125, 40);
             this.insertButton.TabIndex = 27;
@@ -85,7 +86,7 @@ namespace CompUI
             // 
             this.categoryComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(426, 231);
+            this.categoryComboBox.Location = new System.Drawing.Point(410, 239);
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(237, 38);
             this.categoryComboBox.TabIndex = 25;
@@ -94,7 +95,7 @@ namespace CompUI
             // 
             this.categoryLabel.AutoSize = true;
             this.categoryLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.categoryLabel.Location = new System.Drawing.Point(286, 231);
+            this.categoryLabel.Location = new System.Drawing.Point(270, 239);
             this.categoryLabel.Name = "categoryLabel";
             this.categoryLabel.Size = new System.Drawing.Size(101, 30);
             this.categoryLabel.TabIndex = 24;
@@ -104,7 +105,7 @@ namespace CompUI
             // 
             this.ModelLabel.AutoSize = true;
             this.ModelLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ModelLabel.Location = new System.Drawing.Point(286, 151);
+            this.ModelLabel.Location = new System.Drawing.Point(270, 159);
             this.ModelLabel.Name = "ModelLabel";
             this.ModelLabel.Size = new System.Drawing.Size(77, 30);
             this.ModelLabel.TabIndex = 23;
@@ -113,7 +114,7 @@ namespace CompUI
             // modelTextBox
             // 
             this.modelTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.modelTextBox.Location = new System.Drawing.Point(426, 151);
+            this.modelTextBox.Location = new System.Drawing.Point(410, 159);
             this.modelTextBox.Name = "modelTextBox";
             this.modelTextBox.Size = new System.Drawing.Size(237, 35);
             this.modelTextBox.TabIndex = 22;
@@ -122,7 +123,7 @@ namespace CompUI
             // 
             this.brandLabel.AutoSize = true;
             this.brandLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.brandLabel.Location = new System.Drawing.Point(286, 71);
+            this.brandLabel.Location = new System.Drawing.Point(270, 79);
             this.brandLabel.Name = "brandLabel";
             this.brandLabel.Size = new System.Drawing.Size(72, 30);
             this.brandLabel.TabIndex = 21;
@@ -131,17 +132,17 @@ namespace CompUI
             // brandTextBox
             // 
             this.brandTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.brandTextBox.Location = new System.Drawing.Point(426, 71);
+            this.brandTextBox.Location = new System.Drawing.Point(410, 79);
             this.brandTextBox.Name = "brandTextBox";
             this.brandTextBox.Size = new System.Drawing.Size(237, 35);
             this.brandTextBox.TabIndex = 20;
             // 
             // vehiclePicture
             // 
-            this.vehiclePicture.Location = new System.Drawing.Point(32, 74);
+            this.vehiclePicture.Location = new System.Drawing.Point(16, 82);
             this.vehiclePicture.Name = "vehiclePicture";
             this.vehiclePicture.Size = new System.Drawing.Size(206, 187);
-            this.vehiclePicture.SizeMode = PictureBoxSizeMode.CenterImage;
+            this.vehiclePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.vehiclePicture.TabIndex = 15;
             this.vehiclePicture.TabStop = false;
             this.vehiclePicture.Click += new System.EventHandler(this.vehiclePicture_Click);
@@ -153,7 +154,7 @@ namespace CompUI
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.titleLabel.Location = new System.Drawing.Point(32, 18);
+            this.titleLabel.Location = new System.Drawing.Point(16, 26);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(125, 30);
             this.titleLabel.TabIndex = 29;
@@ -163,7 +164,7 @@ namespace CompUI
             // 
             this.messagePanel.AutoScroll = true;
             this.messagePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.messagePanel.Location = new System.Drawing.Point(204, 299);
+            this.messagePanel.Location = new System.Drawing.Point(188, 307);
             this.messagePanel.Name = "messagePanel";
             this.messagePanel.Size = new System.Drawing.Size(459, 40);
             this.messagePanel.TabIndex = 31;
@@ -176,7 +177,7 @@ namespace CompUI
             this.removeCategoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeCategoryButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.removeCategoryButton.ForeColor = System.Drawing.Color.White;
-            this.removeCategoryButton.Location = new System.Drawing.Point(689, 237);
+            this.removeCategoryButton.Location = new System.Drawing.Point(673, 245);
             this.removeCategoryButton.Name = "removeCategoryButton";
             this.removeCategoryButton.Size = new System.Drawing.Size(90, 27);
             this.removeCategoryButton.TabIndex = 32;
@@ -188,7 +189,7 @@ namespace CompUI
             // 
             this.imageInfoLabel.AutoSize = true;
             this.imageInfoLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.imageInfoLabel.Location = new System.Drawing.Point(52, 147);
+            this.imageInfoLabel.Location = new System.Drawing.Point(36, 155);
             this.imageInfoLabel.Name = "imageInfoLabel";
             this.imageInfoLabel.Size = new System.Drawing.Size(160, 42);
             this.imageInfoLabel.TabIndex = 33;
@@ -198,12 +199,21 @@ namespace CompUI
             this.imageInfoLabel.MouseLeave += new System.EventHandler(this.vehiclePicture_MouseLeave);
             this.imageInfoLabel.MouseHover += new System.EventHandler(this.vehiclePicture_MouseHover);
             // 
+            // decorationPanel
+            // 
+            this.decorationPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.decorationPanel.Location = new System.Drawing.Point(-2, -1);
+            this.decorationPanel.Name = "decorationPanel";
+            this.decorationPanel.Size = new System.Drawing.Size(852, 25);
+            this.decorationPanel.TabIndex = 34;
+            // 
             // VehicleAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(850, 357);
+            this.ClientSize = new System.Drawing.Size(838, 359);
+            this.Controls.Add(this.decorationPanel);
             this.Controls.Add(this.imageInfoLabel);
             this.Controls.Add(this.removeCategoryButton);
             this.Controls.Add(this.messagePanel);
@@ -217,8 +227,9 @@ namespace CompUI
             this.Controls.Add(this.brandLabel);
             this.Controls.Add(this.brandTextBox);
             this.Controls.Add(this.vehiclePicture);
+            this.MouseDown += VehicleAddForm_MouseDown;
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "VehicleAddForm";
             this.Text = "New Vehicle";
@@ -243,5 +254,6 @@ namespace CompUI
         private System.Windows.Forms.FlowLayoutPanel messagePanel;
         private System.Windows.Forms.Button removeCategoryButton;
         private System.Windows.Forms.Label imageInfoLabel;
+        private Panel decorationPanel;
     }
 }
