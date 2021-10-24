@@ -31,6 +31,7 @@ namespace CompUI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VehicleAddForm));
             this.AbortButton = new System.Windows.Forms.Button();
             this.InsertButton = new System.Windows.Forms.Button();
             this.CategoryComboBox = new System.Windows.Forms.ComboBox();
@@ -44,8 +45,11 @@ namespace CompUI
             this.MessagePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.RemoveCategoryButton = new System.Windows.Forms.Button();
             this.ImageInfoLabel = new System.Windows.Forms.Label();
-            this.DecorationPanelTop = new System.Windows.Forms.Panel();
+            this.TopBarPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.VehiclePicture)).BeginInit();
+            this.TopBarPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // AbortButton
@@ -83,6 +87,7 @@ namespace CompUI
             // CategoryComboBox
             // 
             this.CategoryComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.CategoryComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.CategoryComboBox.FormattingEnabled = true;
             this.CategoryComboBox.Location = new System.Drawing.Point(410, 239);
             this.CategoryComboBox.Name = "CategoryComboBox";
@@ -112,6 +117,7 @@ namespace CompUI
             // ModelTextBox
             // 
             this.ModelTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.ModelTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ModelTextBox.Location = new System.Drawing.Point(410, 159);
             this.ModelTextBox.Name = "ModelTextBox";
             this.ModelTextBox.Size = new System.Drawing.Size(237, 35);
@@ -130,6 +136,7 @@ namespace CompUI
             // BrandTextBox
             // 
             this.BrandTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.BrandTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.BrandTextBox.Location = new System.Drawing.Point(410, 79);
             this.BrandTextBox.Name = "BrandTextBox";
             this.BrandTextBox.Size = new System.Drawing.Size(237, 35);
@@ -186,7 +193,9 @@ namespace CompUI
             // ImageInfoLabel
             // 
             this.ImageInfoLabel.AutoSize = true;
+            this.ImageInfoLabel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ImageInfoLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ImageInfoLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ImageInfoLabel.Location = new System.Drawing.Point(36, 155);
             this.ImageInfoLabel.Name = "ImageInfoLabel";
             this.ImageInfoLabel.Size = new System.Drawing.Size(160, 42);
@@ -197,14 +206,47 @@ namespace CompUI
             this.ImageInfoLabel.MouseLeave += new System.EventHandler(this.VehiclePicture_MouseLeave);
             this.ImageInfoLabel.MouseHover += new System.EventHandler(this.VehiclePicture_MouseHover);
             // 
-            // DecorationPanelTop
+            // TopBarPanel
             // 
-            this.DecorationPanelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.DecorationPanelTop.Location = new System.Drawing.Point(-2, -1);
-            this.DecorationPanelTop.Name = "DecorationPanelTop";
-            this.DecorationPanelTop.Size = new System.Drawing.Size(852, 25);
-            this.DecorationPanelTop.TabIndex = 34;
-            this.DecorationPanelTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VehicleAddForm_MouseDown);
+            this.TopBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.TopBarPanel.Controls.Add(this.button1);
+            this.TopBarPanel.Controls.Add(this.CloseButton);
+            this.TopBarPanel.Location = new System.Drawing.Point(-2, -1);
+            this.TopBarPanel.Name = "TopBarPanel";
+            this.TopBarPanel.Size = new System.Drawing.Size(852, 25);
+            this.TopBarPanel.TabIndex = 34;
+            this.TopBarPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VehicleAddForm_MouseDown);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(790, 3);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.button1.Size = new System.Drawing.Size(22, 18);
+            this.button1.TabIndex = 36;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // CloseButton
+            // 
+            this.CloseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.CloseButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CloseButton.BackgroundImage")));
+            this.CloseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.CloseButton.FlatAppearance.BorderSize = 0;
+            this.CloseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightCoral;
+            this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseButton.Location = new System.Drawing.Point(814, 3);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.CloseButton.Size = new System.Drawing.Size(22, 18);
+            this.CloseButton.TabIndex = 35;
+            this.CloseButton.UseVisualStyleBackColor = false;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // VehicleAddForm
             // 
@@ -212,7 +254,7 @@ namespace CompUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(838, 359);
-            this.Controls.Add(this.DecorationPanelTop);
+            this.Controls.Add(this.TopBarPanel);
             this.Controls.Add(this.ImageInfoLabel);
             this.Controls.Add(this.RemoveCategoryButton);
             this.Controls.Add(this.MessagePanel);
@@ -231,8 +273,10 @@ namespace CompUI
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "VehicleAddForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VehicleAddForm_FormClosed);
+            this.Load += new System.EventHandler(this.VehicleAddForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VehicleAddForm_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.VehiclePicture)).EndInit();
+            this.TopBarPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,6 +297,8 @@ namespace CompUI
         private System.Windows.Forms.FlowLayoutPanel MessagePanel;
         private System.Windows.Forms.Button RemoveCategoryButton;
         private System.Windows.Forms.Label ImageInfoLabel;
-        private Panel DecorationPanelTop;
+        private Panel TopBarPanel;
+        private Button CloseButton;
+        private Button button1;
     }
 }

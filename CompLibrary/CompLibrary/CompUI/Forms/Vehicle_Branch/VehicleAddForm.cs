@@ -233,5 +233,20 @@ namespace CompUI
         {
             Program.VehicleManagerFormInstance.Enabled = true;
         }
+
+        private void VehicleAddForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
