@@ -21,12 +21,12 @@ namespace CompLibrary
         /// <returns>The vehicle information + id</returns>
         public void CreateVehicle(VehicleModel newVehicle)
         {
-            //if vehicles already exist in our list we can use last known Id and increment it
+            //if vehicles already exist in our list, use last known Id and increment it
             if (GlobalData.Vehicles.Count != 0)
             {
                 newVehicle.Id = GlobalData.Vehicles[^1].Id + 1; // ^1 = last element
             }
-            //otherwise, we assign 0
+            //otherwise, assign 0
             else
             {
                 newVehicle.Id = 0;
@@ -56,13 +56,13 @@ namespace CompLibrary
             //category special formatting: first letter uppercase
             newCategory = newCategory.FirstLetterUpper();
 
-            //we search to see if the category already exists
+            //search to see if the category already exists
             foreach(string category in GlobalData.Categories)
-            //if it does, we stop
+            //if it does, stop
                 if(category == newCategory)
                     return false;
 
-            //otherwise, we add it
+            //otherwise, add it
             GlobalData.Categories.Add(newCategory);
             categoriesFile.GetFilePath().WriteToFile(GlobalData.Categories.GetJsonString());
 
@@ -77,7 +77,7 @@ namespace CompLibrary
         /// <returns>List of all categories</returns>
         public BindingList<string> ReadCategories()
         {
-            categoriesFile.CreateFileIfNull(GlobalData.DefaultCategories);
+            categoriesFile.CreateFileIfNull(GlobalConfig.DefaultCategories);
             return categoriesFile.GetFilePath().ReadFromFile().DeserializeData<BindingList<String>>();
         }
 
@@ -87,11 +87,11 @@ namespace CompLibrary
         /// <param name="toBeDeleted"></param>
         public bool RemoveCategory(string toBeDeleted)
         {
-            // we search for the category in the list
+            // search for the category in the list
             foreach(string category in GlobalData.Categories)
             {
 
-                //if we find it, we delete it and update the json file
+                //if it is found, delete it and update the json file
                 if(category.ToLower() == toBeDeleted.ToLower())
                 {
                     GlobalData.Categories.Remove(category);

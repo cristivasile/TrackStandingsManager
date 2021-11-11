@@ -36,16 +36,22 @@ namespace CompLibrary
         }
 
         /// <summary>
-        /// Initializes all lists on startup
+        /// Default values for categories
         /// </summary>
-        public static void InitializeLists()
+        public static List<string> DefaultCategories { get; set; } = new List<string>()
         {
-                foreach (IDataConnection storage in GlobalConfig.Connections)
-                {
-                    GlobalData.Categories = storage.ReadCategories();
-                    GlobalData.Vehicles = storage.ReadVehicles();
-                }
-        }
+            "Coupe",
+            "Sedan",
+            "Cabriolet",
+            "Hatchback",
+            "Limousine",
+            "Minivan",
+            "Pickup",
+            "Roadster",
+            "Wagon",
+            "Ute",
+            "Suv"
+        };
 
     }
 }

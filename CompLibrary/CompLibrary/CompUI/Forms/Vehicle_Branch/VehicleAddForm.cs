@@ -242,6 +242,5 @@ namespace CompUI
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
     }
 }

@@ -36,11 +36,11 @@ namespace CompUI
             //Initializing image storage connection
             CompLibrary.GlobalConfig.InitializeImageConnections();
             //Initializing List variables
-            CompLibrary.GlobalConfig.InitializeLists();
+            CompLibrary.GlobalData.InitializeLists();
 
             MainMenuFormInstance = new MainMenuForm();
             Application.Run(MainMenuFormInstance);
         }
-
+        //TODO - change icon of all forms
     }
 }
