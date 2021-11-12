@@ -32,6 +32,8 @@ namespace CompLibrary
         /// </summary>
         public string ImagePath { get; set; }
 
+        public int AveragePosition = 0;
+
         public VehicleModel(){}
 
         public VehicleModel(string Brand, string Model, string Category, string ImagePath = "")
@@ -41,5 +43,6 @@ namespace CompLibrary
             this.Category = Category;
             this.ImagePath = ImagePath;
         }
+
     }
 }

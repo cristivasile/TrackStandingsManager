@@ -9,10 +9,10 @@ namespace CompLibrary.Image_management
         /// returns an image save path along with a random .bmp file name
         /// </summary>
         /// <returns></returns>
-        public static string GetRandomImagePath()
+        public static string GetRandomImagePath(string FileExtension = "png")
         {
-            string uniqueFileName = string.Format(@"{0}.bmp", DateTime.Now.Ticks);
-            return $"{FunctionLibrary.GetAppDirectory()}\\bmpStorage\\{uniqueFileName}";
+            string uniqueFileName = string.Format(@"{0}.{1}", DateTime.Now.Ticks, FileExtension);
+            return $"{FunctionLibrary.GetAppDirectory()}\\imgStorage\\{uniqueFileName}";
         }
 
         /// <summary>
@@ -25,10 +25,10 @@ namespace CompLibrary.Image_management
             {
                 Directory.CreateDirectory(FunctionLibrary.GetAppDirectory());
             }
-            //checks if json storage directory exists
-            if (!Directory.Exists($"{FunctionLibrary.GetAppDirectory()}\\bmpStorage"))
+            //checks if img storage directory exists
+            if (!Directory.Exists($"{FunctionLibrary.GetAppDirectory()}\\imgStorage"))
             {
-                Directory.CreateDirectory($"{FunctionLibrary.GetAppDirectory()}\\bmpStorage");
+                Directory.CreateDirectory($"{FunctionLibrary.GetAppDirectory()}\\imgStorage");
             }
         }
     }

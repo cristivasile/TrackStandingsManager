@@ -12,13 +12,40 @@ namespace CompUI
 {
     public static class Utilities
     {
+        public static readonly int ScrollBarWidth = System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+        public static readonly FontFamily FontFamily = new("Segoe UI");
+        public static readonly Font SmallText = new(
+           FontFamily,
+           12,
+           FontStyle.Regular,
+           GraphicsUnit.Pixel);
 
+        public static readonly Font MediumText = new(
+           FontFamily,
+           14,
+           FontStyle.Regular,
+           GraphicsUnit.Pixel);
+
+        public static readonly Font LargeText = new(
+           FontFamily,
+           16,
+           FontStyle.Bold,
+           GraphicsUnit.Pixel);
+
+        public static readonly Font LargeTextBold = new(
+           FontFamily,
+           17,
+           FontStyle.Bold,
+           GraphicsUnit.Pixel);
+
+        public static readonly Color FishBlue = Color.FromArgb(2, 74, 202);
+        public static readonly Color BabyBlue = Color.FromArgb(228, 246, 255);
         /// <summary>
         /// Creates error label and appends it to a panel.
         /// </summary>
         /// <param name="error">Error message</param>
         /// <param name="parent">Panel to append to</param>
-        
+
         public static void GenerateError(string error, FlowLayoutPanel parent)
         {
             Label newError = new();
@@ -64,10 +91,10 @@ namespace CompUI
             using (var graphics = Graphics.FromImage(destImage))
             {
                 graphics.CompositingMode = CompositingMode.SourceCopy;
-                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.CompositingQuality = CompositingQuality.HighSpeed;
                 graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                graphics.SmoothingMode = SmoothingMode.HighQuality;
-                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                graphics.SmoothingMode = SmoothingMode.HighSpeed;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighSpeed;
 
                 using var wrapMode = new ImageAttributes();
                 wrapMode.SetWrapMode(WrapMode.TileFlipXY);
@@ -94,6 +121,38 @@ namespace CompUI
                 target.Image = Utilities.ResizeImage(target.Image, Convert.ToInt32(ratio * target.Width), target.Height);
             }
 
+        }
+
+        /// <summary>
+        /// Appends label to panel with given parameters.
+        /// </summary>
+        public static void AddToPanel(this Label label, Panel panel, int widthDivide, Font font, Color textColor, ContentAlignment alignment, bool widthOverload = true)
+        {
+            if(widthOverload)
+                label.Width = panel.Width / widthDivide;
+            label.Height = panel.Height;
+            label.Font = font;
+            label.ForeColor = textColor;
+            label.Padding = new Padding(0);
+            label.TextAlign = alignment;
+            panel.Controls.Add(label);
+        }
+
+        /// <summary>
+        /// Adds a button to a panel and sets some properties.
+        /// </summary>
+        public static void AddToPanel(this Button button, Panel panel, int buttonSize)
+        {
+            button.BackColor = Color.Transparent;
+            button.Margin = new Padding(10, 0, 0, 0);
+            button.BackgroundImageLayout = ImageLayout.Stretch;
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderSize = 0;
+            button.Text = "";
+            button.Width = buttonSize;
+            button.Height = buttonSize;
+            button.Anchor = AnchorStyles.None;
+            panel.Controls.Add(button);
         }
 
     }

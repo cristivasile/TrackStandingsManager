@@ -25,7 +25,6 @@ namespace CompUI
                 string imagePath = "";
                 if(VehiclePicture.Image != null)
                 {
-                    //TODO - decide how big the image should be and resize it if needed
                     imagePath = GlobalConfig.ImageStorage.Save(lastImageInserted);
                 }
 

@@ -3,7 +3,6 @@ using System.ComponentModel;
 
 namespace CompLibrary
 {
-    //TODO - remove this
     public static class GlobalData
     {
         /// <summary>

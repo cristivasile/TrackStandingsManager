@@ -42,15 +42,22 @@ namespace CompUI.Forms
             this.MinimizeButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.TopBarPanel = new System.Windows.Forms.Panel();
+            this.TitleLabel = new System.Windows.Forms.Label();
+            this.SortedByLabel = new System.Windows.Forms.Label();
+            this.SortedByValueLabel = new System.Windows.Forms.Label();
+            this.FilteredByValueLabel = new System.Windows.Forms.Label();
+            this.FilteredByLabel = new System.Windows.Forms.Label();
+            this.VehicleFlowPanelHeader = new System.Windows.Forms.FlowLayoutPanel();
+            this.ShowPicturesCheck = new System.Windows.Forms.CheckBox();
             this.MenuStrip.SuspendLayout();
             this.TopBarPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // VehicleFlowPanel
             // 
-            this.VehicleFlowPanel.Location = new System.Drawing.Point(12, 31);
+            this.VehicleFlowPanel.Location = new System.Drawing.Point(12, 133);
             this.VehicleFlowPanel.Name = "VehicleFlowPanel";
-            this.VehicleFlowPanel.Size = new System.Drawing.Size(1347, 857);
+            this.VehicleFlowPanel.Size = new System.Drawing.Size(1347, 749);
             this.VehicleFlowPanel.TabIndex = 0;
             // 
             // MenuStrip
@@ -122,6 +129,7 @@ namespace CompUI.Forms
             this.ResetToolStripMenuItem.Name = "ResetToolStripMenuItem";
             this.ResetToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.ResetToolStripMenuItem.Text = "Reset";
+            this.ResetToolStripMenuItem.Click += new System.EventHandler(this.ResetToolStripMenuItem_Click);
             // 
             // MinimizeButton
             // 
@@ -166,12 +174,94 @@ namespace CompUI.Forms
             this.TopBarPanel.TabIndex = 35;
             this.TopBarPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VehicleViewerForm_MouseDown);
             // 
+            // TitleLabel
+            // 
+            this.TitleLabel.AutoSize = true;
+            this.TitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.TitleLabel.Location = new System.Drawing.Point(12, 40);
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Size = new System.Drawing.Size(120, 30);
+            this.TitleLabel.TabIndex = 36;
+            this.TitleLabel.Text = "Vehicles list";
+            // 
+            // SortedByLabel
+            // 
+            this.SortedByLabel.AutoSize = true;
+            this.SortedByLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SortedByLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.SortedByLabel.Location = new System.Drawing.Point(42, 70);
+            this.SortedByLabel.Name = "SortedByLabel";
+            this.SortedByLabel.Size = new System.Drawing.Size(80, 21);
+            this.SortedByLabel.TabIndex = 37;
+            this.SortedByLabel.Text = "Sorted by:";
+            // 
+            // SortedByValueLabel
+            // 
+            this.SortedByValueLabel.AutoSize = true;
+            this.SortedByValueLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SortedByValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.SortedByValueLabel.Location = new System.Drawing.Point(128, 70);
+            this.SortedByValueLabel.Name = "SortedByValueLabel";
+            this.SortedByValueLabel.Size = new System.Drawing.Size(138, 21);
+            this.SortedByValueLabel.TabIndex = 38;
+            this.SortedByValueLabel.Text = "<sorted by value>";
+            // 
+            // FilteredByValueLabel
+            // 
+            this.FilteredByValueLabel.AutoSize = true;
+            this.FilteredByValueLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.FilteredByValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.FilteredByValueLabel.Location = new System.Drawing.Point(370, 70);
+            this.FilteredByValueLabel.Name = "FilteredByValueLabel";
+            this.FilteredByValueLabel.Size = new System.Drawing.Size(143, 21);
+            this.FilteredByValueLabel.TabIndex = 40;
+            this.FilteredByValueLabel.Text = "<filtered by value>";
+            // 
+            // FilteredByLabel
+            // 
+            this.FilteredByLabel.AutoSize = true;
+            this.FilteredByLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.FilteredByLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.FilteredByLabel.Location = new System.Drawing.Point(284, 70);
+            this.FilteredByLabel.Name = "FilteredByLabel";
+            this.FilteredByLabel.Size = new System.Drawing.Size(86, 21);
+            this.FilteredByLabel.TabIndex = 39;
+            this.FilteredByLabel.Text = "Filtered by:";
+            // 
+            // VehicleFlowPanelHeader
+            // 
+            this.VehicleFlowPanelHeader.BackColor = System.Drawing.Color.SteelBlue;
+            this.VehicleFlowPanelHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.VehicleFlowPanelHeader.Location = new System.Drawing.Point(12, 104);
+            this.VehicleFlowPanelHeader.Name = "VehicleFlowPanelHeader";
+            this.VehicleFlowPanelHeader.Size = new System.Drawing.Size(1347, 29);
+            this.VehicleFlowPanelHeader.TabIndex = 1;
+            // 
+            // ShowPicturesCheck
+            // 
+            this.ShowPicturesCheck.AutoSize = true;
+            this.ShowPicturesCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ShowPicturesCheck.Location = new System.Drawing.Point(1200, 50);
+            this.ShowPicturesCheck.Name = "ShowPicturesCheck";
+            this.ShowPicturesCheck.Size = new System.Drawing.Size(159, 34);
+            this.ShowPicturesCheck.TabIndex = 41;
+            this.ShowPicturesCheck.Text = "show pictures";
+            this.ShowPicturesCheck.UseVisualStyleBackColor = true;
+            this.ShowPicturesCheck.CheckedChanged += new System.EventHandler(this.ShowPicturesCheck_CheckChanged);
+            // 
             // VehicleViewerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1371, 900);
+            this.Controls.Add(this.ShowPicturesCheck);
+            this.Controls.Add(this.VehicleFlowPanelHeader);
+            this.Controls.Add(this.FilteredByValueLabel);
+            this.Controls.Add(this.FilteredByLabel);
+            this.Controls.Add(this.SortedByValueLabel);
+            this.Controls.Add(this.SortedByLabel);
+            this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.TopBarPanel);
             this.Controls.Add(this.VehicleFlowPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -187,6 +277,7 @@ namespace CompUI.Forms
             this.TopBarPanel.ResumeLayout(false);
             this.TopBarPanel.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -204,5 +295,12 @@ namespace CompUI.Forms
         private System.Windows.Forms.Button MinimizeButton;
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Panel TopBarPanel;
+        private System.Windows.Forms.Label TitleLabel;
+        private System.Windows.Forms.Label SortedByLabel;
+        private System.Windows.Forms.Label SortedByValueLabel;
+        private System.Windows.Forms.Label FilteredByValueLabel;
+        private System.Windows.Forms.Label FilteredByLabel;
+        private System.Windows.Forms.FlowLayoutPanel VehicleFlowPanelHeader;
+        private System.Windows.Forms.CheckBox ShowPicturesCheck;
     }
 }

@@ -29,7 +29,7 @@ namespace CompUI
 
         private void VehicleUpdateForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //TODO - Wire up vehicle update form
+
         }
     }
 }
