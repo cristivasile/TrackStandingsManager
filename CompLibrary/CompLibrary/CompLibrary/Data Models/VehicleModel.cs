@@ -32,9 +32,10 @@ namespace CompLibrary
         /// </summary>
         public string ImagePath { get; set; }
 
-        public int AveragePosition = 0;
-
-        public VehicleModel(){}
+        /// <summary>
+        /// Average position in all competitions this vehicle takes part in.
+        /// </summary>
+        public int AveragePosition = 100000;
 
         public VehicleModel(string Brand, string Model, string Category, string ImagePath = "")
         {

@@ -1,12 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace CompLibrary
 {
@@ -99,6 +94,28 @@ namespace CompLibrary
                     return true;
                 }
             }
+            return false;
+        }
+
+        public bool RemoveVehicle(int Id)
+        {
+            string ImagePath;
+
+            foreach(VehicleModel vehicle in GlobalData.Vehicles)
+            {
+                if (vehicle.Id == Id)
+                {
+                    ImagePath = vehicle.ImagePath;
+                    if(ImagePath != "")
+                        File.Delete(ImagePath);
+
+                    //TODO - Delete this vehicle from all categories
+                    GlobalData.Vehicles.Remove(vehicle);
+                    vehiclesFile.GetFilePath().WriteToFile(GlobalData.Vehicles.GetJsonString());
+                    return true;
+                }
+            }
+
             return false;
         }
     }

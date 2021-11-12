@@ -1,10 +1,12 @@
 ﻿using CompLibrary;
+using CompUI.Forms;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace CompUI
 {
+
     public partial class VehicleAddForm : Form
     {
         /// <summary>
@@ -70,6 +72,9 @@ namespace CompUI
                 //resets hover effect
                 VehiclePicture.MouseHover += VehiclePicture_MouseHover;
                 VehiclePicture.MouseLeave += VehiclePicture_MouseLeave;
+
+                //Loads new vehicle to parent list
+                Program.VehicleManagerFormInstance.ReloadForm();
             }
         }
 
@@ -240,6 +245,11 @@ namespace CompUI
         private void MinimizeButton_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void MiddleDividePanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

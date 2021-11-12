@@ -28,3 +28,6 @@ D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Release\net
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Release\net5.0-windows\ref\CompUI.dll
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Release\net5.0-windows\CompUI.pdb
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Release\net5.0-windows\CompUI.genruntimeconfig.cache
+D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\CompUI.dll.config
+D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\CompLibrary.dll
+D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\CompLibrary.pdb

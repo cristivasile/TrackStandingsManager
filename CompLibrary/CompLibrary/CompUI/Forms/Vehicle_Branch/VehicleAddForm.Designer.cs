@@ -48,6 +48,10 @@ namespace CompUI
             this.TopBarPanel = new System.Windows.Forms.Panel();
             this.MinimizeButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
+            this.MiddleDividePanel = new System.Windows.Forms.Panel();
+            this.LeftBorderPanel = new System.Windows.Forms.Panel();
+            this.RightBorderPanel = new System.Windows.Forms.Panel();
+            this.BottomBorderPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.VehiclePicture)).BeginInit();
             this.TopBarPanel.SuspendLayout();
             this.SuspendLayout();
@@ -248,12 +252,52 @@ namespace CompUI
             this.CloseButton.UseVisualStyleBackColor = false;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
+            // MiddleDividePanel
+            // 
+            this.MiddleDividePanel.BackColor = System.Drawing.Color.SteelBlue;
+            this.MiddleDividePanel.Location = new System.Drawing.Point(385, 74);
+            this.MiddleDividePanel.Margin = new System.Windows.Forms.Padding(0);
+            this.MiddleDividePanel.Name = "MiddleDividePanel";
+            this.MiddleDividePanel.Size = new System.Drawing.Size(2, 207);
+            this.MiddleDividePanel.TabIndex = 35;
+            this.MiddleDividePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MiddleDividePanel_Paint);
+            // 
+            // LeftBorderPanel
+            // 
+            this.LeftBorderPanel.BackColor = System.Drawing.Color.SteelBlue;
+            this.LeftBorderPanel.Location = new System.Drawing.Point(0, 0);
+            this.LeftBorderPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.LeftBorderPanel.Name = "LeftBorderPanel";
+            this.LeftBorderPanel.Size = new System.Drawing.Size(2, 359);
+            this.LeftBorderPanel.TabIndex = 36;
+            // 
+            // RightBorderPanel
+            // 
+            this.RightBorderPanel.BackColor = System.Drawing.Color.SteelBlue;
+            this.RightBorderPanel.Location = new System.Drawing.Point(836, 0);
+            this.RightBorderPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.RightBorderPanel.Name = "RightBorderPanel";
+            this.RightBorderPanel.Size = new System.Drawing.Size(2, 359);
+            this.RightBorderPanel.TabIndex = 37;
+            // 
+            // BottomBorderPanel
+            // 
+            this.BottomBorderPanel.BackColor = System.Drawing.Color.SteelBlue;
+            this.BottomBorderPanel.Location = new System.Drawing.Point(0, 357);
+            this.BottomBorderPanel.Name = "BottomBorderPanel";
+            this.BottomBorderPanel.Size = new System.Drawing.Size(838, 2);
+            this.BottomBorderPanel.TabIndex = 38;
+            // 
             // VehicleAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(838, 359);
+            this.Controls.Add(this.BottomBorderPanel);
+            this.Controls.Add(this.RightBorderPanel);
+            this.Controls.Add(this.LeftBorderPanel);
+            this.Controls.Add(this.MiddleDividePanel);
             this.Controls.Add(this.TopBarPanel);
             this.Controls.Add(this.ImageInfoLabel);
             this.Controls.Add(this.RemoveCategoryButton);
@@ -298,5 +342,9 @@ namespace CompUI
         private Panel TopBarPanel;
         private Button CloseButton;
         private Button MinimizeButton;
+        private Panel MiddleDividePanel;
+        private Panel LeftBorderPanel;
+        private Panel RightBorderPanel;
+        private Panel BottomBorderPanel;
     }
 }

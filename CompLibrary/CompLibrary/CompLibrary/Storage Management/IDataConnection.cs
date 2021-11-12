@@ -15,5 +15,6 @@ namespace CompLibrary
         bool CreateCategory(string newCategory);
         BindingList<string> ReadCategories();
         bool RemoveCategory(string toBeDeleted);
+        bool RemoveVehicle(int Id);
     }
 }

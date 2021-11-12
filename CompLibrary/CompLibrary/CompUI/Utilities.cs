@@ -144,7 +144,7 @@ namespace CompUI
         public static void AddToPanel(this Button button, Panel panel, int buttonSize)
         {
             button.BackColor = Color.Transparent;
-            button.Margin = new Padding(10, 0, 0, 0);
+            button.Margin = new Padding(0, 0, 10, 0);
             button.BackgroundImageLayout = ImageLayout.Stretch;
             button.FlatStyle = FlatStyle.Flat;
             button.FlatAppearance.BorderSize = 0;
@@ -155,5 +155,13 @@ namespace CompUI
             panel.Controls.Add(button);
         }
 
+        public static Image GetCopyImage(string path)
+        {
+            using (Image img = Image.FromFile(path))
+            {
+                Bitmap bmp = new Bitmap(img);
+                return bmp;
+            }
+        }
     }
 }
