@@ -112,20 +112,14 @@ namespace CompUI
 
             //check if vehicle with this name already exists
             foreach(VehicleModel vehicle in GlobalData.Vehicles)
-                if((vehicle.Brand.ToLower().Trim()==BrandTextBox.Text.ToLower().Trim())
-                  &&vehicle.Model.ToLower().Trim()== ModelTextBox.Text.ToLower().Trim())
+                if(vehicle.Brand.ToLower().Trim() + vehicle.Model.ToLower().Trim() == 
+                    BrandTextBox.Text.ToLower().Trim() + ModelTextBox.Text.ToLower().Trim())
                 {
                     Utilities.GenerateError("Vehicle already exists!", MessagePanel);
                     status = false;
                 }
 
             return status;
-        }
-
-
-        private void AbortButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void RemoveCategoryButton_Click(object sender, EventArgs e)
@@ -184,11 +178,6 @@ namespace CompUI
                 //Removes info label
                 ImageInfoLabel.Text = "";
 
-
-                //empties hover and leave events
-                VehiclePicture.MouseHover -= VehiclePicture_MouseHover;
-                VehiclePicture.MouseLeave -= VehiclePicture_MouseLeave;
-
                 VehiclePicture.BackColor = Color.White;
             }
             else
@@ -209,6 +198,34 @@ namespace CompUI
             ImageInfoLabel.BackColor = Color.White;
         }
 
+
+
+        private void VehicleAddForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.VehicleManagerFormInstance.Enabled = true;
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Program.VehicleManagerFormInstance.Enabled = true;
+            Program.VehicleManagerFormInstance.BringToFront();
+        }
+
+        private void MinimizeButton_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void MiddleDividePanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
 
 
         //source https://stackoverflow.com/questions/1592876/make-a-borderless-form-movable
@@ -232,24 +249,5 @@ namespace CompUI
         }
         // ------ //
 
-        private void VehicleAddForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Program.VehicleManagerFormInstance.Enabled = true;
-        }
-
-        private void CloseButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void MinimizeButton_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void MiddleDividePanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

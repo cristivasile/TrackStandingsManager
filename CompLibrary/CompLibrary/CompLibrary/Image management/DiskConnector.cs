@@ -15,31 +15,19 @@ namespace CompLibrary.Image_management
         public string Save(Image toSave)
         {
             string savePath = DiskConnectorProcessor.GetRandomImagePath("jpg");
-            ImageCodecInfo jpgEncoder = GetEncoder(ImageFormat.Jpeg);
+            ImageCodecInfo jpgEncoder = DiskConnectorProcessor.GetEncoder(ImageFormat.Jpeg);
 
             System.Drawing.Imaging.Encoder myEncoder =
                 System.Drawing.Imaging.Encoder.Quality;
 
-            EncoderParameters myEncoderParameters = new EncoderParameters(1);
+            EncoderParameters myEncoderParameters = new (1);
 
-            EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, 50L);
+            EncoderParameter myEncoderParameter = new (myEncoder, 50L);
             myEncoderParameters.Param[0] = myEncoderParameter;
             toSave.Save(savePath, jpgEncoder, myEncoderParameters);
 
             return savePath;
         }
 
-        private ImageCodecInfo GetEncoder(ImageFormat jpeg)
-        {
-            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
-            foreach (ImageCodecInfo codec in codecs)
-            {
-                if (codec.FormatID == jpeg.Guid)
-                {
-                    return codec;
-                }
-            }
-            return null;
-        }
     }
 }

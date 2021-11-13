@@ -14,7 +14,6 @@ D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\bin\Debug\
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\bin\Debug\net5.0\CompLibrary.dll
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\bin\Debug\net5.0\ref\CompLibrary.dll
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\bin\Debug\net5.0\CompLibrary.pdb
-D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\CompLibrary.csproj.AssemblyReference.cache
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\CompLibrary.GeneratedMSBuildEditorConfig.editorconfig
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\CompLibrary.AssemblyInfoInputs.cache
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\CompLibrary.AssemblyInfo.cs
@@ -22,3 +21,4 @@ D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\CompLibrary.dll
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\ref\CompLibrary.dll
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\CompLibrary.pdb
+D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\CompLibrary.csproj.AssemblyReference.cache

@@ -26,6 +26,10 @@ namespace CompLibrary
             {
                 newVehicle.Id = 0;
             }
+            newVehicle.Brand = newVehicle.Brand.Trim();
+            newVehicle.Model = newVehicle.Model.Trim();
+            newVehicle.Category = newVehicle.Category.Trim();
+
             GlobalData.Vehicles.Add(newVehicle);
 
             vehiclesFile.GetFilePath().WriteToFile(GlobalData.Vehicles.GetJsonString());
@@ -109,12 +113,38 @@ namespace CompLibrary
                     if(ImagePath != "")
                         File.Delete(ImagePath);
 
-                    //TODO - Delete this vehicle from all categories
+                    //TODO - Delete this vehicle from all competitions
                     GlobalData.Vehicles.Remove(vehicle);
                     vehiclesFile.GetFilePath().WriteToFile(GlobalData.Vehicles.GetJsonString());
                     return true;
                 }
             }
+
+            return false;
+        }
+
+        public VehicleModel GetVehicleById(int Id)
+        {
+            foreach(VehicleModel vehicle in GlobalData.Vehicles)
+                if (vehicle.Id == Id)
+                    return vehicle;
+
+            return null;
+        }
+
+        public bool UpdateVehicle(VehicleModel updatedvehicle)
+        {
+
+            for (int i = 0; i < GlobalData.Vehicles.Count; i++)
+                if (GlobalData.Vehicles[i].Id == updatedvehicle.Id)
+                {
+                    updatedvehicle.Brand = updatedvehicle.Brand.Trim();
+                    updatedvehicle.Model = updatedvehicle.Model.Trim();
+                    updatedvehicle.Category = updatedvehicle.Category.Trim();
+                    GlobalData.Vehicles[i] = updatedvehicle;
+                    vehiclesFile.GetFilePath().WriteToFile(GlobalData.Vehicles.GetJsonString());
+                    return true;
+                }
 
             return false;
         }

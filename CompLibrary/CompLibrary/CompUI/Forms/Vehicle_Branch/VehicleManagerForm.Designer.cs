@@ -118,6 +118,7 @@ namespace CompUI.Forms
             this.AveragePositionToolStripMenuItem.Name = "AveragePositionToolStripMenuItem";
             this.AveragePositionToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.AveragePositionToolStripMenuItem.Text = "Average position";
+            this.AveragePositionToolStripMenuItem.Click += new System.EventHandler(this.AveragePositionToolStripMenuItem_Click);
             // 
             // NameToolStripMenuItem
             // 
@@ -125,6 +126,7 @@ namespace CompUI.Forms
             this.NameToolStripMenuItem.Name = "NameToolStripMenuItem";
             this.NameToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.NameToolStripMenuItem.Text = "Name";
+            this.NameToolStripMenuItem.Click += new System.EventHandler(this.NameToolStripMenuItem_Click);
             // 
             // ResetToolStripMenuItem
             // 
@@ -181,7 +183,7 @@ namespace CompUI.Forms
             // 
             this.TitleLabel.AutoSize = true;
             this.TitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.TitleLabel.Location = new System.Drawing.Point(12, 40);
+            this.TitleLabel.Location = new System.Drawing.Point(12, 39);
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(120, 30);
             this.TitleLabel.TabIndex = 36;
@@ -192,7 +194,7 @@ namespace CompUI.Forms
             this.SortedByLabel.AutoSize = true;
             this.SortedByLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SortedByLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.SortedByLabel.Location = new System.Drawing.Point(42, 70);
+            this.SortedByLabel.Location = new System.Drawing.Point(1039, 54);
             this.SortedByLabel.Name = "SortedByLabel";
             this.SortedByLabel.Size = new System.Drawing.Size(80, 21);
             this.SortedByLabel.TabIndex = 37;
@@ -203,29 +205,29 @@ namespace CompUI.Forms
             this.SortedByValueLabel.AutoSize = true;
             this.SortedByValueLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SortedByValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.SortedByValueLabel.Location = new System.Drawing.Point(128, 70);
+            this.SortedByValueLabel.Location = new System.Drawing.Point(1125, 54);
             this.SortedByValueLabel.Name = "SortedByValueLabel";
-            this.SortedByValueLabel.Size = new System.Drawing.Size(138, 21);
+            this.SortedByValueLabel.Size = new System.Drawing.Size(69, 21);
             this.SortedByValueLabel.TabIndex = 38;
-            this.SortedByValueLabel.Text = "<sorted by value>";
+            this.SortedByValueLabel.Text = "<value>";
             // 
             // FilteredByValueLabel
             // 
             this.FilteredByValueLabel.AutoSize = true;
             this.FilteredByValueLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FilteredByValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.FilteredByValueLabel.Location = new System.Drawing.Point(376, 70);
+            this.FilteredByValueLabel.Location = new System.Drawing.Point(927, 54);
             this.FilteredByValueLabel.Name = "FilteredByValueLabel";
-            this.FilteredByValueLabel.Size = new System.Drawing.Size(143, 21);
+            this.FilteredByValueLabel.Size = new System.Drawing.Size(69, 21);
             this.FilteredByValueLabel.TabIndex = 40;
-            this.FilteredByValueLabel.Text = "<filtered by value>";
+            this.FilteredByValueLabel.Text = "<value>";
             // 
             // FilteredByLabel
             // 
             this.FilteredByLabel.AutoSize = true;
             this.FilteredByLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FilteredByLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.FilteredByLabel.Location = new System.Drawing.Point(284, 70);
+            this.FilteredByLabel.Location = new System.Drawing.Point(835, 54);
             this.FilteredByLabel.Name = "FilteredByLabel";
             this.FilteredByLabel.Size = new System.Drawing.Size(86, 21);
             this.FilteredByLabel.TabIndex = 39;
@@ -243,25 +245,26 @@ namespace CompUI.Forms
             // ShowPicturesCheck
             // 
             this.ShowPicturesCheck.AutoSize = true;
+            this.ShowPicturesCheck.BackColor = System.Drawing.Color.Transparent;
             this.ShowPicturesCheck.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ShowPicturesCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ShowPicturesCheck.Location = new System.Drawing.Point(537, 69);
+            this.ShowPicturesCheck.Location = new System.Drawing.Point(47, 72);
             this.ShowPicturesCheck.Name = "ShowPicturesCheck";
             this.ShowPicturesCheck.Size = new System.Drawing.Size(125, 25);
             this.ShowPicturesCheck.TabIndex = 41;
             this.ShowPicturesCheck.Text = "show pictures";
-            this.ShowPicturesCheck.UseVisualStyleBackColor = true;
+            this.ShowPicturesCheck.UseVisualStyleBackColor = false;
             this.ShowPicturesCheck.CheckedChanged += new System.EventHandler(this.ShowPicturesCheck_CheckChanged);
             // 
             // InsertButton
             // 
-            this.InsertButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.InsertButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.InsertButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.InsertButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.InsertButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.InsertButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.InsertButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.InsertButton.Location = new System.Drawing.Point(1236, 59);
+            this.InsertButton.Location = new System.Drawing.Point(1236, 50);
             this.InsertButton.Name = "InsertButton";
             this.InsertButton.Size = new System.Drawing.Size(108, 32);
             this.InsertButton.TabIndex = 42;

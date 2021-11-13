@@ -13,28 +13,28 @@ namespace CompUI
     public static class Utilities
     {
         public static readonly int ScrollBarWidth = System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
-        public static readonly FontFamily FontFamily = new("Segoe UI");
+        public static readonly FontFamily FontFamily = new("Sitka Display");
         public static readonly Font SmallText = new(
-           FontFamily,
-           12,
-           FontStyle.Regular,
-           GraphicsUnit.Pixel);
-
-        public static readonly Font MediumText = new(
            FontFamily,
            14,
            FontStyle.Regular,
            GraphicsUnit.Pixel);
 
-        public static readonly Font LargeText = new(
+        public static readonly Font MediumText = new(
            FontFamily,
            16,
+           FontStyle.Regular,
+           GraphicsUnit.Pixel);
+
+        public static readonly Font LargeText = new(
+           FontFamily,
+           18,
            FontStyle.Bold,
            GraphicsUnit.Pixel);
 
         public static readonly Font LargeTextBold = new(
            FontFamily,
-           17,
+           19,
            FontStyle.Bold,
            GraphicsUnit.Pixel);
 

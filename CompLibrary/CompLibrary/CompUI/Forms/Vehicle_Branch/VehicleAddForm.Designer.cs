@@ -58,28 +58,28 @@ namespace CompUI
             // 
             // AbortButton
             // 
-            this.AbortButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.AbortButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.AbortButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.AbortButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.AbortButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AbortButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AbortButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.AbortButton.ForeColor = System.Drawing.Color.SteelBlue;
             this.AbortButton.Location = new System.Drawing.Point(697, 307);
             this.AbortButton.Name = "AbortButton";
             this.AbortButton.Size = new System.Drawing.Size(125, 40);
             this.AbortButton.TabIndex = 28;
             this.AbortButton.Text = "Exit";
             this.AbortButton.UseVisualStyleBackColor = false;
-            this.AbortButton.Click += new System.EventHandler(this.AbortButton_Click);
+            this.AbortButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // InsertButton
             // 
-            this.InsertButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.InsertButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.InsertButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.InsertButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.InsertButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.InsertButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.InsertButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.InsertButton.ForeColor = System.Drawing.Color.SteelBlue;
             this.InsertButton.Location = new System.Drawing.Point(16, 307);
             this.InsertButton.Name = "InsertButton";
             this.InsertButton.Size = new System.Drawing.Size(125, 40);
@@ -91,12 +91,14 @@ namespace CompUI
             // CategoryComboBox
             // 
             this.CategoryComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.CategoryComboBox.DataSource = this.LeftBorderPanel.Controls;
             this.CategoryComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.CategoryComboBox.FormattingEnabled = true;
             this.CategoryComboBox.Location = new System.Drawing.Point(410, 239);
             this.CategoryComboBox.Name = "CategoryComboBox";
             this.CategoryComboBox.Size = new System.Drawing.Size(237, 38);
             this.CategoryComboBox.TabIndex = 25;
+            this.CategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
             // 
             // CategoryLabel
             // 
@@ -215,7 +217,7 @@ namespace CompUI
             this.TopBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.TopBarPanel.Controls.Add(this.MinimizeButton);
             this.TopBarPanel.Controls.Add(this.CloseButton);
-            this.TopBarPanel.Location = new System.Drawing.Point(-2, -1);
+            this.TopBarPanel.Location = new System.Drawing.Point(0, 0);
             this.TopBarPanel.Name = "TopBarPanel";
             this.TopBarPanel.Size = new System.Drawing.Size(852, 25);
             this.TopBarPanel.TabIndex = 34;
@@ -229,6 +231,7 @@ namespace CompUI
             this.MinimizeButton.FlatAppearance.BorderSize = 0;
             this.MinimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MinimizeButton.Location = new System.Drawing.Point(790, 4);
+            this.MinimizeButton.Margin = new System.Windows.Forms.Padding(0);
             this.MinimizeButton.Name = "MinimizeButton";
             this.MinimizeButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.MinimizeButton.Size = new System.Drawing.Size(22, 18);
@@ -245,6 +248,7 @@ namespace CompUI
             this.CloseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightCoral;
             this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseButton.Location = new System.Drawing.Point(814, 4);
+            this.CloseButton.Margin = new System.Windows.Forms.Padding(0);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.CloseButton.Size = new System.Drawing.Size(22, 18);

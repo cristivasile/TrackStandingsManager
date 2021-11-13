@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing.Imaging;
 using System.IO;
 
 namespace CompLibrary.Image_management
@@ -30,6 +31,19 @@ namespace CompLibrary.Image_management
             {
                 Directory.CreateDirectory($"{FunctionLibrary.GetAppDirectory()}\\imgStorage");
             }
+        }
+
+        public static ImageCodecInfo GetEncoder(ImageFormat jpeg)
+        {
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
+            foreach (ImageCodecInfo codec in codecs)
+            {
+                if (codec.FormatID == jpeg.Guid)
+                {
+                    return codec;
+                }
+            }
+            return null;
         }
     }
 }

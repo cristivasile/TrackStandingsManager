@@ -7,7 +7,6 @@ namespace CompUI
 {
     static class Program
     {
-        //TODO - bring parent form to front on close
         /// <summary>
         /// The program can have only one instance of any form type
         /// </summary>

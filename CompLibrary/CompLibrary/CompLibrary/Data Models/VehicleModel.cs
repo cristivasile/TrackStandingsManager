@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CompLibrary
@@ -37,12 +38,25 @@ namespace CompLibrary
         /// </summary>
         public int AveragePosition = 100000;
 
-        public VehicleModel(string Brand, string Model, string Category, string ImagePath = "")
+        public VehicleModel() {}
+        public VehicleModel(string Brand, string Model, string Category, string ImagePath = "", int Id = -1)
         {
+            if (Id != -1)
+                this.Id = Id;
             this.Brand = Brand;
             this.Model = Model;
             this.Category = Category;
             this.ImagePath = ImagePath;
+        }
+
+        public VehicleModel(VehicleModel ToCopy)
+        {
+            this.Id = ToCopy.Id;
+            this.Brand = ToCopy.Brand;
+            this.Model = ToCopy.Model;
+            this.Category = ToCopy.Category;
+            this.ImagePath = ToCopy.ImagePath;
+            this.AveragePosition = ToCopy.AveragePosition;
         }
 
     }

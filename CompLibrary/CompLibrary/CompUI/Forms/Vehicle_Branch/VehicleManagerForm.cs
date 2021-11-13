@@ -134,8 +134,23 @@ namespace CompUI.Forms
 
             //TODO - add filter options
             if (FilterType == 0)
+            {
+                this.FilteredByLabel.Hide();
+                this.FilteredByValueLabel.Hide();
                 this.FilteredByValueLabel.Text = "nothing";
-
+            }
+            else if(FilterType == 1)
+            {
+                this.FilteredByLabel.Show();
+                this.FilteredByValueLabel.Show();
+                this.FilteredByValueLabel.Text = "nothing";
+            }
+            else
+            {
+                this.FilteredByLabel.Show();
+                this.FilteredByValueLabel.Show();
+                this.FilteredByValueLabel.Text = "nothing";
+            }
             //sort by name
             if(SortType == 1)
             {
@@ -158,7 +173,7 @@ namespace CompUI.Forms
                 Label EmptyPaddingLabel = new();
                 Button EditButton = new();
                 Button DeleteButton = new();
-                Color TextColor = Utilities.FishBlue;
+                Color TextColor = Color.SteelBlue;
                 FlowLayoutPanel NewVehiclePanel = new();
                 VehiclesPanel.Controls.Add(NewVehiclePanel);
 
@@ -297,7 +312,6 @@ namespace CompUI.Forms
                 DeleteButton.Click += new EventHandler(DeleteButton_Click);
                 DeleteButton.AddToPanel(NewVehiclePanel, ButtonSize - 5);
 
-                //TODO - vehicle edit and buttons currently to nothing, add functionality
             }
 
             VehiclesPanel.AutoScroll = true;
@@ -307,27 +321,6 @@ namespace CompUI.Forms
         {
             Program.VehicleManagerFormInstance.Show();
         }
-
-        //source https://stackoverflow.com/questions/1592876/make-a-borderless-form-movable
-        // ------ //
-
-        private const int WM_NCLBUTTONDOWN = 0xA1;
-        private const int HT_CAPTION = 0x2;
-
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        private static extern bool ReleaseCapture();
-
-        private void VehicleViewerForm_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                _ = SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-        // ------ //
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
@@ -357,14 +350,14 @@ namespace CompUI.Forms
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            //TODO - Implement Edit Button Functionality
             int VehicleId = Convert.ToInt32(((Button)sender).Tag);
-            MessageBox.Show(Convert.ToString(VehicleId));
+            this.Enabled = false;
+            Program.VehicleUpdateFormInstance = new(VehicleId);
+            Program.VehicleUpdateFormInstance.Show();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            //TODO - This does nothing
             int VehicleId = Convert.ToInt32(((Button)sender).Tag);
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this vehicle?\nThis action is permanent and will remove it from all competitions!", "Are you sure", MessageBoxButtons.YesNo);
             
@@ -400,5 +393,43 @@ namespace CompUI.Forms
         {
 
         }
+
+        private void SortByToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SortType = 1;
+            ReloadForm();
+        }
+
+        private void AveragePositionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SortType = 2;
+            ReloadForm();
+        }
+
+        //source https://stackoverflow.com/questions/1592876/make-a-borderless-form-movable
+        // ------ //
+
+        private const int WM_NCLBUTTONDOWN = 0xA1;
+        private const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool ReleaseCapture();
+
+        private void VehicleViewerForm_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                _ = SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+        // ------ //
     }
 }

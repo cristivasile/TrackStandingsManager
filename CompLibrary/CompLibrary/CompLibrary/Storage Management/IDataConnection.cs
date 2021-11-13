@@ -16,5 +16,7 @@ namespace CompLibrary
         BindingList<string> ReadCategories();
         bool RemoveCategory(string toBeDeleted);
         bool RemoveVehicle(int Id);
+        bool UpdateVehicle(VehicleModel vehicle);
+        VehicleModel GetVehicleById(int Id);
     }
 }
