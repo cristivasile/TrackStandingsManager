@@ -1,5 +1,4 @@
-﻿
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace CompUI
 {
@@ -35,6 +34,7 @@ namespace CompUI
             this.AbortButton = new System.Windows.Forms.Button();
             this.InsertButton = new System.Windows.Forms.Button();
             this.CategoryComboBox = new System.Windows.Forms.ComboBox();
+            this.LeftBorderPanel = new System.Windows.Forms.Panel();
             this.CategoryLabel = new System.Windows.Forms.Label();
             this.ModelLabel = new System.Windows.Forms.Label();
             this.ModelTextBox = new System.Windows.Forms.TextBox();
@@ -49,7 +49,6 @@ namespace CompUI
             this.MinimizeButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.MiddleDividePanel = new System.Windows.Forms.Panel();
-            this.LeftBorderPanel = new System.Windows.Forms.Panel();
             this.RightBorderPanel = new System.Windows.Forms.Panel();
             this.BottomBorderPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.VehiclePicture)).BeginInit();
@@ -99,6 +98,15 @@ namespace CompUI
             this.CategoryComboBox.Size = new System.Drawing.Size(237, 38);
             this.CategoryComboBox.TabIndex = 25;
             this.CategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
+            // 
+            // LeftBorderPanel
+            // 
+            this.LeftBorderPanel.BackColor = System.Drawing.Color.SteelBlue;
+            this.LeftBorderPanel.Location = new System.Drawing.Point(0, 0);
+            this.LeftBorderPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.LeftBorderPanel.Name = "LeftBorderPanel";
+            this.LeftBorderPanel.Size = new System.Drawing.Size(2, 359);
+            this.LeftBorderPanel.TabIndex = 36;
             // 
             // CategoryLabel
             // 
@@ -201,7 +209,7 @@ namespace CompUI
             this.ImageInfoLabel.AutoSize = true;
             this.ImageInfoLabel.BackColor = System.Drawing.Color.White;
             this.ImageInfoLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ImageInfoLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ImageInfoLabel.ForeColor = System.Drawing.Color.SteelBlue;
             this.ImageInfoLabel.Location = new System.Drawing.Point(36, 155);
             this.ImageInfoLabel.Name = "ImageInfoLabel";
             this.ImageInfoLabel.Size = new System.Drawing.Size(160, 42);
@@ -265,15 +273,6 @@ namespace CompUI
             this.MiddleDividePanel.Size = new System.Drawing.Size(2, 207);
             this.MiddleDividePanel.TabIndex = 35;
             this.MiddleDividePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MiddleDividePanel_Paint);
-            // 
-            // LeftBorderPanel
-            // 
-            this.LeftBorderPanel.BackColor = System.Drawing.Color.SteelBlue;
-            this.LeftBorderPanel.Location = new System.Drawing.Point(0, 0);
-            this.LeftBorderPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.LeftBorderPanel.Name = "LeftBorderPanel";
-            this.LeftBorderPanel.Size = new System.Drawing.Size(2, 359);
-            this.LeftBorderPanel.TabIndex = 36;
             // 
             // RightBorderPanel
             // 

@@ -14,18 +14,26 @@ namespace CompUI
 {
     public partial class VehicleUpdateForm : Form
     {
+        private VehicleModel StoredVehicle;
+        private bool ImageChanged = false;
+        private Dictionary<string, int> VehicleIds = new();
 
-        //TODO - Implement Vehicle selector and search function
-        VehicleModel StoredVehicle;
-        bool ImageChanged = false;
         public VehicleUpdateForm(int vehicleId)
         {
-            foreach (IDataConnection connection in GlobalConfig.Connections) {
-                StoredVehicle = connection.GetVehicleById(vehicleId); 
-            }
+            StoredVehicle = GetVehicleById(vehicleId);
             InitializeComponent();
+            InitializeVehicleIds();
             CategoryComboBox.DataSource = GlobalData.Categories;
+            VehicleComboBox.DataSource = VehicleIds.Keys.OrderBy(x => x).ToList<String>();
             LoadVehicle(StoredVehicle);
+        }
+
+        private void InitializeVehicleIds()
+        {
+            foreach (VehicleModel vehicle in GlobalData.Vehicles)
+            {
+                VehicleIds[vehicle.Brand + " " + vehicle.Model] = vehicle.Id;
+            }
         }
 
         private void LoadVehicle(VehicleModel vehicle = null)
@@ -33,7 +41,7 @@ namespace CompUI
             ImageChanged = false;
             if (vehicle != null)
             {
-                this.SelectedComboBox.Text = vehicle.Brand + " " + vehicle.Model;
+                this.VehicleComboBox.Text = vehicle.Brand + " " + vehicle.Model;
                 this.BrandTextBox.Text = vehicle.Brand;
                 this.ModelTextBox.Text = vehicle.Model;
                 this.CategoryComboBox.Text = vehicle.Category;
@@ -43,10 +51,15 @@ namespace CompUI
                     VehiclePicture.ResizeToFit();
                     this.ImageInfoLabel.Visible = false;
                 }
+                else
+                {
+                    VehiclePicture.Image = null;
+                    this.ImageInfoLabel.Visible = true;
+                }
             }
             else
             {
-                this.SelectedComboBox.Text = "";
+                this.VehicleComboBox.Text = "";
                 this.BrandTextBox.Text = "";
                 this.ModelTextBox.Text = "";
                 this.CategoryComboBox.Text = "";
@@ -109,6 +122,7 @@ namespace CompUI
         {
             MessagePanel.Controls.Clear();
             VehicleModel UpdatedVehicle;
+            string VehicleName;
             if (StoredVehicle != null)
             {
                 UpdatedVehicle = new VehicleModel(StoredVehicle);
@@ -126,10 +140,20 @@ namespace CompUI
 
                 if (VehicleChanged(UpdatedVehicle) && CheckData())
                 {
+                    //Remove old name from list
+                    VehicleName = StoredVehicle.Brand + " " + StoredVehicle.Model;
+                    VehicleIds.Remove(VehicleName);
+
                     foreach (IDataConnection connection in GlobalConfig.Connections)
                         connection.UpdateVehicle(UpdatedVehicle);
                     Utilities.GenerateSuccess("Vehicle successfully updated!", MessagePanel);
+
+                    //Add new name to list
                     StoredVehicle = UpdatedVehicle;
+                    VehicleName = StoredVehicle.Brand + " " + StoredVehicle.Model;
+                    VehicleIds[VehicleName] = StoredVehicle.Id;
+                    VehicleComboBox.DataSource = VehicleIds.Keys.OrderBy(x => x).ToList<String>();
+                    
                     Program.VehicleManagerFormInstance.ReloadForm();
                 }
 
@@ -182,6 +206,7 @@ namespace CompUI
             MessagePanel.Controls.Clear();
             if (StoredVehicle != null)
             {
+                string VehicleName;
                 int VehicleId = StoredVehicle.Id;
                 DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this vehicle?\nThis action is permanent and will remove it from all competitions!", "Are you sure", MessageBoxButtons.YesNo);
 
@@ -195,6 +220,9 @@ namespace CompUI
                             Utilities.GenerateError("Vehicle does not exist!", MessagePanel);
                         else
                         {
+                            VehicleName = StoredVehicle.Brand + " " + StoredVehicle.Model;
+                            VehicleIds.Remove(VehicleName);
+                            VehicleComboBox.DataSource = VehicleIds.Keys.OrderBy(x => x).ToList<String>();
                             LoadVehicle();
                             StoredVehicle = null;
                             Utilities.GenerateSuccess("Vehicle deleted!", MessagePanel);
@@ -255,5 +283,38 @@ namespace CompUI
             ImageInfoLabel.BackColor = Color.White;
         }
 
+        private void VehicleComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int CurrentVehicleId = VehicleIds[VehicleComboBox.Text];
+            VehicleModel CurrentVehicle = GetVehicleById(CurrentVehicleId);
+
+            LoadVehicle(CurrentVehicle);
+        }
+
+        private VehicleModel GetVehicleById(int id)
+        {
+            VehicleModel SearchedVehicle = new();
+
+            foreach (IDataConnection storage in GlobalConfig.Connections)
+            {
+                SearchedVehicle = storage.GetVehicleById(id);
+            }
+
+            return SearchedVehicle;
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            foreach(String vehicleName in VehicleIds.Keys)
+                if(VehicleComboBox.Text.ToLower().Trim() == vehicleName.ToLower())
+                {
+                    VehicleModel SelectedVehicle = GetVehicleById(VehicleIds[vehicleName]);
+                    StoredVehicle = SelectedVehicle;
+                    LoadVehicle(SelectedVehicle);
+                    return;   
+                }
+            //if at this point the function did not stop, vehicle was not found
+            Utilities.GenerateError("Vehicle not found!", MessagePanel);
+        }
     }
 }

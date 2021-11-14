@@ -52,7 +52,7 @@ namespace CompUI
             this.DeleteVehicleButton = new System.Windows.Forms.Button();
             this.UndoChangesButton = new System.Windows.Forms.Button();
             this.SearchButton = new System.Windows.Forms.Button();
-            this.SelectedComboBox = new System.Windows.Forms.ComboBox();
+            this.VehicleComboBox = new System.Windows.Forms.ComboBox();
             this.SelectedLabel = new System.Windows.Forms.Label();
             this.TopBarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VehiclePicture)).BeginInit();
@@ -108,7 +108,7 @@ namespace CompUI
             this.ImageInfoLabel.AutoSize = true;
             this.ImageInfoLabel.BackColor = System.Drawing.Color.White;
             this.ImageInfoLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ImageInfoLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ImageInfoLabel.ForeColor = System.Drawing.Color.SteelBlue;
             this.ImageInfoLabel.Location = new System.Drawing.Point(32, 153);
             this.ImageInfoLabel.Name = "ImageInfoLabel";
             this.ImageInfoLabel.Size = new System.Drawing.Size(160, 42);
@@ -130,7 +130,7 @@ namespace CompUI
             // 
             this.TitleLabel.AutoSize = true;
             this.TitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.TitleLabel.Location = new System.Drawing.Point(12, 34);
+            this.TitleLabel.Location = new System.Drawing.Point(12, 25);
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(247, 30);
             this.TitleLabel.TabIndex = 45;
@@ -319,22 +319,24 @@ namespace CompUI
             this.SearchButton.TabIndex = 54;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = false;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
-            // SelectedComboBox
+            // VehicleComboBox
             // 
-            this.SelectedComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.SelectedComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.SelectedComboBox.FormattingEnabled = true;
-            this.SelectedComboBox.Location = new System.Drawing.Point(446, 33);
-            this.SelectedComboBox.Name = "SelectedComboBox";
-            this.SelectedComboBox.Size = new System.Drawing.Size(237, 38);
-            this.SelectedComboBox.TabIndex = 55;
+            this.VehicleComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.VehicleComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.VehicleComboBox.FormattingEnabled = true;
+            this.VehicleComboBox.Location = new System.Drawing.Point(373, 33);
+            this.VehicleComboBox.Name = "VehicleComboBox";
+            this.VehicleComboBox.Size = new System.Drawing.Size(310, 38);
+            this.VehicleComboBox.TabIndex = 55;
+            this.VehicleComboBox.SelectedIndexChanged += new System.EventHandler(this.VehicleComboBox_SelectedIndexChanged);
             // 
             // SelectedLabel
             // 
             this.SelectedLabel.AutoSize = true;
             this.SelectedLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.SelectedLabel.Location = new System.Drawing.Point(327, 36);
+            this.SelectedLabel.Location = new System.Drawing.Point(271, 36);
             this.SelectedLabel.Name = "SelectedLabel";
             this.SelectedLabel.Size = new System.Drawing.Size(96, 30);
             this.SelectedLabel.TabIndex = 56;
@@ -347,7 +349,7 @@ namespace CompUI
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(838, 359);
             this.Controls.Add(this.SelectedLabel);
-            this.Controls.Add(this.SelectedComboBox);
+            this.Controls.Add(this.VehicleComboBox);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.UndoChangesButton);
             this.Controls.Add(this.DeleteVehicleButton);
@@ -404,7 +406,7 @@ namespace CompUI
         private System.Windows.Forms.Button DeleteVehicleButton;
         private System.Windows.Forms.Button UndoChangesButton;
         private System.Windows.Forms.Button SearchButton;
-        private System.Windows.Forms.ComboBox SelectedComboBox;
+        private System.Windows.Forms.ComboBox VehicleComboBox;
         private System.Windows.Forms.Label SelectedLabel;
     }
 }

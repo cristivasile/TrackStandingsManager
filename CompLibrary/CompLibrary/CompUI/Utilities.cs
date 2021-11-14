@@ -54,7 +54,7 @@ namespace CompUI
             newError.ForeColor = System.Drawing.Color.Red;
             parent.Controls.Add(newError);
             newError.Width = Convert.ToInt32(0.75 * parent.Width);
-
+            Task.Delay(3000).ContinueWith(x => ClearControls(parent)); 
         }
 
         /// <summary>
@@ -70,8 +70,20 @@ namespace CompUI
             newSuccess.ForeColor = System.Drawing.Color.Green;
             parent.Controls.Add(newSuccess);
             newSuccess.Width = Convert.ToInt32(0.95 * parent.Width);
+            // Delay.ContinueWith creates a new thread so ClearControls method needs to Invoke
+            Task.Delay(3000).ContinueWith(x => ClearControls(parent));
         }
 
+
+        public static void ClearControls(Control panel) 
+        {
+            if (panel.InvokeRequired) {
+                Action clearPanel = delegate { ClearControls(panel); };
+                panel.Invoke(clearPanel);
+                return;
+            }
+            panel.Controls.Clear();
+        }
 
         //Source = https://stackoverflow.com/questions/1922040/how-to-resize-an-image-c-sharp
         /// <summary>
