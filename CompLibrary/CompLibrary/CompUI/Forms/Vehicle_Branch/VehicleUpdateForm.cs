@@ -316,5 +316,10 @@ namespace CompUI
             //if at this point the function did not stop, vehicle was not found
             Utilities.GenerateError("Vehicle not found!", MessagePanel);
         }
+
+        private void VehicleUpdateForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

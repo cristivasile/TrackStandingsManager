@@ -94,6 +94,7 @@ namespace CompUI.Forms
             this.BrandToolStripMenuItem.Name = "BrandToolStripMenuItem";
             this.BrandToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.BrandToolStripMenuItem.Text = "Brand";
+            this.BrandToolStripMenuItem.Click += new System.EventHandler(this.BrandToolStripMenuItem_Click);
             // 
             // CategoryToolStripMenuItem
             // 
@@ -101,6 +102,7 @@ namespace CompUI.Forms
             this.CategoryToolStripMenuItem.Name = "CategoryToolStripMenuItem";
             this.CategoryToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.CategoryToolStripMenuItem.Text = "Category";
+            this.CategoryToolStripMenuItem.Click += new System.EventHandler(this.CategoryToolStripMenuItem_Click);
             // 
             // SortByToolStripMenuItem
             // 
@@ -143,7 +145,8 @@ namespace CompUI.Forms
             this.MinimizeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.MinimizeButton.FlatAppearance.BorderSize = 0;
             this.MinimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MinimizeButton.Location = new System.Drawing.Point(1322, 3);
+            this.MinimizeButton.Location = new System.Drawing.Point(1322, 4);
+            this.MinimizeButton.Margin = new System.Windows.Forms.Padding(0);
             this.MinimizeButton.Name = "MinimizeButton";
             this.MinimizeButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.MinimizeButton.Size = new System.Drawing.Size(22, 18);
@@ -159,7 +162,8 @@ namespace CompUI.Forms
             this.CloseButton.FlatAppearance.BorderSize = 0;
             this.CloseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightCoral;
             this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseButton.Location = new System.Drawing.Point(1346, 3);
+            this.CloseButton.Location = new System.Drawing.Point(1346, 4);
+            this.CloseButton.Margin = new System.Windows.Forms.Padding(0);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.CloseButton.Size = new System.Drawing.Size(22, 18);
@@ -196,16 +200,16 @@ namespace CompUI.Forms
             this.SortedByLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.SortedByLabel.Location = new System.Drawing.Point(1039, 54);
             this.SortedByLabel.Name = "SortedByLabel";
-            this.SortedByLabel.Size = new System.Drawing.Size(80, 21);
+            this.SortedByLabel.Size = new System.Drawing.Size(77, 21);
             this.SortedByLabel.TabIndex = 37;
-            this.SortedByLabel.Text = "Sorted by:";
+            this.SortedByLabel.Text = "Sorted by";
             // 
             // SortedByValueLabel
             // 
             this.SortedByValueLabel.AutoSize = true;
             this.SortedByValueLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SortedByValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.SortedByValueLabel.Location = new System.Drawing.Point(1125, 54);
+            this.SortedByValueLabel.Location = new System.Drawing.Point(1113, 54);
             this.SortedByValueLabel.Name = "SortedByValueLabel";
             this.SortedByValueLabel.Size = new System.Drawing.Size(69, 21);
             this.SortedByValueLabel.TabIndex = 38;
@@ -216,7 +220,7 @@ namespace CompUI.Forms
             this.FilteredByValueLabel.AutoSize = true;
             this.FilteredByValueLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FilteredByValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.FilteredByValueLabel.Location = new System.Drawing.Point(927, 54);
+            this.FilteredByValueLabel.Location = new System.Drawing.Point(915, 54);
             this.FilteredByValueLabel.Name = "FilteredByValueLabel";
             this.FilteredByValueLabel.Size = new System.Drawing.Size(69, 21);
             this.FilteredByValueLabel.TabIndex = 40;
@@ -229,9 +233,9 @@ namespace CompUI.Forms
             this.FilteredByLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.FilteredByLabel.Location = new System.Drawing.Point(835, 54);
             this.FilteredByLabel.Name = "FilteredByLabel";
-            this.FilteredByLabel.Size = new System.Drawing.Size(86, 21);
+            this.FilteredByLabel.Size = new System.Drawing.Size(83, 21);
             this.FilteredByLabel.TabIndex = 39;
-            this.FilteredByLabel.Text = "Filtered by:";
+            this.FilteredByLabel.Text = "Filtered by";
             // 
             // VehicleFlowPanelHeader
             // 

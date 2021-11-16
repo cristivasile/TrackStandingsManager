@@ -66,7 +66,7 @@ namespace CompUI
             this.TopBarPanel.Location = new System.Drawing.Point(0, 0);
             this.TopBarPanel.Margin = new System.Windows.Forms.Padding(0);
             this.TopBarPanel.Name = "TopBarPanel";
-            this.TopBarPanel.Size = new System.Drawing.Size(852, 25);
+            this.TopBarPanel.Size = new System.Drawing.Size(838, 25);
             this.TopBarPanel.TabIndex = 35;
             this.TopBarPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VehicleAddForm_MouseDown);
             // 
@@ -144,7 +144,7 @@ namespace CompUI
             this.AbortButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AbortButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AbortButton.ForeColor = System.Drawing.Color.SteelBlue;
-            this.AbortButton.Location = new System.Drawing.Point(693, 305);
+            this.AbortButton.Location = new System.Drawing.Point(12, 305);
             this.AbortButton.Name = "AbortButton";
             this.AbortButton.Size = new System.Drawing.Size(125, 40);
             this.AbortButton.TabIndex = 44;
@@ -160,7 +160,7 @@ namespace CompUI
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SaveButton.ForeColor = System.Drawing.Color.SteelBlue;
-            this.SaveButton.Location = new System.Drawing.Point(12, 305);
+            this.SaveButton.Location = new System.Drawing.Point(693, 305);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(125, 40);
             this.SaveButton.TabIndex = 43;
@@ -375,6 +375,7 @@ namespace CompUI
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "VehicleUpdateForm";
             this.Text = "VehicleUpdateForm";
+            this.Load += new System.EventHandler(this.VehicleUpdateForm_Load);
             this.TopBarPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.VehiclePicture)).EndInit();
             this.ResumeLayout(false);

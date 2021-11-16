@@ -13,6 +13,7 @@ namespace CompUI.Forms
 {
     public partial class VehicleManagerForm : Form
     {
+        //TODO - make edit and delete buttons less ugly
         /// <summary>
         /// selected sort type of form. 1 = By names, 2 = By avg position
         /// </summary>
@@ -37,7 +38,10 @@ namespace CompUI.Forms
         /// Column divide = 5 => 5 equal columns.
         /// </summary>
         private readonly int LargeColumnDivide = 7;
-
+        /// <summary>
+        /// Used in form filtering
+        /// </summary>
+        private HashSet<string> FilterResult;
         public VehicleManagerForm()
         {
             InitializeComponent();
@@ -116,6 +120,7 @@ namespace CompUI.Forms
         private void LoadVehiclePanel(int SortType, int FilterType = 0)
         {
             List<VehicleModel> Vehicles = GlobalData.Vehicles;
+            List<VehicleModel> FilteredVehicles;
             FlowLayoutPanel VehiclesPanel = this.VehicleFlowPanel;
             Image ErrorImage = Properties.Resources.ErrorImage;
             Padding NoPadding = new (0);
@@ -132,7 +137,6 @@ namespace CompUI.Forms
             VehiclesPanel.Controls.Clear();
             VehiclesPanel.AutoScroll = false;
 
-            //TODO - add filter options
             if (FilterType == 0)
             {
                 this.FilteredByLabel.Hide();
@@ -143,13 +147,27 @@ namespace CompUI.Forms
             {
                 this.FilteredByLabel.Show();
                 this.FilteredByValueLabel.Show();
-                this.FilteredByValueLabel.Text = "nothing";
+                this.FilteredByValueLabel.Text = "brand";
+
+                FilteredVehicles = new();
+                foreach (VehicleModel vehicle in Vehicles)
+                    if (FilterResult.Contains(vehicle.Brand))
+                        FilteredVehicles.Add(vehicle);
+
+                Vehicles = FilteredVehicles;
             }
             else
             {
                 this.FilteredByLabel.Show();
                 this.FilteredByValueLabel.Show();
-                this.FilteredByValueLabel.Text = "nothing";
+                this.FilteredByValueLabel.Text = "category";
+
+                FilteredVehicles = new();
+                foreach (VehicleModel vehicle in Vehicles)
+                    if (FilterResult.Contains(vehicle.Category))
+                        FilteredVehicles.Add(vehicle);
+
+                Vehicles = FilteredVehicles;
             }
             //sort by name
             if(SortType == 1)
@@ -429,6 +447,24 @@ namespace CompUI.Forms
                 ReleaseCapture();
                 _ = SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        private void BrandToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            Program.FilterFormInstance = new(0, 0);
+            Program.FilterFormInstance.Show();
+            FilterResult = Program.FilterFormInstance.Result;
+            FilterType = 1;
+        }
+
+        private void CategoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            Program.FilterFormInstance = new(0, 1);
+            Program.FilterFormInstance.Show();
+            FilterResult = Program.FilterFormInstance.Result;
+            FilterType = 2;
         }
         // ------ //
     }

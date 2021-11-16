@@ -63,7 +63,7 @@ namespace CompUI
             this.AbortButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AbortButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AbortButton.ForeColor = System.Drawing.Color.SteelBlue;
-            this.AbortButton.Location = new System.Drawing.Point(697, 307);
+            this.AbortButton.Location = new System.Drawing.Point(16, 307);
             this.AbortButton.Name = "AbortButton";
             this.AbortButton.Size = new System.Drawing.Size(125, 40);
             this.AbortButton.TabIndex = 28;
@@ -79,7 +79,7 @@ namespace CompUI
             this.InsertButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.InsertButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.InsertButton.ForeColor = System.Drawing.Color.SteelBlue;
-            this.InsertButton.Location = new System.Drawing.Point(16, 307);
+            this.InsertButton.Location = new System.Drawing.Point(697, 307);
             this.InsertButton.Name = "InsertButton";
             this.InsertButton.Size = new System.Drawing.Size(125, 40);
             this.InsertButton.TabIndex = 27;

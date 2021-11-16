@@ -7,10 +7,12 @@ namespace CompUI
 {
     static class Program
     {
+        //TODO - submit/update/etc on enter keypress
+        //TODO - organize code better
         /// <summary>
         /// The program can have only one instance of any form type
         /// </summary>
-        public static MainMenuForm MainMenuFormInstance {get; private set; }
+        public static MainMenuForm MainMenuFormInstance { get; private set; }
         public static VehicleAddForm VehicleAddFormInstance { get; set; }
         public static VehicleUpdateForm VehicleUpdateFormInstance { get; set; }
         public static VehicleManagerForm VehicleManagerFormInstance { get; set; }
@@ -19,6 +21,7 @@ namespace CompUI
         public static EntryInsertForm EntryInsertFormInstance { get; set; }
         public static NewCompetitionForm NewCompetitionFormInstance { get; set; }
         public static StandingsViewerForm StandingsViewerFormInstance { get; set; }
+        public static FilterForm FilterFormInstance { get; set; }
 
     /// <summary>
     ///  The main entry point for the application.
