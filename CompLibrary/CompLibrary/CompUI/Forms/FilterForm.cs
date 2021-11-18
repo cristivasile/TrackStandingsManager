@@ -1,4 +1,5 @@
 ﻿using CompLibrary;
+using CompUI.Forms.Templates;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace CompUI.Forms
 {
-    public partial class FilterForm : TemplateForm
+    public partial class FilterForm : TemplateFormNotResizable
     {
 
         private HashSet<string> FilteredElements = new();
@@ -91,5 +92,6 @@ namespace CompUI.Forms
             ParentForm.Enabled = true;
             ParentForm.BringToFront();
         }
+
     }
 }

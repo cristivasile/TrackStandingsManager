@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace CompUI
 {
-    public partial class MainMenuForm : TemplateForm
+    public partial class MainMenuForm : TemplateFormResizable
     {
         public MainMenuForm()
         {

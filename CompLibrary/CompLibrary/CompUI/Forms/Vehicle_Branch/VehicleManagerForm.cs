@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace CompUI.Forms
 {
-    public partial class VehicleManagerForm : TemplateForm
+    public partial class VehicleManagerForm : TemplateFormResizable
     {
         //TODO - make edit and delete buttons less ugly
         /// <summary>

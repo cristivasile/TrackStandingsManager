@@ -16,7 +16,10 @@
     <Compile Update="Forms\MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Templates\TemplateForm.cs">
+    <Compile Update="Forms\Templates\TemplateFormNotResizable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Templates\TemplateFormResizable.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\RandomChoiceForm.cs">

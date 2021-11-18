@@ -1,7 +1,7 @@
 ﻿
 namespace CompUI.Forms
 {
-    partial class TemplateForm
+    partial class TemplateFormResizable
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace CompUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateFormResizable));
             this.TopBarPanel = new System.Windows.Forms.Panel();
             this.MinimizeButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
@@ -57,7 +57,7 @@ namespace CompUI.Forms
             this.MinimizeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.MinimizeButton.FlatAppearance.BorderSize = 0;
             this.MinimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MinimizeButton.Location = new System.Drawing.Point(0, 0);
+            this.MinimizeButton.Location = new System.Drawing.Point(-30, -30);
             this.MinimizeButton.Margin = new System.Windows.Forms.Padding(0);
             this.MinimizeButton.Name = "MinimizeButton";
             this.MinimizeButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -74,7 +74,7 @@ namespace CompUI.Forms
             this.CloseButton.FlatAppearance.BorderSize = 0;
             this.CloseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightCoral;
             this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseButton.Location = new System.Drawing.Point(0, 0);
+            this.CloseButton.Location = new System.Drawing.Point(-30, 30);
             this.CloseButton.Margin = new System.Windows.Forms.Padding(0);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -87,6 +87,7 @@ namespace CompUI.Forms
             // 
             this.BottomBorderPanel.BackColor = System.Drawing.Color.SteelBlue;
             this.BottomBorderPanel.Location = new System.Drawing.Point(-2, -2);
+            this.BottomBorderPanel.Margin = new System.Windows.Forms.Padding(0);
             this.BottomBorderPanel.Name = "BottomBorderPanel";
             this.BottomBorderPanel.Size = new System.Drawing.Size(465, 2);
             this.BottomBorderPanel.TabIndex = 56;
@@ -114,14 +115,13 @@ namespace CompUI.Forms
             this.ResizeArrowPicture.BackColor = System.Drawing.Color.Transparent;
             this.ResizeArrowPicture.BackgroundImage = global::CompUI.Properties.Resources.ResizeArrow;
             this.ResizeArrowPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ResizeArrowPicture.Location = new System.Drawing.Point(782, 640);
-            this.ResizeArrowPicture.Margin = new System.Windows.Forms.Padding(0);
+            this.ResizeArrowPicture.Location = new System.Drawing.Point(384, 357);
             this.ResizeArrowPicture.Name = "ResizeArrowPicture";
             this.ResizeArrowPicture.Size = new System.Drawing.Size(15, 15);
             this.ResizeArrowPicture.TabIndex = 57;
             this.ResizeArrowPicture.TabStop = false;
             // 
-            // TemplateForm
+            // TemplateFormResizable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -135,7 +135,7 @@ namespace CompUI.Forms
             this.Controls.Add(this.MinimizeButton);
             this.Controls.Add(this.TopBarPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "TemplateForm";
+            this.Name = "TemplateFormResizable";
             this.Text = "FormTemplate";
             this.Resize += new System.EventHandler(this.TemplateForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.ResizeArrowPicture)).EndInit();

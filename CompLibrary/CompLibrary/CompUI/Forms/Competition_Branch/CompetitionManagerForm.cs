@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CompUI.Forms.Competition_Branch
 {
-    public partial class CompetitionManagerForm : TemplateForm
+    public partial class CompetitionManagerForm : TemplateFormResizable
     {
         public CompetitionManagerForm()
         {

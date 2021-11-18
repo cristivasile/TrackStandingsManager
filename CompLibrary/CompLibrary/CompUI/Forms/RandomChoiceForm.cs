@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CompUI.Forms
 {
-    public partial class RandomChoiceForm : TemplateForm
+    public partial class RandomChoiceForm : TemplateFormResizable
     {
         public RandomChoiceForm()
         {

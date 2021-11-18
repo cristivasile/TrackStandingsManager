@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CompUI.Forms
 {
-    public partial class TemplateForm : Form
+    public partial class TemplateFormResizable : Form
     {
-        public TemplateForm()
+        public TemplateFormResizable()
         {
             InitializeComponent();
         }

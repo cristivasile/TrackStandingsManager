@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CompUI.Forms.Competition_Branch
 {
-    public partial class EntryInsertForm : TemplateForm
+    public partial class EntryInsertForm : TemplateFormResizable
     {
         public EntryInsertForm()
         {

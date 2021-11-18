@@ -1,5 +1,6 @@
 ﻿using CompLibrary;
 using CompUI.Forms;
+using CompUI.Forms.Templates;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ using System.Windows.Forms;
 
 namespace CompUI
 {
-    public partial class VehicleUpdateForm : TemplateForm
+    public partial class VehicleUpdateForm : TemplateFormNotResizable
     {
         private VehicleModel StoredVehicle;
         private bool ImageChanged = false;

@@ -1,5 +1,6 @@
 ﻿using CompLibrary;
 using CompUI.Forms;
+using CompUI.Forms.Templates;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -7,7 +8,7 @@ using System.Windows.Forms;
 namespace CompUI
 {
 
-    public partial class VehicleAddForm : TemplateForm
+    public partial class VehicleAddForm : TemplateFormNotResizable
     {
         /// <summary>
         /// last image added by user on click

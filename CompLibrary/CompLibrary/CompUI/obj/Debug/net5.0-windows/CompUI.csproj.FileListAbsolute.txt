@@ -40,4 +40,5 @@ D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.pdb
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.genruntimeconfig.cache
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.Forms.FilterForm.resources
-D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.Forms.TemplateForm.resources
+D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.Forms.TemplateFormResizable.resources
+D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.Forms.Templates.TemplateFormNotResizable.resources
