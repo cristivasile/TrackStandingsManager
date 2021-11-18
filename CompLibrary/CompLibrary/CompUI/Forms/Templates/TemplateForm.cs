@@ -29,6 +29,7 @@ namespace CompUI.Forms
             this.BottomBorderPanel.Width = this.Width;
             this.CloseButton.Location = new Point(this.Width - 30, 4);
             this.MinimizeButton.Location = new Point(this.Width - 56, 4);
+            this.ResizeArrowPicture.Location = new Point(this.Width - 18, this.Height - 18);
         }
 
         //source https://stackoverflow.com/questions/1592876/make-a-borderless-form-movable
@@ -62,5 +63,44 @@ namespace CompUI.Forms
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        //Source = https://stackoverflow.com/questions/2575216/how-to-move-and-resize-a-form-without-a-border
+        private const int cGrip = 16;      // Grip size
+        private const int cCaption = 32;   // Caption bar height;
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x84)
+            {  // Trap WM_NCHITTEST
+                Point pos = new Point(m.LParam.ToInt32());
+                pos = this.PointToClient(pos);
+                if (pos.Y < cCaption)
+                {
+                    m.Result = (IntPtr)2;  // HTCAPTION
+                    return;
+                }
+                if (pos.X >= this.ClientSize.Width - cGrip && pos.Y >= this.ClientSize.Height - cGrip)
+                {
+                    m.Result = (IntPtr)17; // HTBOTTOMRIGHT
+                    return;
+                }
+            }
+            base.WndProc(ref m);
+        }
+
+        //------
+
+        private void TemplateForm_Resize(object sender, EventArgs e)
+        {
+            this.TopBarPanel.Width = this.Width;
+            this.LeftBorderPanel.Height = this.Height;
+            this.RightBorderPanel.Location = new Point(this.Width - 2, 0);
+            this.RightBorderPanel.Height = this.Height;
+            this.BottomBorderPanel.Location = new Point(0, this.Height - 2);
+            this.BottomBorderPanel.Width = this.Width;
+            this.CloseButton.Location = new Point(this.Width - 30, 4);
+            this.MinimizeButton.Location = new Point(this.Width - 56, 4);
+            this.ResizeArrowPicture.Location = new Point(this.Width - 18, this.Height - 18);
+        }
+
     }
 }

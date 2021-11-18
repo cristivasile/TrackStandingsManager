@@ -36,6 +36,8 @@ namespace CompUI.Forms
             this.BottomBorderPanel = new System.Windows.Forms.Panel();
             this.RightBorderPanel = new System.Windows.Forms.Panel();
             this.LeftBorderPanel = new System.Windows.Forms.Panel();
+            this.ResizeArrowPicture = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.ResizeArrowPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // TopBarPanel
@@ -107,12 +109,25 @@ namespace CompUI.Forms
             this.LeftBorderPanel.Size = new System.Drawing.Size(2, 592);
             this.LeftBorderPanel.TabIndex = 54;
             // 
-            // FormTemplate
+            // ResizeArrowPicture
+            // 
+            this.ResizeArrowPicture.BackColor = System.Drawing.Color.Transparent;
+            this.ResizeArrowPicture.BackgroundImage = global::CompUI.Properties.Resources.ResizeArrow;
+            this.ResizeArrowPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ResizeArrowPicture.Location = new System.Drawing.Point(782, 640);
+            this.ResizeArrowPicture.Margin = new System.Windows.Forms.Padding(0);
+            this.ResizeArrowPicture.Name = "ResizeArrowPicture";
+            this.ResizeArrowPicture.Size = new System.Drawing.Size(15, 15);
+            this.ResizeArrowPicture.TabIndex = 57;
+            this.ResizeArrowPicture.TabStop = false;
+            // 
+            // TemplateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 658);
+            this.Controls.Add(this.ResizeArrowPicture);
             this.Controls.Add(this.LeftBorderPanel);
             this.Controls.Add(this.BottomBorderPanel);
             this.Controls.Add(this.RightBorderPanel);
@@ -120,8 +135,10 @@ namespace CompUI.Forms
             this.Controls.Add(this.MinimizeButton);
             this.Controls.Add(this.TopBarPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormTemplate";
+            this.Name = "TemplateForm";
             this.Text = "FormTemplate";
+            this.Resize += new System.EventHandler(this.TemplateForm_Resize);
+            ((System.ComponentModel.ISupportInitialize)(this.ResizeArrowPicture)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -134,5 +151,6 @@ namespace CompUI.Forms
         private System.Windows.Forms.Panel BottomBorderPanel;
         private System.Windows.Forms.Panel RightBorderPanel;
         private System.Windows.Forms.Panel LeftBorderPanel;
+        private System.Windows.Forms.PictureBox ResizeArrowPicture;
     }
 }
