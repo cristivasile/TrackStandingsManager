@@ -10,30 +10,42 @@ using System.Windows.Forms;
 
 namespace CompUI.Forms.Competition_Branch
 {
-    public partial class CompetitionManagerForm : Form
+    public partial class CompetitionManagerForm : TemplateForm
     {
         public CompetitionManagerForm()
         {
             InitializeComponent();
+            InitializeBorder();
         }
 
-        private void CompetitionManagerForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void SortTypeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StandingsViewerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Program.MainMenuFormInstance.Show();
+            Program.MainMenuFormInstance.BringToFront();
         }
 
-        private void AddCompetitionButton_Click(object sender, EventArgs e)
+        private void AddEntryButton_Click(object sender, EventArgs e)
         {
-            Program.NewCompetitionFormInstance = new();
+            Program.EntryInsertFormInstance = new();
+            Program.EntryInsertFormInstance.Show();
+            this.Enabled = false;
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            Program.NewCompetitionFormInstance = new(this);
             Program.NewCompetitionFormInstance.Show();
             this.Enabled = false;
         }
 
-        private void SeeStandingsButton_Click(object sender, EventArgs e)
+        private void ReloadForm()
         {
-            Program.StandingsViewerFormInstance = new();
-            Program.StandingsViewerFormInstance.Show();
-            this.Hide();
+            //TODO - implement this
         }
     }
 }

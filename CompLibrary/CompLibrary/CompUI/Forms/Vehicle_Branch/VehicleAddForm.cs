@@ -7,16 +7,19 @@ using System.Windows.Forms;
 namespace CompUI
 {
 
-    public partial class VehicleAddForm : Form
+    public partial class VehicleAddForm : TemplateForm
     {
         /// <summary>
         /// last image added by user on click
         /// </summary>
         private Image lastImageInserted;
+        private new Form ParentForm;
 
-        public VehicleAddForm()
+        public VehicleAddForm(Form sender)
         {
+            ParentForm = sender;
             InitializeComponent();
+            InitializeBorder();
             CategoryComboBox.DataSource = GlobalData.Categories;
         }
 
@@ -73,8 +76,9 @@ namespace CompUI
                 VehiclePicture.MouseHover += VehiclePicture_MouseHover;
                 VehiclePicture.MouseLeave += VehiclePicture_MouseLeave;
 
-                //Loads new vehicle to parent list
-                Program.VehicleManagerFormInstance.ReloadForm();
+
+                if(ParentForm == Program.VehicleManagerFormInstance)
+                    Program.VehicleManagerFormInstance.ReloadForm();
             }
         }
 
@@ -202,19 +206,13 @@ namespace CompUI
 
         private void VehicleAddForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Program.VehicleManagerFormInstance.Enabled = true;
+            ParentForm.Enabled = true;
+            ParentForm.BringToFront();
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
-            Program.VehicleManagerFormInstance.Enabled = true;
-            Program.VehicleManagerFormInstance.BringToFront();
-        }
-
-        private void MinimizeButton_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
         }
 
         private void MiddleDividePanel_Paint(object sender, PaintEventArgs e)
@@ -226,28 +224,6 @@ namespace CompUI
         {
 
         }
-
-
-        //source https://stackoverflow.com/questions/1592876/make-a-borderless-form-movable
-        // ------ //
-
-        private const int WM_NCLBUTTONDOWN = 0xA1;
-        private const int HT_CAPTION = 0x2;
-
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        private static extern bool ReleaseCapture();
-
-        private void VehicleAddForm_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                _ = SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-        // ------ //
 
     }
 }

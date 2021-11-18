@@ -20,7 +20,6 @@ namespace CompUI
         public static CompetitionManagerForm CompetitionManagerFormInstance { get; set; }
         public static EntryInsertForm EntryInsertFormInstance { get; set; }
         public static NewCompetitionForm NewCompetitionFormInstance { get; set; }
-        public static StandingsViewerForm StandingsViewerFormInstance { get; set; }
         public static FilterForm FilterFormInstance { get; set; }
 
     /// <summary>
@@ -43,6 +42,6 @@ namespace CompUI
             MainMenuFormInstance = new MainMenuForm();
             Application.Run(MainMenuFormInstance);
         }
-        //TODO - change icon of all forms
+        //TODO - change icon and names of all forms
     }
 }

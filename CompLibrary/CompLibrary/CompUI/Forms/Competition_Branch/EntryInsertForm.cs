@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace CompUI.Forms.Competition_Branch
 {
-    public partial class EntryInsertForm : Form
+    public partial class EntryInsertForm : TemplateForm
     {
         public EntryInsertForm()
         {
             InitializeComponent();
+            InitializeBorder();
         }
 
         private void BrandTextBox_TextChanged(object sender, EventArgs e)
@@ -24,7 +25,8 @@ namespace CompUI.Forms.Competition_Branch
 
         private void EntryInsertForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Program.StandingsViewerFormInstance.Enabled = true;
+            Program.CompetitionManagerFormInstance.Enabled = true;
+            Program.CompetitionManagerFormInstance.BringToFront();
         }
 
         private void AbortButton_Click(object sender, EventArgs e)

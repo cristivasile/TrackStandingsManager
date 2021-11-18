@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompUI.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,12 @@ using System.Windows.Forms;
 
 namespace CompUI
 {
-    public partial class MainMenuForm : Form
+    public partial class MainMenuForm : TemplateForm
     {
         public MainMenuForm()
         {
             InitializeComponent();
+            InitializeBorder();
         }
 
         private void VehicleButton_Click(object sender, EventArgs e)

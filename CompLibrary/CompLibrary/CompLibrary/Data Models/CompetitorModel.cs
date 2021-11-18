@@ -13,9 +13,9 @@ namespace CompLibrary
         /// </summary>
         public int Id { get; set; }
         /// <summary>
-        /// The vehicle that this competitor contains.
+        /// The id of the vehicle that this competitor contains.
         /// </summary>
-        public VehicleModel Vehicle { get; set; }
+        public int VehicleId { get; set; }
         /// <summary>
         /// The points of this competitor.
         /// </summary>

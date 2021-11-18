@@ -24,7 +24,6 @@ D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.Forms.Competition_Branch.CompetitionManagerForm.resources
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.Forms.Competition_Branch.EntryInsertForm.resources
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.Forms.Competition_Branch.NewCompetitionForm.resources
-D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.Forms.Competition_Branch.StandingsViewerForm.resources
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.MainMenuForm.resources
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.Forms.RandomChoiceForm.resources
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.VehicleAddForm.resources
@@ -41,3 +40,4 @@ D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.pdb
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.genruntimeconfig.cache
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.Forms.FilterForm.resources
+D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.Forms.TemplateForm.resources

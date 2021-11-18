@@ -10,13 +10,13 @@
     <Compile Update="Forms\Competition_Branch\NewCompetitionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Competition_Branch\StandingsViewerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Forms\FilterForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\MainMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Templates\TemplateForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\RandomChoiceForm.cs">
@@ -25,10 +25,10 @@
     <Compile Update="Forms\Vehicle_Branch\VehicleAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Vehicle_Branch\VehicleUpdateForm.cs">
+    <Compile Update="Forms\Vehicle_Branch\VehicleManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Vehicle_Branch\VehicleManagerForm.cs">
+    <Compile Update="Forms\Vehicle_Branch\VehicleUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

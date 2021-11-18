@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace CompUI.Forms
 {
-    public partial class VehicleManagerForm : Form
+    public partial class VehicleManagerForm : TemplateForm
     {
         //TODO - make edit and delete buttons less ugly
         /// <summary>
@@ -45,6 +45,7 @@ namespace CompUI.Forms
         public VehicleManagerForm()
         {
             InitializeComponent();
+            InitializeBorder();
             LoadVehicleHeaderPanel();
             LoadVehiclePanel(SortType, FilterType);
         }
@@ -337,18 +338,8 @@ namespace CompUI.Forms
 
         private void VehicleViewerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Program.VehicleManagerFormInstance.Show();
-        }
-
-        private void CloseButton_Click(object sender, EventArgs e)
-        {
             Program.MainMenuFormInstance.Show();
-            this.Close();
-        }
-
-        private void MinimizeButton_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
+            Program.MainMenuFormInstance.BringToFront();
         }
 
         private void ShowPicturesCheck_CheckChanged(object sender, EventArgs e)
@@ -370,7 +361,7 @@ namespace CompUI.Forms
         {
             int VehicleId = Convert.ToInt32(((Button)sender).Tag);
             this.Enabled = false;
-            Program.VehicleUpdateFormInstance = new(VehicleId);
+            Program.VehicleUpdateFormInstance = new(VehicleId, this);
             Program.VehicleUpdateFormInstance.Show();
         }
 
@@ -397,7 +388,7 @@ namespace CompUI.Forms
         private void InsertButton_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
-            Program.VehicleAddFormInstance = new();
+            Program.VehicleAddFormInstance = new(this);
             Program.VehicleAddFormInstance.Show();
         }
 
@@ -406,17 +397,6 @@ namespace CompUI.Forms
             LoadVehicleHeaderPanel();
             LoadVehiclePanel(SortType, FilterType);
         }
-
-        private void VehicleManagerForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SortByToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void NameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SortType = 1;
@@ -429,30 +409,10 @@ namespace CompUI.Forms
             ReloadForm();
         }
 
-        //source https://stackoverflow.com/questions/1592876/make-a-borderless-form-movable
-        // ------ //
-
-        private const int WM_NCLBUTTONDOWN = 0xA1;
-        private const int HT_CAPTION = 0x2;
-
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        private static extern bool ReleaseCapture();
-
-        private void VehicleViewerForm_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                _ = SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-
         private void BrandToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
-            Program.FilterFormInstance = new(0, 0);
+            Program.FilterFormInstance = new(0, this);
             Program.FilterFormInstance.Show();
             FilterResult = Program.FilterFormInstance.Result;
             FilterType = 1;
@@ -461,11 +421,17 @@ namespace CompUI.Forms
         private void CategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
-            Program.FilterFormInstance = new(0, 1);
+            Program.FilterFormInstance = new(1, this);
             Program.FilterFormInstance.Show();
             FilterResult = Program.FilterFormInstance.Result;
             FilterType = 2;
         }
-        // ------ //
+
+        private void ClearFiltersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FilterType = 0;
+            ReloadForm();
+        }
+
     }
 }

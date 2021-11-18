@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 namespace CompUI.Forms.Competition_Branch
 {
-    public partial class NewCompetitionForm : Form
+    public partial class NewCompetitionForm : TemplateForm
     {
-        public NewCompetitionForm()
+        private Form parent;
+        public NewCompetitionForm(Form sender)
         {
+            parent = sender;
             InitializeComponent();
+            InitializeBorder();
         }
 
         private void TitleLabel_Click(object sender, EventArgs e)
@@ -35,10 +38,13 @@ namespace CompUI.Forms.Competition_Branch
         private void NewCompetitionForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Program.CompetitionManagerFormInstance.Enabled = true;
+            Program.CompetitionManagerFormInstance.BringToFront();
         }
 
         private void AbortButton_Click(object sender, EventArgs e)
         {
+            parent.Enabled = true;
+            parent.BringToFront();
             this.Close();
         }
     }

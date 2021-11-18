@@ -1,4 +1,5 @@
 ﻿using CompLibrary;
+using CompUI.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,16 +13,19 @@ using System.Windows.Forms;
 
 namespace CompUI
 {
-    public partial class VehicleUpdateForm : Form
+    public partial class VehicleUpdateForm : TemplateForm
     {
         private VehicleModel StoredVehicle;
         private bool ImageChanged = false;
         private Dictionary<string, int> VehicleIds = new();
+        private new Form ParentForm;
 
-        public VehicleUpdateForm(int vehicleId)
+        public VehicleUpdateForm(int vehicleId, Form sender)
         {
             StoredVehicle = GetVehicleById(vehicleId);
+            ParentForm = sender;
             InitializeComponent();
+            InitializeBorder();
             InitializeVehicleIds();
             CategoryComboBox.DataSource = GlobalData.Categories;
             VehicleComboBox.DataSource = VehicleIds.Keys.OrderBy(x => x).ToList<String>();
@@ -154,7 +158,8 @@ namespace CompUI
                     VehicleIds[VehicleName] = StoredVehicle.Id;
                     VehicleComboBox.DataSource = VehicleIds.Keys.OrderBy(x => x).ToList<String>();
                     
-                    Program.VehicleManagerFormInstance.ReloadForm();
+                    if(ParentForm == Program.VehicleManagerFormInstance)
+                        Program.VehicleManagerFormInstance.ReloadForm();
                 }
 
                 else if (!VehicleChanged(UpdatedVehicle))
@@ -192,13 +197,6 @@ namespace CompUI
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
-            Program.VehicleManagerFormInstance.Enabled = true;
-            Program.VehicleManagerFormInstance.BringToFront();
-        }
-
-        private void MinimizeButton_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
         }
 
         private void DeleteVehicleButton_Click(object sender, EventArgs e)
@@ -226,7 +224,8 @@ namespace CompUI
                             LoadVehicle();
                             StoredVehicle = null;
                             Utilities.GenerateSuccess("Vehicle deleted!", MessagePanel);
-                            Program.VehicleManagerFormInstance.ReloadForm();
+                            if(ParentForm == Program.VehicleManagerFormInstance)
+                                Program.VehicleManagerFormInstance.ReloadForm();
                         }
                     }
                 }
@@ -236,29 +235,6 @@ namespace CompUI
                 Utilities.GenerateError("No vehicle to delete!", MessagePanel);
             }
         }
-
-        //source https://stackoverflow.com/questions/1592876/make-a-borderless-form-movable
-        // ------ //
-
-        private const int WM_NCLBUTTONDOWN = 0xA1;
-        private const int HT_CAPTION = 0x2;
-
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        private static extern bool ReleaseCapture();
-
-        private void VehicleAddForm_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                _ = SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-
-        // ------ //
-
         private void UndoChangesButton_Click(object sender, EventArgs e)
         {
             MessagePanel.Controls.Clear();
@@ -291,7 +267,7 @@ namespace CompUI
             LoadVehicle(CurrentVehicle);
         }
 
-        private VehicleModel GetVehicleById(int id)
+        private static VehicleModel GetVehicleById(int id)
         {
             VehicleModel SearchedVehicle = new();
 
@@ -320,6 +296,12 @@ namespace CompUI
         private void VehicleUpdateForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void VehicleUpdateForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ParentForm.Enabled = true;
+            ParentForm.BringToFront();
         }
     }
 }

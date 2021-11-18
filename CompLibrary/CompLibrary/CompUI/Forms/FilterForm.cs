@@ -11,23 +11,24 @@ using System.Windows.Forms;
 
 namespace CompUI.Forms
 {
-    public partial class FilterForm : Form
+    public partial class FilterForm : TemplateForm
     {
 
         private HashSet<string> FilteredElements = new();
         public HashSet<string> Result = new();
-        int filterin;
+        private new Form ParentForm;
 
 
         /// <param name="filterin"> - Filter location 0 = Vehicles, 1 = Competitions</param>
         /// <param name="filterby"> - Filter by 0 = Brand, 1 = Category</param>
-        public FilterForm(int filterin, int filterby)
+        public FilterForm(int filterby, Form sender)
         {
-            this.filterin = filterin;
+            ParentForm = sender;
 
             InitializeComponent();
+            InitializeBorder();
 
-            if (filterin == 0)
+            if (ParentForm == Program.VehicleManagerFormInstance)
             {
                 if (filterby == 0)
                     FilterLabel.Text = "Filtering by brand";
@@ -47,42 +48,7 @@ namespace CompUI.Forms
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
-            if (filterin == 0)
-            {
-                Program.VehicleManagerFormInstance.Enabled = true;
-                Program.VehicleManagerFormInstance.BringToFront();
-            }
         }
-
-
-        //source https://stackoverflow.com/questions/1592876/make-a-borderless-form-movable
-        // ------ //
-
-        private const int WM_NCLBUTTONDOWN = 0xA1;
-        private const int HT_CAPTION = 0x2;
-
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        private static extern bool ReleaseCapture();
-
-        private void FilterForm_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                _ = SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-
-        // ------ //
-
-
-        private void MinimizeButton_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
 
         private void SetAllCheckedListBox(bool checkState) {
             for (int i = 0; i < FilterCheckedListBox.Items.Count; i++)
@@ -101,6 +67,8 @@ namespace CompUI.Forms
         {
             if (FilterCheckedListBox.CheckedItems.Count == 0)
                 MessageBox.Show("You must choose at least one item!", "Error");
+            else if (FilterCheckedListBox.CheckedItems.Count == FilteredElements.Count)
+                MessageBox.Show("You need to uncheck at least one item!", "Error");
             else
             {
                 for (int i = 0; i < FilterCheckedListBox.Items.Count; i++)
@@ -108,7 +76,7 @@ namespace CompUI.Forms
                         Result.Add(FilterCheckedListBox.Items[i].ToString());
 
                 this.Close();
-                if (filterin == 0)
+                if (ParentForm == Program.VehicleManagerFormInstance)
                 {
                     Program.VehicleManagerFormInstance.Enabled = true;
                     Program.VehicleManagerFormInstance.BringToFront();
@@ -116,6 +84,12 @@ namespace CompUI.Forms
                 }
             }
 
+        }
+
+        private void FilterForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ParentForm.Enabled = true;
+            ParentForm.BringToFront();
         }
     }
 }

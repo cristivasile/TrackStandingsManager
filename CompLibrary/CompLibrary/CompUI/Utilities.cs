@@ -54,7 +54,9 @@ namespace CompUI
             newError.ForeColor = System.Drawing.Color.Red;
             parent.Controls.Add(newError);
             newError.Width = Convert.ToInt32(0.75 * parent.Width);
-            Task.Delay(3000).ContinueWith(x => ClearControls(parent)); 
+            // Delay.ContinueWith creates a new thread so ClearControls method needs to Invoke
+            List<Control> toRemove = new() { newError };
+            Task.Delay(3000).ContinueWith(x => ClearControls(parent, toRemove)); 
         }
 
         /// <summary>
@@ -71,18 +73,20 @@ namespace CompUI
             parent.Controls.Add(newSuccess);
             newSuccess.Width = Convert.ToInt32(0.95 * parent.Width);
             // Delay.ContinueWith creates a new thread so ClearControls method needs to Invoke
-            Task.Delay(3000).ContinueWith(x => ClearControls(parent));
+            List<Control> toRemove = new() { newSuccess };
+            Task.Delay(3000).ContinueWith(x => ClearControls(parent, toRemove));
         }
 
 
-        public static void ClearControls(Control panel) 
+        public static void ClearControls(Control panel, List<Control> toRemove) 
         {
             if (panel.InvokeRequired) {
-                Action clearPanel = delegate { ClearControls(panel); };
+                Action clearPanel = delegate { ClearControls(panel, toRemove); };
                 panel.Invoke(clearPanel);
                 return;
             }
-            panel.Controls.Clear();
+            foreach (Control remove in toRemove)
+                panel.Controls.Remove(remove);
         }
 
         //Source = https://stackoverflow.com/questions/1922040/how-to-resize-an-image-c-sharp
@@ -171,7 +175,7 @@ namespace CompUI
         {
             using (Image img = Image.FromFile(path))
             {
-                Bitmap bmp = new Bitmap(img);
+                Bitmap bmp = new (img);
                 return bmp;
             }
         }

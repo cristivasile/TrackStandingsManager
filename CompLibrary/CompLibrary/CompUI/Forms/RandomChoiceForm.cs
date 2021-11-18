@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace CompUI.Forms
 {
-    public partial class RandomChoiceForm : Form
+    public partial class RandomChoiceForm : TemplateForm
     {
         public RandomChoiceForm()
         {
             InitializeComponent();
+            InitializeBorder();
         }
 
         private void RandomChoiceForm_FormClosed(object sender, FormClosedEventArgs e)
