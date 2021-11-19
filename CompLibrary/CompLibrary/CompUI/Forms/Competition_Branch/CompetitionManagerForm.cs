@@ -38,8 +38,8 @@ namespace CompUI.Forms.Competition_Branch
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            Program.NewCompetitionFormInstance = new(this);
-            Program.NewCompetitionFormInstance.Show();
+            Program.CompetitionAddFormInstance = new();
+            Program.CompetitionAddFormInstance.Show();
             this.Enabled = false;
         }
 

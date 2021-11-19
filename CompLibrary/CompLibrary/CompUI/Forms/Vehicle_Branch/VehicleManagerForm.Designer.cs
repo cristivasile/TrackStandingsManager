@@ -142,7 +142,7 @@ namespace CompUI.Forms
             this.InsertButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.InsertButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.InsertButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.InsertButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.InsertButton.ForeColor = System.Drawing.Color.SteelBlue;
             this.InsertButton.Location = new System.Drawing.Point(1236, 50);
             this.InsertButton.Name = "InsertButton";
             this.InsertButton.Size = new System.Drawing.Size(108, 32);
@@ -172,7 +172,7 @@ namespace CompUI.Forms
             this.BrandToolStripMenuItem,
             this.CategoryToolStripMenuItem,
             this.clearFiltersToolStripMenuItem});
-            this.FilterByToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.FilterByToolStripMenuItem.ForeColor = System.Drawing.Color.SteelBlue;
             this.FilterByToolStripMenuItem.Name = "FilterByToolStripMenuItem";
             this.FilterByToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.FilterByToolStripMenuItem.Text = "Filter by";
@@ -206,7 +206,7 @@ namespace CompUI.Forms
             this.SortByToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AveragePositionToolStripMenuItem,
             this.NameToolStripMenuItem});
-            this.SortByToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.SortByToolStripMenuItem.ForeColor = System.Drawing.Color.SteelBlue;
             this.SortByToolStripMenuItem.Name = "SortByToolStripMenuItem";
             this.SortByToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.SortByToolStripMenuItem.Text = "Sort by";
@@ -229,7 +229,7 @@ namespace CompUI.Forms
             // 
             // ResetToolStripMenuItem
             // 
-            this.ResetToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ResetToolStripMenuItem.ForeColor = System.Drawing.Color.SteelBlue;
             this.ResetToolStripMenuItem.Name = "ResetToolStripMenuItem";
             this.ResetToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.ResetToolStripMenuItem.Text = "Reset";

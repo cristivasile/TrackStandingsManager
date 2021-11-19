@@ -118,7 +118,7 @@ namespace CompUI
             // CategoryComboBox
             // 
             this.CategoryComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.CategoryComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.CategoryComboBox.ForeColor = System.Drawing.Color.SteelBlue;
             this.CategoryComboBox.FormattingEnabled = true;
             this.CategoryComboBox.Location = new System.Drawing.Point(406, 237);
             this.CategoryComboBox.Name = "CategoryComboBox";
@@ -148,7 +148,7 @@ namespace CompUI
             // ModelTextBox
             // 
             this.ModelTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.ModelTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ModelTextBox.ForeColor = System.Drawing.Color.SteelBlue;
             this.ModelTextBox.Location = new System.Drawing.Point(406, 162);
             this.ModelTextBox.Name = "ModelTextBox";
             this.ModelTextBox.Size = new System.Drawing.Size(237, 35);
@@ -167,7 +167,7 @@ namespace CompUI
             // BrandTextBox
             // 
             this.BrandTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.BrandTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.BrandTextBox.ForeColor = System.Drawing.Color.SteelBlue;
             this.BrandTextBox.Location = new System.Drawing.Point(406, 94);
             this.BrandTextBox.Name = "BrandTextBox";
             this.BrandTextBox.Size = new System.Drawing.Size(237, 35);
@@ -245,7 +245,7 @@ namespace CompUI
             // VehicleComboBox
             // 
             this.VehicleComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.VehicleComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.VehicleComboBox.ForeColor = System.Drawing.Color.SteelBlue;
             this.VehicleComboBox.FormattingEnabled = true;
             this.VehicleComboBox.Location = new System.Drawing.Point(373, 33);
             this.VehicleComboBox.Name = "VehicleComboBox";

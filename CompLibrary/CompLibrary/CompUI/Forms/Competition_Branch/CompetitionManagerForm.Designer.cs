@@ -235,7 +235,7 @@ namespace CompUI.Forms.Competition_Branch
             this.AddEntryButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.AddEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddEntryButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AddEntryButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.AddEntryButton.ForeColor = System.Drawing.Color.SteelBlue;
             this.AddEntryButton.Location = new System.Drawing.Point(719, 124);
             this.AddEntryButton.Name = "AddEntryButton";
             this.AddEntryButton.Size = new System.Drawing.Size(89, 48);

@@ -82,7 +82,7 @@ namespace CompUI
             // CategoryComboBox
             // 
             this.CategoryComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.CategoryComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.CategoryComboBox.ForeColor = System.Drawing.Color.SteelBlue;
             this.CategoryComboBox.FormattingEnabled = true;
             this.CategoryComboBox.Location = new System.Drawing.Point(410, 239);
             this.CategoryComboBox.Name = "CategoryComboBox";
@@ -113,7 +113,7 @@ namespace CompUI
             // ModelTextBox
             // 
             this.ModelTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.ModelTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ModelTextBox.ForeColor = System.Drawing.Color.SteelBlue;
             this.ModelTextBox.Location = new System.Drawing.Point(410, 159);
             this.ModelTextBox.Name = "ModelTextBox";
             this.ModelTextBox.Size = new System.Drawing.Size(237, 35);
@@ -132,7 +132,7 @@ namespace CompUI
             // BrandTextBox
             // 
             this.BrandTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.BrandTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.BrandTextBox.ForeColor = System.Drawing.Color.SteelBlue;
             this.BrandTextBox.Location = new System.Drawing.Point(410, 79);
             this.BrandTextBox.Name = "BrandTextBox";
             this.BrandTextBox.Size = new System.Drawing.Size(237, 35);
@@ -233,10 +233,23 @@ namespace CompUI
             this.Controls.Add(this.BrandTextBox);
             this.Controls.Add(this.VehiclePicture);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "VehicleAddForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VehicleAddForm_FormClosed);
+            this.Controls.SetChildIndex(this.VehiclePicture, 0);
+            this.Controls.SetChildIndex(this.BrandTextBox, 0);
+            this.Controls.SetChildIndex(this.BrandLabel, 0);
+            this.Controls.SetChildIndex(this.ModelTextBox, 0);
+            this.Controls.SetChildIndex(this.ModelLabel, 0);
+            this.Controls.SetChildIndex(this.CategoryLabel, 0);
+            this.Controls.SetChildIndex(this.CategoryComboBox, 0);
+            this.Controls.SetChildIndex(this.InsertButton, 0);
+            this.Controls.SetChildIndex(this.AbortButton, 0);
+            this.Controls.SetChildIndex(this.TitleLabel, 0);
+            this.Controls.SetChildIndex(this.MessagePanel, 0);
+            this.Controls.SetChildIndex(this.RemoveCategoryButton, 0);
+            this.Controls.SetChildIndex(this.ImageInfoLabel, 0);
+            this.Controls.SetChildIndex(this.MiddleDividePanel, 0);
             ((System.ComponentModel.ISupportInitialize)(this.VehiclePicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

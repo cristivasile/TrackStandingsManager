@@ -73,11 +73,6 @@ namespace CompUI
                 //resets image frame
                 VehiclePicture.Image = null;
 
-                //resets hover effect
-                VehiclePicture.MouseHover += VehiclePicture_MouseHover;
-                VehiclePicture.MouseLeave += VehiclePicture_MouseLeave;
-
-
                 if(ParentForm == Program.VehicleManagerFormInstance)
                     Program.VehicleManagerFormInstance.ReloadForm();
             }
@@ -90,9 +85,6 @@ namespace CompUI
         private bool CheckData()
         {
             bool status = true;
-
-            // Deals with previous errors
-            MessagePanel.Controls.Clear();
 
             // Brand information check
             if(string.IsNullOrEmpty(BrandTextBox.Text)) 

@@ -9,8 +9,9 @@ namespace CompLibrary
     {
         private readonly string vehiclesFile = "vehicles.json";
         private readonly string categoriesFile = "categories.json";
+        private readonly string competitionsFile = "competitions.json";
         /// <summary>
-        /// Saves a new vehicle to JSON
+        /// Saves a new vehicle to JSON and vehicle list
         /// </summary>
         /// <param name="newVehicle">The vehicle information</param>
         /// <returns>The vehicle information + id</returns>
@@ -26,6 +27,8 @@ namespace CompLibrary
             {
                 newVehicle.Id = 0;
             }
+
+            //trim spaces from strings
             newVehicle.Brand = newVehicle.Brand.Trim();
             newVehicle.Model = newVehicle.Model.Trim();
             newVehicle.Category = newVehicle.Category.Trim();
@@ -33,6 +36,56 @@ namespace CompLibrary
             GlobalData.Vehicles.Add(newVehicle);
 
             vehiclesFile.GetFilePath().WriteToFile(GlobalData.Vehicles.GetJsonString());
+        }
+
+
+        /// <summary>
+        /// Saves category given as parameter to json and category list.
+        /// </summary>
+        /// <param name="newCategory">The category to be inserted</param>
+        public bool CreateCategory(string newCategory)
+        {
+
+            //category special formatting: first letter uppercase
+            newCategory = newCategory.FirstLetterUpper();
+
+            //search to see if the category already exists
+            foreach (string category in GlobalData.Categories)
+                //if it does, stop
+                if (category == newCategory)
+                    return false;
+
+            //otherwise, add it
+            GlobalData.Categories.Add(newCategory);
+            categoriesFile.GetFilePath().WriteToFile(GlobalData.Categories.GetJsonString());
+
+            return true;
+
+        }
+
+        /// <summary>
+        /// Saves competition given as parameter to json and competition list.
+        /// </summary>
+        public void CreateCompetition(CompetitionModel newCompetition)
+        {
+            //if competitions already exist in our list, use last known Id and increment it
+            if (GlobalData.Competitions.Count != 0)
+            {
+                newCompetition.Id = GlobalData.Vehicles[^1].Id + 1; // ^1 = last element
+            }
+            //otherwise, assign 0
+            else
+            {
+                newCompetition.Id = 0;
+            }
+
+            //trim spaces from strings
+            newCompetition.Name = newCompetition.Name.Trim();
+            newCompetition.Description = newCompetition.Description.Trim();
+
+            GlobalData.Competitions.Add(newCompetition);
+
+            competitionsFile.GetFilePath().WriteToFile(GlobalData.Competitions.GetJsonString());
         }
 
         /// <summary>
@@ -46,31 +99,6 @@ namespace CompLibrary
         }
 
         /// <summary>
-        /// Creates a new category and saves it to json.
-        /// </summary>
-        /// <param name="newCategory">The category to be inserted</param>
-        public bool CreateCategory(string newCategory)
-        {
-
-            //category special formatting: first letter uppercase
-            newCategory = newCategory.FirstLetterUpper();
-
-            //search to see if the category already exists
-            foreach(string category in GlobalData.Categories)
-            //if it does, stop
-                if(category == newCategory)
-                    return false;
-
-            //otherwise, add it
-            GlobalData.Categories.Add(newCategory);
-            categoriesFile.GetFilePath().WriteToFile(GlobalData.Categories.GetJsonString());
-
-            return true;
-
-            
-        }
-
-        /// <summary>
         /// Reads all categories from local json.
         /// </summary>
         /// <returns>List of all categories</returns>
@@ -78,6 +106,12 @@ namespace CompLibrary
         {
             categoriesFile.CreateFileIfNull(GlobalConfig.DefaultCategories);
             return categoriesFile.GetFilePath().ReadFromFile().DeserializeData<BindingList<String>>();
+        }
+
+        public List<CompetitionModel> ReadCompetitions()
+        {
+            competitionsFile.CreateFileIfNull();
+            return competitionsFile.GetFilePath().ReadFromFile().DeserializeData<List<CompetitionModel>>();
         }
 
         /// <summary>

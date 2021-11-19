@@ -19,8 +19,6 @@ namespace CompUI.Forms
         public HashSet<string> Result = new();
         private new Form ParentForm;
 
-
-        /// <param name="filterin"> - Filter location 0 = Vehicles, 1 = Competitions</param>
         /// <param name="filterby"> - Filter by 0 = Brand, 1 = Category</param>
         public FilterForm(int filterby, Form sender)
         {

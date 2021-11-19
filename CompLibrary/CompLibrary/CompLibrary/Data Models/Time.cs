@@ -9,17 +9,21 @@ namespace CompLibrary
     public class Time
     {
         /// <summary>
-        /// Milliseconds of the current Time structure.
+        /// Hours of the current Time.
+        /// </summary>
+        public int Hours { get; set; }
+        /// <summary>
+        /// Milliseconds of the current Time.
         /// </summary>
         public int Milliseconds { get; set; } = 0;
 
         /// <summary>
-        /// Seconds of the current Time structure.
+        /// Seconds of the current Time.
         /// </summary>
         public int Seconds { get; set; } = 0;
 
         /// <summary>
-        /// Minutes of the current Time structure.
+        /// Minutes of the current Time.
         /// </summary>
         public int Minutes { get; set; } = 0;
 
@@ -29,7 +33,7 @@ namespace CompLibrary
         /// <returns></returns>
         public double GetTimeInSeconds()
         {
-            return Convert.ToDouble(Minutes) * 60 + Convert.ToDouble(Seconds) + Convert.ToDouble(Milliseconds) / 1000;
+            return Convert.ToDouble(Hours) * 3600 + Convert.ToDouble(Minutes) * 60 + Convert.ToDouble(Seconds) + Convert.ToDouble(Milliseconds) / 1000;
         }
     }
 }

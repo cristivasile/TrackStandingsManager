@@ -37,11 +37,12 @@ namespace CompUI
             // 
             // VehicleButton
             // 
-            this.VehicleButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.VehicleButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.VehicleButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.VehicleButton.FlatAppearance.BorderSize = 0;
             this.VehicleButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.VehicleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.VehicleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.VehicleButton.ForeColor = System.Drawing.Color.SteelBlue;
             this.VehicleButton.Location = new System.Drawing.Point(55, 54);
             this.VehicleButton.Name = "VehicleButton";
             this.VehicleButton.Size = new System.Drawing.Size(230, 120);
@@ -53,11 +54,12 @@ namespace CompUI
             // GetRandomButton
             // 
             this.GetRandomButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.GetRandomButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.GetRandomButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.GetRandomButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.GetRandomButton.FlatAppearance.BorderSize = 0;
             this.GetRandomButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.GetRandomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GetRandomButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.GetRandomButton.ForeColor = System.Drawing.Color.SteelBlue;
             this.GetRandomButton.Location = new System.Drawing.Point(151, 248);
             this.GetRandomButton.Name = "GetRandomButton";
             this.GetRandomButton.Size = new System.Drawing.Size(337, 120);
@@ -69,11 +71,12 @@ namespace CompUI
             // CompetitionButton
             // 
             this.CompetitionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CompetitionButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.CompetitionButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.CompetitionButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.CompetitionButton.FlatAppearance.BorderSize = 0;
             this.CompetitionButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.CompetitionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CompetitionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.CompetitionButton.ForeColor = System.Drawing.Color.SteelBlue;
             this.CompetitionButton.Location = new System.Drawing.Point(354, 54);
             this.CompetitionButton.Name = "CompetitionButton";
             this.CompetitionButton.Size = new System.Drawing.Size(230, 120);
@@ -92,13 +95,15 @@ namespace CompUI
             this.Controls.Add(this.GetRandomButton);
             this.Controls.Add(this.VehicleButton);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.MaximumSize = new System.Drawing.Size(706, 512);
             this.MinimumSize = new System.Drawing.Size(609, 428);
             this.Name = "MainMenuForm";
             this.Text = "Main Menu";
+            this.Controls.SetChildIndex(this.VehicleButton, 0);
+            this.Controls.SetChildIndex(this.GetRandomButton, 0);
+            this.Controls.SetChildIndex(this.CompetitionButton, 0);
             this.ResumeLayout(false);
 
         }

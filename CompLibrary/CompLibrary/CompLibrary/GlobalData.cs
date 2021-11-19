@@ -14,6 +14,7 @@ namespace CompLibrary
         /// Vehicles stored locally.
         /// </summary>
         public static List<VehicleModel> Vehicles { get; private set; } = new List<VehicleModel>();
+        public static List<CompetitionModel> Competitions { get; private set; } = new List<CompetitionModel>();
 
         public static void InitializeLists()
         {
@@ -21,6 +22,7 @@ namespace CompLibrary
             {
                 GlobalData.Categories = storage.ReadCategories();
                 GlobalData.Vehicles = storage.ReadVehicles();
+                GlobalData.Competitions = storage.ReadCompetitions();
             }
         }
     }

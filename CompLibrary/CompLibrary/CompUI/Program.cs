@@ -19,7 +19,7 @@ namespace CompUI
         public static RandomChoiceForm RandomChoiceFormInstance { get; set; }
         public static CompetitionManagerForm CompetitionManagerFormInstance { get; set; }
         public static EntryInsertForm EntryInsertFormInstance { get; set; }
-        public static NewCompetitionForm NewCompetitionFormInstance { get; set; }
+        public static CompetitionAddForm CompetitionAddFormInstance { get; set; }
         public static FilterForm FilterFormInstance { get; set; }
 
     /// <summary>
