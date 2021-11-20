@@ -13,8 +13,8 @@ namespace CompLibrary
         /// <summary>
         /// Vehicles stored locally.
         /// </summary>
-        public static List<VehicleModel> Vehicles { get; private set; } = new List<VehicleModel>();
-        public static List<CompetitionModel> Competitions { get; private set; } = new List<CompetitionModel>();
+        public static List<VehicleModel> Vehicles { get; private set; } = new();
+        public static List<CompetitionModel> Competitions { get; private set; } = new();
 
         public static void InitializeLists()
         {

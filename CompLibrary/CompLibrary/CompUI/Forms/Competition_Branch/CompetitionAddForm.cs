@@ -105,7 +105,7 @@ namespace CompUI.Forms.Competition_Branch
         {
             if (CheckData())
             {
-                int PlacementType, OrderingType, TimingType;
+                int PlacementType, OrderingType, TimingType, NewId = -1;
                 if (PointsButton.Checked) {
                     PlacementType = 1;
                     TimingType = -1;
@@ -141,7 +141,7 @@ namespace CompUI.Forms.Competition_Branch
                 foreach (IDataConnection storage in GlobalConfig.Connections)
                 {
                     //add vehicle to json and list
-                    storage.CreateCompetition(NewCompetition);
+                    NewId = storage.CreateCompetition(NewCompetition);
                 }
 
                 //alerts the user that the insert is done
@@ -157,6 +157,7 @@ namespace CompUI.Forms.Competition_Branch
                 //resets image frame
                 CompetitionPicture.Image = null;
 
+                Program.CompetitionManagerFormInstance.ReloadCompetitions(NewId);
                 //TODO - Reload competition viewer with current competition
             }
         }

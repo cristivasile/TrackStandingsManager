@@ -40,12 +40,13 @@ namespace CompUI
 
         public static readonly Color FishBlue = Color.FromArgb(2, 74, 202);
         public static readonly Color BabyBlue = Color.FromArgb(228, 246, 255);
+
+
         /// <summary>
         /// Creates error label and appends it to a panel.
         /// </summary>
         /// <param name="error">Error message</param>
         /// <param name="parent">Panel to append to</param>
-
         public static void GenerateError(string error, FlowLayoutPanel parent)
         {
             Label newError = new();
@@ -77,7 +78,9 @@ namespace CompUI
             Task.Delay(3000).ContinueWith(x => ClearControls(parent, toRemove));
         }
 
-
+        /// <summary>
+        /// Removes certain control from panel. Used to delete error labels after a period of time.
+        /// </summary>
         public static void ClearControls(Control panel, List<Control> toRemove) 
         {
             if (panel.InvokeRequired) {
@@ -119,7 +122,11 @@ namespace CompUI
 
             return destImage;
         }
+        ///-------------------------------------------
 
+        /// <summary>
+        /// Makes an image 
+        /// </summary>
         public static void ResizeToFit(this PictureBox target)
         {
             //for maintaining aspect ratio;
@@ -171,6 +178,11 @@ namespace CompUI
             panel.Controls.Add(button);
         }
 
+        /// <summary>
+        /// Returns copy image loaded from disk. Used to close image files after load.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static Image GetCopyImage(string path)
         {
             using (Image img = Image.FromFile(path))
@@ -178,6 +190,32 @@ namespace CompUI
                 Bitmap bmp = new (img);
                 return bmp;
             }
+        }
+
+        /// <summary>
+        /// Filters digits from given string
+        /// </summary>
+        public static string FilterDigits(this string toFilter)
+        {
+            string FilteredString = "";
+
+            foreach (char character in toFilter)
+                if (char.IsDigit(character))
+                    FilteredString += character;
+
+            return FilteredString;
+        }
+
+        /// <summary>
+        /// Adds 0-es at the end of a string until the required length is achieved.
+        /// </summary>
+        /// <returns></returns>
+        public static string PadZeroes(this string toPad, int requiredLength)
+        {
+            while (toPad.Length != requiredLength)
+                toPad += '0';
+
+            return toPad;
         }
     }
 }

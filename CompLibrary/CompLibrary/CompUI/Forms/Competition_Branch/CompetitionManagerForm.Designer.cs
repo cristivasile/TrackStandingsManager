@@ -149,22 +149,24 @@ namespace CompUI.Forms.Competition_Branch
             // 
             // CompetitionSelectBox
             // 
+            this.CompetitionSelectBox.ForeColor = System.Drawing.Color.SteelBlue;
             this.CompetitionSelectBox.FormattingEnabled = true;
             this.CompetitionSelectBox.Location = new System.Drawing.Point(211, 31);
             this.CompetitionSelectBox.Name = "CompetitionSelectBox";
             this.CompetitionSelectBox.Size = new System.Drawing.Size(484, 38);
             this.CompetitionSelectBox.TabIndex = 31;
+            this.CompetitionSelectBox.SelectedIndexChanged += new System.EventHandler(this.CompetitionSelectBox_SelectedIndexChanged);
             // 
             // SortTypeLabel
             // 
             this.SortTypeLabel.AutoSize = true;
             this.SortTypeLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SortTypeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.SortTypeLabel.Location = new System.Drawing.Point(966, 112);
+            this.SortTypeLabel.Location = new System.Drawing.Point(950, 113);
             this.SortTypeLabel.Name = "SortTypeLabel";
-            this.SortTypeLabel.Size = new System.Drawing.Size(69, 25);
+            this.SortTypeLabel.Size = new System.Drawing.Size(89, 25);
             this.SortTypeLabel.TabIndex = 53;
-            this.SortTypeLabel.Text = "Sorted:";
+            this.SortTypeLabel.Text = "Sort type:";
             this.SortTypeLabel.Click += new System.EventHandler(this.SortTypeLabel_Click);
             // 
             // ScoreTypeLabel
@@ -172,17 +174,20 @@ namespace CompUI.Forms.Competition_Branch
             this.ScoreTypeLabel.AutoSize = true;
             this.ScoreTypeLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ScoreTypeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ScoreTypeLabel.Location = new System.Drawing.Point(966, 60);
+            this.ScoreTypeLabel.Location = new System.Drawing.Point(950, 60);
             this.ScoreTypeLabel.Name = "ScoreTypeLabel";
-            this.ScoreTypeLabel.Size = new System.Drawing.Size(100, 25);
+            this.ScoreTypeLabel.Size = new System.Drawing.Size(116, 25);
             this.ScoreTypeLabel.TabIndex = 51;
-            this.ScoreTypeLabel.Text = "Score type:";
+            this.ScoreTypeLabel.Text = "Scoring type:";
             // 
             // CompetitionPicture
             // 
+            this.CompetitionPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.CompetitionPicture.Location = new System.Drawing.Point(1157, 31);
+            this.CompetitionPicture.Margin = new System.Windows.Forms.Padding(0);
             this.CompetitionPicture.Name = "CompetitionPicture";
             this.CompetitionPicture.Size = new System.Drawing.Size(187, 141);
+            this.CompetitionPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.CompetitionPicture.TabIndex = 46;
             this.CompetitionPicture.TabStop = false;
             // 
@@ -200,9 +205,13 @@ namespace CompUI.Forms.Competition_Branch
             // 
             // DescriptionTextBox
             // 
+            this.DescriptionTextBox.BackColor = System.Drawing.Color.White;
+            this.DescriptionTextBox.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DescriptionTextBox.ForeColor = System.Drawing.Color.SteelBlue;
             this.DescriptionTextBox.Location = new System.Drawing.Point(16, 28);
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
+            this.DescriptionTextBox.ReadOnly = true;
             this.DescriptionTextBox.Size = new System.Drawing.Size(656, 58);
             this.DescriptionTextBox.TabIndex = 0;
             // 
@@ -211,7 +220,7 @@ namespace CompUI.Forms.Competition_Branch
             this.ScoreTypeOutputLabel.AutoSize = true;
             this.ScoreTypeOutputLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ScoreTypeOutputLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ScoreTypeOutputLabel.Location = new System.Drawing.Point(1072, 60);
+            this.ScoreTypeOutputLabel.Location = new System.Drawing.Point(1062, 60);
             this.ScoreTypeOutputLabel.Name = "ScoreTypeOutputLabel";
             this.ScoreTypeOutputLabel.Size = new System.Drawing.Size(64, 25);
             this.ScoreTypeOutputLabel.TabIndex = 56;
@@ -222,7 +231,7 @@ namespace CompUI.Forms.Competition_Branch
             this.SortedTypeOutputLabel.AutoSize = true;
             this.SortedTypeOutputLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SortedTypeOutputLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.SortedTypeOutputLabel.Location = new System.Drawing.Point(1072, 112);
+            this.SortedTypeOutputLabel.Location = new System.Drawing.Point(1036, 113);
             this.SortedTypeOutputLabel.Name = "SortedTypeOutputLabel";
             this.SortedTypeOutputLabel.Size = new System.Drawing.Size(64, 25);
             this.SortedTypeOutputLabel.TabIndex = 57;
@@ -271,7 +280,7 @@ namespace CompUI.Forms.Competition_Branch
             this.SearchButton.ForeColor = System.Drawing.Color.SteelBlue;
             this.SearchButton.Location = new System.Drawing.Point(719, 31);
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(89, 36);
+            this.SearchButton.Size = new System.Drawing.Size(89, 38);
             this.SearchButton.TabIndex = 61;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = false;
@@ -286,7 +295,7 @@ namespace CompUI.Forms.Competition_Branch
             this.AddButton.ForeColor = System.Drawing.Color.SteelBlue;
             this.AddButton.Location = new System.Drawing.Point(846, 31);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(89, 36);
+            this.AddButton.Size = new System.Drawing.Size(89, 38);
             this.AddButton.TabIndex = 62;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = false;

@@ -23,7 +23,7 @@ namespace CompLibrary
         public string Description { get; set; }
 
         /// <summary>
-        /// The placement type evalued.
+        /// The placement type used.
         /// </summary>
         /// <example>
         /// 0 = Timing, 1 = Points

@@ -19,14 +19,9 @@ namespace CompLibrary
         public int VehicleId { get; set; }
 
         /// <summary>
-        /// The points of this competitor.
+        /// The points or timing in seconds of this competitor.
         /// </summary>
-        public int Points { get; set; } = 0;
-
-        /// <summary>
-        /// The time this competitor achieved in seconds.
-        /// </summary>
-        public double TimeOnTrack { get; set; }
+        public double Score { get; set; } = 0;
 
         /// <summary>
         /// The author of an entry.

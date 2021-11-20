@@ -21,5 +21,24 @@ namespace CompLibrary
         {
             return $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\TrackStandingsManager";
         }
+
+
+        public static VehicleModel GetVehicleById(int Id)
+        {
+            foreach (VehicleModel vehicle in GlobalData.Vehicles)
+                if (vehicle.Id == Id)
+                    return vehicle;
+
+            return null;
+        }
+
+        public static CompetitionModel GetCompetitionById(int Id)
+        {
+            foreach (CompetitionModel competition in GlobalData.Competitions)
+                if (competition.Id == Id)
+                    return competition;
+            return null;
+        }
+
     }
 }

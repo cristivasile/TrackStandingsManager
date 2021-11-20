@@ -12,13 +12,12 @@ namespace CompLibrary
 
         void CreateVehicle(VehicleModel newVehicle);
         bool CreateCategory(string newCategory);
-        void CreateCompetition(CompetitionModel newCompetition);
+        int CreateCompetition(CompetitionModel newCompetition);
         List<VehicleModel> ReadVehicles();
         BindingList<string> ReadCategories();
         List<CompetitionModel> ReadCompetitions();
         bool RemoveCategory(string toBeDeleted);
         bool RemoveVehicle(int Id);
         bool UpdateVehicle(VehicleModel vehicle);
-        VehicleModel GetVehicleById(int Id);
     }
 }

@@ -34,6 +34,12 @@ namespace CompLibrary
         public string ImagePath { get; set; }
 
         /// <summary>
+        /// Key = competition ID, value = position in competition
+        /// Holds all competitions the vehicle is part in and currently held positions.
+        /// </summary>
+        public Dictionary<int, int> Positions = new();
+
+        /// <summary>
         /// Average position in all competitions this vehicle takes part in.
         /// </summary>
         public int AveragePosition = 100000;

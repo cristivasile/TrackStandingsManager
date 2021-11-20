@@ -53,7 +53,7 @@ namespace CompUI
                 if (vehicle.ImagePath != "")
                 {
                     this.VehiclePicture.Image = Utilities.GetCopyImage(vehicle.ImagePath);
-                    VehiclePicture.ResizeToFit();
+                    this.VehiclePicture.ResizeToFit();
                     this.ImageInfoLabel.Visible = false;
                 }
                 else
@@ -86,9 +86,6 @@ namespace CompUI
         private bool CheckData()
         {
             bool status = true;
-
-            // Deals with previous errors
-            MessagePanel.Controls.Clear();
 
             // Brand information check
             if (string.IsNullOrEmpty(BrandTextBox.Text))
@@ -272,10 +269,7 @@ namespace CompUI
         {
             VehicleModel SearchedVehicle = new();
 
-            foreach (IDataConnection storage in GlobalConfig.Connections)
-            {
-                SearchedVehicle = storage.GetVehicleById(id);
-            }
+            SearchedVehicle = FunctionLibrary.GetVehicleById(id);
 
             return SearchedVehicle;
         }
@@ -292,6 +286,8 @@ namespace CompUI
                 }
             //if at this point the function did not stop, vehicle was not found
             Utilities.GenerateError("Vehicle not found!", MessagePanel);
+
+            //TODO - Add functionality for partial matches.
         }
 
         private void VehicleUpdateForm_Load(object sender, EventArgs e)

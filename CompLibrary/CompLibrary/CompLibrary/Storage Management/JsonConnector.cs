@@ -66,12 +66,12 @@ namespace CompLibrary
         /// <summary>
         /// Saves competition given as parameter to json and competition list.
         /// </summary>
-        public void CreateCompetition(CompetitionModel newCompetition)
+        public int CreateCompetition(CompetitionModel newCompetition)
         {
             //if competitions already exist in our list, use last known Id and increment it
             if (GlobalData.Competitions.Count != 0)
             {
-                newCompetition.Id = GlobalData.Vehicles[^1].Id + 1; // ^1 = last element
+                newCompetition.Id = GlobalData.Competitions[^1].Id + 1; // ^1 = last element
             }
             //otherwise, assign 0
             else
@@ -86,6 +86,8 @@ namespace CompLibrary
             GlobalData.Competitions.Add(newCompetition);
 
             competitionsFile.GetFilePath().WriteToFile(GlobalData.Competitions.GetJsonString());
+
+            return newCompetition.Id;
         }
 
         /// <summary>
@@ -157,25 +159,16 @@ namespace CompLibrary
             return false;
         }
 
-        public VehicleModel GetVehicleById(int Id)
-        {
-            foreach(VehicleModel vehicle in GlobalData.Vehicles)
-                if (vehicle.Id == Id)
-                    return vehicle;
-
-            return null;
-        }
-
         public bool UpdateVehicle(VehicleModel updatedvehicle)
         {
 
             for (int i = 0; i < GlobalData.Vehicles.Count; i++)
                 if (GlobalData.Vehicles[i].Id == updatedvehicle.Id)
                 {
-                    updatedvehicle.Brand = updatedvehicle.Brand.Trim();
-                    updatedvehicle.Model = updatedvehicle.Model.Trim();
-                    updatedvehicle.Category = updatedvehicle.Category.Trim();
-                    GlobalData.Vehicles[i] = updatedvehicle;
+                    GlobalData.Vehicles[i].Brand = updatedvehicle.Brand.Trim();
+                    GlobalData.Vehicles[i].Model = updatedvehicle.Model.Trim();
+                    GlobalData.Vehicles[i].Category = updatedvehicle.Category.Trim();
+                    GlobalData.Vehicles[i].ImagePath = updatedvehicle.ImagePath;
                     vehiclesFile.GetFilePath().WriteToFile(GlobalData.Vehicles.GetJsonString());
                     return true;
                 }
