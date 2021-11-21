@@ -9,15 +9,11 @@ namespace CompLibrary
 {
     public interface IDataConnection
     {
-
-        void CreateVehicle(VehicleModel newVehicle);
-        bool CreateCategory(string newCategory);
-        int CreateCompetition(CompetitionModel newCompetition);
+        void WriteVehicles();
+        void WriteCategories();
+        void WriteCompetitions();
         List<VehicleModel> ReadVehicles();
         BindingList<string> ReadCategories();
         List<CompetitionModel> ReadCompetitions();
-        bool RemoveCategory(string toBeDeleted);
-        bool RemoveVehicle(int Id);
-        bool UpdateVehicle(VehicleModel vehicle);
     }
 }

@@ -14,8 +14,8 @@ namespace CompUI.Forms.Competition_Branch
 {
     public partial class EntryInsertForm : TemplateFormNotResizable
     {
-        CompetitionModel CurrentCompetition;
-        Dictionary<string, int> VehicleIds = new();
+        private CompetitionModel CurrentCompetition;
+        private Dictionary<string, int> VehicleIds = new();
         public EntryInsertForm(int CompetitionId)
         {
             this.CurrentCompetition = FunctionLibrary.GetCompetitionById(CompetitionId);

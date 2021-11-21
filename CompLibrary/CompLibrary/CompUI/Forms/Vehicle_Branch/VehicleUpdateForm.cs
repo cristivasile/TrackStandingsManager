@@ -1,4 +1,5 @@
 ﻿using CompLibrary;
+using CompLibrary.Storage_Management;
 using CompUI.Forms;
 using CompUI.Forms.Templates;
 using System;
@@ -146,8 +147,8 @@ namespace CompUI
                     VehicleName = StoredVehicle.Brand + " " + StoredVehicle.Model;
                     VehicleIds.Remove(VehicleName);
 
-                    foreach (IDataConnection connection in GlobalConfig.Connections)
-                        connection.UpdateVehicle(UpdatedVehicle);
+                    CRUD.UpdateVehicle(UpdatedVehicle);
+
                     Utilities.GenerateSuccess("Vehicle successfully updated!", MessagePanel);
 
                     //Add new name to list
@@ -209,23 +210,22 @@ namespace CompUI
                 if (dialogResult == DialogResult.Yes)
                 {
                     bool vehicleDeleted;
-                    foreach (IDataConnection connection in GlobalConfig.Connections)
+
+                    vehicleDeleted = CRUD.DeleteVehicle(VehicleId);
+                    if (!vehicleDeleted)
+                        Utilities.GenerateError("Vehicle does not exist!", MessagePanel);
+                    else
                     {
-                        vehicleDeleted = connection.RemoveVehicle(VehicleId);
-                        if (!vehicleDeleted)
-                            Utilities.GenerateError("Vehicle does not exist!", MessagePanel);
-                        else
-                        {
-                            VehicleName = StoredVehicle.Brand + " " + StoredVehicle.Model;
-                            VehicleIds.Remove(VehicleName);
-                            VehicleComboBox.DataSource = VehicleIds.Keys.OrderBy(x => x).ToList<String>();
-                            LoadVehicle();
-                            StoredVehicle = null;
-                            Utilities.GenerateSuccess("Vehicle deleted!", MessagePanel);
-                            if(ParentForm == Program.VehicleManagerFormInstance)
-                                Program.VehicleManagerFormInstance.ReloadForm();
-                        }
+                        VehicleName = StoredVehicle.Brand + " " + StoredVehicle.Model;
+                        VehicleIds.Remove(VehicleName);
+                        VehicleComboBox.DataSource = VehicleIds.Keys.OrderBy(x => x).ToList<String>();
+                        LoadVehicle();
+                        StoredVehicle = null;
+                        Utilities.GenerateSuccess("Vehicle deleted!", MessagePanel);
+                        if(ParentForm == Program.VehicleManagerFormInstance)
+                            Program.VehicleManagerFormInstance.ReloadForm();
                     }
+                    
                 }
             }
             else

@@ -1,4 +1,5 @@
 ﻿using CompLibrary;
+using CompLibrary.Storage_Management;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -373,14 +374,13 @@ namespace CompUI.Forms
             if (dialogResult == DialogResult.Yes)
             {
                 bool vehicleDeleted;
-                foreach (IDataConnection connection in GlobalConfig.Connections)
-                {
-                    vehicleDeleted = connection.RemoveVehicle(VehicleId);
-                    if (!vehicleDeleted)
-                        MessageBox.Show("This vehicle does not exist!", "Error");
-                    else
-                        LoadVehiclePanel(SortType, FilterType);
-                }
+
+                vehicleDeleted = CRUD.DeleteVehicle(VehicleId);
+                if (!vehicleDeleted)
+                    MessageBox.Show("This vehicle does not exist!", "Error");
+                else
+                    LoadVehiclePanel(SortType, FilterType);
+
 
             }
         }

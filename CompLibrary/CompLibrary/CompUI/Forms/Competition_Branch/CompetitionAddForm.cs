@@ -1,4 +1,5 @@
 ﻿using CompLibrary;
+using CompLibrary.Storage_Management;
 using CompUI.Forms.Templates;
 using System;
 using System.Collections.Generic;
@@ -137,12 +138,8 @@ namespace CompUI.Forms.Competition_Branch
                     );
 
 
-                //stores data in each storage object
-                foreach (IDataConnection storage in GlobalConfig.Connections)
-                {
-                    //add vehicle to json and list
-                    NewId = storage.CreateCompetition(NewCompetition);
-                }
+
+                NewId = CRUD.CreateCompetition(NewCompetition);
 
                 //alerts the user that the insert is done
                 Utilities.GenerateSuccess("Insert successful!", MessagePanel);

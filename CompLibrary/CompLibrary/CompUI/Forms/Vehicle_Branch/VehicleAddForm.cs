@@ -1,4 +1,5 @@
 ﻿using CompLibrary;
+using CompLibrary.Storage_Management;
 using CompUI.Forms;
 using CompUI.Forms.Templates;
 using System;
@@ -44,20 +45,16 @@ namespace CompUI
                     );
 
 
-                //stores data in each storage object
-                foreach (IDataConnection storage in GlobalConfig.Connections)
-                {
                     
-                    //check if category exists
-                    bool categoryAdded = storage.CreateCategory(CategoryComboBox.Text.Trim());
+                //check if category exists
+                bool categoryAdded = CRUD.CreateCategory(CategoryComboBox.Text.Trim());
 
-                    //if successful, display message
-                    if(categoryAdded)
-                    Utilities.GenerateSuccess("Category created!", MessagePanel);
+                //if successful, display message
+                if(categoryAdded)
+                Utilities.GenerateSuccess("Category created!", MessagePanel);
                     
-                    //add vehicle to json and list
-                    storage.CreateVehicle(newVehicle);
-                }
+                //add vehicle to json and list
+                CRUD.CreateVehicle(newVehicle);
 
                 //alerts the user that the insert is done
                 Utilities.GenerateSuccess("Insert successful!", MessagePanel);
@@ -132,11 +129,9 @@ namespace CompUI
                 DialogResult userChoice = MessageBox.Show("Are you sure you want to delete this category?\nNote: This will not remove it from existing vehicles.", "Category deletion", MessageBoxButtons.YesNo);
                 if(userChoice == DialogResult.Yes)
                 {
-                    bool wasDeleted = false;
-                    foreach (IDataConnection storage in GlobalConfig.Connections)
-                    {
-                         wasDeleted = storage.RemoveCategory(CategoryComboBox.Text);
-                    }
+                    bool wasDeleted;
+
+                    wasDeleted = CRUD.DeleteCategory(CategoryComboBox.Text);
 
                     MessagePanel.Controls.Clear();
                     if (wasDeleted)
