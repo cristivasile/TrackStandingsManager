@@ -11,15 +11,14 @@ namespace CompLibrary
 {
     public static class JsonConnectorProcessor
     {
+        public static readonly string AppDirectory = FunctionLibrary.GetAppDirectory();
+        public static readonly string JsonDirectory = $"{AppDirectory}\\jsonStorage";
+        public static readonly string BackupDirectory = $"{JsonDirectory}\\backup";
         /// <summary>
         /// returns file path of a .json file
         /// </summary>
         /// <param name="FileName"></param>
         /// <returns></returns>
-        public static string GetFilePath(this string FileName)
-
-        => $"{FunctionLibrary.GetAppDirectory()}\\JsonStorage\\{FileName}";
-
 
         /// <summary>
         /// Checks if required json app folders exist and creates them if needed
@@ -27,46 +26,47 @@ namespace CompLibrary
         public static void CreateJsonDirectories()
         {
             //checks if main app directory exists
-            if (!Directory.Exists(FunctionLibrary.GetAppDirectory()))
+            if (!Directory.Exists(AppDirectory))
             {
-                Directory.CreateDirectory(FunctionLibrary.GetAppDirectory());
+                Directory.CreateDirectory(AppDirectory);
             }
             //checks if json storage directory exists
-            if (!Directory.Exists($"{FunctionLibrary.GetAppDirectory()}\\jsonStorage"))
+            if (!Directory.Exists(JsonDirectory))
             {
-                Directory.CreateDirectory($"{FunctionLibrary.GetAppDirectory()}\\jsonStorage");
+                Directory.CreateDirectory(JsonDirectory);
+            }
+
+            if (!Directory.Exists(BackupDirectory))
+            {
+                Directory.CreateDirectory(BackupDirectory);
             }
         }
 
 
         /// <summary>
-        /// Creates Json file with specified name if it does not exist
+        /// Creates Json file at the specified path if it does not exist.
         /// </summary>
-        /// <param name="fileName">name of the file to check</param>
-        public static void CreateFileIfNull(this string fileName)
+        /// <param name="filePath">path of the file to check</param>
+        public static void CreateFileIfNull(this string filePath)
         {
-            string path = GetFilePath(fileName);
-
-            if (!File.Exists(path))
+            if (!File.Exists(filePath))
             {
-                File.WriteAllText(path, "[]");
+                File.WriteAllText(filePath, "[]");
             }
         }
 
         /// <summary>
-        /// Overload. Creates Json file with specified name if it does not exist and fills it with data
+        /// Overload. Creates Json file at the specified path if it does not exist and fills it with data given as parameter.
         /// </summary>
         /// <typeparam name="T">template for default data</typeparam>
-        /// <param name="fileName">name of the file to write to</param>
+        /// <param name="filePath">path of the file to write to</param>
         /// <param name="defaultValues">default data structure</param>
-        public static void CreateFileIfNull<T>(this string fileName, T defaultValues)
+        public static void CreateFileIfNull<T>(this string filePath, T defaultValues)
         {
-            string path = GetFilePath(fileName);
-
-            if (!File.Exists(path))
+            if (!File.Exists(filePath))
             {
                 string defaultText = JsonConvert.SerializeObject(defaultValues);
-                File.WriteAllText(path, defaultText);
+                File.WriteAllText(filePath, defaultText);
             }
         }
 

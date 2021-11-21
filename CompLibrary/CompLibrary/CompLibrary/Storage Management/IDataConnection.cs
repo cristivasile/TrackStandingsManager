@@ -15,5 +15,7 @@ namespace CompLibrary
         List<VehicleModel> ReadVehicles();
         BindingList<string> ReadCategories();
         List<CompetitionModel> ReadCompetitions();
+        void CreateBackup();
+        void RestoreBackup();
     }
 }

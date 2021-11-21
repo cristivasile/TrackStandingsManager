@@ -40,5 +40,20 @@ namespace CompLibrary
             return null;
         }
 
+        /// <summary>
+        /// Replaces any non-digit character with _
+        /// </summary>
+        public static string TimeFolderFormat(this string toFilter)
+        {
+            string resultString = "";
+
+            foreach (char character in toFilter)
+                if (char.IsDigit(character))
+                    resultString += character;
+                else
+                    resultString += '_';
+
+            return resultString;
+        }
     }
 }

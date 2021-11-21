@@ -1,7 +1,5 @@
 ﻿using CompLibrary.Image_management;
-using System;
 using System.Collections.Generic;
-
 
 namespace CompLibrary
 {
@@ -33,6 +31,21 @@ namespace CompLibrary
             //creates required folders
             DiskConnectorProcessor.CreateImageDirectories();
             ImageStorage = new DiskConnector();
+        }
+
+        /// <summary>
+        /// Creates a back-up of every storage solution.
+        /// </summary>
+        public static void CreateBackup()
+        {
+            foreach (IDataConnection storage in GlobalConfig.Connections)
+                storage.CreateBackup();
+        }
+
+        public static void RestoreBackup()
+        {
+            foreach (IDataConnection storage in GlobalConfig.Connections)
+                storage.RestoreBackup();
         }
 
         /// <summary>

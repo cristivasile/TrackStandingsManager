@@ -22,6 +22,11 @@ namespace CompUI
         public static CompetitionAddForm CompetitionAddFormInstance { get; set; }
         public static FilterForm FilterFormInstance { get; set; }
 
+        /// <summary>
+        /// Used for alerting the user that a read error was encountered.
+        /// </summary>
+        public static bool ReadErrorEncountered = false;
+
     /// <summary>
     ///  The main entry point for the application.
     /// </summary>
@@ -36,8 +41,21 @@ namespace CompUI
             CompLibrary.GlobalConfig.InitializeDataConnections(true);
             //Initializing image storage connection
             CompLibrary.GlobalConfig.InitializeImageConnections();
-            //Initializing List variables
-            CompLibrary.GlobalData.InitializeLists();
+
+            try
+            {
+                //Initializing List variables
+                CompLibrary.GlobalData.InitializeLists();
+            }
+            catch
+            {
+                CompLibrary.GlobalConfig.RestoreBackup();
+                ReadErrorEncountered = true;
+                CompLibrary.GlobalData.InitializeLists();
+            }
+            
+            //If the program got to this point a data back-up is created
+            CompLibrary.GlobalConfig.CreateBackup();
 
             MainMenuFormInstance = new MainMenuForm();
             Application.Run(MainMenuFormInstance);

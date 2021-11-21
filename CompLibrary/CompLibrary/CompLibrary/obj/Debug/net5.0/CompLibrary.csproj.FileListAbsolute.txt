@@ -21,4 +21,3 @@ D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\CompLibrary.dll
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\ref\CompLibrary.dll
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\CompLibrary.pdb
-D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompLibrary\obj\Debug\net5.0\CompLibrary.csproj.AssemblyReference.cache
