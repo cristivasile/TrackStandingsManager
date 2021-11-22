@@ -26,6 +26,18 @@ namespace CompLibrary
         /// <summary>
         /// The author of an entry.
         /// </summary>
-        public string Author { get; set; } = "Me";
+        public string Author { get; set; }
+        /// <summary>
+        /// Current position in the competition.
+        /// </summary>
+        public int Position = 0;
+
+        public CompetitorModel(int VehicleId, double Score, string Author)
+        {
+            this.VehicleId = VehicleId;
+            this.Score = Score;
+            this.Author = Author;
+        }
+
     }
 }

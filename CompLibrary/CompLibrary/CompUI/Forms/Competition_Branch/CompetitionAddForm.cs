@@ -155,7 +155,6 @@ namespace CompUI.Forms.Competition_Branch
                 CompetitionPicture.Image = null;
 
                 Program.CompetitionManagerFormInstance.ReloadCompetitions(NewId);
-                //TODO - Reload competition viewer with current competition
             }
         }
 

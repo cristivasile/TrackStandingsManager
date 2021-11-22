@@ -11,7 +11,7 @@ namespace CompLibrary
         /// <summary>
         /// Hours of the current Time.
         /// </summary>
-        public int Hours { get; set; }
+        public int Hours { get; set; } = 0;
         /// <summary>
         /// Milliseconds of the current Time.
         /// </summary>

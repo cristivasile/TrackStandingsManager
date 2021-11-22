@@ -269,7 +269,7 @@ namespace CompUI
         {
             VehicleModel SearchedVehicle = new();
 
-            SearchedVehicle = FunctionLibrary.GetVehicleById(id);
+            SearchedVehicle = CRUD.GetVehicleById(id);
 
             return SearchedVehicle;
         }

@@ -1,4 +1,5 @@
 ﻿using CompLibrary;
+using CompLibrary.Storage_Management;
 using CompUI.Forms.Templates;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace CompUI.Forms.Competition_Branch
         private Dictionary<string, int> VehicleIds = new();
         public EntryInsertForm(int CompetitionId)
         {
-            this.CurrentCompetition = FunctionLibrary.GetCompetitionById(CompetitionId);
+            this.CurrentCompetition = CRUD.GetCompetitionById(CompetitionId);
             InitializeComponent();
             InitializeBorder();
             InitializeVehicles();
@@ -40,11 +41,12 @@ namespace CompUI.Forms.Competition_Branch
                 TimeFormatLabel.Text = "HH:MM:SS.mmm";
         }
 
-        private void InitializeVehicles()
+        public void InitializeVehicles()
         {
             foreach (VehicleModel vehicle in GlobalData.Vehicles)
                 VehicleIds[vehicle.Brand + " " + vehicle.Model] = vehicle.Id;
 
+            VehicleComboBox.DataSource = VehicleIds.Keys.ToList<String>();
         }
 
         private void BrandTextBox_TextChanged(object sender, EventArgs e)
@@ -67,8 +69,66 @@ namespace CompUI.Forms.Competition_Branch
         {
             if (CheckData())
             {
+                double score = 0;
+
+                //if using point system
+                if (CurrentCompetition.PlacementType == 1)
+                    score = Double.Parse(ScoreTextBox.Text.Trim());
+                //if using timing system
+                else if (CurrentCompetition.PlacementType == 0) {
+
+                    int RequiredDigits = 0;
+
+                    //Time format SS.mmm
+                    if (CurrentCompetition.TimingType == 0)
+                        RequiredDigits = 5;
+                    //Time format MM:SS.mmm
+                    else if (CurrentCompetition.TimingType == 1)
+                        RequiredDigits = 7;
+                    //Time format HH:MM:SS.mmm
+                    else if (CurrentCompetition.TimingType == 2)
+                        RequiredDigits = 9;
+
+                    string TimeString = ScoreTextBox.Text.FilterDigits().PadZeroes(RequiredDigits);
+                    Time CompetitorTime = new();
+
+                    //Time format SS.mmm
+                    if (CurrentCompetition.TimingType == 0)
+                    {
+                        CompetitorTime.Seconds = Int32.Parse(TimeString.Substring(0, 2));
+                        CompetitorTime.Milliseconds = Int32.Parse(TimeString.Substring(2, 3));
+                    }
+                    //Time format MM:SS.mmm
+                    else if (CurrentCompetition.TimingType == 1)
+                    {
+                        CompetitorTime.Minutes = Int32.Parse(TimeString.Substring(0, 2));
+                        CompetitorTime.Seconds = Int32.Parse(TimeString.Substring(2, 2));
+                        CompetitorTime.Milliseconds = Int32.Parse(TimeString.Substring(4, 3));
+                    }
+                    //Time format HH:MM:SS.mmm
+                    else if (CurrentCompetition.TimingType == 2)
+                    {
+                        CompetitorTime.Hours = Int32.Parse(TimeString.Substring(0, 2));
+                        CompetitorTime.Minutes = Int32.Parse(TimeString.Substring(2, 2));
+                        CompetitorTime.Seconds = Int32.Parse(TimeString.Substring(4, 2));
+                        CompetitorTime.Milliseconds = Int32.Parse(TimeString.Substring(6, 3));
+                    }
+
+                    score = CompetitorTime.GetTimeInSeconds();
+                }
+
+
+                CompetitorModel NewCompetitor = new(
+                    VehicleIds[VehicleComboBox.Text],
+                    score,
+                    AuthorTextBox.Text
+                );
+
                 Utilities.GenerateSuccess("Success!", MessagePanel);
-                //TODO - actually add the competitor to the competition;
+                CompLibrary.Storage_Management.CRUD.CreateCompetitor(CurrentCompetition.Id, NewCompetitor);
+
+                AuthorTextBox.Text = "";
+                ScoreTextBox.Text = "";
             }
         }
 
@@ -76,6 +136,17 @@ namespace CompUI.Forms.Competition_Branch
         {
             int RequiredDigits = 0;
 
+            bool Found = false;
+            //search for vehicle name
+            foreach (string VehicleName in VehicleIds.Keys)
+                if (VehicleComboBox.Text.ToLower().Trim() == VehicleName.ToLower())
+                    Found = true;
+
+            if (!Found)
+            {
+                Utilities.GenerateError("Vehicle does not exist!", MessagePanel);
+                return false;
+            }
             // Scoring information check
             if (string.IsNullOrEmpty(ScoreTextBox.Text))
             {
@@ -93,8 +164,12 @@ namespace CompUI.Forms.Competition_Branch
             //if using point system
             if (CurrentCompetition.PlacementType == 1)
             {
-                //check if string contains only digits
-                if (CheckNumberOfDigits.Length < ScoreTextBox.Text.Trim().Length)
+                //check if string is a double number
+                try
+                {
+                    double score = double.Parse(CheckNumberOfDigits);
+                }
+                catch
                 {
                     Utilities.GenerateError("Score can contain only digits!", MessagePanel);
                     return false;
@@ -159,6 +234,79 @@ namespace CompUI.Forms.Competition_Branch
 
             }
             return true;
+        }
+
+        private void VehicleAddButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Program.VehicleAddFormInstance = new(this);
+            Program.VehicleAddFormInstance.Show();
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            foreach (String vehicleName in VehicleIds.Keys)
+                if (VehicleComboBox.Text.ToLower().Trim() == vehicleName.ToLower())
+                {
+                    VehicleModel SelectedVehicle = CRUD.GetVehicleById(VehicleIds[vehicleName]);
+                    LoadVehicle(SelectedVehicle);
+                    VehicleComboBox.Text = vehicleName;
+                    return;
+                }
+            //if at this point the function did not stop, vehicle was not found
+            Utilities.GenerateError("Vehicle not found!", MessagePanel);
+
+            //TODO - Add functionality for partial matches.
+        }
+
+        private void LoadVehicle(VehicleModel Vehicle)
+        {
+            if(Vehicle.ImagePath != "")
+            {
+                VehiclePicture.Show();
+                VehiclePicture.Image = Utilities.GetCopyImage(Vehicle.ImagePath);
+                VehiclePicture.ResizeToFit();
+            }
+            else
+            {
+                VehiclePicture.Hide();
+            }
+        }
+
+        private void VehicleComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            VehicleModel SelectedVehicle = CRUD.GetVehicleById(VehicleIds[VehicleComboBox.Text.Trim()]);
+            LoadVehicle(SelectedVehicle);
+        }
+
+        private void VehicleComboBox_LostFocus(object sender, EventArgs e)
+        {
+
+            //event fires twice, I have no idea why ¯\_(ツ)_/¯
+            MessagePanel.Controls.Clear();
+
+            bool Found = false;
+            string FoundVehicle = "";
+            //search for vehicle name
+            foreach (string VehicleName in VehicleIds.Keys)
+                if (VehicleComboBox.Text.ToLower().Trim() == VehicleName.ToLower())
+                {
+                    Found = true;
+                    FoundVehicle = VehicleName;
+                    VehicleComboBox.Text = FoundVehicle;
+                }
+
+            if (!Found)
+            {
+                Utilities.GenerateError("Vehicle does not exist!", MessagePanel);
+                this.ActiveControl = this.VehicleComboBox;
+            }
+            else
+            {
+                VehicleModel SelectedVehicle = CRUD.GetVehicleById(VehicleIds[FoundVehicle]);
+                LoadVehicle(SelectedVehicle);
+            }
+            
         }
     }
 }

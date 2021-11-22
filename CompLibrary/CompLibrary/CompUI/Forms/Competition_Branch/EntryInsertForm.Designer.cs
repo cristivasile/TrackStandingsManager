@@ -41,6 +41,10 @@ namespace CompUI.Forms.Competition_Branch
             this.AuthorLabel = new System.Windows.Forms.Label();
             this.AuthorTextBox = new System.Windows.Forms.TextBox();
             this.MessagePanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.VehiclePicture = new System.Windows.Forms.PictureBox();
+            this.VehicleAddButton = new System.Windows.Forms.Button();
+            this.SearchButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.VehiclePicture)).BeginInit();
             this.SuspendLayout();
             // 
             // TitleLabel
@@ -55,10 +59,11 @@ namespace CompUI.Forms.Competition_Branch
             // 
             // AbortButton
             // 
-            this.AbortButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.AbortButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.AbortButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.AbortButton.FlatAppearance.BorderSize = 0;
             this.AbortButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.AbortButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AbortButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AbortButton.ForeColor = System.Drawing.Color.SteelBlue;
             this.AbortButton.Location = new System.Drawing.Point(30, 284);
@@ -71,10 +76,11 @@ namespace CompUI.Forms.Competition_Branch
             // 
             // UpdateButton
             // 
-            this.UpdateButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.UpdateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.UpdateButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.UpdateButton.FlatAppearance.BorderSize = 0;
             this.UpdateButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.UpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpdateButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UpdateButton.ForeColor = System.Drawing.Color.SteelBlue;
             this.UpdateButton.Location = new System.Drawing.Point(598, 284);
@@ -136,6 +142,8 @@ namespace CompUI.Forms.Competition_Branch
             this.VehicleComboBox.Name = "VehicleComboBox";
             this.VehicleComboBox.Size = new System.Drawing.Size(237, 33);
             this.VehicleComboBox.TabIndex = 40;
+            this.VehicleComboBox.SelectedIndexChanged += new System.EventHandler(this.VehicleComboBox_SelectedIndexChanged);
+            this.VehicleComboBox.LostFocus += new System.EventHandler(this.VehicleComboBox_LostFocus);
             // 
             // TimeFormatLabel
             // 
@@ -178,12 +186,60 @@ namespace CompUI.Forms.Competition_Branch
             this.MessagePanel.Size = new System.Drawing.Size(409, 40);
             this.MessagePanel.TabIndex = 62;
             // 
+            // VehiclePicture
+            // 
+            this.VehiclePicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.VehiclePicture.Location = new System.Drawing.Point(585, 44);
+            this.VehiclePicture.Margin = new System.Windows.Forms.Padding(0);
+            this.VehiclePicture.Name = "VehiclePicture";
+            this.VehiclePicture.Size = new System.Drawing.Size(147, 115);
+            this.VehiclePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.VehiclePicture.TabIndex = 63;
+            this.VehiclePicture.TabStop = false;
+            // 
+            // VehicleAddButton
+            // 
+            this.VehicleAddButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.VehicleAddButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.VehicleAddButton.FlatAppearance.BorderSize = 0;
+            this.VehicleAddButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.VehicleAddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VehicleAddButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.VehicleAddButton.ForeColor = System.Drawing.Color.SteelBlue;
+            this.VehicleAddButton.Location = new System.Drawing.Point(505, 90);
+            this.VehicleAddButton.Name = "VehicleAddButton";
+            this.VehicleAddButton.Size = new System.Drawing.Size(59, 25);
+            this.VehicleAddButton.TabIndex = 64;
+            this.VehicleAddButton.Text = "New";
+            this.VehicleAddButton.UseVisualStyleBackColor = false;
+            this.VehicleAddButton.Click += new System.EventHandler(this.VehicleAddButton_Click);
+            // 
+            // SearchButton
+            // 
+            this.SearchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.SearchButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.SearchButton.FlatAppearance.BorderSize = 0;
+            this.SearchButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.SearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SearchButton.ForeColor = System.Drawing.Color.SteelBlue;
+            this.SearchButton.Location = new System.Drawing.Point(430, 90);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(59, 25);
+            this.SearchButton.TabIndex = 65;
+            this.SearchButton.Text = "Search";
+            this.SearchButton.UseVisualStyleBackColor = false;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
+            // 
             // EntryInsertForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(754, 355);
+            this.Controls.Add(this.SearchButton);
+            this.Controls.Add(this.VehicleAddButton);
+            this.Controls.Add(this.VehiclePicture);
             this.Controls.Add(this.MessagePanel);
             this.Controls.Add(this.AuthorTextBox);
             this.Controls.Add(this.AuthorLabel);
@@ -213,6 +269,10 @@ namespace CompUI.Forms.Competition_Branch
             this.Controls.SetChildIndex(this.AuthorLabel, 0);
             this.Controls.SetChildIndex(this.AuthorTextBox, 0);
             this.Controls.SetChildIndex(this.MessagePanel, 0);
+            this.Controls.SetChildIndex(this.VehiclePicture, 0);
+            this.Controls.SetChildIndex(this.VehicleAddButton, 0);
+            this.Controls.SetChildIndex(this.SearchButton, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.VehiclePicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,5 +292,8 @@ namespace CompUI.Forms.Competition_Branch
         private System.Windows.Forms.Label AuthorLabel;
         private System.Windows.Forms.TextBox AuthorTextBox;
         private System.Windows.Forms.FlowLayoutPanel MessagePanel;
+        private System.Windows.Forms.PictureBox VehiclePicture;
+        private System.Windows.Forms.Button VehicleAddButton;
+        private System.Windows.Forms.Button SearchButton;
     }
 }

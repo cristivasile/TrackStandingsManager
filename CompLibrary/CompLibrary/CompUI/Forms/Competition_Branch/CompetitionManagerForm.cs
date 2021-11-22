@@ -1,4 +1,5 @@
 ﻿using CompLibrary;
+using CompLibrary.Storage_Management;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -79,7 +80,7 @@ namespace CompUI.Forms.Competition_Branch
 
         private void CompetitionSelectBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CompetitionModel CurrentCompetition = FunctionLibrary.GetCompetitionById(CompetitionIds[CompetitionSelectBox.Text]);
+            CompetitionModel CurrentCompetition = CRUD.GetCompetitionById(CompetitionIds[CompetitionSelectBox.Text]);
             this.DescriptionTextBox.Text = CurrentCompetition.Description;
 
             if (CurrentCompetition.PlacementType == 0)

@@ -34,15 +34,13 @@ namespace CompLibrary
         public string ImagePath { get; set; }
 
         /// <summary>
-        /// Key = competition ID, value = position in competition
-        /// Holds all competitions the vehicle is part in and currently held positions.
+        /// Sum of all Positions in competitions that this vehicle takes part in.
         /// </summary>
-        public Dictionary<int, int> Positions = new();
-
+        public int SumPositions = 0;
         /// <summary>
-        /// Average position in all competitions this vehicle takes part in.
+        /// Number of competitions that this vehicle takes part in.
         /// </summary>
-        public int AveragePosition = 100000;
+        public int NrCompetitions = 0;
 
         public VehicleModel() {}
         public VehicleModel(string Brand, string Model, string Category, string ImagePath = "", int Id = -1)
@@ -62,7 +60,16 @@ namespace CompLibrary
             this.Model = ToCopy.Model;
             this.Category = ToCopy.Category;
             this.ImagePath = ToCopy.ImagePath;
-            this.AveragePosition = ToCopy.AveragePosition;
+            this.SumPositions = ToCopy.SumPositions;
+            this.NrCompetitions = ToCopy.NrCompetitions;
+        }
+
+        public double AveragePosition() {
+            if (NrCompetitions != 0)
+            {
+                return Convert.ToDouble(SumPositions) / Convert.ToDouble(NrCompetitions);
+            }
+            else return 100000000;
         }
 
     }

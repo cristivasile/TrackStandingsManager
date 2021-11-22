@@ -35,9 +35,7 @@ namespace CompUI.Forms
         /// Column divide = 5 => 5 equal columns.
         /// </summary>
         private readonly int SmallColumnDivide = 30;
-        /// <summary>
-        /// Column divide = 5 => 5 equal columns.
-        /// </summary>
+        private readonly int MediumColumnDivide = 15;
         private readonly int LargeColumnDivide = 7;
         /// <summary>
         /// Used in form filtering
@@ -60,6 +58,7 @@ namespace CompUI.Forms
             Label BrandLabel = new();
             Label ModelLabel = new();
             Label CategoryLabel = new();
+            Label AveragePositionLabel = new();
 
             //clear header of old children
             VehiclesHeader.Controls.Clear();
@@ -117,6 +116,23 @@ namespace CompUI.Forms
                 ContentAlignment.MiddleLeft
                 );
 
+            CategoryLabel.Text = "Category";
+            CategoryLabel.AddToPanel(
+                VehiclesHeader,
+                LargeColumnDivide,
+                Utilities.LargeTextBold,
+                TextColor,
+                ContentAlignment.MiddleLeft
+                );
+
+            AveragePositionLabel.Text = "Avg pos";
+            AveragePositionLabel.AddToPanel(
+                VehiclesHeader,
+                MediumColumnDivide,
+                Utilities.LargeTextBold,
+                TextColor,
+                ContentAlignment.MiddleCenter
+                );
         }
 
         private void LoadVehiclePanel(int SortType, int FilterType = 0)
@@ -130,6 +146,11 @@ namespace CompUI.Forms
             int ButtonSize;
             int MiddlePadding = 0;
             int CurrentIndex = 0;
+
+            //used for calculating positions when sorting by average position
+            int CurrentPosition = 0;
+            double LastScore = -1;
+            int toIncrement = 1;
 
             if (ShowPictures)
                 ButtonSize = LargeButtonSize;
@@ -179,7 +200,7 @@ namespace CompUI.Forms
             }
             else
             {
-                Vehicles = Vehicles.OrderBy(x => x.AveragePosition).ToList<VehicleModel>();
+                Vehicles = Vehicles.OrderBy(x => x.AveragePosition()).ToList<VehicleModel>();
                 this.SortedByValueLabel.Text = "avg position";
             }
 
@@ -190,6 +211,7 @@ namespace CompUI.Forms
                 Label BrandLabel = new();
                 Label ModelLabel = new();
                 Label CategoryLabel = new();
+                Label AveragePositionLabel = new();
                 Label EmptyPaddingLabel = new();
                 Button EditButton = new();
                 Button DeleteButton = new();
@@ -199,14 +221,25 @@ namespace CompUI.Forms
 
                 CurrentIndex++;
 
-                //If the panel is sorted by position, color first 3 rows differently.
-                if (SortType == 2 && CurrentIndex <= 3)
+                if(Vehicle.AveragePosition() != LastScore)
                 {
-                    if (CurrentIndex == 1)
+                    CurrentPosition += toIncrement;
+                    LastScore = Vehicle.AveragePosition();
+                    toIncrement = 1;
+                }
+                else
+                {
+                    toIncrement++;
+                }
+
+                //If the panel is sorted by position, color first 3 rows differently.
+                if (SortType == 2 && CurrentPosition <= 3)
+                {
+                    if (CurrentPosition == 1)
                         TextColor = Color.Gold;
-                    else if (CurrentIndex == 2)
+                    else if (CurrentPosition == 2)
                         TextColor = Color.Silver;
-                    else if (CurrentIndex == 3)
+                    else if (CurrentPosition == 3)
                         TextColor = Color.FromArgb(176, 141, 87);
                 }
 
@@ -235,7 +268,11 @@ namespace CompUI.Forms
                         NewVehiclePanel.Width -= Utilities.ScrollBarWidth;
                 }
 
-                PositionLabel.Text = Convert.ToString(CurrentIndex);
+                //check if we are sorting by name or position
+                if (SortType == 2)
+                    PositionLabel.Text = Convert.ToString(CurrentPosition);
+                else
+                    PositionLabel.Text = Convert.ToString(CurrentIndex);
 
                 PositionLabel.AddToPanel(
                 NewVehiclePanel,
@@ -299,7 +336,19 @@ namespace CompUI.Forms
                 ContentAlignment.MiddleLeft
                 );
 
+                //round position to 2 decimals
+                if (Vehicle.AveragePosition() < 1000000)
+                    AveragePositionLabel.Text = Convert.ToString(Math.Round(Vehicle.AveragePosition(), 2));
+                else
+                    AveragePositionLabel.Text = "None";
 
+                AveragePositionLabel.AddToPanel(
+                NewVehiclePanel,
+                MediumColumnDivide,
+                Utilities.LargeText,
+                TextColor,
+                ContentAlignment.MiddleCenter
+                );
                 //compute how much space is needed in the middle of the LayoutPanel
                 if (MiddlePadding == 0) {
                     MiddlePadding = NewVehiclePanel.Width;
@@ -307,7 +356,7 @@ namespace CompUI.Forms
                     foreach (Control control in NewVehiclePanel.Controls)
                         MiddlePadding -= control.Width;
 
-                    MiddlePadding -= 3 * ButtonSize;
+                    MiddlePadding -= Convert.ToInt32(3.5 * ButtonSize);
                 }
 
                 EmptyPaddingLabel.Width = MiddlePadding;

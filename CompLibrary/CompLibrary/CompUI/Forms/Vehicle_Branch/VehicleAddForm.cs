@@ -195,6 +195,11 @@ namespace CompUI
         private void VehicleAddForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             ParentForm.Enabled = true;
+            if (ParentForm == Program.EntryInsertFormInstance)
+            {
+                Program.EntryInsertFormInstance.Show();
+                Program.EntryInsertFormInstance.InitializeVehicles();
+            }
             ParentForm.BringToFront();
         }
 

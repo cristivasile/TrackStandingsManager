@@ -10,7 +10,8 @@ namespace CompLibrary.Storage_Management
 {
     public static class CRUD
     {
-
+        //TODO - delete entry from competition and update vehicles
+        //TODO - delete competition and update vehicles
         /// <summary>
         /// Creates a new vehicle and writes it to all storage solutions.
         /// </summary>
@@ -45,6 +46,7 @@ namespace CompLibrary.Storage_Management
         /// Creates a new category and writes it to all storage solutions.
         /// </summary>
         /// <param name="newCategory">The category to be inserted</param>
+        /// <returns> True if category was inserted, false if it already exists.</returns>
         public static bool CreateCategory(string newCategory)
         {
 
@@ -70,6 +72,7 @@ namespace CompLibrary.Storage_Management
         /// <summary>
         /// Creates a new category and saves it to all storage solutions.
         /// </summary>
+        /// <returns> New competition id. </returns>
         public static int CreateCompetition(CompetitionModel newCompetition)
         {
             //if competitions already exist in our list, use last known Id and increment it
@@ -93,6 +96,86 @@ namespace CompLibrary.Storage_Management
                 storage.WriteCompetitions();
 
             return newCompetition.Id;
+        }
+
+        /// <summary>
+        /// Creates a new competitor in a given competition. The competitor list is sorted. 
+        /// </summary>
+        /// <param name="CompetitionId"></param>
+        /// <param name="NewCompetitor"></param>
+        public static void CreateCompetitor(int CompetitionId, CompetitorModel NewCompetitor)
+        {
+            Dictionary<int, int> VehicleIdsToIndexes = new();
+
+            //Map id's to current index in vehicle list
+            for(int i = 0; i < GlobalData.Vehicles.Count; i++)
+                VehicleIdsToIndexes[GlobalData.Vehicles[i].Id] = i; 
+
+            foreach(CompetitionModel competition in GlobalData.Competitions)
+                if(competition.Id == CompetitionId)
+                {
+                    int Id = 0;
+                    //generate Id
+                    foreach (CompetitorModel competitor in competition.Competitors)
+                        if (Id <= competitor.Id)
+                            Id = competitor.Id + 1;
+
+                    NewCompetitor.Id = Id;
+
+                    int Position = 1;
+                    int Index = 0;
+                    //check sort type
+
+                    //ascending
+                    if(competition.OrderingType == 0)
+                        //compute position and Inseration index
+                        while(Index < competition.Competitors.Count 
+                        && competition.Competitors[Index].Score <= NewCompetitor.Score)
+                        {
+                            //the new competitor is behind
+                            if (competition.Competitors[Index].Score < NewCompetitor.Score)
+                                Position = competition.Competitors[Index].Position + 1;
+                            //competitors have same position
+                            else if (competition.Competitors[Index].Score == NewCompetitor.Score)
+                                Position = competition.Competitors[Index].Position;
+                            Index++;
+                        }
+                    else
+                        //same code as above, except sort type is descending
+                        while (Index < competition.Competitors.Count
+                        && competition.Competitors[Index].Score >= NewCompetitor.Score)
+                        {
+                            //the new competitor is behind
+                            if (competition.Competitors[Index].Score > NewCompetitor.Score)
+                                Position = competition.Competitors[Index].Position + 1;
+                            //competitors have same position
+                            else if (competition.Competitors[Index].Score == NewCompetitor.Score)
+                                Position = competition.Competitors[Index].Position;
+                            Index++;
+                        }
+
+                    NewCompetitor.Position = Position;
+
+                    competition.Competitors.Insert(Index, NewCompetitor);
+
+                    //add position and increment NrCompetitions for current vehicle
+                    GlobalData.Vehicles[VehicleIdsToIndexes[NewCompetitor.VehicleId]].SumPositions += Position;
+                    GlobalData.Vehicles[VehicleIdsToIndexes[NewCompetitor.VehicleId]].NrCompetitions ++;
+
+                    //update position of all competitors that are now behind the new one
+                    for (int i = Index + 1; i < competition.Competitors.Count; i++)
+                    {
+                        competition.Competitors[i].Position = competition.Competitors[i].Position + 1;
+                        //add one position to SumPosition of vehicle
+                        GlobalData.Vehicles[competition.Competitors[i].VehicleId].SumPositions++;
+                    }
+                }
+
+            foreach (IDataConnection connection in GlobalConfig.Connections)
+            {
+                connection.WriteCompetitions();
+                connection.WriteVehicles();
+            }
         }
 
         /// <summary>
@@ -187,11 +270,17 @@ namespace CompLibrary.Storage_Management
                     if (ImagePath != "")
                         File.Delete(ImagePath);
 
-                    //TODO - Delete this vehicle from all competitions
+                    //iterate through competitions and remove current vehicle
+                    for (int Index = 0; Index < GlobalData.Competitions.Count; Index++)
+                        DeleteVehicleFromCompetition(Index, Id);
+
                     GlobalData.Vehicles.Remove(vehicle);
 
                     foreach (IDataConnection storage in GlobalConfig.Connections)
+                    {
+                        storage.WriteCompetitions();
                         storage.WriteVehicles();
+                    }
 
                     return true;
                 }
@@ -199,5 +288,71 @@ namespace CompLibrary.Storage_Management
 
             return false;
         }
+
+        /// <summary>
+        /// Deletes all entries that contain a certain vehicle id. 
+        /// </summary>
+        /// <param name="competitionIndex"> - current competition Index in GlobalData.competitions list</param>
+        public static void DeleteVehicleFromCompetition(int competitionIndex, int vehicleId)
+        {
+            Dictionary<int, int> VehicleIdsToIndexes = new();
+
+            //Map id's to current index in vehicle list
+            for (int i = 0; i < GlobalData.Vehicles.Count; i++)
+                VehicleIdsToIndexes[GlobalData.Vehicles[i].Id] = i;
+
+            //remove all entries that contain the vehicle
+            for (int index = 0; index < GlobalData.Competitions[competitionIndex].Competitors.Count; index++)
+                if (GlobalData.Competitions[competitionIndex].Competitors[index].VehicleId == vehicleId)
+                {
+                    GlobalData.Competitions[competitionIndex].Competitors.RemoveAt(index);
+                    index--;
+                }
+
+
+            //recalculate all positions
+            int CurrentPosition = 0;
+            double LastScore = -1000000;
+            //example : 2 vehicles are tied for 2nd, we want the next one to be 4th
+            int toIncrement = 1;
+
+            foreach(CompetitorModel competitor in GlobalData.Competitions[competitionIndex].Competitors)
+            {
+                if (LastScore != competitor.Score)
+                {
+                    CurrentPosition += toIncrement;
+                    LastScore = competitor.Score;
+                    toIncrement = 1;
+                }
+                else
+                {
+                    toIncrement++;
+                }
+
+                //subtract old position from sum and add new one
+                GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].SumPositions = GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].SumPositions - competitor.Position + CurrentPosition;
+
+                competitor.Position = CurrentPosition;
+            }
+        }
+
+
+        public static VehicleModel GetVehicleById(int Id)
+        {
+            foreach (VehicleModel vehicle in GlobalData.Vehicles)
+                if (vehicle.Id == Id)
+                    return vehicle;
+
+            return null;
+        }
+
+        public static CompetitionModel GetCompetitionById(int Id)
+        {
+            foreach (CompetitionModel competition in GlobalData.Competitions)
+                if (competition.Id == Id)
+                    return competition;
+            return null;
+        }
+
     }
 }
