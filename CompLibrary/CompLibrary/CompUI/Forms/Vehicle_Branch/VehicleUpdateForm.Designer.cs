@@ -244,6 +244,7 @@ namespace CompUI
             // 
             // VehicleComboBox
             // 
+            this.VehicleComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.VehicleComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.VehicleComboBox.ForeColor = System.Drawing.Color.SteelBlue;
             this.VehicleComboBox.FormattingEnabled = true;

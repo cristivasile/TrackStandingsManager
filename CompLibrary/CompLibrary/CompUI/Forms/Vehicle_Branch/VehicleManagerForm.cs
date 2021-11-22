@@ -14,7 +14,6 @@ namespace CompUI.Forms
 {
     public partial class VehicleManagerForm : TemplateFormResizable
     {
-        //TODO - make edit and delete buttons less ugly
         /// <summary>
         /// selected sort type of form. 1 = By names, 2 = By avg position
         /// </summary>
@@ -100,15 +99,6 @@ namespace CompUI.Forms
 
             ModelLabel.Text = "Model";
             ModelLabel.AddToPanel(
-                VehiclesHeader,
-                LargeColumnDivide,
-                Utilities.LargeTextBold,
-                TextColor,
-                ContentAlignment.MiddleLeft
-                );
-
-            CategoryLabel.Text = "Category";
-            CategoryLabel.AddToPanel(
                 VehiclesHeader,
                 LargeColumnDivide,
                 Utilities.LargeTextBold,
@@ -370,13 +360,13 @@ namespace CompUI.Forms
                 );
 
                 EditButton.BackgroundImage = Properties.Resources.edit;
-                EditButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+                EditButton.FlatAppearance.MouseDownBackColor = Color.LightYellow;
                 EditButton.Tag = Convert.ToString(Vehicle.Id);
                 EditButton.Click += new EventHandler(EditButton_Click);
                 EditButton.AddToPanel(NewVehiclePanel, ButtonSize);
 
                 DeleteButton.BackgroundImage = Properties.Resources.trash;
-                DeleteButton.FlatAppearance.MouseDownBackColor = Color.Red;
+                DeleteButton.FlatAppearance.MouseDownBackColor = Color.PaleVioletRed;
                 DeleteButton.Tag = Convert.ToString(Vehicle.Id);
                 DeleteButton.Click += new EventHandler(DeleteButton_Click);
                 DeleteButton.AddToPanel(NewVehiclePanel, ButtonSize - 5);

@@ -51,8 +51,9 @@ namespace CompUI.Forms.Competition_Branch
             this.AddEntryButton = new System.Windows.Forms.Button();
             this.VehicleFlowPanelHeader = new System.Windows.Forms.FlowLayoutPanel();
             this.VehicleFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.SearchButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
+            this.FilteredByValueLabel = new System.Windows.Forms.Label();
+            this.FilteredByLabel = new System.Windows.Forms.Label();
             this.MenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CompetitionPicture)).BeginInit();
             this.DescriptionContainer.SuspendLayout();
@@ -149,6 +150,8 @@ namespace CompUI.Forms.Competition_Branch
             // 
             // CompetitionSelectBox
             // 
+            this.CompetitionSelectBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CompetitionSelectBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.CompetitionSelectBox.ForeColor = System.Drawing.Color.SteelBlue;
             this.CompetitionSelectBox.FormattingEnabled = true;
             this.CompetitionSelectBox.Location = new System.Drawing.Point(211, 31);
@@ -156,13 +159,14 @@ namespace CompUI.Forms.Competition_Branch
             this.CompetitionSelectBox.Size = new System.Drawing.Size(484, 38);
             this.CompetitionSelectBox.TabIndex = 31;
             this.CompetitionSelectBox.SelectedIndexChanged += new System.EventHandler(this.CompetitionSelectBox_SelectedIndexChanged);
+            this.CompetitionSelectBox.Leave += new System.EventHandler(this.CompetitionSelectBox_Leave);
             // 
             // SortTypeLabel
             // 
             this.SortTypeLabel.AutoSize = true;
             this.SortTypeLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SortTypeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.SortTypeLabel.Location = new System.Drawing.Point(950, 113);
+            this.SortTypeLabel.Location = new System.Drawing.Point(960, 129);
             this.SortTypeLabel.Name = "SortTypeLabel";
             this.SortTypeLabel.Size = new System.Drawing.Size(89, 25);
             this.SortTypeLabel.TabIndex = 53;
@@ -174,7 +178,7 @@ namespace CompUI.Forms.Competition_Branch
             this.ScoreTypeLabel.AutoSize = true;
             this.ScoreTypeLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ScoreTypeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ScoreTypeLabel.Location = new System.Drawing.Point(950, 60);
+            this.ScoreTypeLabel.Location = new System.Drawing.Point(960, 50);
             this.ScoreTypeLabel.Name = "ScoreTypeLabel";
             this.ScoreTypeLabel.Size = new System.Drawing.Size(116, 25);
             this.ScoreTypeLabel.TabIndex = 51;
@@ -183,7 +187,7 @@ namespace CompUI.Forms.Competition_Branch
             // CompetitionPicture
             // 
             this.CompetitionPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.CompetitionPicture.Location = new System.Drawing.Point(1157, 31);
+            this.CompetitionPicture.Location = new System.Drawing.Point(1169, 31);
             this.CompetitionPicture.Margin = new System.Windows.Forms.Padding(0);
             this.CompetitionPicture.Name = "CompetitionPicture";
             this.CompetitionPicture.Size = new System.Drawing.Size(187, 141);
@@ -205,7 +209,7 @@ namespace CompUI.Forms.Competition_Branch
             // 
             // DescriptionTextBox
             // 
-            this.DescriptionTextBox.BackColor = System.Drawing.Color.White;
+            this.DescriptionTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.DescriptionTextBox.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DescriptionTextBox.ForeColor = System.Drawing.Color.SteelBlue;
             this.DescriptionTextBox.Location = new System.Drawing.Point(16, 28);
@@ -220,7 +224,7 @@ namespace CompUI.Forms.Competition_Branch
             this.ScoreTypeOutputLabel.AutoSize = true;
             this.ScoreTypeOutputLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ScoreTypeOutputLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ScoreTypeOutputLabel.Location = new System.Drawing.Point(1062, 60);
+            this.ScoreTypeOutputLabel.Location = new System.Drawing.Point(1072, 50);
             this.ScoreTypeOutputLabel.Name = "ScoreTypeOutputLabel";
             this.ScoreTypeOutputLabel.Size = new System.Drawing.Size(64, 25);
             this.ScoreTypeOutputLabel.TabIndex = 56;
@@ -231,7 +235,7 @@ namespace CompUI.Forms.Competition_Branch
             this.SortedTypeOutputLabel.AutoSize = true;
             this.SortedTypeOutputLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SortedTypeOutputLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.SortedTypeOutputLabel.Location = new System.Drawing.Point(1036, 113);
+            this.SortedTypeOutputLabel.Location = new System.Drawing.Point(1046, 129);
             this.SortedTypeOutputLabel.Name = "SortedTypeOutputLabel";
             this.SortedTypeOutputLabel.Size = new System.Drawing.Size(64, 25);
             this.SortedTypeOutputLabel.TabIndex = 57;
@@ -240,16 +244,16 @@ namespace CompUI.Forms.Competition_Branch
             // AddEntryButton
             // 
             this.AddEntryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.AddEntryButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.AddEntryButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.AddEntryButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.AddEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddEntryButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AddEntryButton.ForeColor = System.Drawing.Color.SteelBlue;
-            this.AddEntryButton.Location = new System.Drawing.Point(719, 124);
+            this.AddEntryButton.Location = new System.Drawing.Point(762, 116);
             this.AddEntryButton.Name = "AddEntryButton";
-            this.AddEntryButton.Size = new System.Drawing.Size(89, 48);
+            this.AddEntryButton.Size = new System.Drawing.Size(166, 38);
             this.AddEntryButton.TabIndex = 58;
-            this.AddEntryButton.Text = "New\r\nEntry\r\n";
+            this.AddEntryButton.Text = "New Entry\r\n";
             this.AddEntryButton.UseVisualStyleBackColor = false;
             this.AddEntryButton.Click += new System.EventHandler(this.AddEntryButton_Click);
             // 
@@ -270,21 +274,6 @@ namespace CompUI.Forms.Competition_Branch
             this.VehicleFlowPanel.Size = new System.Drawing.Size(1347, 709);
             this.VehicleFlowPanel.TabIndex = 59;
             // 
-            // SearchButton
-            // 
-            this.SearchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.SearchButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.SearchButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.SearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SearchButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SearchButton.ForeColor = System.Drawing.Color.SteelBlue;
-            this.SearchButton.Location = new System.Drawing.Point(719, 31);
-            this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(89, 38);
-            this.SearchButton.TabIndex = 61;
-            this.SearchButton.Text = "Search";
-            this.SearchButton.UseVisualStyleBackColor = false;
-            // 
             // AddButton
             // 
             this.AddButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
@@ -293,13 +282,35 @@ namespace CompUI.Forms.Competition_Branch
             this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AddButton.ForeColor = System.Drawing.Color.SteelBlue;
-            this.AddButton.Location = new System.Drawing.Point(846, 31);
+            this.AddButton.Location = new System.Drawing.Point(762, 50);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(89, 38);
+            this.AddButton.Size = new System.Drawing.Size(166, 38);
             this.AddButton.TabIndex = 62;
-            this.AddButton.Text = "Add";
+            this.AddButton.Text = "Add Competition";
             this.AddButton.UseVisualStyleBackColor = false;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            // 
+            // FilteredByValueLabel
+            // 
+            this.FilteredByValueLabel.AutoSize = true;
+            this.FilteredByValueLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.FilteredByValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.FilteredByValueLabel.Location = new System.Drawing.Point(1049, 90);
+            this.FilteredByValueLabel.Name = "FilteredByValueLabel";
+            this.FilteredByValueLabel.Size = new System.Drawing.Size(77, 25);
+            this.FilteredByValueLabel.TabIndex = 64;
+            this.FilteredByValueLabel.Text = "<value>";
+            // 
+            // FilteredByLabel
+            // 
+            this.FilteredByLabel.AutoSize = true;
+            this.FilteredByLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.FilteredByLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.FilteredByLabel.Location = new System.Drawing.Point(960, 90);
+            this.FilteredByLabel.Name = "FilteredByLabel";
+            this.FilteredByLabel.Size = new System.Drawing.Size(99, 25);
+            this.FilteredByLabel.TabIndex = 63;
+            this.FilteredByLabel.Text = "Filtered by:";
             // 
             // CompetitionManagerForm
             // 
@@ -307,6 +318,10 @@ namespace CompUI.Forms.Competition_Branch
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1365, 932);
+            this.Controls.Add(this.FilteredByLabel);
+            this.Controls.Add(this.FilteredByValueLabel);
+            this.Controls.Add(this.AddEntryButton);
+            this.Controls.Add(this.AddButton);
             this.Controls.Add(this.SelectCompetitionLabel);
             this.Controls.Add(this.CompetitionPicture);
             this.Controls.Add(this.DescriptionContainer);
@@ -315,11 +330,8 @@ namespace CompUI.Forms.Competition_Branch
             this.Controls.Add(this.ScoreTypeOutputLabel);
             this.Controls.Add(this.SortedTypeOutputLabel);
             this.Controls.Add(this.CompetitionSelectBox);
-            this.Controls.Add(this.AddEntryButton);
             this.Controls.Add(this.VehicleFlowPanelHeader);
             this.Controls.Add(this.VehicleFlowPanel);
-            this.Controls.Add(this.SearchButton);
-            this.Controls.Add(this.AddButton);
             this.Controls.Add(this.MenuStrip);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -328,11 +340,8 @@ namespace CompUI.Forms.Competition_Branch
             this.Text = "Standings Viewer";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StandingsViewerForm_FormClosed);
             this.Controls.SetChildIndex(this.MenuStrip, 0);
-            this.Controls.SetChildIndex(this.AddButton, 0);
-            this.Controls.SetChildIndex(this.SearchButton, 0);
             this.Controls.SetChildIndex(this.VehicleFlowPanel, 0);
             this.Controls.SetChildIndex(this.VehicleFlowPanelHeader, 0);
-            this.Controls.SetChildIndex(this.AddEntryButton, 0);
             this.Controls.SetChildIndex(this.CompetitionSelectBox, 0);
             this.Controls.SetChildIndex(this.SortedTypeOutputLabel, 0);
             this.Controls.SetChildIndex(this.ScoreTypeOutputLabel, 0);
@@ -341,6 +350,10 @@ namespace CompUI.Forms.Competition_Branch
             this.Controls.SetChildIndex(this.DescriptionContainer, 0);
             this.Controls.SetChildIndex(this.CompetitionPicture, 0);
             this.Controls.SetChildIndex(this.SelectCompetitionLabel, 0);
+            this.Controls.SetChildIndex(this.AddButton, 0);
+            this.Controls.SetChildIndex(this.AddEntryButton, 0);
+            this.Controls.SetChildIndex(this.FilteredByValueLabel, 0);
+            this.Controls.SetChildIndex(this.FilteredByLabel, 0);
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CompetitionPicture)).EndInit();
@@ -374,7 +387,8 @@ namespace CompUI.Forms.Competition_Branch
         private System.Windows.Forms.Button AddEntryButton;
         private System.Windows.Forms.FlowLayoutPanel VehicleFlowPanelHeader;
         private System.Windows.Forms.FlowLayoutPanel VehicleFlowPanel;
-        private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Label FilteredByValueLabel;
+        private System.Windows.Forms.Label FilteredByLabel;
     }
 }
