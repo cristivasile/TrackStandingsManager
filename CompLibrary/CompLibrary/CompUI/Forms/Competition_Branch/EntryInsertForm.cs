@@ -129,6 +129,7 @@ namespace CompUI.Forms.Competition_Branch
 
                 AuthorTextBox.Text = "";
                 ScoreTextBox.Text = "";
+                Program.CompetitionManagerFormInstance.Reload();
             }
         }
 

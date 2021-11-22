@@ -34,9 +34,7 @@ namespace CompUI.Forms.Competition_Branch
             this.FilterByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BrandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.SortByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AveragePositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.NameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearFiltersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ResetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SelectCompetitionLabel = new System.Windows.Forms.Label();
@@ -66,7 +64,6 @@ namespace CompUI.Forms.Competition_Branch
             this.MenuStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FilterByToolStripMenuItem,
-            this.SortByToolStripMenuItem,
             this.ResetToolStripMenuItem,
             this.DeleteToolStripMenuItem});
             this.MenuStrip.Location = new System.Drawing.Point(9, 0);
@@ -79,7 +76,8 @@ namespace CompUI.Forms.Competition_Branch
             // 
             this.FilterByToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BrandToolStripMenuItem,
-            this.CategoryToolStripMenuItem});
+            this.CategoryToolStripMenuItem,
+            this.clearFiltersToolStripMenuItem});
             this.FilterByToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.FilterByToolStripMenuItem.Name = "FilterByToolStripMenuItem";
             this.FilterByToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
@@ -89,39 +87,25 @@ namespace CompUI.Forms.Competition_Branch
             // 
             this.BrandToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.BrandToolStripMenuItem.Name = "BrandToolStripMenuItem";
-            this.BrandToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.BrandToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.BrandToolStripMenuItem.Text = "Brand";
+            this.BrandToolStripMenuItem.Click += new System.EventHandler(this.BrandToolStripMenuItem_Click);
             // 
             // CategoryToolStripMenuItem
             // 
             this.CategoryToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.CategoryToolStripMenuItem.Name = "CategoryToolStripMenuItem";
-            this.CategoryToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.CategoryToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.CategoryToolStripMenuItem.Text = "Category";
+            this.CategoryToolStripMenuItem.Click += new System.EventHandler(this.CategoryToolStripMenuItem_Click);
             // 
-            // SortByToolStripMenuItem
+            // clearFiltersToolStripMenuItem
             // 
-            this.SortByToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AveragePositionToolStripMenuItem,
-            this.NameToolStripMenuItem});
-            this.SortByToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.SortByToolStripMenuItem.Name = "SortByToolStripMenuItem";
-            this.SortByToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.SortByToolStripMenuItem.Text = "Sort by";
-            // 
-            // AveragePositionToolStripMenuItem
-            // 
-            this.AveragePositionToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.AveragePositionToolStripMenuItem.Name = "AveragePositionToolStripMenuItem";
-            this.AveragePositionToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.AveragePositionToolStripMenuItem.Text = "Average position";
-            // 
-            // NameToolStripMenuItem
-            // 
-            this.NameToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.NameToolStripMenuItem.Name = "NameToolStripMenuItem";
-            this.NameToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.NameToolStripMenuItem.Text = "Name";
+            this.clearFiltersToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.clearFiltersToolStripMenuItem.Name = "clearFiltersToolStripMenuItem";
+            this.clearFiltersToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.clearFiltersToolStripMenuItem.Text = "Clear filters";
+            this.clearFiltersToolStripMenuItem.Click += new System.EventHandler(this.clearFiltersToolStripMenuItem_Click);
             // 
             // ResetToolStripMenuItem
             // 
@@ -129,6 +113,7 @@ namespace CompUI.Forms.Competition_Branch
             this.ResetToolStripMenuItem.Name = "ResetToolStripMenuItem";
             this.ResetToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.ResetToolStripMenuItem.Text = "Reset";
+            this.ResetToolStripMenuItem.Click += new System.EventHandler(this.ResetToolStripMenuItem_Click);
             // 
             // DeleteToolStripMenuItem
             // 
@@ -137,6 +122,7 @@ namespace CompUI.Forms.Competition_Branch
             this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
             this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.DeleteToolStripMenuItem.Text = "Delete";
+            this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
             // SelectCompetitionLabel
             // 
@@ -295,11 +281,12 @@ namespace CompUI.Forms.Competition_Branch
             this.FilteredByValueLabel.AutoSize = true;
             this.FilteredByValueLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FilteredByValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.FilteredByValueLabel.Location = new System.Drawing.Point(1049, 90);
+            this.FilteredByValueLabel.Location = new System.Drawing.Point(1059, 90);
             this.FilteredByValueLabel.Name = "FilteredByValueLabel";
             this.FilteredByValueLabel.Size = new System.Drawing.Size(77, 25);
             this.FilteredByValueLabel.TabIndex = 64;
             this.FilteredByValueLabel.Text = "<value>";
+            this.FilteredByValueLabel.Click += new System.EventHandler(this.FilteredByValueLabel_Click);
             // 
             // FilteredByLabel
             // 
@@ -370,9 +357,6 @@ namespace CompUI.Forms.Competition_Branch
         private System.Windows.Forms.ToolStripMenuItem FilterByToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem BrandToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CategoryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem SortByToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AveragePositionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem NameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ResetToolStripMenuItem;
         private System.Windows.Forms.Label SelectCompetitionLabel;
         private System.Windows.Forms.ComboBox CompetitionSelectBox;
@@ -390,5 +374,6 @@ namespace CompUI.Forms.Competition_Branch
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Label FilteredByValueLabel;
         private System.Windows.Forms.Label FilteredByLabel;
+        private System.Windows.Forms.ToolStripMenuItem clearFiltersToolStripMenuItem;
     }
 }

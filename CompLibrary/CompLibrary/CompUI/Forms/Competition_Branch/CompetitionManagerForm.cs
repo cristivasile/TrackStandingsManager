@@ -34,6 +34,7 @@ namespace CompUI.Forms.Competition_Branch
         private HashSet<string> FilterResult;
 
         private Dictionary<string, int> CompetitionIds = new();
+        public CompetitionModel CurrentCompetition;
         public CompetitionManagerForm()
         {
             InitializeComponent();
@@ -102,7 +103,7 @@ namespace CompUI.Forms.Competition_Branch
 
         private void CompetitionSelectBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CompetitionModel CurrentCompetition = CRUD.GetCompetitionById(CompetitionIds[CompetitionSelectBox.Text]);
+            CurrentCompetition = CRUD.GetCompetitionById(CompetitionIds[CompetitionSelectBox.Text]);
             this.DescriptionTextBox.Text = CurrentCompetition.Description;
             this.AddEntryButton.Enabled = true;
 
@@ -158,7 +159,6 @@ namespace CompUI.Forms.Competition_Branch
             Label ModelLabel = new();
             Label CategoryLabel = new();
             Label AuthorLabel = new();
-            CompetitionModel CurrentCompetition = CRUD.GetCompetitionById(CompetitionIds[CompetitionSelectBox.Text]);
 
             VehiclesHeader.Controls.Clear();
 
@@ -224,8 +224,8 @@ namespace CompUI.Forms.Competition_Branch
 
         private void LoadVehiclePanel(int FilterType = 0)
         {
-            List<VehicleModel> Vehicles = GlobalData.Vehicles;
-            List<VehicleModel> FilteredVehicles;
+            List<CompetitorModel> Competitors = CurrentCompetition.Competitors;
+            List<CompetitorModel> FilteredCompetitors;
             FlowLayoutPanel VehiclesPanel = this.VehicleFlowPanel;
             Image ErrorImage = Properties.Resources.ErrorImage;
             Padding NoPadding = new(0);
@@ -244,7 +244,6 @@ namespace CompUI.Forms.Competition_Branch
             for (int Index = 0; Index < GlobalData.Vehicles.Count; Index++)
                 VehicleIdsToIndexes[GlobalData.Vehicles[Index].Id] = Index;
 
-            CompetitionModel CurrentCompetition = CRUD.GetCompetitionById(CompetitionIds[CompetitionSelectBox.Text]);
             ButtonSize = SmallButtonSize;
 
             VehiclesPanel.Controls.Clear();
@@ -262,13 +261,12 @@ namespace CompUI.Forms.Competition_Branch
                 this.FilteredByValueLabel.Show();
                 this.FilteredByValueLabel.Text = "brand";
 
-                //TODO - this
-                FilteredVehicles = new();
-                foreach (VehicleModel vehicle in Vehicles)
-                    if (FilterResult.Contains(vehicle.Brand))
-                        FilteredVehicles.Add(vehicle);
+                FilteredCompetitors = new();
+                foreach (CompetitorModel competitor in CurrentCompetition.Competitors)
+                    if (FilterResult.Contains(GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].Brand))
+                        FilteredCompetitors.Add(competitor);
 
-                Vehicles = FilteredVehicles;
+                Competitors = FilteredCompetitors;
             }
             else
             {
@@ -276,16 +274,15 @@ namespace CompUI.Forms.Competition_Branch
                 this.FilteredByValueLabel.Show();
                 this.FilteredByValueLabel.Text = "category";
 
-                //TODO - this
-                FilteredVehicles = new();
-                foreach (VehicleModel vehicle in Vehicles)
-                    if (FilterResult.Contains(vehicle.Category))
-                        FilteredVehicles.Add(vehicle);
+                FilteredCompetitors = new();
+                foreach (CompetitorModel competitor in CurrentCompetition.Competitors)
+                    if (FilterResult.Contains(GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].Category))
+                        FilteredCompetitors.Add(competitor);
 
-                Vehicles = FilteredVehicles;
+                Competitors = FilteredCompetitors;
             }
             
-            foreach (CompetitorModel competitor in CurrentCompetition.Competitors)
+            foreach (CompetitorModel competitor in Competitors)
             {
                 Label PositionLabel = new();
                 Label ScoreLabel = new();
@@ -335,7 +332,7 @@ namespace CompUI.Forms.Competition_Branch
                 NewVehiclePanel.Width = VehiclesPanel.Width;
                 NewVehiclePanel.Height = VehiclesPanel.Height / 20;
 
-                if (Vehicles.Count > 20)
+                if (Competitors.Count > 20)
                     NewVehiclePanel.Width -= Utilities.ScrollBarWidth;
 
 
@@ -447,7 +444,64 @@ namespace CompUI.Forms.Competition_Branch
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            int CompetitorId = Convert.ToInt32(((Button)sender).Tag);
+            CRUD.DeleteCompetitor(CurrentCompetition.Id, CompetitorId);
+            Reload();
+        }
+
+        private void BrandToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            Program.FilterFormInstance = new(0, this);
+            Program.FilterFormInstance.Show();
+            FilterResult = Program.FilterFormInstance.Result;
+            FilterType = 1;
+        }
+
+        private void CategoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            Program.FilterFormInstance = new(1, this);
+            Program.FilterFormInstance.Show();
+            FilterResult = Program.FilterFormInstance.Result;
+            FilterType = 2;
+        }
+
+        private void clearFiltersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FilterType = 0;
+            Reload();
+        }
+
+        public void Reload()
+        {
+            LoadVehicleHeaderPanel();
+            LoadVehiclePanel(FilterType);
+        }
+
+        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CRUD.DeleteCompetition(CurrentCompetition.Id);
+            InitializeCompetitions();
+            CompetitionSelectBox.DataSource = CompetitionIds.Keys.ToList();
+            ReloadForm();
+        }
+
+        private void SortByToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ResetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FilterType = 0;
+            CompetitionSelectBox.SelectedIndex = 0;
+            ReloadForm();
+        }
+
+        private void FilteredByValueLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

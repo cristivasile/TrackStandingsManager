@@ -27,17 +27,29 @@ namespace CompUI.Forms
             InitializeComponent();
             InitializeBorder();
 
+            if (filterby == 0)
+                FilterLabel.Text = "Filtering by brand";
+            else
+                FilterLabel.Text = "Filtering by category";
+
             if (ParentForm == Program.VehicleManagerFormInstance)
             {
-                if (filterby == 0)
-                    FilterLabel.Text = "Filtering by brand";
-                else
-                    FilterLabel.Text = "Filtering by category";
-
                 foreach (VehicleModel vehicle in GlobalData.Vehicles)
                     if (filterby == 0)
                         FilteredElements.Add(vehicle.Brand);
                     else FilteredElements.Add(vehicle.Category);
+            }
+            else if(ParentForm == Program.CompetitionManagerFormInstance)
+            {
+                Dictionary<int, int> VehicleIdsToIndexes = new();
+                for (int Index = 0; Index < GlobalData.Vehicles.Count; Index++)
+                    VehicleIdsToIndexes[GlobalData.Vehicles[Index].Id] = Index;
+
+                foreach (CompetitorModel competitor in Program.CompetitionManagerFormInstance.CurrentCompetition.Competitors)
+                    if (filterby == 0)
+                        FilteredElements.Add(GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].Brand);
+                    else
+                        FilteredElements.Add(GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].Category);
             }
 
             FilterCheckedListBox.DataSource = FilteredElements.ToList();
@@ -80,6 +92,12 @@ namespace CompUI.Forms
                     Program.VehicleManagerFormInstance.Enabled = true;
                     Program.VehicleManagerFormInstance.BringToFront();
                     Program.VehicleManagerFormInstance.ReloadForm();
+                }
+                if (ParentForm == Program.CompetitionManagerFormInstance)
+                {
+                    Program.CompetitionManagerFormInstance.Enabled = true;
+                    Program.CompetitionManagerFormInstance.BringToFront();
+                    Program.CompetitionManagerFormInstance.Reload();
                 }
             }
 

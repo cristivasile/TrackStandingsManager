@@ -10,8 +10,7 @@ namespace CompLibrary.Storage_Management
 {
     public static class CRUD
     {
-        //TODO - delete entry from competition and update vehicles
-        //TODO - delete competition and update vehicles
+        //TODO - update entry in competition
         /// <summary>
         /// Creates a new vehicle and writes it to all storage solutions.
         /// </summary>
@@ -334,6 +333,78 @@ namespace CompLibrary.Storage_Management
 
                 competitor.Position = CurrentPosition;
             }
+        }
+
+        public static bool DeleteCompetition(int Id)
+        {
+            Dictionary<int, int> VehicleIdsToIndexes = new();
+            for (int Index = 0; Index < GlobalData.Vehicles.Count; Index++)
+                VehicleIdsToIndexes[GlobalData.Vehicles[Index].Id] = Index;
+
+            foreach(CompetitionModel competition in GlobalData.Competitions)
+                if(competition.Id == Id)
+                {
+                    if (competition.ImagePath != "" && File.Exists(competition.ImagePath))
+                        File.Delete(competition.ImagePath);
+
+                    //remove each position from sumpositions and decrement counter in each participating vehicle
+                    foreach (CompetitorModel competitor in competition.Competitors)
+                    {
+                        GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].NrCompetitions--;
+                        GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].SumPositions -= competitor.Position;
+                    }
+
+                    GlobalData.Competitions.Remove(competition);
+                    foreach (IDataConnection connection in GlobalConfig.Connections)
+                    {
+                        connection.WriteCompetitions();
+                        connection.WriteVehicles();
+                    }
+                    return true;
+                }
+
+            return false;
+        }
+
+        public static bool DeleteCompetitor(int CompetitionId, int CompetitorId)
+        {
+            Dictionary<int, int> VehicleIdsToIndexes = new();
+            for (int Index = 0; Index < GlobalData.Vehicles.Count; Index++)
+                VehicleIdsToIndexes[GlobalData.Vehicles[Index].Id] = Index;
+
+            foreach (CompetitionModel competition in GlobalData.Competitions)
+                if (competition.Id == CompetitionId)
+                {
+                    int Index = 0;
+                    int DeletedPosition;
+
+                    //search for delete index
+                    while (competition.Competitors[Index].Id != CompetitorId)
+                        Index++;
+
+                    DeletedPosition = competition.Competitors[Index].Position;
+                    competition.Competitors.RemoveAt(Index);
+
+                    //Example: _4_ 4 4 7 if we delete _4_ we must ignore next two 4s
+                    while (competition.Competitors[Index].Position == DeletedPosition)
+                        Index++;
+
+                    //next competitors will have gone up one position
+                    for (int i = Index; i < competition.Competitors.Count; i++)
+                    {
+                        competition.Competitors[i].Position--;
+                        GlobalData.Vehicles[VehicleIdsToIndexes[competition.Competitors[i].VehicleId]].SumPositions--;
+                    }
+
+                    foreach (IDataConnection connection in GlobalConfig.Connections)
+                    {
+                        connection.WriteCompetitions();
+                        connection.WriteVehicles();
+                    }
+                    return true;
+                }
+
+            return false;
         }
 
 

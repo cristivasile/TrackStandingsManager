@@ -38,6 +38,7 @@ D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.AssemblyInfoInputs.cache
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.AssemblyInfo.cs
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.csproj.CoreCompileInputs.cache
+D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.csproj.CopyComplete
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.dll
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\ref\CompUI.dll
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.pdb

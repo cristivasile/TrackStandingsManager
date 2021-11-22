@@ -106,55 +106,62 @@ namespace CompUI.Forms.Competition_Branch
         {
             if (CheckData())
             {
-                int PlacementType, OrderingType, TimingType, NewId = -1;
-                if (PointsButton.Checked) {
-                    PlacementType = 1;
-                    TimingType = -1;
-                }
-                else { 
-                    PlacementType = 0;
-                    TimingType = TimingsTypeBox.SelectedIndex;    
-                }
-
-                if (DescendingButton.Checked)
-                    OrderingType = 1;
-                else OrderingType = 0;
-
-                string ImagePath = "";
-                if (CompetitionPicture.Image != null)
+                DialogResult dialogResult = MessageBox.Show("Once created, a competition can't be edited. Are you sure the information is correct?", "Confirm action", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    ImagePath = GlobalConfig.ImageStorage.Save(LastImageInserted);
+
+                    int PlacementType, OrderingType, TimingType, NewId = -1;
+                    if (PointsButton.Checked)
+                    {
+                        PlacementType = 1;
+                        TimingType = -1;
+                    }
+                    else
+                    {
+                        PlacementType = 0;
+                        TimingType = TimingsTypeBox.SelectedIndex;
+                    }
+
+                    if (DescendingButton.Checked)
+                        OrderingType = 1;
+                    else OrderingType = 0;
+
+                    string ImagePath = "";
+                    if (CompetitionPicture.Image != null)
+                    {
+                        ImagePath = GlobalConfig.ImageStorage.Save(LastImageInserted);
+                    }
+
+
+                    //creates a new vehicle with the data provided
+                    CompetitionModel NewCompetition = new(
+                        NameTextBox.Text.Trim(),
+                        DescriptionTextBox.Text.Trim(),
+                        ImagePath,
+                        PlacementType,
+                        OrderingType,
+                        TimingType
+                        );
+
+
+
+                    NewId = CRUD.CreateCompetition(NewCompetition);
+
+                    //alerts the user that the insert is done
+                    Utilities.GenerateSuccess("Insert successful!", MessagePanel);
+
+                    //clears all fields
+                    NameTextBox.Text = "";
+                    DescriptionTextBox.Text = "";
+
+                    //resets image info label
+                    ImageInfoLabel.Text = "Click to paste \nimage from clipboard";
+
+                    //resets image frame
+                    CompetitionPicture.Image = null;
+
+                    Program.CompetitionManagerFormInstance.ReloadCompetitions(NewId);
                 }
-
-
-                //creates a new vehicle with the data provided
-                CompetitionModel NewCompetition = new(
-                    NameTextBox.Text.Trim(),
-                    DescriptionTextBox.Text.Trim(),
-                    ImagePath,
-                    PlacementType,
-                    OrderingType,
-                    TimingType
-                    );
-
-
-
-                NewId = CRUD.CreateCompetition(NewCompetition);
-
-                //alerts the user that the insert is done
-                Utilities.GenerateSuccess("Insert successful!", MessagePanel);
-
-                //clears all fields
-                NameTextBox.Text = "";
-                DescriptionTextBox.Text = "";
-
-                //resets image info label
-                ImageInfoLabel.Text = "Click to paste \nimage from clipboard";
-
-                //resets image frame
-                CompetitionPicture.Image = null;
-
-                Program.CompetitionManagerFormInstance.ReloadCompetitions(NewId);
             }
         }
 
