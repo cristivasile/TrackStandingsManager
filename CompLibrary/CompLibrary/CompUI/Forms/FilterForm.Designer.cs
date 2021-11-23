@@ -29,6 +29,7 @@ namespace CompUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilterForm));
             this.FilterLabel = new System.Windows.Forms.Label();
             this.FilterCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.MiddlePanel = new System.Windows.Forms.Panel();
@@ -127,8 +128,9 @@ namespace CompUI.Forms
             this.Controls.Add(this.MiddlePanel);
             this.Controls.Add(this.FilterCheckedListBox);
             this.Controls.Add(this.FilterLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FilterForm";
-            this.Text = "FilterForm";
+            this.Text = "Filter";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FilterForm_FormClosed);
             this.Controls.SetChildIndex(this.FilterLabel, 0);
             this.Controls.SetChildIndex(this.FilterCheckedListBox, 0);

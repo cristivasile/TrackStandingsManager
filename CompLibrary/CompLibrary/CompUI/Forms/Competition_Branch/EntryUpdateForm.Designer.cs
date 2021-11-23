@@ -253,7 +253,7 @@ namespace CompUI.Forms.Competition_Branch
             this.Controls.Add(this.ScoringLabel);
             this.Controls.Add(this.ScoreTextBox);
             this.Name = "EntryUpdateForm";
-            this.Text = "EntryUpdateFOrm";
+            this.Text = "Competitor Updater";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EntryUpdateForm_FormClosed);
             this.Controls.SetChildIndex(this.ScoreTextBox, 0);
             this.Controls.SetChildIndex(this.ScoringLabel, 0);

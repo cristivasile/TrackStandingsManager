@@ -87,11 +87,6 @@ namespace CompUI.Forms.Competition_Branch
             this.Enabled = false;
         }
 
-        private void ReloadForm()
-        {
-            //TODO - implement this
-        }
-
         private void InitializeCompetitions()
         {
             CompetitionIds = new();
@@ -487,7 +482,7 @@ namespace CompUI.Forms.Competition_Branch
             CRUD.DeleteCompetition(CurrentCompetition.Id);
             InitializeCompetitions();
             CompetitionSelectBox.DataSource = CompetitionIds.Keys.ToList();
-            ReloadForm();
+            Reload();
         }
 
         private void SortByToolStripMenuItem_Click(object sender, EventArgs e)
@@ -499,7 +494,7 @@ namespace CompUI.Forms.Competition_Branch
         {
             FilterType = 0;
             CompetitionSelectBox.SelectedIndex = 0;
-            ReloadForm();
+            Reload();
         }
 
         private void FilteredByValueLabel_Click(object sender, EventArgs e)

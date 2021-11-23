@@ -121,6 +121,7 @@ namespace CompUI.Forms.Templates
             this.Controls.Add(this.MinimizeButton);
             this.Controls.Add(this.TopBarPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TemplateFormNotResizable";
             this.Text = "TemplateFormNotResizable";
             this.TopBarPanel.ResumeLayout(false);

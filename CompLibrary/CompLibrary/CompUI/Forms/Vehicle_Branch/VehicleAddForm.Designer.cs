@@ -30,6 +30,7 @@ namespace CompUI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VehicleAddForm));
             this.AbortButton = new System.Windows.Forms.Button();
             this.InsertButton = new System.Windows.Forms.Button();
             this.CategoryComboBox = new System.Windows.Forms.ComboBox();
@@ -233,8 +234,10 @@ namespace CompUI
             this.Controls.Add(this.BrandTextBox);
             this.Controls.Add(this.VehiclePicture);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "VehicleAddForm";
+            this.Text = "New Vehicle";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VehicleAddForm_FormClosed);
             this.Controls.SetChildIndex(this.VehiclePicture, 0);
             this.Controls.SetChildIndex(this.BrandTextBox, 0);

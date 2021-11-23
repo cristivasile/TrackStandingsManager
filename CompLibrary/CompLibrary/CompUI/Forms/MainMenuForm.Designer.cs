@@ -100,7 +100,7 @@ namespace CompUI
             this.MaximumSize = new System.Drawing.Size(706, 512);
             this.MinimumSize = new System.Drawing.Size(609, 428);
             this.Name = "MainMenuForm";
-            this.Text = "Main Menu";
+            this.Text = "Track Standings Manager";
             this.Controls.SetChildIndex(this.VehicleButton, 0);
             this.Controls.SetChildIndex(this.GetRandomButton, 0);
             this.Controls.SetChildIndex(this.CompetitionButton, 0);

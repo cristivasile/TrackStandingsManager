@@ -29,6 +29,7 @@ namespace CompUI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VehicleUpdateForm));
             this.ImageInfoLabel = new System.Windows.Forms.Label();
             this.MessagePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.TitleLabel = new System.Windows.Forms.Label();
@@ -289,9 +290,10 @@ namespace CompUI
             this.Controls.Add(this.BrandTextBox);
             this.Controls.Add(this.VehiclePicture);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "VehicleUpdateForm";
-            this.Text = "VehicleUpdateForm";
+            this.Text = "Vehicle Updater";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VehicleUpdateForm_FormClosed);
             this.Load += new System.EventHandler(this.VehicleUpdateForm_Load);
             this.Controls.SetChildIndex(this.VehiclePicture, 0);

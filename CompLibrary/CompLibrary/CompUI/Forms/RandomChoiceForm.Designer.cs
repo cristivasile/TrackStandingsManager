@@ -199,7 +199,7 @@ namespace CompUI.Forms
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "RandomChoiceForm";
-            this.Text = "Use this";
+            this.Text = "Random Choice";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RandomChoiceForm_FormClosed);
             this.Load += new System.EventHandler(this.RandomChoiceForm_Load);
             this.Controls.SetChildIndex(this.CompetitionPicture, 0);
