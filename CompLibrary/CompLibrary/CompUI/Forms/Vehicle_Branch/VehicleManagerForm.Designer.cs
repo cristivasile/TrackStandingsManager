@@ -160,7 +160,7 @@ namespace CompUI.Forms
             this.FilterByToolStripMenuItem,
             this.SortByToolStripMenuItem,
             this.ResetToolStripMenuItem});
-            this.MenuStrip.Location = new System.Drawing.Point(9, 0);
+            this.MenuStrip.Location = new System.Drawing.Point(9, 3);
             this.MenuStrip.Name = "MenuStrip";
             this.MenuStrip.Size = new System.Drawing.Size(175, 24);
             this.MenuStrip.TabIndex = 1;

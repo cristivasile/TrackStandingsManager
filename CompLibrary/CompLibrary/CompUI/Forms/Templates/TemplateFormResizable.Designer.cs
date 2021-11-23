@@ -46,7 +46,7 @@ namespace CompUI.Forms
             this.TopBarPanel.Location = new System.Drawing.Point(0, 0);
             this.TopBarPanel.Margin = new System.Windows.Forms.Padding(0);
             this.TopBarPanel.Name = "TopBarPanel";
-            this.TopBarPanel.Size = new System.Drawing.Size(2000, 25);
+            this.TopBarPanel.Size = new System.Drawing.Size(2000, 30);
             this.TopBarPanel.TabIndex = 53;
             this.TopBarPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormTemplate_MouseDown);
             // 
@@ -57,7 +57,7 @@ namespace CompUI.Forms
             this.MinimizeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.MinimizeButton.FlatAppearance.BorderSize = 0;
             this.MinimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MinimizeButton.Location = new System.Drawing.Point(-30, -30);
+            this.MinimizeButton.Location = new System.Drawing.Point(20, 6);
             this.MinimizeButton.Margin = new System.Windows.Forms.Padding(0);
             this.MinimizeButton.Name = "MinimizeButton";
             this.MinimizeButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -74,7 +74,7 @@ namespace CompUI.Forms
             this.CloseButton.FlatAppearance.BorderSize = 0;
             this.CloseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightCoral;
             this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseButton.Location = new System.Drawing.Point(-30, 30);
+            this.CloseButton.Location = new System.Drawing.Point(0, 6);
             this.CloseButton.Margin = new System.Windows.Forms.Padding(0);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;

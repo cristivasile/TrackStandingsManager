@@ -64,7 +64,7 @@ namespace CompUI
             this.GetRandomButton.Name = "GetRandomButton";
             this.GetRandomButton.Size = new System.Drawing.Size(337, 120);
             this.GetRandomButton.TabIndex = 2;
-            this.GetRandomButton.Text = "What should I do?";
+            this.GetRandomButton.Text = "What should I play?";
             this.GetRandomButton.UseVisualStyleBackColor = false;
             this.GetRandomButton.Click += new System.EventHandler(this.GetRandomButton_Click);
             // 

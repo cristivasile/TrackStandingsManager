@@ -27,8 +27,8 @@ namespace CompUI.Forms.Templates
             this.RightBorderPanel.Height = this.Height;
             this.BottomBorderPanel.Location = new Point(0, this.Height - 2);
             this.BottomBorderPanel.Width = this.Width;
-            this.CloseButton.Location = new Point(this.Width - 30, 4);
-            this.MinimizeButton.Location = new Point(this.Width - 56, 4);
+            this.CloseButton.Location = new Point(this.Width - 30, 6);
+            this.MinimizeButton.Location = new Point(this.Width - 56, 6);
         }
 
         //source https://stackoverflow.com/questions/1592876/make-a-borderless-form-movable

@@ -46,7 +46,7 @@ namespace CompUI.Forms.Templates
             this.TopBarPanel.Location = new System.Drawing.Point(0, 0);
             this.TopBarPanel.Margin = new System.Windows.Forms.Padding(0);
             this.TopBarPanel.Name = "TopBarPanel";
-            this.TopBarPanel.Size = new System.Drawing.Size(2000, 25);
+            this.TopBarPanel.Size = new System.Drawing.Size(2000, 30);
             this.TopBarPanel.TabIndex = 54;
             this.TopBarPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormTemplate_MouseDown);
             // 

@@ -66,7 +66,7 @@ namespace CompUI.Forms.Competition_Branch
             this.FilterByToolStripMenuItem,
             this.ResetToolStripMenuItem,
             this.DeleteToolStripMenuItem});
-            this.MenuStrip.Location = new System.Drawing.Point(9, 0);
+            this.MenuStrip.Location = new System.Drawing.Point(9, 3);
             this.MenuStrip.Name = "MenuStrip";
             this.MenuStrip.Size = new System.Drawing.Size(232, 24);
             this.MenuStrip.TabIndex = 2;
@@ -128,7 +128,7 @@ namespace CompUI.Forms.Competition_Branch
             // 
             this.SelectCompetitionLabel.AutoSize = true;
             this.SelectCompetitionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.SelectCompetitionLabel.Location = new System.Drawing.Point(12, 34);
+            this.SelectCompetitionLabel.Location = new System.Drawing.Point(12, 40);
             this.SelectCompetitionLabel.Name = "SelectCompetitionLabel";
             this.SelectCompetitionLabel.Size = new System.Drawing.Size(193, 30);
             this.SelectCompetitionLabel.TabIndex = 30;
@@ -140,7 +140,7 @@ namespace CompUI.Forms.Competition_Branch
             this.CompetitionSelectBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
             this.CompetitionSelectBox.ForeColor = System.Drawing.Color.SteelBlue;
             this.CompetitionSelectBox.FormattingEnabled = true;
-            this.CompetitionSelectBox.Location = new System.Drawing.Point(211, 31);
+            this.CompetitionSelectBox.Location = new System.Drawing.Point(211, 37);
             this.CompetitionSelectBox.Name = "CompetitionSelectBox";
             this.CompetitionSelectBox.Size = new System.Drawing.Size(484, 38);
             this.CompetitionSelectBox.TabIndex = 31;

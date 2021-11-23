@@ -10,7 +10,6 @@ namespace CompLibrary.Storage_Management
 {
     public static class CRUD
     {
-        //TODO - update entry in competition
         /// <summary>
         /// Creates a new vehicle and writes it to all storage solutions.
         /// </summary>

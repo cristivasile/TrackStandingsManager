@@ -30,82 +30,50 @@ namespace CompUI.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RandomChoiceForm));
-            this.RandomVehicleButton = new System.Windows.Forms.RadioButton();
-            this.RandomCompetitionButton = new System.Windows.Forms.RadioButton();
-            this.ModelLabel = new System.Windows.Forms.Label();
-            this.BrandLabel = new System.Windows.Forms.Label();
-            this.VehiclePicture = new System.Windows.Forms.PictureBox();
+            this.VehicleNameLabel = new System.Windows.Forms.Label();
+            this.CompetitionPicture = new System.Windows.Forms.PictureBox();
             this.BrandInsertLabel = new System.Windows.Forms.Label();
             this.ModelInsertLabel = new System.Windows.Forms.Label();
-            this.NameLabel = new System.Windows.Forms.Label();
-            this.CompetitionPicture = new System.Windows.Forms.PictureBox();
-            this.NameInsertLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.VehiclePicture)).BeginInit();
+            this.CompetitionNameLabel = new System.Windows.Forms.Label();
+            this.VehiclePicture = new System.Windows.Forms.PictureBox();
+            this.MiddleDividePanel = new System.Windows.Forms.Panel();
+            this.RandomCompetitionCheckBox = new System.Windows.Forms.CheckBox();
+            this.RandomVehicleCheckBox = new System.Windows.Forms.CheckBox();
+            this.CompetitionDescriptionLabel = new System.Windows.Forms.Label();
+            this.NotCompetitorCheckBox = new System.Windows.Forms.CheckBox();
+            this.DescriptionPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.CompetitionPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VehiclePicture)).BeginInit();
+            this.DescriptionPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // RandomVehicleButton
+            // VehicleNameLabel
             // 
-            this.RandomVehicleButton.AutoSize = true;
-            this.RandomVehicleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.RandomVehicleButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.RandomVehicleButton.Location = new System.Drawing.Point(27, 37);
-            this.RandomVehicleButton.Name = "RandomVehicleButton";
-            this.RandomVehicleButton.Size = new System.Drawing.Size(181, 34);
-            this.RandomVehicleButton.TabIndex = 0;
-            this.RandomVehicleButton.TabStop = true;
-            this.RandomVehicleButton.Text = "Random Vehicle";
-            this.RandomVehicleButton.UseVisualStyleBackColor = true;
+            this.VehicleNameLabel.AutoSize = true;
+            this.VehicleNameLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.VehicleNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.VehicleNameLabel.Location = new System.Drawing.Point(432, 100);
+            this.VehicleNameLabel.Name = "VehicleNameLabel";
+            this.VehicleNameLabel.Size = new System.Drawing.Size(80, 25);
+            this.VehicleNameLabel.TabIndex = 25;
+            this.VehicleNameLabel.Text = "<name>";
             // 
-            // RandomCompetitionButton
+            // CompetitionPicture
             // 
-            this.RandomCompetitionButton.AutoSize = true;
-            this.RandomCompetitionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.RandomCompetitionButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.RandomCompetitionButton.Location = new System.Drawing.Point(400, 37);
-            this.RandomCompetitionButton.Name = "RandomCompetitionButton";
-            this.RandomCompetitionButton.Size = new System.Drawing.Size(229, 34);
-            this.RandomCompetitionButton.TabIndex = 1;
-            this.RandomCompetitionButton.TabStop = true;
-            this.RandomCompetitionButton.Text = "Random Competition";
-            this.RandomCompetitionButton.UseVisualStyleBackColor = true;
-            // 
-            // ModelLabel
-            // 
-            this.ModelLabel.AutoSize = true;
-            this.ModelLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ModelLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ModelLabel.Location = new System.Drawing.Point(31, 322);
-            this.ModelLabel.Name = "ModelLabel";
-            this.ModelLabel.Size = new System.Drawing.Size(55, 20);
-            this.ModelLabel.TabIndex = 26;
-            this.ModelLabel.Text = "Model:";
-            // 
-            // BrandLabel
-            // 
-            this.BrandLabel.AutoSize = true;
-            this.BrandLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BrandLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.BrandLabel.Location = new System.Drawing.Point(31, 290);
-            this.BrandLabel.Name = "BrandLabel";
-            this.BrandLabel.Size = new System.Drawing.Size(51, 20);
-            this.BrandLabel.TabIndex = 25;
-            this.BrandLabel.Text = "Brand:";
-            // 
-            // VehiclePicture
-            // 
-            this.VehiclePicture.Location = new System.Drawing.Point(27, 91);
-            this.VehiclePicture.Name = "VehiclePicture";
-            this.VehiclePicture.Size = new System.Drawing.Size(206, 187);
-            this.VehiclePicture.TabIndex = 24;
-            this.VehiclePicture.TabStop = false;
+            this.CompetitionPicture.Location = new System.Drawing.Point(31, 128);
+            this.CompetitionPicture.Name = "CompetitionPicture";
+            this.CompetitionPicture.Size = new System.Drawing.Size(206, 187);
+            this.CompetitionPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.CompetitionPicture.TabIndex = 24;
+            this.CompetitionPicture.TabStop = false;
+            this.CompetitionPicture.Paint += new System.Windows.Forms.PaintEventHandler(this.Picture_Paint);
             // 
             // BrandInsertLabel
             // 
             this.BrandInsertLabel.AutoSize = true;
             this.BrandInsertLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BrandInsertLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.BrandInsertLabel.Location = new System.Drawing.Point(142, 290);
+            this.BrandInsertLabel.Location = new System.Drawing.Point(454, 166);
             this.BrandInsertLabel.Name = "BrandInsertLabel";
             this.BrandInsertLabel.Size = new System.Drawing.Size(53, 20);
             this.BrandInsertLabel.TabIndex = 27;
@@ -116,82 +84,156 @@ namespace CompUI.Forms
             this.ModelInsertLabel.AutoSize = true;
             this.ModelInsertLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ModelInsertLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ModelInsertLabel.Location = new System.Drawing.Point(142, 322);
+            this.ModelInsertLabel.Location = new System.Drawing.Point(454, 198);
             this.ModelInsertLabel.Name = "ModelInsertLabel";
             this.ModelInsertLabel.Size = new System.Drawing.Size(53, 20);
             this.ModelInsertLabel.TabIndex = 28;
             this.ModelInsertLabel.Text = "<null>";
             // 
-            // NameLabel
+            // CompetitionNameLabel
             // 
-            this.NameLabel.AutoSize = true;
-            this.NameLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.NameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.NameLabel.Location = new System.Drawing.Point(408, 290);
-            this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(52, 20);
-            this.NameLabel.TabIndex = 30;
-            this.NameLabel.Text = "Name:";
+            this.CompetitionNameLabel.AutoSize = true;
+            this.CompetitionNameLabel.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CompetitionNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.CompetitionNameLabel.Location = new System.Drawing.Point(31, 100);
+            this.CompetitionNameLabel.Name = "CompetitionNameLabel";
+            this.CompetitionNameLabel.Size = new System.Drawing.Size(80, 25);
+            this.CompetitionNameLabel.TabIndex = 30;
+            this.CompetitionNameLabel.Text = "<name>";
             // 
-            // CompetitionPicture
+            // VehiclePicture
             // 
-            this.CompetitionPicture.Location = new System.Drawing.Point(400, 91);
-            this.CompetitionPicture.Name = "CompetitionPicture";
-            this.CompetitionPicture.Size = new System.Drawing.Size(206, 187);
-            this.CompetitionPicture.TabIndex = 29;
-            this.CompetitionPicture.TabStop = false;
+            this.VehiclePicture.Location = new System.Drawing.Point(432, 128);
+            this.VehiclePicture.Name = "VehiclePicture";
+            this.VehiclePicture.Size = new System.Drawing.Size(206, 187);
+            this.VehiclePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.VehiclePicture.TabIndex = 29;
+            this.VehiclePicture.TabStop = false;
+            this.VehiclePicture.Paint += new System.Windows.Forms.PaintEventHandler(this.Picture_Paint);
             // 
-            // NameInsertLabel
+            // MiddleDividePanel
             // 
-            this.NameInsertLabel.AutoSize = true;
-            this.NameInsertLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.NameInsertLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.NameInsertLabel.Location = new System.Drawing.Point(500, 290);
-            this.NameInsertLabel.Name = "NameInsertLabel";
-            this.NameInsertLabel.Size = new System.Drawing.Size(53, 20);
-            this.NameInsertLabel.TabIndex = 31;
-            this.NameInsertLabel.Text = "<null>";
+            this.MiddleDividePanel.BackColor = System.Drawing.Color.SteelBlue;
+            this.MiddleDividePanel.Location = new System.Drawing.Point(333, 83);
+            this.MiddleDividePanel.Margin = new System.Windows.Forms.Padding(0);
+            this.MiddleDividePanel.Name = "MiddleDividePanel";
+            this.MiddleDividePanel.Size = new System.Drawing.Size(2, 250);
+            this.MiddleDividePanel.TabIndex = 58;
+            // 
+            // RandomCompetitionCheckBox
+            // 
+            this.RandomCompetitionCheckBox.AutoSize = true;
+            this.RandomCompetitionCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.RandomCompetitionCheckBox.Location = new System.Drawing.Point(31, 42);
+            this.RandomCompetitionCheckBox.Name = "RandomCompetitionCheckBox";
+            this.RandomCompetitionCheckBox.Size = new System.Drawing.Size(230, 34);
+            this.RandomCompetitionCheckBox.TabIndex = 59;
+            this.RandomCompetitionCheckBox.Text = "Random Competition";
+            this.RandomCompetitionCheckBox.UseVisualStyleBackColor = true;
+            this.RandomCompetitionCheckBox.CheckedChanged += new System.EventHandler(this.RandomCompetitionCheckBox_CheckedChanged);
+            // 
+            // RandomVehicleCheckBox
+            // 
+            this.RandomVehicleCheckBox.AutoSize = true;
+            this.RandomVehicleCheckBox.Enabled = false;
+            this.RandomVehicleCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.RandomVehicleCheckBox.Location = new System.Drawing.Point(432, 42);
+            this.RandomVehicleCheckBox.Name = "RandomVehicleCheckBox";
+            this.RandomVehicleCheckBox.Size = new System.Drawing.Size(182, 34);
+            this.RandomVehicleCheckBox.TabIndex = 60;
+            this.RandomVehicleCheckBox.Text = "Random Vehicle";
+            this.RandomVehicleCheckBox.UseVisualStyleBackColor = true;
+            this.RandomVehicleCheckBox.CheckedChanged += new System.EventHandler(this.RandomVehicleCheckBox_CheckedChanged);
+            // 
+            // CompetitionDescriptionLabel
+            // 
+            this.CompetitionDescriptionLabel.AutoSize = true;
+            this.CompetitionDescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CompetitionDescriptionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.CompetitionDescriptionLabel.Location = new System.Drawing.Point(2, 0);
+            this.CompetitionDescriptionLabel.Name = "CompetitionDescriptionLabel";
+            this.CompetitionDescriptionLabel.Size = new System.Drawing.Size(70, 15);
+            this.CompetitionDescriptionLabel.TabIndex = 61;
+            this.CompetitionDescriptionLabel.Text = "Description:";
+            // 
+            // NotCompetitorCheckBox
+            // 
+            this.NotCompetitorCheckBox.AutoSize = true;
+            this.NotCompetitorCheckBox.Enabled = false;
+            this.NotCompetitorCheckBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NotCompetitorCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.NotCompetitorCheckBox.Location = new System.Drawing.Point(478, 72);
+            this.NotCompetitorCheckBox.Name = "NotCompetitorCheckBox";
+            this.NotCompetitorCheckBox.Size = new System.Drawing.Size(136, 19);
+            this.NotCompetitorCheckBox.TabIndex = 62;
+            this.NotCompetitorCheckBox.Text = "Hasn\'t competed yet";
+            this.NotCompetitorCheckBox.UseVisualStyleBackColor = true;
+            this.NotCompetitorCheckBox.CheckStateChanged += new System.EventHandler(this.NotCompetitor_CheckStateChanged);
+            // 
+            // DescriptionPanel
+            // 
+            this.DescriptionPanel.Controls.Add(this.CompetitionDescriptionLabel);
+            this.DescriptionPanel.Location = new System.Drawing.Point(29, 324);
+            this.DescriptionPanel.Name = "DescriptionPanel";
+            this.DescriptionPanel.Size = new System.Drawing.Size(295, 72);
+            this.DescriptionPanel.TabIndex = 63;
             // 
             // RandomChoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(670, 375);
-            this.Controls.Add(this.NameInsertLabel);
-            this.Controls.Add(this.NameLabel);
-            this.Controls.Add(this.CompetitionPicture);
+            this.ClientSize = new System.Drawing.Size(670, 409);
+            this.Controls.Add(this.DescriptionPanel);
+            this.Controls.Add(this.NotCompetitorCheckBox);
+            this.Controls.Add(this.RandomVehicleCheckBox);
+            this.Controls.Add(this.RandomCompetitionCheckBox);
+            this.Controls.Add(this.MiddleDividePanel);
+            this.Controls.Add(this.CompetitionNameLabel);
+            this.Controls.Add(this.VehiclePicture);
             this.Controls.Add(this.ModelInsertLabel);
             this.Controls.Add(this.BrandInsertLabel);
-            this.Controls.Add(this.ModelLabel);
-            this.Controls.Add(this.BrandLabel);
-            this.Controls.Add(this.VehiclePicture);
-            this.Controls.Add(this.RandomCompetitionButton);
-            this.Controls.Add(this.RandomVehicleButton);
+            this.Controls.Add(this.VehicleNameLabel);
+            this.Controls.Add(this.CompetitionPicture);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "RandomChoiceForm";
             this.Text = "Use this";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RandomChoiceForm_FormClosed);
-            ((System.ComponentModel.ISupportInitialize)(this.VehiclePicture)).EndInit();
+            this.Load += new System.EventHandler(this.RandomChoiceForm_Load);
+            this.Controls.SetChildIndex(this.CompetitionPicture, 0);
+            this.Controls.SetChildIndex(this.VehicleNameLabel, 0);
+            this.Controls.SetChildIndex(this.BrandInsertLabel, 0);
+            this.Controls.SetChildIndex(this.ModelInsertLabel, 0);
+            this.Controls.SetChildIndex(this.VehiclePicture, 0);
+            this.Controls.SetChildIndex(this.CompetitionNameLabel, 0);
+            this.Controls.SetChildIndex(this.MiddleDividePanel, 0);
+            this.Controls.SetChildIndex(this.RandomCompetitionCheckBox, 0);
+            this.Controls.SetChildIndex(this.RandomVehicleCheckBox, 0);
+            this.Controls.SetChildIndex(this.NotCompetitorCheckBox, 0);
+            this.Controls.SetChildIndex(this.DescriptionPanel, 0);
             ((System.ComponentModel.ISupportInitialize)(this.CompetitionPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VehiclePicture)).EndInit();
+            this.DescriptionPanel.ResumeLayout(false);
+            this.DescriptionPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.RadioButton RandomVehicleButton;
-        private System.Windows.Forms.RadioButton RandomCompetitionButton;
-        private System.Windows.Forms.Label ModelLabel;
-        private System.Windows.Forms.Label BrandLabel;
-        private System.Windows.Forms.PictureBox VehiclePicture;
+        private System.Windows.Forms.Label VehicleNameLabel;
+        private System.Windows.Forms.PictureBox CompetitionPicture;
         private System.Windows.Forms.Label BrandInsertLabel;
         private System.Windows.Forms.Label ModelInsertLabel;
-        private System.Windows.Forms.Label NameLabel;
-        private System.Windows.Forms.PictureBox CompetitionPicture;
-        private System.Windows.Forms.Label NameInsertLabel;
+        private System.Windows.Forms.Label CompetitionNameLabel;
+        private System.Windows.Forms.PictureBox VehiclePicture;
+        private System.Windows.Forms.Panel MiddleDividePanel;
+        private System.Windows.Forms.CheckBox RandomCompetitionCheckBox;
+        private System.Windows.Forms.CheckBox RandomVehicleCheckBox;
+        private System.Windows.Forms.Label CompetitionDescriptionLabel;
+        private System.Windows.Forms.CheckBox NotCompetitorCheckBox;
+        private System.Windows.Forms.Panel DescriptionPanel;
     }
 }
