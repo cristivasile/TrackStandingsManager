@@ -197,8 +197,15 @@ namespace CompUI
             ParentForm.Enabled = true;
             if (ParentForm == Program.EntryInsertFormInstance)
             {
+                Program.EntryInsertFormInstance.Enabled = true;
                 Program.EntryInsertFormInstance.Show();
                 Program.EntryInsertFormInstance.InitializeVehicles();
+            }
+            else if (ParentForm == Program.EntryUpdateFormInstance)
+            {
+                Program.EntryUpdateFormInstance.Enabled = true;
+                Program.EntryUpdateFormInstance.Show();
+                Program.EntryUpdateFormInstance.InitializeVehicles();
             }
             ParentForm.BringToFront();
         }

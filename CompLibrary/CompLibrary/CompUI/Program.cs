@@ -19,7 +19,8 @@ namespace CompUI
         public static VehicleManagerForm VehicleManagerFormInstance { get; set; }
         public static RandomChoiceForm RandomChoiceFormInstance { get; set; }
         public static CompetitionManagerForm CompetitionManagerFormInstance { get; set; }
-        public static EntryInsertForm EntryInsertFormInstance { get; set; }
+        public static EntryAddForm EntryInsertFormInstance { get; set; }
+        public static EntryUpdateForm EntryUpdateFormInstance { get; set; }
         public static CompetitionAddForm CompetitionAddFormInstance { get; set; }
         public static FilterForm FilterFormInstance { get; set; }
 

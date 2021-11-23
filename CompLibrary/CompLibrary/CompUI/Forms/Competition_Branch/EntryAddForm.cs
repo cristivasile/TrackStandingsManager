@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace CompUI.Forms.Competition_Branch
 {
-    public partial class EntryInsertForm : TemplateFormNotResizable
+    public partial class EntryAddForm : TemplateFormNotResizable
     {
         private CompetitionModel CurrentCompetition;
         private Dictionary<string, int> VehicleIds = new();
-        public EntryInsertForm(int CompetitionId)
+        public EntryAddForm(int CompetitionId)
         {
             this.CurrentCompetition = CRUD.GetCompetitionById(CompetitionId);
             InitializeComponent();
@@ -121,7 +121,7 @@ namespace CompUI.Forms.Competition_Branch
                 CompetitorModel NewCompetitor = new(
                     VehicleIds[VehicleComboBox.Text],
                     score,
-                    AuthorTextBox.Text
+                    AuthorTextBox.Text.Trim()
                 );
 
                 Utilities.GenerateSuccess("Success!", MessagePanel);
@@ -309,5 +309,6 @@ namespace CompUI.Forms.Competition_Branch
             }
             
         }
+
     }
 }

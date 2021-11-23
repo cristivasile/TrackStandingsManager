@@ -11,7 +11,7 @@ namespace CompLibrary
         /// <summary>
         /// Unique identifier of a competitor;
         /// </summary>
-        public int Id { get; set; }
+        public int Id { get; set; } = -1;
 
         /// <summary>
         /// The id of the vehicle that this competitor contains.

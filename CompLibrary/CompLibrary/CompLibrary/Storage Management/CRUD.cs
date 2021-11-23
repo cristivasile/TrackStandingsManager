@@ -113,13 +113,16 @@ namespace CompLibrary.Storage_Management
             foreach(CompetitionModel competition in GlobalData.Competitions)
                 if(competition.Id == CompetitionId)
                 {
-                    int Id = 0;
-                    //generate Id
-                    foreach (CompetitorModel competitor in competition.Competitors)
-                        if (Id <= competitor.Id)
-                            Id = competitor.Id + 1;
+                    //generate Id if it has default value. if it does not, this was called from UpdateCompetitor
+                    if (NewCompetitor.Id == -1)
+                    {
+                        int Id = 0;
+                        foreach (CompetitorModel competitor in competition.Competitors)
+                            if (Id <= competitor.Id)
+                                Id = competitor.Id + 1;
 
-                    NewCompetitor.Id = Id;
+                        NewCompetitor.Id = Id;
+                    }
 
                     int Position = 1;
                     int Index = 0;
@@ -228,6 +231,15 @@ namespace CompLibrary.Storage_Management
                 }
 
             return false;
+        }
+
+        /// <summary>
+        /// Updates a competitor by deleting and re-inserting.
+        /// </summary>
+        public static void UpdateCompetitor(int CompetitionId, CompetitorModel ToUpdate)
+        {
+            DeleteCompetitor(CompetitionId, ToUpdate.Id);
+            CreateCompetitor(CompetitionId, ToUpdate);
         }
 
         /// <summary>
@@ -382,11 +394,15 @@ namespace CompLibrary.Storage_Management
                     while (competition.Competitors[Index].Id != CompetitorId)
                         Index++;
 
+                    //update deleted vehicle info
+                    GlobalData.Vehicles[VehicleIdsToIndexes[competition.Competitors[Index].VehicleId]].SumPositions -= competition.Competitors[Index].Position;
+                    GlobalData.Vehicles[VehicleIdsToIndexes[competition.Competitors[Index].VehicleId]].NrCompetitions--;
+
                     DeletedPosition = competition.Competitors[Index].Position;
                     competition.Competitors.RemoveAt(Index);
 
                     //Example: _4_ 4 4 7 if we delete _4_ we must ignore next two 4s
-                    while (competition.Competitors[Index].Position == DeletedPosition)
+                    while (Index < competition.Competitors.Count && competition.Competitors[Index].Position == DeletedPosition)
                         Index++;
 
                     //next competitors will have gone up one position

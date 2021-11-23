@@ -7,7 +7,10 @@
     <Compile Update="Forms\Competition_Branch\CompetitionAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Competition_Branch\EntryInsertForm.cs">
+    <Compile Update="Forms\Competition_Branch\EntryAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Competition_Branch\EntryUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\FilterForm.cs">

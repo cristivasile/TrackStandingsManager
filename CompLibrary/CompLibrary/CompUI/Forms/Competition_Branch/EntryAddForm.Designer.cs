@@ -1,7 +1,7 @@
 ﻿
 namespace CompUI.Forms.Competition_Branch
 {
-    partial class EntryInsertForm
+    partial class EntryAddForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace CompUI.Forms.Competition_Branch
         {
             this.TitleLabel = new System.Windows.Forms.Label();
             this.AbortButton = new System.Windows.Forms.Button();
-            this.UpdateButton = new System.Windows.Forms.Button();
+            this.AddButton = new System.Windows.Forms.Button();
             this.VehicleLabel = new System.Windows.Forms.Label();
             this.ScoringLabel = new System.Windows.Forms.Label();
             this.ScoreTextBox = new System.Windows.Forms.TextBox();
@@ -53,9 +53,9 @@ namespace CompUI.Forms.Competition_Branch
             this.TitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.TitleLabel.Location = new System.Drawing.Point(30, 35);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(136, 30);
+            this.TitleLabel.Size = new System.Drawing.Size(131, 30);
             this.TitleLabel.TabIndex = 36;
-            this.TitleLabel.Text = "New entry in:";
+            this.TitleLabel.Text = "New entry in";
             // 
             // AbortButton
             // 
@@ -74,22 +74,22 @@ namespace CompUI.Forms.Competition_Branch
             this.AbortButton.UseVisualStyleBackColor = false;
             this.AbortButton.Click += new System.EventHandler(this.AbortButton_Click);
             // 
-            // UpdateButton
+            // AddButton
             // 
-            this.UpdateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
-            this.UpdateButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.UpdateButton.FlatAppearance.BorderSize = 0;
-            this.UpdateButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.UpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.UpdateButton.ForeColor = System.Drawing.Color.SteelBlue;
-            this.UpdateButton.Location = new System.Drawing.Point(598, 284);
-            this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(125, 40);
-            this.UpdateButton.TabIndex = 34;
-            this.UpdateButton.Text = "Add";
-            this.UpdateButton.UseVisualStyleBackColor = false;
-            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            this.AddButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.AddButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.AddButton.FlatAppearance.BorderSize = 0;
+            this.AddButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AddButton.ForeColor = System.Drawing.Color.SteelBlue;
+            this.AddButton.Location = new System.Drawing.Point(598, 284);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(125, 40);
+            this.AddButton.TabIndex = 34;
+            this.AddButton.Text = "Add";
+            this.AddButton.UseVisualStyleBackColor = false;
+            this.AddButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // VehicleLabel
             // 
@@ -231,12 +231,12 @@ namespace CompUI.Forms.Competition_Branch
             this.SearchButton.UseVisualStyleBackColor = false;
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
-            // EntryInsertForm
+            // EntryAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(754, 355);
+            this.ClientSize = new System.Drawing.Size(754, 344);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.VehicleAddButton);
             this.Controls.Add(this.VehiclePicture);
@@ -248,19 +248,19 @@ namespace CompUI.Forms.Competition_Branch
             this.Controls.Add(this.CurrentCompetitionLabel);
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.AbortButton);
-            this.Controls.Add(this.UpdateButton);
+            this.Controls.Add(this.AddButton);
             this.Controls.Add(this.VehicleLabel);
             this.Controls.Add(this.ScoringLabel);
             this.Controls.Add(this.ScoreTextBox);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.Name = "EntryInsertForm";
+            this.Name = "EntryAddForm";
             this.Text = "EntryInsertForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EntryInsertForm_FormClosed);
             this.Controls.SetChildIndex(this.ScoreTextBox, 0);
             this.Controls.SetChildIndex(this.ScoringLabel, 0);
             this.Controls.SetChildIndex(this.VehicleLabel, 0);
-            this.Controls.SetChildIndex(this.UpdateButton, 0);
+            this.Controls.SetChildIndex(this.AddButton, 0);
             this.Controls.SetChildIndex(this.AbortButton, 0);
             this.Controls.SetChildIndex(this.TitleLabel, 0);
             this.Controls.SetChildIndex(this.CurrentCompetitionLabel, 0);
@@ -282,7 +282,7 @@ namespace CompUI.Forms.Competition_Branch
 
         private System.Windows.Forms.Label TitleLabel;
         private System.Windows.Forms.Button AbortButton;
-        private System.Windows.Forms.Button UpdateButton;
+        private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Label VehicleLabel;
         private System.Windows.Forms.Label ScoringLabel;
         private System.Windows.Forms.TextBox ScoreTextBox;

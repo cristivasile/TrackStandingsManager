@@ -439,7 +439,10 @@ namespace CompUI.Forms.Competition_Branch
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            int CompetitorId = Convert.ToInt32(((Button)sender).Tag);
+            this.Enabled = false;
+            Program.EntryUpdateFormInstance = new(CurrentCompetition.Id, CompetitorId);
+            Program.EntryUpdateFormInstance.Show();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
