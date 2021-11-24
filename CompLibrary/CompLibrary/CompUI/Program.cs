@@ -62,7 +62,6 @@ namespace CompUI
             MainMenuFormInstance = new MainMenuForm();
             Application.Run(MainMenuFormInstance);
         }
-        //TODO - change icon and names of all forms
         //TODO - Make forms responsive to resizing
     }
 }

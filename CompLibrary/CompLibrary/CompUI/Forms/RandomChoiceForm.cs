@@ -2,12 +2,8 @@
 using CompUI.Forms.Templates;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CompUI.Forms
@@ -31,11 +27,6 @@ namespace CompUI.Forms
         private void RandomChoiceForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Program.MainMenuFormInstance.Show();
-        }
-
-        private void RandomChoiceForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void Picture_Paint(object sender, PaintEventArgs e)
@@ -125,11 +116,7 @@ namespace CompUI.Forms
             //remove vehicles that have already competed
             if (NotCompetitorCheckBox.Checked == true)
             {
-                Dictionary<int, int> VehicleIdsToIndexes = new();
-
-                //map vehicle ids to indexes in Global vehicle list
-                for (int index = 0; index < GlobalData.Vehicles.Count; index++)
-                    VehicleIdsToIndexes[GlobalData.Vehicles[index].Id] = index;
+                Dictionary<int, int> VehicleIdsToIndexes = FunctionLibrary.MapVehicleIdsToIndexes();
 
                 //remove already existing competitors from possible vehicle list
                 foreach (CompetitorModel competitor in RandomCompetition.Competitors)

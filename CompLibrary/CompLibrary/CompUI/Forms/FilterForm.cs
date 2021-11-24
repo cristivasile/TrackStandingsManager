@@ -15,9 +15,9 @@ namespace CompUI.Forms
     public partial class FilterForm : TemplateFormNotResizable
     {
 
-        private HashSet<string> FilteredElements = new();
+        private readonly HashSet<string> FilterElements = new();
         public HashSet<string> Result = new();
-        private new Form ParentForm;
+        private readonly new Form ParentForm;
 
         /// <param name="filterby"> - Filter by 0 = Brand, 1 = Category</param>
         public FilterForm(int filterby, Form sender)
@@ -26,34 +26,35 @@ namespace CompUI.Forms
 
             InitializeComponent();
             InitializeBorder();
-
+            InitializeFilterElements(filterby);
             if (filterby == 0)
                 FilterLabel.Text = "Filtering by brand";
             else
                 FilterLabel.Text = "Filtering by category";
+            SetAllCheckedListBox(true);
+        }
 
+        private void InitializeFilterElements(int filterby)
+        {
             if (ParentForm == Program.VehicleManagerFormInstance)
             {
                 foreach (VehicleModel vehicle in GlobalData.Vehicles)
                     if (filterby == 0)
-                        FilteredElements.Add(vehicle.Brand);
-                    else FilteredElements.Add(vehicle.Category);
+                        FilterElements.Add(vehicle.Brand);
+                    else FilterElements.Add(vehicle.Category);
             }
-            else if(ParentForm == Program.CompetitionManagerFormInstance)
+            else if (ParentForm == Program.CompetitionManagerFormInstance)
             {
-                Dictionary<int, int> VehicleIdsToIndexes = new();
-                for (int Index = 0; Index < GlobalData.Vehicles.Count; Index++)
-                    VehicleIdsToIndexes[GlobalData.Vehicles[Index].Id] = Index;
+                Dictionary<int, int> VehicleIdsToIndexes = FunctionLibrary.MapVehicleIdsToIndexes();
 
                 foreach (CompetitorModel competitor in Program.CompetitionManagerFormInstance.CurrentCompetition.Competitors)
                     if (filterby == 0)
-                        FilteredElements.Add(GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].Brand);
+                        FilterElements.Add(GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].Brand);
                     else
-                        FilteredElements.Add(GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].Category);
+                        FilterElements.Add(GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].Category);
             }
 
-            FilterCheckedListBox.DataSource = FilteredElements.ToList();
-            SetAllCheckedListBox(true);
+            FilterCheckedListBox.DataSource = FilterElements.ToList();
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -78,7 +79,7 @@ namespace CompUI.Forms
         {
             if (FilterCheckedListBox.CheckedItems.Count == 0)
                 MessageBox.Show("You must choose at least one item!", "Error");
-            else if (FilterCheckedListBox.CheckedItems.Count == FilteredElements.Count)
+            else if (FilterCheckedListBox.CheckedItems.Count == FilterElements.Count)
                 MessageBox.Show("You need to uncheck at least one item!", "Error");
             else
             {
@@ -91,13 +92,13 @@ namespace CompUI.Forms
                 {
                     Program.VehicleManagerFormInstance.Enabled = true;
                     Program.VehicleManagerFormInstance.BringToFront();
-                    Program.VehicleManagerFormInstance.ReloadForm();
+                    Program.VehicleManagerFormInstance.ReloadVehiclePanels();
                 }
                 if (ParentForm == Program.CompetitionManagerFormInstance)
                 {
                     Program.CompetitionManagerFormInstance.Enabled = true;
                     Program.CompetitionManagerFormInstance.BringToFront();
-                    Program.CompetitionManagerFormInstance.Reload();
+                    Program.CompetitionManagerFormInstance.ReloadVehiclePanels();
                 }
             }
 

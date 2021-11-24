@@ -89,7 +89,6 @@ namespace CompUI
             this.CategoryComboBox.Name = "CategoryComboBox";
             this.CategoryComboBox.Size = new System.Drawing.Size(237, 38);
             this.CategoryComboBox.TabIndex = 25;
-            this.CategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
             // 
             // CategoryLabel
             // 
@@ -211,7 +210,6 @@ namespace CompUI
             this.MiddleDividePanel.Name = "MiddleDividePanel";
             this.MiddleDividePanel.Size = new System.Drawing.Size(2, 207);
             this.MiddleDividePanel.TabIndex = 35;
-            this.MiddleDividePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MiddleDividePanel_Paint);
             // 
             // VehicleAddForm
             // 

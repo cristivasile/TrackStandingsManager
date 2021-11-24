@@ -201,7 +201,6 @@ namespace CompUI.Forms
             this.Name = "RandomChoiceForm";
             this.Text = "Random Choice";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RandomChoiceForm_FormClosed);
-            this.Load += new System.EventHandler(this.RandomChoiceForm_Load);
             this.Controls.SetChildIndex(this.CompetitionPicture, 0);
             this.Controls.SetChildIndex(this.VehicleNameLabel, 0);
             this.Controls.SetChildIndex(this.BrandInsertLabel, 0);

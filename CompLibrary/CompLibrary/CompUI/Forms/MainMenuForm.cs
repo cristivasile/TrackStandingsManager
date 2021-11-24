@@ -48,7 +48,7 @@ namespace CompUI
             this.Hide();
         }
 
-        public void ShowReadError()
+        public static void ShowReadError()
         {
             MessageBox.Show("An error was encountered while trying to read from local storage, data was restored from last backup.", "Read error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

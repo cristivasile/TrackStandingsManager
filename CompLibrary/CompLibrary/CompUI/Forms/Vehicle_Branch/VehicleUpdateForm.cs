@@ -1,26 +1,21 @@
 ﻿using CompLibrary;
 using CompLibrary.Storage_Management;
-using CompUI.Forms;
-using CompUI.Forms.Templates;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CompUI
 {
-    public partial class VehicleUpdateForm : TemplateFormNotResizable
+    public partial class VehicleUpdateForm : Forms.Templates.TemplateFormNotResizable
     {
         private VehicleModel StoredVehicle;
         private bool ImageChanged = false;
-        private Dictionary<string, int> VehicleIds = new();
-        private new Form ParentForm;
+        private readonly Dictionary<string, int> VehicleIds = new();
+        private readonly new Form ParentForm;
 
         public VehicleUpdateForm(int vehicleId, Form sender)
         {
@@ -121,7 +116,7 @@ namespace CompUI
             return status;
         }
 
-        private void InsertButton_Click(object sender, EventArgs e)
+        private void UpdateButton_Click(object sender, EventArgs e)
         {
             MessagePanel.Controls.Clear();
             VehicleModel UpdatedVehicle;
@@ -136,29 +131,29 @@ namespace CompUI
                     filePath = GlobalConfig.ImageStorage.Save(VehiclePicture.Image);
                 }
 
-                UpdatedVehicle.Model = ModelTextBox.Text;
-                UpdatedVehicle.Brand = BrandTextBox.Text;
-                UpdatedVehicle.Category = CategoryComboBox.Text;
+                UpdatedVehicle.Model = ModelTextBox.Text.Trim();
+                UpdatedVehicle.Brand = BrandTextBox.Text.Trim();
+                UpdatedVehicle.Category = CategoryComboBox.Text.Trim();
                 UpdatedVehicle.ImagePath = filePath;
 
                 if (VehicleChanged(UpdatedVehicle) && CheckData())
                 {
-                    //Remove old name from list
+                    //Remove old name from vehicle list
                     VehicleName = StoredVehicle.Brand + " " + StoredVehicle.Model;
                     VehicleIds.Remove(VehicleName);
-
-                    CRUD.UpdateVehicle(UpdatedVehicle);
-
-                    Utilities.GenerateSuccess("Vehicle successfully updated!", MessagePanel);
 
                     //Add new name to list
                     StoredVehicle = UpdatedVehicle;
                     VehicleName = StoredVehicle.Brand + " " + StoredVehicle.Model;
                     VehicleIds[VehicleName] = StoredVehicle.Id;
                     VehicleComboBox.DataSource = VehicleIds.Keys.OrderBy(x => x).ToList<String>();
-                    
+
+                    CRUD.UpdateVehicle(UpdatedVehicle);
+
+                    Utilities.GenerateSuccess("Vehicle successfully updated!", MessagePanel);
+            
                     if(ParentForm == Program.VehicleManagerFormInstance)
-                        Program.VehicleManagerFormInstance.ReloadForm();
+                        Program.VehicleManagerFormInstance.ReloadVehiclePanels();
                 }
 
                 else if (!VehicleChanged(UpdatedVehicle))
@@ -223,7 +218,7 @@ namespace CompUI
                         StoredVehicle = null;
                         Utilities.GenerateSuccess("Vehicle deleted!", MessagePanel);
                         if(ParentForm == Program.VehicleManagerFormInstance)
-                            Program.VehicleManagerFormInstance.ReloadForm();
+                            Program.VehicleManagerFormInstance.ReloadVehiclePanels();
                     }
                     
                 }
@@ -267,7 +262,7 @@ namespace CompUI
 
         private static VehicleModel GetVehicleById(int id)
         {
-            VehicleModel SearchedVehicle = new();
+            VehicleModel SearchedVehicle;
 
             SearchedVehicle = CRUD.GetVehicleById(id);
 
@@ -288,11 +283,6 @@ namespace CompUI
             Utilities.GenerateError("Vehicle not found!", MessagePanel);
 
             //TODO - Add functionality for partial matches.
-        }
-
-        private void VehicleUpdateForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void VehicleUpdateForm_FormClosed(object sender, FormClosedEventArgs e)

@@ -12,7 +12,7 @@ namespace CompLibrary
         /// <summary>
         /// Unique identifier of a vehicle;
         /// </summary>
-        public int Id { get; set; }
+        public int Id { get; set; } = -1;
         /// <summary>
         /// The brand of this vehicle.
         /// </summary>
@@ -47,6 +47,7 @@ namespace CompLibrary
         {
             if (Id != -1)
                 this.Id = Id;
+
             this.Brand = Brand;
             this.Model = Model;
             this.Category = Category;

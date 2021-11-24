@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
-using System.IO;
+﻿using System.IO;
 using Newtonsoft.Json;
 
 namespace CompLibrary
@@ -30,7 +24,7 @@ namespace CompLibrary
             {
                 Directory.CreateDirectory(AppDirectory);
             }
-            //checks if json storage directory exists
+
             if (!Directory.Exists(JsonDirectory))
             {
                 Directory.CreateDirectory(JsonDirectory);
@@ -73,16 +67,11 @@ namespace CompLibrary
         /// <summary>
         /// Serializes variable or connection for writing to disk.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="data"></param>
-        /// <returns></returns>
         public static string GetJsonString<T>(this T data) => JsonConvert.SerializeObject(data);
 
         /// <summary>
         /// Writes all data given as parameter to the path that it is appended to.
         /// </summary>
-        /// <param name="path"></param>
-        /// <param name="data"></param>
         public static void WriteToFile(this string path, string data)
         {
             File.WriteAllText(path, data);
@@ -91,8 +80,6 @@ namespace CompLibrary
         /// <summary>
         /// Reads all text from file to param string
         /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
         public static string ReadFromFile(this string path) => File.ReadAllText(path);
 
         /// <summary>
@@ -100,7 +87,6 @@ namespace CompLibrary
         /// </summary>
         /// <typeparam name="T">Type to deserialize to</typeparam>
         /// <param name="data">String that contains serialized data</param>
-        /// <returns></returns>
         public static T DeserializeData<T>(this string data) => JsonConvert.DeserializeObject<T>(data);
     }
 }

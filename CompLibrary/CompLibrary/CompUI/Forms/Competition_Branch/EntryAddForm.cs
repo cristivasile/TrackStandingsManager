@@ -3,26 +3,24 @@ using CompLibrary.Storage_Management;
 using CompUI.Forms.Templates;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CompUI.Forms.Competition_Branch
 {
     public partial class EntryAddForm : TemplateFormNotResizable
     {
-        private CompetitionModel CurrentCompetition;
-        private Dictionary<string, int> VehicleIds = new();
+        private readonly CompetitionModel CurrentCompetition;
+        private readonly Dictionary<string, int> VehicleIds = new();
         public EntryAddForm(int CompetitionId)
         {
             this.CurrentCompetition = CRUD.GetCompetitionById(CompetitionId);
             InitializeComponent();
             InitializeBorder();
             InitializeVehicles();
+        }
+        public void InitializeControls()
+        {
             VehicleComboBox.DataSource = VehicleIds.Keys.ToList<String>();
             CurrentCompetitionLabel.Text = CurrentCompetition.Name;
 
@@ -47,11 +45,6 @@ namespace CompUI.Forms.Competition_Branch
                 VehicleIds[vehicle.Brand + " " + vehicle.Model] = vehicle.Id;
 
             VehicleComboBox.DataSource = VehicleIds.Keys.ToList<String>();
-        }
-
-        private void BrandTextBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void EntryInsertForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -125,11 +118,11 @@ namespace CompUI.Forms.Competition_Branch
                 );
 
                 Utilities.GenerateSuccess("Success!", MessagePanel);
-                CompLibrary.Storage_Management.CRUD.CreateCompetitor(CurrentCompetition.Id, NewCompetitor);
+                CRUD.CreateCompetitor(CurrentCompetition.Id, NewCompetitor);
 
                 AuthorTextBox.Text = "";
                 ScoreTextBox.Text = "";
-                Program.CompetitionManagerFormInstance.Reload();
+                Program.CompetitionManagerFormInstance.ReloadVehiclePanels();
             }
         }
 

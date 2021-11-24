@@ -114,7 +114,7 @@ namespace CompUI
             this.SaveButton.TabIndex = 43;
             this.SaveButton.Text = "Save Changes";
             this.SaveButton.UseVisualStyleBackColor = false;
-            this.SaveButton.Click += new System.EventHandler(this.InsertButton_Click);
+            this.SaveButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // CategoryComboBox
             // 
@@ -295,7 +295,6 @@ namespace CompUI
             this.Name = "VehicleUpdateForm";
             this.Text = "Vehicle Updater";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VehicleUpdateForm_FormClosed);
-            this.Load += new System.EventHandler(this.VehicleUpdateForm_Load);
             this.Controls.SetChildIndex(this.VehiclePicture, 0);
             this.Controls.SetChildIndex(this.BrandTextBox, 0);
             this.Controls.SetChildIndex(this.BrandLabel, 0);

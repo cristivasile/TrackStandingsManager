@@ -2,17 +2,13 @@
 using CompLibrary.Storage_Management;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CompUI.Forms.Competition_Branch
 {
-    public partial class CompetitionManagerForm : TemplateFormResizable
+    public partial class CompetitionManagerForm : Templates.TemplateFormNotResizable
     {
 
         /// <summary>
@@ -28,6 +24,7 @@ namespace CompUI.Forms.Competition_Branch
         /// </summary>
         private readonly int SmallColumnDivide = 30;
         private readonly int LargeColumnDivide = 7;
+        private readonly int SmallRowHeight = 35;
         /// <summary>
         /// Used in form filtering
         /// </summary>
@@ -40,17 +37,20 @@ namespace CompUI.Forms.Competition_Branch
             InitializeComponent();
             InitializeBorder();
             InitializeCompetitions();
+            InitializeControls();
+            ReloadVehiclePanels();
+        }
+
+        public void InitializeControls()
+        {
             CompetitionSelectBox.DataSource = CompetitionIds.Keys.ToList();
             if (CompetitionIds.Keys.Count == 0)
                 AddEntryButton.Enabled = false;
-
-            LoadVehicleHeaderPanel();
-            LoadVehiclePanel(0);
         }
 
-        public void ReloadCompetitions(int NewId = -1)
+        public void ReloadCompetitions(bool newCompetitionAdded = false)
         {
-            if(NewId != -1)
+            if(newCompetitionAdded)
             {
                 InitializeCompetitions();
                 CompetitionSelectBox.DataSource = CompetitionIds.Keys.ToList();
@@ -60,11 +60,6 @@ namespace CompUI.Forms.Competition_Branch
             {
                 CompetitionSelectBox.DataSource = CompetitionIds.Keys.ToList();
             }
-        }
-
-        private void SortTypeLabel_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void StandingsViewerForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -234,10 +229,7 @@ namespace CompUI.Forms.Competition_Branch
             int toIncrement = 1;
 
             //example: vehicle with id 13 is on vehicles[10], so 13:10
-            Dictionary<int, int> VehicleIdsToIndexes = new();
-
-            for (int Index = 0; Index < GlobalData.Vehicles.Count; Index++)
-                VehicleIdsToIndexes[GlobalData.Vehicles[Index].Id] = Index;
+            Dictionary<int, int> VehicleIdsToIndexes = FunctionLibrary.MapVehicleIdsToIndexes();
 
             ButtonSize = SmallButtonSize;
 
@@ -306,7 +298,7 @@ namespace CompUI.Forms.Competition_Branch
                     toIncrement++;
                 }
 
-                //If the panel is sorted by position, color first 3 rows differently.
+                //Color first 3 rows differently.
                 if (CurrentPosition <= 3)
                 {
                     if (CurrentPosition == 1)
@@ -325,9 +317,10 @@ namespace CompUI.Forms.Competition_Branch
 
                 NewVehiclePanel.Margin = NoPadding;
                 NewVehiclePanel.Width = VehiclesPanel.Width;
-                NewVehiclePanel.Height = VehiclesPanel.Height / 20;
+                NewVehiclePanel.Height = SmallRowHeight;
 
-                if (Competitors.Count > 20)
+                //if scrollbar is needed resize panel
+                if (Competitors.Count > VehicleFlowPanel.Height / NewVehiclePanel.Height)
                     NewVehiclePanel.Width -= Utilities.ScrollBarWidth;
 
 
@@ -345,7 +338,8 @@ namespace CompUI.Forms.Competition_Branch
                     ScoreLabel.Text = Convert.ToString(competitor.Score);
                 //else get time string
                 else
-                    ScoreLabel.Text = Utilities.GetTimeString(competitor.Score, CurrentCompetition.TimingType);
+                    ScoreLabel.Text = FunctionLibrary.GetTimeString(competitor.Score, CurrentCompetition.TimingType);
+                
                 ScoreLabel.AddToPanel(
                 NewVehiclePanel,
                 LargeColumnDivide,
@@ -434,17 +428,21 @@ namespace CompUI.Forms.Competition_Branch
 
         private void EditButton_Click(object sender, EventArgs e)
         {
+            //competitor id is stored in button tag
             int CompetitorId = Convert.ToInt32(((Button)sender).Tag);
             this.Enabled = false;
+
             Program.EntryUpdateFormInstance = new(CurrentCompetition.Id, CompetitorId);
             Program.EntryUpdateFormInstance.Show();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+            //competitor id is stored in button tag
             int CompetitorId = Convert.ToInt32(((Button)sender).Tag);
             CRUD.DeleteCompetitor(CurrentCompetition.Id, CompetitorId);
-            Reload();
+
+            ReloadVehiclePanels();
         }
 
         private void BrandToolStripMenuItem_Click(object sender, EventArgs e)
@@ -465,13 +463,13 @@ namespace CompUI.Forms.Competition_Branch
             FilterType = 2;
         }
 
-        private void clearFiltersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ClearFiltersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FilterType = 0;
-            Reload();
+            ReloadVehiclePanels();
         }
 
-        public void Reload()
+        public void ReloadVehiclePanels()
         {
             LoadVehicleHeaderPanel();
             LoadVehiclePanel(FilterType);
@@ -482,24 +480,15 @@ namespace CompUI.Forms.Competition_Branch
             CRUD.DeleteCompetition(CurrentCompetition.Id);
             InitializeCompetitions();
             CompetitionSelectBox.DataSource = CompetitionIds.Keys.ToList();
-            Reload();
-        }
-
-        private void SortByToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            ReloadVehiclePanels();
         }
 
         private void ResetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FilterType = 0;
             CompetitionSelectBox.SelectedIndex = 0;
-            Reload();
+            ReloadVehiclePanels();
         }
 
-        private void FilteredByValueLabel_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

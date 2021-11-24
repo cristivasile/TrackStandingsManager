@@ -12,10 +12,10 @@ namespace CompUI
     public partial class VehicleAddForm : TemplateFormNotResizable
     {
         /// <summary>
-        /// last image added by user on click
+        /// last image received from clipboard
         /// </summary>
         private Image lastImageInserted;
-        private new Form ParentForm;
+        private readonly new Form ParentForm;
 
         public VehicleAddForm(Form sender)
         {
@@ -35,7 +35,6 @@ namespace CompUI
                     imagePath = GlobalConfig.ImageStorage.Save(lastImageInserted);
                 }
 
-
                 //creates a new vehicle with the data provided
                 VehicleModel newVehicle = new(
                     BrandTextBox.Text.Trim(),
@@ -43,8 +42,6 @@ namespace CompUI
                     CategoryComboBox.Text.Trim(),
                     imagePath
                     );
-
-
                     
                 //check if category exists
                 bool categoryAdded = CRUD.CreateCategory(CategoryComboBox.Text.Trim());
@@ -71,7 +68,7 @@ namespace CompUI
                 VehiclePicture.Image = null;
 
                 if(ParentForm == Program.VehicleManagerFormInstance)
-                    Program.VehicleManagerFormInstance.ReloadForm();
+                    Program.VehicleManagerFormInstance.ReloadVehiclePanels();
             }
         }
 
@@ -191,7 +188,6 @@ namespace CompUI
         }
 
 
-
         private void VehicleAddForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             ParentForm.Enabled = true;
@@ -214,16 +210,5 @@ namespace CompUI
         {
             this.Close();
         }
-
-        private void MiddleDividePanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

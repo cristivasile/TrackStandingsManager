@@ -105,7 +105,7 @@ namespace CompUI.Forms.Competition_Branch
             this.clearFiltersToolStripMenuItem.Name = "clearFiltersToolStripMenuItem";
             this.clearFiltersToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.clearFiltersToolStripMenuItem.Text = "Clear filters";
-            this.clearFiltersToolStripMenuItem.Click += new System.EventHandler(this.clearFiltersToolStripMenuItem_Click);
+            this.clearFiltersToolStripMenuItem.Click += new System.EventHandler(this.ClearFiltersToolStripMenuItem_Click);
             // 
             // ResetToolStripMenuItem
             // 
@@ -157,7 +157,6 @@ namespace CompUI.Forms.Competition_Branch
             this.SortTypeLabel.Size = new System.Drawing.Size(89, 25);
             this.SortTypeLabel.TabIndex = 53;
             this.SortTypeLabel.Text = "Sort type:";
-            this.SortTypeLabel.Click += new System.EventHandler(this.SortTypeLabel_Click);
             // 
             // ScoreTypeLabel
             // 
@@ -286,7 +285,6 @@ namespace CompUI.Forms.Competition_Branch
             this.FilteredByValueLabel.Size = new System.Drawing.Size(77, 25);
             this.FilteredByValueLabel.TabIndex = 64;
             this.FilteredByValueLabel.Text = "<value>";
-            this.FilteredByValueLabel.Click += new System.EventHandler(this.FilteredByValueLabel_Click);
             // 
             // FilteredByLabel
             // 

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CompLibrary.Storage_Management
 {
@@ -71,7 +67,7 @@ namespace CompLibrary.Storage_Management
         /// Creates a new category and saves it to all storage solutions.
         /// </summary>
         /// <returns> New competition id. </returns>
-        public static int CreateCompetition(CompetitionModel newCompetition)
+        public static void CreateCompetition(CompetitionModel newCompetition)
         {
             //if competitions already exist in our list, use last known Id and increment it
             if (GlobalData.Competitions.Count != 0)
@@ -92,8 +88,6 @@ namespace CompLibrary.Storage_Management
 
             foreach (IDataConnection storage in GlobalConfig.Connections)
                 storage.WriteCompetitions();
-
-            return newCompetition.Id;
         }
 
         /// <summary>
@@ -103,11 +97,7 @@ namespace CompLibrary.Storage_Management
         /// <param name="NewCompetitor"></param>
         public static void CreateCompetitor(int CompetitionId, CompetitorModel NewCompetitor)
         {
-            Dictionary<int, int> VehicleIdsToIndexes = new();
-
-            //Map id's to current index in vehicle list
-            for(int i = 0; i < GlobalData.Vehicles.Count; i++)
-                VehicleIdsToIndexes[GlobalData.Vehicles[i].Id] = i; 
+            Dictionary<int, int> VehicleIdsToIndexes = FunctionLibrary.MapVehicleIdsToIndexes();
 
             foreach(CompetitionModel competition in GlobalData.Competitions)
                 if(competition.Id == CompetitionId)
@@ -180,7 +170,7 @@ namespace CompLibrary.Storage_Management
         }
 
         /// <summary>
-        /// Reads all vehicles from first storage solutions.
+        /// Reads all vehicles from first storage solution.
         /// </summary>
         /// <returns>A list of all vehicles</returns>
         public static List<VehicleModel> ReadVehicles()
@@ -190,7 +180,7 @@ namespace CompLibrary.Storage_Management
         }
 
         /// <summary>
-        /// Reads all categories from first storage solutions.
+        /// Reads all categories from first storage solution.
         /// </summary>
         /// <returns>List of all categories</returns>
         public static BindingList<string> ReadCategories()
@@ -200,7 +190,7 @@ namespace CompLibrary.Storage_Management
         }
 
         /// <summary>
-        /// Reads all competitions from first storage solutions.
+        /// Reads all competitions from first storage solution.
         /// </summary>
         /// <returns>List of all categories</returns>
         public static List<CompetitionModel> ReadCompetitions()
@@ -305,11 +295,7 @@ namespace CompLibrary.Storage_Management
         /// <param name="competitionIndex"> - current competition Index in GlobalData.competitions list</param>
         public static void DeleteVehicleFromCompetition(int competitionIndex, int vehicleId)
         {
-            Dictionary<int, int> VehicleIdsToIndexes = new();
-
-            //Map id's to current index in vehicle list
-            for (int i = 0; i < GlobalData.Vehicles.Count; i++)
-                VehicleIdsToIndexes[GlobalData.Vehicles[i].Id] = i;
+            Dictionary<int, int> VehicleIdsToIndexes = FunctionLibrary.MapVehicleIdsToIndexes();
 
             //remove all entries that contain the vehicle
             for (int index = 0; index < GlobalData.Competitions[competitionIndex].Competitors.Count; index++)
@@ -348,9 +334,7 @@ namespace CompLibrary.Storage_Management
 
         public static bool DeleteCompetition(int Id)
         {
-            Dictionary<int, int> VehicleIdsToIndexes = new();
-            for (int Index = 0; Index < GlobalData.Vehicles.Count; Index++)
-                VehicleIdsToIndexes[GlobalData.Vehicles[Index].Id] = Index;
+            Dictionary<int, int> VehicleIdsToIndexes = FunctionLibrary.MapVehicleIdsToIndexes();
 
             foreach(CompetitionModel competition in GlobalData.Competitions)
                 if(competition.Id == Id)
@@ -379,9 +363,7 @@ namespace CompLibrary.Storage_Management
 
         public static bool DeleteCompetitor(int CompetitionId, int CompetitorId)
         {
-            Dictionary<int, int> VehicleIdsToIndexes = new();
-            for (int Index = 0; Index < GlobalData.Vehicles.Count; Index++)
-                VehicleIdsToIndexes[GlobalData.Vehicles[Index].Id] = Index;
+            Dictionary<int, int> VehicleIdsToIndexes = FunctionLibrary.MapVehicleIdsToIndexes();
 
             foreach (CompetitionModel competition in GlobalData.Competitions)
                 if (competition.Id == CompetitionId)

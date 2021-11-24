@@ -1,45 +1,27 @@
 ﻿using CompLibrary;
 using CompLibrary.Storage_Management;
-using CompUI.Forms.Templates;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CompUI.Forms.Competition_Branch
 {
-    public partial class CompetitionAddForm : TemplateFormNotResizable
+    public partial class CompetitionAddForm : Templates.TemplateFormNotResizable
     {
         private Image LastImageInserted;
         public CompetitionAddForm()
         {
             InitializeComponent();
             InitializeBorder();
+            InitializeControls();
+        }
+
+        private void InitializeControls()
+        {
             this.TimingsTypeBox.DataSource = GlobalConfig.DefaultTimings;
             this.TimingsTypeBox.SelectedItem = null;
             this.TimingsTypeBox.SelectedText = "Select timing format";
         }
-
-        private void TitleLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BrandLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void NewCompetitionForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Program.CompetitionManagerFormInstance.Enabled = true;
@@ -110,7 +92,7 @@ namespace CompUI.Forms.Competition_Branch
                 if (dialogResult == DialogResult.Yes)
                 {
 
-                    int PlacementType, OrderingType, TimingType, NewId = -1;
+                    int PlacementType, OrderingType, TimingType;
                     if (PointsButton.Checked)
                     {
                         PlacementType = 1;
@@ -145,7 +127,7 @@ namespace CompUI.Forms.Competition_Branch
 
 
 
-                    NewId = CRUD.CreateCompetition(NewCompetition);
+                    CRUD.CreateCompetition(NewCompetition);
 
                     //alerts the user that the insert is done
                     Utilities.GenerateSuccess("Insert successful!", MessagePanel);
@@ -160,7 +142,7 @@ namespace CompUI.Forms.Competition_Branch
                     //resets image frame
                     CompetitionPicture.Image = null;
 
-                    Program.CompetitionManagerFormInstance.ReloadCompetitions(NewId);
+                    Program.CompetitionManagerFormInstance.ReloadCompetitions(true);
                 }
             }
         }

@@ -2,17 +2,14 @@
 using CompLibrary.Storage_Management;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CompUI.Forms
 {
-    public partial class VehicleManagerForm : TemplateFormResizable
+    public partial class VehicleManagerForm : Templates.TemplateFormNotResizable
     {
         /// <summary>
         /// selected sort type of form. 1 = By names, 2 = By avg position
@@ -36,6 +33,8 @@ namespace CompUI.Forms
         private readonly int SmallColumnDivide = 30;
         private readonly int MediumColumnDivide = 15;
         private readonly int LargeColumnDivide = 7;
+        private readonly int SmallRowHeight = 35;
+        private readonly int LargeRowHeight = 70;
         /// <summary>
         /// Used in form filtering
         /// </summary>
@@ -44,8 +43,7 @@ namespace CompUI.Forms
         {
             InitializeComponent();
             InitializeBorder();
-            LoadVehicleHeaderPanel();
-            LoadVehiclePanel(SortType, FilterType);
+            ReloadVehiclePanels();
         }
 
         private void LoadVehicleHeaderPanel()
@@ -244,19 +242,14 @@ namespace CompUI.Forms
 
                 //rows with pictures will be taller
                 if (ShowPictures)
-                {
-                    NewVehiclePanel.Height = VehiclesPanel.Height / 10;
-
-                    if (Vehicles.Count > 10)
-                        NewVehiclePanel.Width -= Utilities.ScrollBarWidth;
-                }
+                    NewVehiclePanel.Height = LargeRowHeight;
                 else
-                {
-                    NewVehiclePanel.Height = VehiclesPanel.Height / 20;
+                    NewVehiclePanel.Height = SmallRowHeight;
 
-                    if (Vehicles.Count > 20)
-                        NewVehiclePanel.Width -= Utilities.ScrollBarWidth;
-                }
+
+                //a scrollbar is needed so size down
+                if (Vehicles.Count > VehicleFlowPanel.Height / NewVehiclePanel.Height)
+                    NewVehiclePanel.Width -= Utilities.ScrollBarWidth;
 
                 //check if we are sorting by name or position
                 if (SortType == 2)
@@ -431,7 +424,7 @@ namespace CompUI.Forms
             Program.VehicleAddFormInstance.Show();
         }
 
-        public void ReloadForm()
+        public void ReloadVehiclePanels()
         {
             LoadVehicleHeaderPanel();
             LoadVehiclePanel(SortType, FilterType);
@@ -439,13 +432,13 @@ namespace CompUI.Forms
         private void NameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SortType = 1;
-            ReloadForm();
+            ReloadVehiclePanels();
         }
 
         private void AveragePositionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SortType = 2;
-            ReloadForm();
+            ReloadVehiclePanels();
         }
 
         private void BrandToolStripMenuItem_Click(object sender, EventArgs e)
@@ -469,8 +462,7 @@ namespace CompUI.Forms
         private void ClearFiltersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FilterType = 0;
-            ReloadForm();
+            ReloadVehiclePanels();
         }
-
     }
 }

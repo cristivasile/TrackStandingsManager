@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 
@@ -8,7 +7,7 @@ namespace CompLibrary.Image_management
     public class DiskConnector : IImagesConnection
     {
         /// <summary>
-        /// Saves an image to disk and returns the path it was saved to
+        /// Saves an image to disk and returns the path it was saved to.
         /// </summary>
         /// <param name="toSave">the image to be saved</param>
         /// <returns></returns>
@@ -20,11 +19,11 @@ namespace CompLibrary.Image_management
             System.Drawing.Imaging.Encoder myEncoder =
                 System.Drawing.Imaging.Encoder.Quality;
 
-            EncoderParameters myEncoderParameters = new (1);
+            EncoderParameters EncoderParameters = new (1);
 
             EncoderParameter myEncoderParameter = new (myEncoder, 50L);
-            myEncoderParameters.Param[0] = myEncoderParameter;
-            toSave.Save(savePath, jpgEncoder, myEncoderParameters);
+            EncoderParameters.Param[0] = myEncoderParameter;
+            toSave.Save(savePath, jpgEncoder, EncoderParameters);
 
             return savePath;
         }

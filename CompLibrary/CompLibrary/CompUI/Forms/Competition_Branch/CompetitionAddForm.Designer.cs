@@ -62,7 +62,6 @@ namespace CompUI.Forms.Competition_Branch
             this.TitleLabel.Size = new System.Drawing.Size(172, 30);
             this.TitleLabel.TabIndex = 39;
             this.TitleLabel.Text = "New competition";
-            this.TitleLabel.Click += new System.EventHandler(this.TitleLabel_Click);
             // 
             // DescriptionLabel
             // 
@@ -94,7 +93,6 @@ namespace CompUI.Forms.Competition_Branch
             this.NameLabel.Size = new System.Drawing.Size(74, 30);
             this.NameLabel.TabIndex = 32;
             this.NameLabel.Text = "Name:";
-            this.NameLabel.Click += new System.EventHandler(this.BrandLabel_Click);
             // 
             // NameTextBox
             // 
@@ -116,7 +114,6 @@ namespace CompUI.Forms.Competition_Branch
             this.TypeLabel.Size = new System.Drawing.Size(115, 30);
             this.TypeLabel.TabIndex = 40;
             this.TypeLabel.Text = "Score type:";
-            this.TypeLabel.Click += new System.EventHandler(this.Label1_Click);
             // 
             // TimingsTypeBox
             // 

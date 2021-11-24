@@ -121,7 +121,6 @@ namespace CompUI.Forms.Competition_Branch
             this.ScoreTextBox.Name = "ScoreTextBox";
             this.ScoreTextBox.Size = new System.Drawing.Size(237, 32);
             this.ScoreTextBox.TabIndex = 30;
-            this.ScoreTextBox.TextChanged += new System.EventHandler(this.BrandTextBox_TextChanged);
             // 
             // CurrentCompetitionLabel
             // 

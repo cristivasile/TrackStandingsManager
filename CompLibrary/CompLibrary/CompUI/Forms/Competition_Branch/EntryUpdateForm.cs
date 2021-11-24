@@ -3,21 +3,16 @@ using CompLibrary.Storage_Management;
 using CompUI.Forms.Templates;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CompUI.Forms.Competition_Branch
 {
     public partial class EntryUpdateForm : TemplateFormNotResizable
     {
-        CompetitionModel CurrentCompetition;
-        CompetitorModel CurrentCompetitor;
-        Dictionary<string, int> VehicleIds = new();
+        private readonly CompetitionModel CurrentCompetition;
+        private CompetitorModel CurrentCompetitor;
+        private Dictionary<string, int> VehicleIds;
 
         public EntryUpdateForm(int CompetitionId, int CompetitorId)
         {
@@ -25,7 +20,11 @@ namespace CompUI.Forms.Competition_Branch
             InitializeBorder();
             InitializeVehicles();
             this.CurrentCompetition = CRUD.GetCompetitionById(CompetitionId);
+            InitializeControls(CompetitorId);
+        }
 
+        public void InitializeControls(int CompetitorId)
+        {
             CurrentCompetitionLabel.Text = CurrentCompetition.Name;
 
             if (CurrentCompetition.PlacementType == 0)
@@ -57,11 +56,14 @@ namespace CompUI.Forms.Competition_Branch
             if (CurrentCompetition.PlacementType == 1)
                 ScoreTextBox.Text = Convert.ToString(CurrentCompetitor.Score);
             else
-                ScoreTextBox.Text = Utilities.GetTimeString(CurrentCompetitor.Score, CurrentCompetition.TimingType);
+                ScoreTextBox.Text = FunctionLibrary.GetTimeString(CurrentCompetitor.Score, CurrentCompetition.TimingType);
+
         }
 
         public void InitializeVehicles()
         {
+            VehicleIds = new();
+
             foreach (VehicleModel vehicle in GlobalData.Vehicles)
                 VehicleIds[vehicle.Brand + " " + vehicle.Model] = vehicle.Id;
 
@@ -142,7 +144,7 @@ namespace CompUI.Forms.Competition_Branch
 
 
                     CompLibrary.Storage_Management.CRUD.UpdateCompetitor(CurrentCompetition.Id, UpdatedCompetitor);
-                    Program.CompetitionManagerFormInstance.Reload();
+                    Program.CompetitionManagerFormInstance.ReloadVehiclePanels();
 
                     this.Close();
                 }
@@ -317,7 +319,6 @@ namespace CompUI.Forms.Competition_Branch
         private void VehicleComboBox_Leave(object sender, EventArgs e)
         {
 
-            //event fires twice, I have no idea why ¯\_(ツ)_/¯
             MessagePanel.Controls.Clear();
 
             bool Found = false;
