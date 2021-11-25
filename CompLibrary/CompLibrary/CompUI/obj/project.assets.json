@@ -1116,7 +1116,7 @@
     "version": "1.0.0",
     "restore": {
       "projectUniqueName": "D:\\Projects\\TrackStandingsManager\\CompLibrary\\CompLibrary\\CompUI\\CompUI.csproj",
-      "projectName": "CompUI",
+      "projectName": "TrackStandingsManager",
       "projectPath": "D:\\Projects\\TrackStandingsManager\\CompLibrary\\CompLibrary\\CompUI\\CompUI.csproj",
       "packagesPath": "C:\\Users\\Cristi\\.nuget\\packages\\",
       "outputPath": "D:\\Projects\\TrackStandingsManager\\CompLibrary\\CompLibrary\\CompUI\\obj\\",

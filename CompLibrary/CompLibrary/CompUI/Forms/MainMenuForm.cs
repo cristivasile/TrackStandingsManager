@@ -17,7 +17,7 @@ namespace CompUI
         {
             InitializeComponent();
             InitializeBorder();
-
+            InitializeControls();
             //alerts the user that an error was encountered while trying to read from disk and a back-up was used.
             if (Program.ReadErrorEncountered)
             {
@@ -25,6 +25,11 @@ namespace CompUI
                 //user was alerted, reset read error
                 Program.ReadErrorEncountered = false;
             }
+        }
+
+        private void InitializeControls()
+        {
+            this.MenuStrip.Width = this.Width;
         }
 
         private void VehicleButton_Click(object sender, EventArgs e)
@@ -51,6 +56,18 @@ namespace CompUI
         public static void ShowReadError()
         {
             MessageBox.Show("An error was encountered while trying to read from local storage, data was restored from last backup.", "Read error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void BugsAndSuggestionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("For suggestions and bug reports please email TrackStandingsManager@gmail.com!");
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            Program.AboutFormInstance = new();
+            Program.AboutFormInstance.Show();
         }
     }
 }

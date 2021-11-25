@@ -54,7 +54,8 @@ namespace CompUI
             newError.Font = new Font("Consolas", 10);
             newError.ForeColor = System.Drawing.Color.Red;
             parent.Controls.Add(newError);
-            newError.Width = Convert.ToInt32(0.75 * parent.Width);
+            newError.MaximumSize = new (Convert.ToInt32(0.95 * parent.Width), parent.Height);
+            newError.AutoSize = true;
             // Delay.ContinueWith creates a new thread so ClearControls method needs to Invoke
             List<Control> toRemove = new() { newError };
             Task.Delay(3000).ContinueWith(x => ClearControls(parent, toRemove)); 
@@ -72,7 +73,8 @@ namespace CompUI
             newSuccess.Font = new Font("Consolas", 10);
             newSuccess.ForeColor = System.Drawing.Color.Green;
             parent.Controls.Add(newSuccess);
-            newSuccess.Width = Convert.ToInt32(0.95 * parent.Width);
+            newSuccess.MaximumSize = new(Convert.ToInt32(0.90 * parent.Width), parent.Height);
+            newSuccess.AutoSize = true;
             // Delay.ContinueWith creates a new thread so ClearControls method needs to Invoke
             List<Control> toRemove = new() { newSuccess };
             Task.Delay(3000).ContinueWith(x => ClearControls(parent, toRemove));

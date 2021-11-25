@@ -172,7 +172,7 @@ namespace CompUI.Forms.Competition_Branch
             // CompetitionPicture
             // 
             this.CompetitionPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.CompetitionPicture.Location = new System.Drawing.Point(1169, 31);
+            this.CompetitionPicture.Location = new System.Drawing.Point(1169, 33);
             this.CompetitionPicture.Margin = new System.Windows.Forms.Padding(0);
             this.CompetitionPicture.Name = "CompetitionPicture";
             this.CompetitionPicture.Size = new System.Drawing.Size(187, 141);

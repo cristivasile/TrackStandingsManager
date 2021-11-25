@@ -1,5 +1,6 @@
 ﻿using CompLibrary.Image_management;
 using System.Collections.Generic;
+using System.IO;
 
 namespace CompLibrary
 {

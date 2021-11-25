@@ -78,7 +78,7 @@ namespace CompUI
             // 
             this.TitleLabel.AutoSize = true;
             this.TitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.TitleLabel.Location = new System.Drawing.Point(12, 25);
+            this.TitleLabel.Location = new System.Drawing.Point(12, 36);
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(247, 30);
             this.TitleLabel.TabIndex = 45;

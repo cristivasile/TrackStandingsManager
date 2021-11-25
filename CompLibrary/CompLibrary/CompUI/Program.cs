@@ -8,7 +8,6 @@ namespace CompUI
     static class Program
     {
         //TODO - submit/update/etc on enter keypress
-        //TODO - organize code better
         //TODO - restore backup button
         /// <summary>
         /// The program can have only one instance of any form type
@@ -23,6 +22,7 @@ namespace CompUI
         public static EntryUpdateForm EntryUpdateFormInstance { get; set; }
         public static CompetitionAddForm CompetitionAddFormInstance { get; set; }
         public static FilterForm FilterFormInstance { get; set; }
+        public static AboutForm AboutFormInstance { get; set; }
 
         /// <summary>
         /// Used for alerting the user that a read error was encountered.
