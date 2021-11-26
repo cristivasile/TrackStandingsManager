@@ -160,3 +160,5 @@ This is what the window looks like:
 I don't think that explaining what the checkboxes do is necessary. This is how the window looks with them checked:
 
 ![](https://i.postimg.cc/W1XqWg4V/20.png)
+
+Well done! You are now ready to use TSM!
