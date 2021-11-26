@@ -257,6 +257,7 @@ namespace CompUI.Forms
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.MinimumSize = new System.Drawing.Size(1371, 900);
             this.Name = "VehicleManagerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vehicle Viewer";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VehicleViewerForm_FormClosed);
             this.Controls.SetChildIndex(this.VehicleFlowPanel, 0);

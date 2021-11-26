@@ -293,6 +293,7 @@ namespace CompUI
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "VehicleUpdateForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vehicle Updater";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VehicleUpdateForm_FormClosed);
             this.Controls.SetChildIndex(this.VehiclePicture, 0);

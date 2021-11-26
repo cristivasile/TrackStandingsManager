@@ -44,4 +44,3 @@ D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Release\net
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Release\net5.0-windows\TrackStandingsManager.dll
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Release\net5.0-windows\ref\TrackStandingsManager.dll
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Release\net5.0-windows\TrackStandingsManager.pdb
-D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Release\net5.0-windows\CompUI.csproj.CopyComplete

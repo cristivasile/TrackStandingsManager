@@ -322,6 +322,7 @@ namespace CompUI.Forms.Competition_Branch
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "CompetitionManagerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Standings Viewer";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StandingsViewerForm_FormClosed);
             this.Controls.SetChildIndex(this.MenuStrip, 0);

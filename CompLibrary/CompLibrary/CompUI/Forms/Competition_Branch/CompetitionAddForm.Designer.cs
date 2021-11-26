@@ -308,6 +308,7 @@ namespace CompUI.Forms.Competition_Branch
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "CompetitionAddForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Competition";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NewCompetitionForm_FormClosed);
             this.Controls.SetChildIndex(this.NameTextBox, 0);

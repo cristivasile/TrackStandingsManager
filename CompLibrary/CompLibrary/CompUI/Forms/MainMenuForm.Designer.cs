@@ -98,7 +98,7 @@ namespace CompUI
             this.aboutToolStripMenuItem});
             this.MenuStrip.Location = new System.Drawing.Point(2, 4);
             this.MenuStrip.Name = "MenuStrip";
-            this.MenuStrip.Size = new System.Drawing.Size(315, 24);
+            this.MenuStrip.Size = new System.Drawing.Size(195, 24);
             this.MenuStrip.TabIndex = 58;
             this.MenuStrip.Text = "menuStrip1";
             // 
@@ -136,6 +136,7 @@ namespace CompUI
             this.MaximumSize = new System.Drawing.Size(706, 512);
             this.MinimumSize = new System.Drawing.Size(609, 428);
             this.Name = "MainMenuForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Track Standings Manager";
             this.Controls.SetChildIndex(this.MenuStrip, 0);
             this.Controls.SetChildIndex(this.VehicleButton, 0);

@@ -130,6 +130,7 @@ namespace CompUI.Forms
             this.Controls.Add(this.FilterLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FilterForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Filter";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FilterForm_FormClosed);
             this.Controls.SetChildIndex(this.FilterLabel, 0);

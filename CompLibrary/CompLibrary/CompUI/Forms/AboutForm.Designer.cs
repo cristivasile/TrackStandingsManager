@@ -93,6 +93,7 @@ namespace CompUI.Forms
             this.Controls.Add(this.VersionLabel);
             this.Controls.Add(this.AppPicture);
             this.Name = "AboutForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AboutForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AboutForm_FormClosed);
             this.Controls.SetChildIndex(this.AppPicture, 0);
