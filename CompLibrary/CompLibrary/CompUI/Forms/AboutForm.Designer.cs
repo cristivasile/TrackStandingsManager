@@ -50,11 +50,11 @@ namespace CompUI.Forms
             this.VersionLabel.AutoSize = true;
             this.VersionLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.VersionLabel.ForeColor = System.Drawing.Color.SteelBlue;
-            this.VersionLabel.Location = new System.Drawing.Point(131, 129);
+            this.VersionLabel.Location = new System.Drawing.Point(136, 129);
             this.VersionLabel.Name = "VersionLabel";
-            this.VersionLabel.Size = new System.Drawing.Size(99, 19);
+            this.VersionLabel.Size = new System.Drawing.Size(88, 19);
             this.VersionLabel.TabIndex = 59;
-            this.VersionLabel.Text = "Version 1.0.0.0";
+            this.VersionLabel.Text = "Version 1.0.0";
             this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1

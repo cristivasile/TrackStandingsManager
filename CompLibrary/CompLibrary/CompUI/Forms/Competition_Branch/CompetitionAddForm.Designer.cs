@@ -81,6 +81,7 @@ namespace CompUI.Forms.Competition_Branch
             this.DescriptionTextBox.Location = new System.Drawing.Point(431, 176);
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
+            this.DescriptionTextBox.PlaceholderText = "-optional-";
             this.DescriptionTextBox.Size = new System.Drawing.Size(237, 110);
             this.DescriptionTextBox.TabIndex = 33;
             // 
@@ -283,7 +284,7 @@ namespace CompUI.Forms.Competition_Branch
             this.SortRadioContainer.Size = new System.Drawing.Size(115, 58);
             this.SortRadioContainer.TabIndex = 64;
             // 
-            // NewCompetitionForm
+            // CompetitionAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -306,7 +307,7 @@ namespace CompUI.Forms.Competition_Branch
             this.Controls.Add(this.NameTextBox);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.Name = "NewCompetitionForm";
+            this.Name = "CompetitionAddForm";
             this.Text = "New Competition";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NewCompetitionForm_FormClosed);
             this.Controls.SetChildIndex(this.NameTextBox, 0);

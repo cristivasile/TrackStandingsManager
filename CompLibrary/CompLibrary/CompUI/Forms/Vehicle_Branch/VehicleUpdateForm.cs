@@ -104,15 +104,18 @@ namespace CompUI
                 status = false;
             }
 
-            //check if vehicle with this name already exists
-            foreach (VehicleModel vehicle in GlobalData.Vehicles)
-                if (vehicle.Brand.ToLower().Trim() + vehicle.Model.ToLower().Trim() ==
-                    BrandTextBox.Text.ToLower().Trim() + ModelTextBox.Text.ToLower().Trim())
-                {
-                    Utilities.GenerateError("Vehicle already exists!", MessagePanel);
-                    status = false;
-                }
-
+            //if name or brand has modified
+            if (BrandTextBox.Text.ToLower().Trim() != StoredVehicle.Brand.ToLower().Trim()
+             || ModelTextBox.Text.ToLower().Trim() != StoredVehicle.Model.ToLower().Trim())
+                //check if vehicle with this name already exists
+                foreach (VehicleModel vehicle in GlobalData.Vehicles)
+                    if (vehicle.Brand.ToLower().Trim() + vehicle.Model.ToLower().Trim() ==
+                        BrandTextBox.Text.ToLower().Trim() + ModelTextBox.Text.ToLower().Trim())
+                    {
+                        Utilities.GenerateError("Vehicle already exists!", MessagePanel);
+                        status = false;
+                    }
+            
             return status;
         }
 
@@ -146,13 +149,14 @@ namespace CompUI
                     StoredVehicle = UpdatedVehicle;
                     VehicleName = StoredVehicle.Brand + " " + StoredVehicle.Model;
                     VehicleIds[VehicleName] = StoredVehicle.Id;
-                    VehicleComboBox.DataSource = VehicleIds.Keys.OrderBy(x => x).ToList<String>();
 
                     CRUD.UpdateVehicle(UpdatedVehicle);
 
                     Utilities.GenerateSuccess("Vehicle successfully updated!", MessagePanel);
-            
-                    if(ParentForm == Program.VehicleManagerFormInstance)
+                    //update vehicle list
+                    VehicleComboBox.DataSource = VehicleIds.Keys.OrderBy(x => x).ToList<String>();
+
+                    if (ParentForm == Program.VehicleManagerFormInstance)
                         Program.VehicleManagerFormInstance.ReloadVehiclePanels();
                 }
 

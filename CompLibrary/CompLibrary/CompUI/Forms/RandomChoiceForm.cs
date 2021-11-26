@@ -40,19 +40,27 @@ namespace CompUI.Forms
 
         private void RandomCompetitionCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (RandomCompetitionCheckBox.Checked)
+            if (GlobalData.Competitions.Count != 0)
             {
-                RandomVehicleCheckBox.Enabled = true;
-                LoadCompetition();
+                if (RandomCompetitionCheckBox.Checked)
+                {
+                    RandomVehicleCheckBox.Enabled = true;
+                    LoadCompetition();
+                }
+                else
+                {
+                    RandomVehicleCheckBox.Checked = false;
+                    NotCompetitorCheckBox.Checked = false;
+                    RandomVehicleCheckBox.Enabled = false;
+                    NotCompetitorCheckBox.Enabled = false;
+                    UnloadCompetition();
+                    UnloadVehicle();
+                }
             }
             else
             {
-                RandomVehicleCheckBox.Checked = false;
-                NotCompetitorCheckBox.Checked = false;
-                RandomVehicleCheckBox.Enabled = false;
-                NotCompetitorCheckBox.Enabled = false;
-                UnloadCompetition();
-                UnloadVehicle();
+                CompetitionNameLabel.Text = "No competitions available!";
+                CompetitionNameLabel.Show();
             }
         }
 

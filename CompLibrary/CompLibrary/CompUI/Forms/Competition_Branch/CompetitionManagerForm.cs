@@ -161,11 +161,17 @@ namespace CompUI.Forms.Competition_Branch
                 ContentAlignment.MiddleCenter
                 );
 
-            if (CurrentCompetition.PlacementType == 1)
-                ScoreLabel.Text = "Points";
+            if (CurrentCompetition != null)
+            {
+                if (CurrentCompetition.PlacementType == 1)
+                    ScoreLabel.Text = "Points";
+                else
+                    ScoreLabel.Text = "Time";
+            }
             else
-                ScoreLabel.Text = "Time";
-
+            {
+                ScoreLabel.Text = "Score";
+            }
             ScoreLabel.AddToPanel(
                 VehiclesHeader,
                 LargeColumnDivide,
@@ -214,7 +220,11 @@ namespace CompUI.Forms.Competition_Branch
 
         private void LoadVehiclePanel(int FilterType = 0)
         {
-            List<CompetitorModel> Competitors = CurrentCompetition.Competitors;
+            List<CompetitorModel> Competitors = new();
+            if (CurrentCompetition != null)
+            {
+                Competitors = CurrentCompetition.Competitors;
+            }
             List<CompetitorModel> FilteredCompetitors;
             FlowLayoutPanel VehiclesPanel = this.VehicleFlowPanel;
             Image ErrorImage = Properties.Resources.ErrorImage;
@@ -333,19 +343,27 @@ namespace CompUI.Forms.Competition_Branch
                 ContentAlignment.MiddleCenter
                 );
 
+                //points will be centered, timings will be aligned on the left
+                ContentAlignment ScoreAlignment;
+
                 //if using score
                 if (CurrentCompetition.PlacementType == 1)
+                {
                     ScoreLabel.Text = Convert.ToString(competitor.Score);
+                    ScoreAlignment = ContentAlignment.MiddleCenter;
+                }
                 //else get time string
                 else
+                {
                     ScoreLabel.Text = FunctionLibrary.GetTimeString(competitor.Score, CurrentCompetition.TimingType);
-                
+                    ScoreAlignment = ContentAlignment.MiddleLeft;
+                }
                 ScoreLabel.AddToPanel(
                 NewVehiclePanel,
                 LargeColumnDivide,
                 Utilities.LargeTextBold,
                 TextColor,
-                ContentAlignment.MiddleCenter
+                ScoreAlignment
                 );
 
                 BrandLabel.Text = CompetitorVehicle.Brand;
@@ -440,27 +458,45 @@ namespace CompUI.Forms.Competition_Branch
         {
             //competitor id is stored in button tag
             int CompetitorId = Convert.ToInt32(((Button)sender).Tag);
-            CRUD.DeleteCompetitor(CurrentCompetition.Id, CompetitorId);
 
-            ReloadVehiclePanels();
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this entry? The action is permanent!", "Please confirm", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                CRUD.DeleteCompetitor(CurrentCompetition.Id, CompetitorId);
+                ReloadVehiclePanels();
+            }
         }
 
         private void BrandToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;
-            Program.FilterFormInstance = new(0, this);
-            Program.FilterFormInstance.Show();
-            FilterResult = Program.FilterFormInstance.Result;
-            FilterType = 1;
+            //check if competitions exist
+            if (CurrentCompetition != null)
+            {
+                this.Enabled = false;
+                Program.FilterFormInstance = new(0, this);
+                Program.FilterFormInstance.Show();
+                FilterResult = Program.FilterFormInstance.Result;
+                FilterType = 1;
+            }
+            MessageBox.Show("No competition to filter!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void CategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;
-            Program.FilterFormInstance = new(1, this);
-            Program.FilterFormInstance.Show();
-            FilterResult = Program.FilterFormInstance.Result;
-            FilterType = 2;
+            //check if competitions exist
+            if (CurrentCompetition != null)
+            {
+                this.Enabled = false;
+                Program.FilterFormInstance = new(1, this);
+                Program.FilterFormInstance.Show();
+                FilterResult = Program.FilterFormInstance.Result;
+                FilterType = 2;
+            }
+            else
+            {
+                MessageBox.Show("No competition to filter!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ClearFiltersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -477,16 +513,28 @@ namespace CompUI.Forms.Competition_Branch
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CRUD.DeleteCompetition(CurrentCompetition.Id);
-            InitializeCompetitions();
-            CompetitionSelectBox.DataSource = CompetitionIds.Keys.ToList();
-            ReloadVehiclePanels();
+            //check if competitions exist
+            if (CurrentCompetition != null)
+            {
+                CRUD.DeleteCompetition(CurrentCompetition.Id);
+                InitializeCompetitions();
+                CompetitionSelectBox.DataSource = CompetitionIds.Keys.ToList();
+                ReloadVehiclePanels();
+            }
+            else
+            {
+                MessageBox.Show("No competition to delete!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ResetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FilterType = 0;
-            CompetitionSelectBox.SelectedIndex = 0;
+            //check if competitions exist
+            if (CurrentCompetition != null)
+            {
+                CompetitionSelectBox.SelectedIndex = 0;
+            }
             ReloadVehiclePanels();
         }
 

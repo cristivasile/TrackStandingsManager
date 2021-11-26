@@ -401,7 +401,7 @@ namespace CompUI.Forms
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             int VehicleId = Convert.ToInt32(((Button)sender).Tag);
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this vehicle?\nThis action is permanent and will remove it from all competitions!", "Are you sure", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this vehicle?\nThis action is permanent and will remove it from all competitions!", "Please confirm", MessageBoxButtons.YesNo);
             
             if (dialogResult == DialogResult.Yes)
             {

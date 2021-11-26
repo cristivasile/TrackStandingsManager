@@ -18,6 +18,7 @@ namespace CompUI.Forms.Competition_Branch
             InitializeComponent();
             InitializeBorder();
             InitializeVehicles();
+            InitializeControls();
         }
         public void InitializeControls()
         {
@@ -145,9 +146,9 @@ namespace CompUI.Forms.Competition_Branch
             if (string.IsNullOrEmpty(ScoreTextBox.Text))
             {
                 //Error message depends on whether the competition uses timings or points
-                if(CurrentCompetition.PlacementType == 0)
+                if(CurrentCompetition.PlacementType == 1)
                     Utilities.GenerateError("Points can not be empty!", MessagePanel);
-                else if(CurrentCompetition.PlacementType == 1)
+                else if(CurrentCompetition.PlacementType == 0)
                     Utilities.GenerateError("Time can not be empty!", MessagePanel);
 
                 return false;

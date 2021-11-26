@@ -27,7 +27,7 @@ namespace CompLibrary.Storage_Management
             //trim spaces from strings
             newVehicle.Brand = newVehicle.Brand.Trim();
             newVehicle.Model = newVehicle.Model.Trim();
-            newVehicle.Category = newVehicle.Category.Trim();
+            newVehicle.Category = newVehicle.Category.Trim().FirstLetterUpper();
 
             GlobalData.Vehicles.Add(newVehicle);
 
@@ -210,7 +210,7 @@ namespace CompLibrary.Storage_Management
                 {
                     GlobalData.Vehicles[i].Brand = updatedvehicle.Brand.Trim();
                     GlobalData.Vehicles[i].Model = updatedvehicle.Model.Trim();
-                    GlobalData.Vehicles[i].Category = updatedvehicle.Category.Trim();
+                    GlobalData.Vehicles[i].Category = updatedvehicle.Category.Trim().FirstLetterUpper();
                     GlobalData.Vehicles[i].ImagePath = updatedvehicle.ImagePath;
 
                     foreach (IDataConnection storage in GlobalConfig.Connections)

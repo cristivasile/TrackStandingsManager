@@ -16,9 +16,11 @@ namespace CompUI.Forms
 
         private void InitializeControls()
         {
+            string version = $"Version {Assembly.GetExecutingAssembly().GetName().Version.ToString()}";
             AppPicture.Image = Properties.Resources.Icon;
             AppPicture.ResizeToFit();
-            VersionLabel.Text = $"Version {Assembly.GetExecutingAssembly().GetName().Version.ToString()}";
+            //remove last 2 characters (.0) from version string
+            VersionLabel.Text = version.Substring(0, version.Length - 2);
             GitHubImage.Image = Properties.Resources.GitHub_Logo;
         }
 

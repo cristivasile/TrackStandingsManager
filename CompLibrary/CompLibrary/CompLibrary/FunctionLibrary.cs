@@ -6,9 +6,17 @@ namespace CompLibrary
     public static class FunctionLibrary
     {
 
+        /// <summary>
+        /// Formats a string so that first letter is upercase and all others are lowercase.
+        /// </summary>
         public static string FirstLetterUpper(this string input)
         {
-            return char.ToUpper(input[0]) + input[1..];
+            string ResultString = "";
+            ResultString += char.ToUpper(input[0]);
+            for (int Index = 1; Index < input.Length; Index++)
+                ResultString += char.ToLower(input[Index]);
+
+            return ResultString;
         }
 
         /// <summary>
@@ -60,9 +68,9 @@ namespace CompLibrary
         public static string GetTimeString(double time, int TimingType)
         {
             int hours, minutes, seconds, milliseconds;
-            hours = Convert.ToInt32(time / 3600);
+            hours = Convert.ToInt32(Math.Floor(time / 3600));
             time %= 3600;
-            minutes = Convert.ToInt32(time / 60);
+            minutes = Convert.ToInt32(Math.Floor(time / 60));
             time %= 60;
             seconds = Convert.ToInt32(Math.Floor(time));
             time = (time * 1000) % 1000;
