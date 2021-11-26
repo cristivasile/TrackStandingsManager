@@ -110,6 +110,7 @@ All I have to do next is uncheck "Tuned" and press the "Filter" button. The resu
 ![](https://i.postimg.cc/tC7CDWWF/14.png)
 #### Edit and delete buttons
 Each entry in the leaderboard has these two buttons:
+
 ![](https://i.postimg.cc/GmGRSQ2T/15.png)
 The left one is called the "edit" button and can be used to edit the vehicle, author and/or score of a competitor.
 The left one is the "delete" button. *You can probably guess what it does.*
@@ -137,5 +138,6 @@ Filtering works the same way as in [Competition manager](#lets-start-with-the-me
 You can get here from "Main menu -> What should I play?"
 This is what the window looks like:
 ![](https://i.postimg.cc/rps0vsdr/19.png)
+
 I don't think that explaining what the checkboxes do is necessary. This is how the window looks with them checked:
 ![](https://i.postimg.cc/W1XqWg4V/20.png)
