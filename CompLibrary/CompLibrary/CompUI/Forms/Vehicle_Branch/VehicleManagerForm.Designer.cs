@@ -130,7 +130,7 @@ namespace CompUI.Forms
             this.ShowPicturesCheck.Location = new System.Drawing.Point(47, 72);
             this.ShowPicturesCheck.Name = "ShowPicturesCheck";
             this.ShowPicturesCheck.Size = new System.Drawing.Size(125, 25);
-            this.ShowPicturesCheck.TabIndex = 41;
+            this.ShowPicturesCheck.TabIndex = 0;
             this.ShowPicturesCheck.Text = "show pictures";
             this.ShowPicturesCheck.UseVisualStyleBackColor = false;
             this.ShowPicturesCheck.CheckedChanged += new System.EventHandler(this.ShowPicturesCheck_CheckChanged);
@@ -146,7 +146,7 @@ namespace CompUI.Forms
             this.InsertButton.Location = new System.Drawing.Point(1236, 50);
             this.InsertButton.Name = "InsertButton";
             this.InsertButton.Size = new System.Drawing.Size(108, 32);
-            this.InsertButton.TabIndex = 42;
+            this.InsertButton.TabIndex = 1;
             this.InsertButton.Text = "Add new";
             this.InsertButton.UseVisualStyleBackColor = false;
             this.InsertButton.Click += new System.EventHandler(this.InsertButton_Click);

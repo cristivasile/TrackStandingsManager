@@ -83,7 +83,7 @@ namespace CompUI.Forms.Competition_Branch
             this.DescriptionTextBox.Name = "DescriptionTextBox";
             this.DescriptionTextBox.PlaceholderText = "-optional-";
             this.DescriptionTextBox.Size = new System.Drawing.Size(237, 110);
-            this.DescriptionTextBox.TabIndex = 33;
+            this.DescriptionTextBox.TabIndex = 1;
             // 
             // NameLabel
             // 
@@ -104,7 +104,7 @@ namespace CompUI.Forms.Competition_Branch
             this.NameTextBox.Multiline = true;
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(237, 53);
-            this.NameTextBox.TabIndex = 31;
+            this.NameTextBox.TabIndex = 0;
             // 
             // TypeLabel
             // 
@@ -203,7 +203,7 @@ namespace CompUI.Forms.Competition_Branch
             this.InsertButton.Location = new System.Drawing.Point(836, 337);
             this.InsertButton.Name = "InsertButton";
             this.InsertButton.Size = new System.Drawing.Size(125, 40);
-            this.InsertButton.TabIndex = 58;
+            this.InsertButton.TabIndex = 2;
             this.InsertButton.Text = "Add";
             this.InsertButton.UseVisualStyleBackColor = false;
             this.InsertButton.Click += new System.EventHandler(this.InsertButton_Click);
@@ -296,30 +296,30 @@ namespace CompUI.Forms.Competition_Branch
             this.Controls.Add(this.CompetitionPicture);
             this.Controls.Add(this.MessagePanel);
             this.Controls.Add(this.AbortButton);
-            this.Controls.Add(this.InsertButton);
             this.Controls.Add(this.SortTypeLabel);
             this.Controls.Add(this.TimingsTypeBox);
             this.Controls.Add(this.TypeLabel);
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.DescriptionLabel);
-            this.Controls.Add(this.DescriptionTextBox);
-            this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.NameTextBox);
+            this.Controls.Add(this.DescriptionTextBox);
+            this.Controls.Add(this.InsertButton);
+            this.Controls.Add(this.NameLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "CompetitionAddForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Competition";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NewCompetitionForm_FormClosed);
-            this.Controls.SetChildIndex(this.NameTextBox, 0);
             this.Controls.SetChildIndex(this.NameLabel, 0);
+            this.Controls.SetChildIndex(this.InsertButton, 0);
             this.Controls.SetChildIndex(this.DescriptionTextBox, 0);
+            this.Controls.SetChildIndex(this.NameTextBox, 0);
             this.Controls.SetChildIndex(this.DescriptionLabel, 0);
             this.Controls.SetChildIndex(this.TitleLabel, 0);
             this.Controls.SetChildIndex(this.TypeLabel, 0);
             this.Controls.SetChildIndex(this.TimingsTypeBox, 0);
             this.Controls.SetChildIndex(this.SortTypeLabel, 0);
-            this.Controls.SetChildIndex(this.InsertButton, 0);
             this.Controls.SetChildIndex(this.AbortButton, 0);
             this.Controls.SetChildIndex(this.MessagePanel, 0);
             this.Controls.SetChildIndex(this.CompetitionPicture, 0);

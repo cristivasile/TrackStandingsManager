@@ -109,7 +109,7 @@ namespace CompUI.Forms.Competition_Branch
             this.AuthorTextBox.Name = "AuthorTextBox";
             this.AuthorTextBox.PlaceholderText = "-optional-";
             this.AuthorTextBox.Size = new System.Drawing.Size(237, 32);
-            this.AuthorTextBox.TabIndex = 76;
+            this.AuthorTextBox.TabIndex = 1;
             // 
             // AuthorLabel
             // 
@@ -141,7 +141,7 @@ namespace CompUI.Forms.Competition_Branch
             this.VehicleComboBox.Location = new System.Drawing.Point(174, 87);
             this.VehicleComboBox.Name = "VehicleComboBox";
             this.VehicleComboBox.Size = new System.Drawing.Size(237, 33);
-            this.VehicleComboBox.TabIndex = 73;
+            this.VehicleComboBox.TabIndex = 0;
             this.VehicleComboBox.SelectedIndexChanged += new System.EventHandler(this.VehicleComboBox_SelectedIndexChanged);
             this.VehicleComboBox.Leave += new System.EventHandler(this.VehicleComboBox_Leave);
             // 
@@ -196,7 +196,7 @@ namespace CompUI.Forms.Competition_Branch
             this.UpdateButton.Location = new System.Drawing.Point(600, 284);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(125, 40);
-            this.UpdateButton.TabIndex = 69;
+            this.UpdateButton.TabIndex = 3;
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = false;
             this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
@@ -230,7 +230,7 @@ namespace CompUI.Forms.Competition_Branch
             this.ScoreTextBox.Location = new System.Drawing.Point(174, 198);
             this.ScoreTextBox.Name = "ScoreTextBox";
             this.ScoreTextBox.Size = new System.Drawing.Size(237, 32);
-            this.ScoreTextBox.TabIndex = 66;
+            this.ScoreTextBox.TabIndex = 2;
             // 
             // EntryUpdateForm
             // 

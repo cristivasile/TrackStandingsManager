@@ -86,7 +86,7 @@ namespace CompUI.Forms.Competition_Branch
             this.AddButton.Location = new System.Drawing.Point(598, 284);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(125, 40);
-            this.AddButton.TabIndex = 34;
+            this.AddButton.TabIndex = 3;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = false;
             this.AddButton.Click += new System.EventHandler(this.UpdateButton_Click);
@@ -120,7 +120,7 @@ namespace CompUI.Forms.Competition_Branch
             this.ScoreTextBox.Location = new System.Drawing.Point(172, 198);
             this.ScoreTextBox.Name = "ScoreTextBox";
             this.ScoreTextBox.Size = new System.Drawing.Size(237, 32);
-            this.ScoreTextBox.TabIndex = 30;
+            this.ScoreTextBox.TabIndex = 2;
             // 
             // CurrentCompetitionLabel
             // 
@@ -140,7 +140,7 @@ namespace CompUI.Forms.Competition_Branch
             this.VehicleComboBox.Location = new System.Drawing.Point(172, 87);
             this.VehicleComboBox.Name = "VehicleComboBox";
             this.VehicleComboBox.Size = new System.Drawing.Size(237, 33);
-            this.VehicleComboBox.TabIndex = 40;
+            this.VehicleComboBox.TabIndex = 0;
             this.VehicleComboBox.SelectedIndexChanged += new System.EventHandler(this.VehicleComboBox_SelectedIndexChanged);
             this.VehicleComboBox.LostFocus += new System.EventHandler(this.VehicleComboBox_LostFocus);
             // 
@@ -174,7 +174,7 @@ namespace CompUI.Forms.Competition_Branch
             this.AuthorTextBox.Name = "AuthorTextBox";
             this.AuthorTextBox.PlaceholderText = "-optional-";
             this.AuthorTextBox.Size = new System.Drawing.Size(237, 32);
-            this.AuthorTextBox.TabIndex = 61;
+            this.AuthorTextBox.TabIndex = 1;
             // 
             // MessagePanel
             // 

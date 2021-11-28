@@ -41,7 +41,6 @@ namespace CompUI.Forms.Competition_Branch
             else
                 TimeFormatLabel.Text = "HH:MM:SS.mmm";
 
-            VehicleComboBox.DataSource = VehicleIds.Keys.ToList<String>();
             foreach (CompetitorModel competitor in CurrentCompetition.Competitors)
                 if (competitor.Id == CompetitorId)
                     CurrentCompetitor = competitor;
@@ -67,7 +66,7 @@ namespace CompUI.Forms.Competition_Branch
             foreach (VehicleModel vehicle in GlobalData.Vehicles)
                 VehicleIds[vehicle.Brand + " " + vehicle.Model] = vehicle.Id;
 
-            VehicleComboBox.DataSource = VehicleIds.Keys.ToList<String>();
+            VehicleComboBox.DataSource = VehicleIds.Keys.OrderBy(x => x).ToList<String>();
         }
 
         private void EntryUpdateForm_FormClosed(object sender, FormClosedEventArgs e)

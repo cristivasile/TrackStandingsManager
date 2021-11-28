@@ -143,7 +143,7 @@ namespace CompUI.Forms.Competition_Branch
             this.CompetitionSelectBox.Location = new System.Drawing.Point(211, 37);
             this.CompetitionSelectBox.Name = "CompetitionSelectBox";
             this.CompetitionSelectBox.Size = new System.Drawing.Size(484, 38);
-            this.CompetitionSelectBox.TabIndex = 31;
+            this.CompetitionSelectBox.TabIndex = 0;
             this.CompetitionSelectBox.SelectedIndexChanged += new System.EventHandler(this.CompetitionSelectBox_SelectedIndexChanged);
             this.CompetitionSelectBox.Leave += new System.EventHandler(this.CompetitionSelectBox_Leave);
             // 
@@ -237,7 +237,7 @@ namespace CompUI.Forms.Competition_Branch
             this.AddEntryButton.Location = new System.Drawing.Point(762, 116);
             this.AddEntryButton.Name = "AddEntryButton";
             this.AddEntryButton.Size = new System.Drawing.Size(166, 38);
-            this.AddEntryButton.TabIndex = 58;
+            this.AddEntryButton.TabIndex = 2;
             this.AddEntryButton.Text = "New Entry\r\n";
             this.AddEntryButton.UseVisualStyleBackColor = false;
             this.AddEntryButton.Click += new System.EventHandler(this.AddEntryButton_Click);
@@ -270,7 +270,7 @@ namespace CompUI.Forms.Competition_Branch
             this.AddButton.Location = new System.Drawing.Point(762, 50);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(166, 38);
-            this.AddButton.TabIndex = 62;
+            this.AddButton.TabIndex = 1;
             this.AddButton.Text = "Add Competition";
             this.AddButton.UseVisualStyleBackColor = false;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);

@@ -127,7 +127,7 @@ namespace CompUI.Forms
             this.RandomCompetitionCheckBox.Location = new System.Drawing.Point(31, 42);
             this.RandomCompetitionCheckBox.Name = "RandomCompetitionCheckBox";
             this.RandomCompetitionCheckBox.Size = new System.Drawing.Size(230, 34);
-            this.RandomCompetitionCheckBox.TabIndex = 59;
+            this.RandomCompetitionCheckBox.TabIndex = 0;
             this.RandomCompetitionCheckBox.Text = "Random Competition";
             this.RandomCompetitionCheckBox.UseVisualStyleBackColor = true;
             this.RandomCompetitionCheckBox.CheckedChanged += new System.EventHandler(this.RandomCompetitionCheckBox_CheckedChanged);
@@ -140,7 +140,7 @@ namespace CompUI.Forms
             this.RandomVehicleCheckBox.Location = new System.Drawing.Point(432, 42);
             this.RandomVehicleCheckBox.Name = "RandomVehicleCheckBox";
             this.RandomVehicleCheckBox.Size = new System.Drawing.Size(182, 34);
-            this.RandomVehicleCheckBox.TabIndex = 60;
+            this.RandomVehicleCheckBox.TabIndex = 1;
             this.RandomVehicleCheckBox.Text = "Random Vehicle";
             this.RandomVehicleCheckBox.UseVisualStyleBackColor = true;
             this.RandomVehicleCheckBox.CheckedChanged += new System.EventHandler(this.RandomVehicleCheckBox_CheckedChanged);
@@ -165,7 +165,7 @@ namespace CompUI.Forms
             this.NotCompetitorCheckBox.Location = new System.Drawing.Point(478, 72);
             this.NotCompetitorCheckBox.Name = "NotCompetitorCheckBox";
             this.NotCompetitorCheckBox.Size = new System.Drawing.Size(136, 19);
-            this.NotCompetitorCheckBox.TabIndex = 62;
+            this.NotCompetitorCheckBox.TabIndex = 2;
             this.NotCompetitorCheckBox.Text = "Hasn\'t competed yet";
             this.NotCompetitorCheckBox.UseVisualStyleBackColor = true;
             this.NotCompetitorCheckBox.CheckStateChanged += new System.EventHandler(this.NotCompetitor_CheckStateChanged);

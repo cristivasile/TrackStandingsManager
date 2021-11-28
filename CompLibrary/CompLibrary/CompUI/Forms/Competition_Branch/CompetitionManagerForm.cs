@@ -89,7 +89,7 @@ namespace CompUI.Forms.Competition_Branch
                 CompetitionIds[competition.Name] = competition.Id;
             }
 
-            CompetitionSelectBox.DataSource = CompetitionIds.Keys.ToList();
+            CompetitionSelectBox.DataSource = CompetitionIds.Keys.OrderBy(x => x).ToList();
 
             if (CompetitionIds.Keys.ToList().Count == 0)
             {
@@ -169,10 +169,15 @@ namespace CompUI.Forms.Competition_Branch
                 ContentAlignment.MiddleCenter
                 );
 
+            ContentAlignment PointsAlignment = ContentAlignment.MiddleLeft;
+
             if (CurrentCompetition != null)
             {
                 if (CurrentCompetition.PlacementType == 1)
+                {
                     ScoreLabel.Text = "Points";
+                    PointsAlignment = ContentAlignment.MiddleCenter;
+                }
                 else
                     ScoreLabel.Text = "Time";
             }
@@ -185,7 +190,7 @@ namespace CompUI.Forms.Competition_Branch
                 LargeColumnDivide,
                 Utilities.LargeTextBold,
                 TextColor,
-                ContentAlignment.MiddleLeft
+                PointsAlignment
                 );
 
             BrandLabel.Text = "Brand";
@@ -487,7 +492,10 @@ namespace CompUI.Forms.Competition_Branch
                 FilterResult = Program.FilterFormInstance.Result;
                 FilterType = 1;
             }
-            MessageBox.Show("No competition to filter!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                MessageBox.Show("No competition to filter!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CategoryToolStripMenuItem_Click(object sender, EventArgs e)

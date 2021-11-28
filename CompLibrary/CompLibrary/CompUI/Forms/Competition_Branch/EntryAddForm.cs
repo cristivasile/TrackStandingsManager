@@ -22,7 +22,6 @@ namespace CompUI.Forms.Competition_Branch
         }
         public void InitializeControls()
         {
-            VehicleComboBox.DataSource = VehicleIds.Keys.ToList<String>();
             CurrentCompetitionLabel.Text = CurrentCompetition.Name;
 
             if (CurrentCompetition.PlacementType == 0)
@@ -45,7 +44,7 @@ namespace CompUI.Forms.Competition_Branch
             foreach (VehicleModel vehicle in GlobalData.Vehicles)
                 VehicleIds[vehicle.Brand + " " + vehicle.Model] = vehicle.Id;
 
-            VehicleComboBox.DataSource = VehicleIds.Keys.ToList<String>();
+            VehicleComboBox.DataSource = VehicleIds.Keys.OrderBy(x => x).ToList<String>();
         }
 
         private void EntryInsertForm_FormClosed(object sender, FormClosedEventArgs e)

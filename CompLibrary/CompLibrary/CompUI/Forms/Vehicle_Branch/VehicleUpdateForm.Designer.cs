@@ -111,7 +111,7 @@ namespace CompUI
             this.SaveButton.Location = new System.Drawing.Point(693, 305);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(125, 40);
-            this.SaveButton.TabIndex = 43;
+            this.SaveButton.TabIndex = 4;
             this.SaveButton.Text = "Save Changes";
             this.SaveButton.UseVisualStyleBackColor = false;
             this.SaveButton.Click += new System.EventHandler(this.UpdateButton_Click);
@@ -124,7 +124,7 @@ namespace CompUI
             this.CategoryComboBox.Location = new System.Drawing.Point(406, 237);
             this.CategoryComboBox.Name = "CategoryComboBox";
             this.CategoryComboBox.Size = new System.Drawing.Size(237, 38);
-            this.CategoryComboBox.TabIndex = 42;
+            this.CategoryComboBox.TabIndex = 3;
             // 
             // CategoryLabel
             // 
@@ -153,7 +153,7 @@ namespace CompUI
             this.ModelTextBox.Location = new System.Drawing.Point(406, 162);
             this.ModelTextBox.Name = "ModelTextBox";
             this.ModelTextBox.Size = new System.Drawing.Size(237, 35);
-            this.ModelTextBox.TabIndex = 39;
+            this.ModelTextBox.TabIndex = 2;
             // 
             // BrandLabel
             // 
@@ -172,7 +172,7 @@ namespace CompUI
             this.BrandTextBox.Location = new System.Drawing.Point(406, 94);
             this.BrandTextBox.Name = "BrandTextBox";
             this.BrandTextBox.Size = new System.Drawing.Size(237, 35);
-            this.BrandTextBox.TabIndex = 37;
+            this.BrandTextBox.TabIndex = 1;
             // 
             // VehiclePicture
             // 
@@ -252,7 +252,7 @@ namespace CompUI
             this.VehicleComboBox.Location = new System.Drawing.Point(373, 33);
             this.VehicleComboBox.Name = "VehicleComboBox";
             this.VehicleComboBox.Size = new System.Drawing.Size(310, 38);
-            this.VehicleComboBox.TabIndex = 55;
+            this.VehicleComboBox.TabIndex = 0;
             this.VehicleComboBox.SelectedIndexChanged += new System.EventHandler(this.VehicleComboBox_SelectedIndexChanged);
             // 
             // SelectedLabel
