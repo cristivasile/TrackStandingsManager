@@ -36,7 +36,17 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}";
 
+[Code]
+procedure InstallNetFramework;
+var
+  ResultCode: Integer;
+begin
+  Exec(ExpandConstant('{tmp}\windowsdesktop-runtime-5.0.12-win-x64.exe /install /quiet /norestart'), '', '', SW_SHOWNORMAL,
+  ewWaitUntilTerminated, ResultCode);
+end;
+
 [Files]
+Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\Prerequisites\windowsdesktop-runtime-5.0.12-win-x64.exe"; DestDir: {tmp}; Flags: deleteafterinstall; AfterInstall: InstallNetFramework
 Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\CompLibrary.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\TrackStandingsManager.dll"; DestDir: "{app}"; Flags: ignoreversion
