@@ -143,7 +143,7 @@ namespace CompUI
             this.VehiclePicture.Location = new System.Drawing.Point(16, 82);
             this.VehiclePicture.Name = "VehiclePicture";
             this.VehiclePicture.Size = new System.Drawing.Size(206, 187);
-            this.VehiclePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.VehiclePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.VehiclePicture.TabIndex = 15;
             this.VehiclePicture.TabStop = false;
             this.VehiclePicture.Click += new System.EventHandler(this.VehiclePicture_Click);

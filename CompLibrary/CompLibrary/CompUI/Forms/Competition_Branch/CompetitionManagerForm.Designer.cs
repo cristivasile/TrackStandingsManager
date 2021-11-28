@@ -176,7 +176,7 @@ namespace CompUI.Forms.Competition_Branch
             this.CompetitionPicture.Margin = new System.Windows.Forms.Padding(0);
             this.CompetitionPicture.Name = "CompetitionPicture";
             this.CompetitionPicture.Size = new System.Drawing.Size(187, 141);
-            this.CompetitionPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.CompetitionPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.CompetitionPicture.TabIndex = 46;
             this.CompetitionPicture.TabStop = false;
             // 

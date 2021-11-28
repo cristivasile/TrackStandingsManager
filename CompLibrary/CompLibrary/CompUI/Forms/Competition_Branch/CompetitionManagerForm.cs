@@ -43,7 +43,6 @@ namespace CompUI.Forms.Competition_Branch
 
         public void InitializeControls()
         {
-            CompetitionSelectBox.DataSource = CompetitionIds.Keys.ToList();
             if (CompetitionIds.Keys.Count == 0)
                 AddEntryButton.Enabled = false;
         }
@@ -53,7 +52,6 @@ namespace CompUI.Forms.Competition_Branch
             if(newCompetitionAdded)
             {
                 InitializeCompetitions();
-                CompetitionSelectBox.DataSource = CompetitionIds.Keys.ToList();
                 CompetitionSelectBox.SelectedIndex = CompetitionIds.Count - 1;
             }
             else
@@ -84,11 +82,20 @@ namespace CompUI.Forms.Competition_Branch
 
         private void InitializeCompetitions()
         {
+            CurrentCompetition = null;
             CompetitionIds = new();
             foreach (CompetitionModel competition in GlobalData.Competitions)
             {
                 CompetitionIds[competition.Name] = competition.Id;
             }
+
+            CompetitionSelectBox.DataSource = CompetitionIds.Keys.ToList();
+
+            if (CompetitionIds.Keys.ToList().Count == 0)
+            {
+                CompetitionSelectBox.SelectedIndex = -1;
+            }
+
         }
 
         private void CompetitionSelectBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -113,11 +120,12 @@ namespace CompUI.Forms.Competition_Branch
             {
                 this.CompetitionPicture.Show();
                 this.CompetitionPicture.Image = Utilities.GetCopyImage(CurrentCompetition.ImagePath);
-                this.CompetitionPicture.ResizeToFit();
             }
+
             this.VehicleFlowPanel.Controls.Clear();
             LoadVehicleHeaderPanel();
             LoadVehiclePanel(0);
+
         }
 
         private void CompetitionSelectBox_Leave(object sender, EventArgs e)
@@ -518,7 +526,16 @@ namespace CompUI.Forms.Competition_Branch
             {
                 CRUD.DeleteCompetition(CurrentCompetition.Id);
                 InitializeCompetitions();
-                CompetitionSelectBox.DataSource = CompetitionIds.Keys.ToList();
+
+                if(CompetitionIds.Count == 0)
+                {
+                    CurrentCompetition = null;
+                    this.CompetitionSelectBox.Text = "";
+                    this.SortedTypeOutputLabel.Text = "<null>";
+                    this.ScoreTypeOutputLabel.Text = "<null>";
+                    this.CompetitionPicture.Hide();
+                }
+
                 ReloadVehiclePanels();
             }
             else
@@ -534,6 +551,10 @@ namespace CompUI.Forms.Competition_Branch
             if (CurrentCompetition != null)
             {
                 CompetitionSelectBox.SelectedIndex = 0;
+            }
+            else
+            {
+                CompetitionSelectBox.SelectedIndex = -1;
             }
             ReloadVehiclePanels();
         }

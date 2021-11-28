@@ -16,11 +16,10 @@ namespace CompUI.Forms
 
         private void InitializeControls()
         {
-            string version = $"Version {Assembly.GetExecutingAssembly().GetName().Version.ToString()}";
+            string version = $"Version {Assembly.GetExecutingAssembly().GetName().Version}";
             AppPicture.Image = Properties.Resources.Icon;
-            AppPicture.ResizeToFit();
             //remove last 2 characters (.0) from version string
-            VersionLabel.Text = version.Substring(0, version.Length - 2);
+            VersionLabel.Text = version[0..^2];
             GitHubImage.Image = Properties.Resources.GitHub_Logo;
         }
 
@@ -31,7 +30,7 @@ namespace CompUI.Forms
 
         private void GitHubImage_Click(object sender, System.EventArgs e)
         {
-            ProcessStartInfo GitLink = new ProcessStartInfo
+            ProcessStartInfo GitLink = new ()
             { 
               FileName = "https://github.com/cristivasile/TrackStandingsManager",
               UseShellExecute = true 

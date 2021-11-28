@@ -102,51 +102,6 @@ namespace CompUI
         /// <param name="width">The width to resize to.</param>
         /// <param name="height">The height to resize to.</param>
         /// <returns>The resized image.</returns>
-        public static Bitmap ResizeImage(Image image, int width, int height)
-        {
-            var destRect = new Rectangle(0, 0, width, height);
-            var destImage = new Bitmap(width, height);
-
-            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-
-            using (var graphics = Graphics.FromImage(destImage))
-            {
-                graphics.CompositingMode = CompositingMode.SourceCopy;
-                graphics.CompositingQuality = CompositingQuality.HighSpeed;
-                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                graphics.SmoothingMode = SmoothingMode.HighSpeed;
-                graphics.PixelOffsetMode = PixelOffsetMode.HighSpeed;
-
-                using var wrapMode = new ImageAttributes();
-                wrapMode.SetWrapMode(WrapMode.TileFlipXY);
-                graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
-            }
-
-            return destImage;
-        }
-        ///-------------------------------------------
-
-        /// <summary>
-        /// Makes an image 
-        /// </summary>
-        public static void ResizeToFit(this PictureBox target)
-        {
-            //for maintaining aspect ratio;
-            double ratio;
-            //if image is wider than a square
-            if (target.Image.Width > target.Image.Height)
-            {
-                ratio = Convert.ToDouble(target.Image.Height) / Convert.ToDouble(target.Image.Width);
-                target.Image = Utilities.ResizeImage(target.Image, target.Width, Convert.ToInt32(ratio * target.Height));
-            }
-            //else if image is taller than a square
-            else
-            {
-                ratio = Convert.ToDouble(target.Image.Width) / Convert.ToDouble(target.Image.Height);
-                target.Image = Utilities.ResizeImage(target.Image, Convert.ToInt32(ratio * target.Width), target.Height);
-            }
-
-        }
 
         /// <summary>
         /// Appends label to panel with given parameters.

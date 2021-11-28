@@ -88,6 +88,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.CoreRuntime.5.0.x64"
+                    {
+                    "Name" = "8:.NET Runtime 5.0.11 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.CoreRuntime.5.0.x64"
+                    }
+                }
             }
         }
     }
@@ -228,7 +241,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:TSM"
         "ProductCode" = "8:{14D10FD0-F996-42AC-BAEC-279FA8A64F55}"
-        "PackageCode" = "8:{94528BBD-2BF1-479B-B1C6-31B2559D7032}"
+        "PackageCode" = "8:{B28EBC5E-4214-41CF-B215-CD87C7FDBBCF}"
         "UpgradeCode" = "8:{823A415F-4756-4E3A-8681-58999AD2B668}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

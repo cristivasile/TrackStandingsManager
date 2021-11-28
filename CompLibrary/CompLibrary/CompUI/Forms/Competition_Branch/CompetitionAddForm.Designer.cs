@@ -229,7 +229,7 @@ namespace CompUI.Forms.Competition_Branch
             this.CompetitionPicture.Location = new System.Drawing.Point(37, 88);
             this.CompetitionPicture.Name = "CompetitionPicture";
             this.CompetitionPicture.Size = new System.Drawing.Size(206, 198);
-            this.CompetitionPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.CompetitionPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.CompetitionPicture.TabIndex = 62;
             this.CompetitionPicture.TabStop = false;
             this.CompetitionPicture.Click += new System.EventHandler(this.CompetitionPicture_Click);

@@ -3,11 +3,7 @@ using CompUI.Forms.Templates;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CompUI.Forms
@@ -15,7 +11,7 @@ namespace CompUI.Forms
     public partial class FilterForm : TemplateFormNotResizable
     {
 
-        private readonly HashSet<string> FilterElements = new();
+        private HashSet<string> FilterElements = new();
         public HashSet<string> Result = new();
         private readonly new Form ParentForm;
 
@@ -54,7 +50,9 @@ namespace CompUI.Forms
                         FilterElements.Add(GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].Category);
             }
 
-            FilterCheckedListBox.DataSource = FilterElements.ToList();
+            FilterCheckedListBox.Items.Clear();
+            foreach (string element in FilterElements)
+                FilterCheckedListBox.Items.Add(element);
         }
 
         private void CloseButton_Click(object sender, EventArgs e)

@@ -96,8 +96,6 @@ namespace CompUI.Forms
             else
                 CompetitionPicture.Image = Properties.Resources.ErrorImage;
 
-            CompetitionPicture.ResizeToFit();
-
             CompetitionNameLabel.Show();
             CompetitionNameLabel.Text = RandomCompetition.Name;
 
@@ -154,8 +152,6 @@ namespace CompUI.Forms
                 VehiclePicture.Image = Utilities.GetCopyImage(RandomVehicle.ImagePath);
             else
                 VehiclePicture.Image = Properties.Resources.ErrorImage;
-
-            VehiclePicture.ResizeToFit();
 
             VehicleNameLabel.Show();
             VehicleNameLabel.Text = RandomVehicle.Brand + " " + RandomVehicle.Model;

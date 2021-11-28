@@ -63,7 +63,7 @@ namespace CompUI.Forms
             this.CompetitionPicture.Location = new System.Drawing.Point(31, 128);
             this.CompetitionPicture.Name = "CompetitionPicture";
             this.CompetitionPicture.Size = new System.Drawing.Size(206, 187);
-            this.CompetitionPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.CompetitionPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.CompetitionPicture.TabIndex = 24;
             this.CompetitionPicture.TabStop = false;
             this.CompetitionPicture.Paint += new System.Windows.Forms.PaintEventHandler(this.Picture_Paint);
@@ -106,7 +106,7 @@ namespace CompUI.Forms
             this.VehiclePicture.Location = new System.Drawing.Point(432, 128);
             this.VehiclePicture.Name = "VehiclePicture";
             this.VehiclePicture.Size = new System.Drawing.Size(206, 187);
-            this.VehiclePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.VehiclePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.VehiclePicture.TabIndex = 29;
             this.VehiclePicture.TabStop = false;
             this.VehiclePicture.Paint += new System.Windows.Forms.PaintEventHandler(this.Picture_Paint);

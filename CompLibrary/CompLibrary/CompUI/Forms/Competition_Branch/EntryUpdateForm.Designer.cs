@@ -88,7 +88,7 @@ namespace CompUI.Forms.Competition_Branch
             this.VehiclePicture.Margin = new System.Windows.Forms.Padding(0);
             this.VehiclePicture.Name = "VehiclePicture";
             this.VehiclePicture.Size = new System.Drawing.Size(147, 115);
-            this.VehiclePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.VehiclePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.VehiclePicture.TabIndex = 78;
             this.VehiclePicture.TabStop = false;
             // 

@@ -161,9 +161,6 @@ namespace CompUI
                 VehiclePicture.Image = Clipboard.GetImage();
                 lastImageInserted = Clipboard.GetImage();
 
-                //make the image fit the box
-                VehiclePicture.ResizeToFit();
-
                 //Removes info label
                 ImageInfoLabel.Text = "";
 

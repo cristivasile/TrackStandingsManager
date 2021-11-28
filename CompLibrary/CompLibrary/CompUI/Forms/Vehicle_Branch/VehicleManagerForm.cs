@@ -270,7 +270,7 @@ namespace CompUI.Forms
                     PictureBox Picture = new();
                     Picture.Height = NewVehiclePanel.Height;
                     Picture.Width = Picture.Height;
-                    Picture.SizeMode = PictureBoxSizeMode.CenterImage;
+                    Picture.SizeMode = PictureBoxSizeMode.Zoom;
                     if (Vehicle.ImagePath != "")
                     {
                         try
@@ -286,7 +286,6 @@ namespace CompUI.Forms
                     {
                         Picture.Image = ErrorImage;
                     }
-                    Picture.ResizeToFit();
                     NewVehiclePanel.Controls.Add(Picture);
                 }
 

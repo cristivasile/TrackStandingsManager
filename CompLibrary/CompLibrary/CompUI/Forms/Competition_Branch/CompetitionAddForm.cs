@@ -50,9 +50,6 @@ namespace CompUI.Forms.Competition_Branch
                 CompetitionPicture.Image = Clipboard.GetImage();
                 LastImageInserted = Clipboard.GetImage();
 
-                //make the image fit the box
-                CompetitionPicture.ResizeToFit();
-
                 //Removes info label
                 ImageInfoLabel.Text = "";
 

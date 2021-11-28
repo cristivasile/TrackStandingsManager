@@ -63,7 +63,7 @@ namespace CompUI
             MessageBox.Show("For suggestions and bug reports please email TrackStandingsManager@gmail.com!");
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
             Program.AboutFormInstance = new();

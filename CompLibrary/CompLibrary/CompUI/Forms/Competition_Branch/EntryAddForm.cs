@@ -260,7 +260,6 @@ namespace CompUI.Forms.Competition_Branch
             {
                 VehiclePicture.Show();
                 VehiclePicture.Image = Utilities.GetCopyImage(Vehicle.ImagePath);
-                VehiclePicture.ResizeToFit();
             }
             else
             {

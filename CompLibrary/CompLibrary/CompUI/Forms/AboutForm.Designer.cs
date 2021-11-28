@@ -42,6 +42,7 @@ namespace CompUI.Forms
             this.AppPicture.Location = new System.Drawing.Point(155, 35);
             this.AppPicture.Name = "AppPicture";
             this.AppPicture.Size = new System.Drawing.Size(50, 50);
+            this.AppPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.AppPicture.TabIndex = 58;
             this.AppPicture.TabStop = false;
             // 

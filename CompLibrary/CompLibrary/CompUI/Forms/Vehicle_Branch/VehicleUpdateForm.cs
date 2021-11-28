@@ -49,7 +49,6 @@ namespace CompUI
                 if (vehicle.ImagePath != "")
                 {
                     this.VehiclePicture.Image = Utilities.GetCopyImage(vehicle.ImagePath);
-                    this.VehiclePicture.ResizeToFit();
                     this.ImageInfoLabel.Visible = false;
                 }
                 else
@@ -175,9 +174,6 @@ namespace CompUI
             if (Clipboard.ContainsImage())
             {
                 VehiclePicture.Image = Clipboard.GetImage();
-
-                //make the image fit the box
-                VehiclePicture.ResizeToFit();
 
                 //Removes info label
                 ImageInfoLabel.Text = "";
