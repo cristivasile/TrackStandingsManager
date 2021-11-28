@@ -1,4 +1,3 @@
-D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\TrackStandingsManager.dll
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Debug\net5.0-windows\TrackStandingsManager.exe
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Debug\net5.0-windows\TrackStandingsManager.dll.config
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Debug\net5.0-windows\TrackStandingsManager.deps.json
@@ -41,6 +40,8 @@ D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.AssemblyInfoInputs.cache
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.AssemblyInfo.cs
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.csproj.CoreCompileInputs.cache
+D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\TrackStandingsManager.dll
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\ref\TrackStandingsManager.dll
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\TrackStandingsManager.pdb
 D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.genruntimeconfig.cache
+D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\obj\Debug\net5.0-windows\CompUI.csproj.CopyComplete

@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompLibrary", "CompLibrary\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompUI", "CompUI\CompUI.csproj", "{E87446A6-7CEF-4A8C-B54D-BB676C85B279}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{38E2ADB8-DB1C-4EE4-85FE-83321985201E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,8 +21,6 @@ Global
 		{E87446A6-7CEF-4A8C-B54D-BB676C85B279}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E87446A6-7CEF-4A8C-B54D-BB676C85B279}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E87446A6-7CEF-4A8C-B54D-BB676C85B279}.Release|Any CPU.Build.0 = Release|Any CPU
-		{38E2ADB8-DB1C-4EE4-85FE-83321985201E}.Debug|Any CPU.ActiveCfg = Debug
-		{38E2ADB8-DB1C-4EE4-85FE-83321985201E}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
