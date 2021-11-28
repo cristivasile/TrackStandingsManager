@@ -28,7 +28,7 @@ SetupIconFile=D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\I
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
-UninstallDisplayIcon=D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\Icon.ico
+UninstallDisplayIcon={app}\Icon.ico
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -41,8 +41,11 @@ procedure InstallNetFramework;
 var
   ResultCode: Integer;
 begin
-  Exec(ExpandConstant('{tmp}\windowsdesktop-runtime-5.0.12-win-x64.exe /install /quiet /norestart'), '', '', SW_SHOWNORMAL,
-  ewWaitUntilTerminated, ResultCode);
+  if MsgBox('To run this app you need to install .NET. Would you like to do that now?', mbConfirmation, MB_YESNO) = IDYES then
+    begin
+    Exec(ExpandConstant('{tmp}\windowsdesktop-runtime-5.0.12-win-x64.exe'), '', '', SW_SHOWNORMAL,
+    ewWaitUntilTerminated, ResultCode);
+    end;
 end;
 
 [Files]
@@ -69,6 +72,7 @@ Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Re
 Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\System.Diagnostics.DiagnosticSource.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\TrackStandingsManager.pdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\License.rtf"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\Icon.ico"; DestDir: "{app}"; Flags: ignoreversion
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
