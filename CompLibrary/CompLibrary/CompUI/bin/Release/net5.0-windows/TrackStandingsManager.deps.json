@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v5.0": {
-      "TrackStandingsManager/1.0.1": {
+      "TrackStandingsManager/1.0.2": {
         "dependencies": {
           "CompLibrary": "1.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.12",
@@ -204,7 +204,7 @@
     }
   },
   "libraries": {
-    "TrackStandingsManager/1.0.1": {
+    "TrackStandingsManager/1.0.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

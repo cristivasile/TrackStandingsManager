@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Track Standings Manager"
-#define MyAppVersion "1.0.1"
+#define MyAppVersion "1.0.2"
 #define MyAppExeName "TrackStandingsManager.exe"
 #define MyAppAssocName "executable"
 #define MyAppAssocExt ".exe"
@@ -36,41 +36,20 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}";
 
-[Code]
-procedure InstallNetFramework;
-var
-  ResultCode: Integer;
-begin
-  if MsgBox('To run this app you need to install .NET. Would you like to do that now?', mbConfirmation, MB_YESNO) = IDYES then
-    begin
-    Exec(ExpandConstant('{tmp}\windowsdesktop-runtime-5.0.12-win-x64.exe'), '', '', SW_SHOWNORMAL,
-    ewWaitUntilTerminated, ResultCode);
-    end;
-end;
-
 [Files]
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\Prerequisites\windowsdesktop-runtime-5.0.12-win-x64.exe"; DestDir: {tmp}; Flags: deleteafterinstall; AfterInstall: InstallNetFramework
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\CompLibrary.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\TrackStandingsManager.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\TrackStandingsManager.dll.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\TrackStandingsManager.deps.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\TrackStandingsManager.runtimeconfig.dev.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\TrackStandingsManager.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\CompLibrary.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\Microsoft.EntityFrameworkCore.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\Microsoft.Extensions.Caching.Abstractions.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\Microsoft.Extensions.Caching.Memory.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\Microsoft.Extensions.DependencyInjection.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\Microsoft.Extensions.Logging.Abstractions.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\Microsoft.Extensions.Logging.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\Microsoft.Extensions.Options.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\Microsoft.Extensions.Primitives.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\System.Diagnostics.DiagnosticSource.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\TrackStandingsManager.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\TrackStandingsManager.dll.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\TrackStandingsManager.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\CompLibrary.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\clrcompression.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\clrjit.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\coreclr.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\D3DCompiler_47_cor3.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\mscordaccore.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\PenImc_cor3.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\PresentationNative_cor3.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\vcruntime140_cor3.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\wpfgfx_cor3.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\License.rtf"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\Icon.ico"; DestDir: "{app}"; Flags: ignoreversion
 
