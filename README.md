@@ -145,7 +145,7 @@ To sort the vehicles by average position, go to the menu bar and select "Average
 ![](https://i.postimg.cc/Hk3kYzwc/17.png)
 
 #### Filtering
-Filtering works the same way as in [Competition manager](#lets-start-with-the-menu-bar.)
+Filtering works the same way as in [Competition manager](#lets-start-with-the-menu-bar)
 
 #### Here is the list of vehicles (with pictures) sorted by average position and filtered to only show "GenericBrand":
 
