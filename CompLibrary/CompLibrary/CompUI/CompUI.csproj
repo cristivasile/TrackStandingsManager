@@ -10,10 +10,16 @@
     <Authors>Vasile George-Cristian</Authors>
     <Company />
     <Copyright></Copyright>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <PlatformTarget>x64</PlatformTarget>
     <WarningLevel>0</WarningLevel>
   </PropertyGroup>
