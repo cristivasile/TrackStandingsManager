@@ -158,7 +158,7 @@ namespace CompLibrary.Storage_Management
                     {
                         competition.Competitors[i].Position = competition.Competitors[i].Position + 1;
                         //add one position to SumPosition of vehicle
-                        GlobalData.Vehicles[competition.Competitors[i].VehicleId].SumPositions++;
+                        GlobalData.Vehicles[VehicleIdsToIndexes[competition.Competitors[i].VehicleId]].SumPositions++;
                     }
                 }
 
