@@ -129,7 +129,7 @@ namespace CompUI.Forms
             List<VehicleModel> FilteredVehicles;
             FlowLayoutPanel VehiclesPanel = this.VehicleFlowPanel;
             Image ErrorImage = Properties.Resources.ErrorImage;
-            Padding NoPadding = new (0);
+            Padding NoPadding = new(0);
             bool ShowPictures = this.ShowPicturesCheck.Checked;
             int ButtonSize;
             int MiddlePadding = 0;
@@ -154,7 +154,7 @@ namespace CompUI.Forms
                 this.FilteredByValueLabel.Hide();
                 this.FilteredByValueLabel.Text = "nothing";
             }
-            else if(FilterType == 1)
+            else if (FilterType == 1)
             {
                 this.FilteredByLabel.Show();
                 this.FilteredByValueLabel.Show();
@@ -181,7 +181,7 @@ namespace CompUI.Forms
                 Vehicles = FilteredVehicles;
             }
             //sort by name
-            if(SortType == 1)
+            if (SortType == 1)
             {
                 Vehicles = Vehicles.OrderBy(x => x.Brand).ThenBy(x => x.Model).ToList<VehicleModel>();
                 this.SortedByValueLabel.Text = "name";
@@ -209,7 +209,7 @@ namespace CompUI.Forms
 
                 CurrentIndex++;
 
-                if(Vehicle.AveragePosition() != LastScore)
+                if (Vehicle.AveragePosition() != LastScore)
                 {
                     CurrentPosition += toIncrement;
                     LastScore = Vehicle.AveragePosition();
@@ -276,9 +276,10 @@ namespace CompUI.Forms
                         try
                         {
                             Picture.Image = Utilities.GetCopyImage(Vehicle.ImagePath);
-                                
+
                         }
-                        catch {
+                        catch
+                        {
                             Picture.Image = ErrorImage;
                         }
                     }
@@ -332,7 +333,8 @@ namespace CompUI.Forms
                 ContentAlignment.MiddleCenter
                 );
                 //compute how much space is needed in the middle of the LayoutPanel
-                if (MiddlePadding == 0) {
+                if (MiddlePadding == 0)
+                {
                     MiddlePadding = NewVehiclePanel.Width;
                     MiddlePadding -= Utilities.ScrollBarWidth;
                     foreach (Control control in NewVehiclePanel.Controls)
@@ -401,7 +403,7 @@ namespace CompUI.Forms
         {
             int VehicleId = Convert.ToInt32(((Button)sender).Tag);
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this vehicle?\nThis action is permanent and will remove it from all competitions!", "Please confirm", MessageBoxButtons.YesNo);
-            
+
             if (dialogResult == DialogResult.Yes)
             {
                 bool vehicleDeleted;

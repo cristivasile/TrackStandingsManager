@@ -1,0 +1,88 @@
+<Window x:Class="CompUIWPF.Competitions.EntryAddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="New Entry" Height="320" Width="650" MinWidth="650" MaxWidth="650" 
+        ResizeMode="NoResize" Style="{StaticResource MaterialDesignWindow}">
+
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Title -->
+            <RowDefinition Height="*"/>
+            <!-- Vehicle/Image/Fields -->
+            <RowDefinition Height="Auto"/>
+            <!-- Message -->
+            <RowDefinition Height="Auto"/>
+            <!-- Buttons -->
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+            <TextBlock FontSize="18" Text="New entry in "/>
+            <TextBlock FontSize="18" Text="{Binding CompetitionName}" FontWeight="Bold"/>
+        </StackPanel>
+
+        <!-- Vehicle + Image + Fields -->
+        <Grid Grid.Row="1" Margin="0 12 0 0">
+            <Grid.ColumnDefinitions>
+                <!-- Image -->
+                <ColumnDefinition Width="Auto"/>
+                <!-- Gap -->
+                <ColumnDefinition Width="12"/>
+                <!-- Fields -->
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Vehicle Image -->
+            <Border Grid.Column="0" Width="200" Height="200" Background="Gray" CornerRadius="4" VerticalAlignment="Center">
+                <Image x:Name="VehicleImage" Stretch="Uniform" VerticalAlignment="Center"
+                       Height="{Binding ActualHeight, ElementName=FieldsPanel}"/>
+            </Border>
+
+            <!-- Fields -->
+            <StackPanel x:Name="FieldsPanel" Grid.Column="2" VerticalAlignment="Top">
+
+                <!-- Vehicle ComboBox + New -->
+                <Grid Margin="0,0,0,6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="VehicleBox" Height="30" IsEditable="True"
+                              DisplayMemberPath="BrandModel"
+                              SelectedValuePath="Id"
+                              StaysOpenOnEdit="True"
+                              SelectionChanged="VehicleBox_SelectionChanged"
+                              Loaded="VehicleBox_Loaded"
+                              Grid.Column="0"/>
+                    <Button x:Name="VehicleAddButton" Content="New" Width="60" Height="30" Margin="8,0,0,0"
+                            Click="VehicleAddButton_Click" Grid.Column="1"/>
+                </Grid>
+
+                <!-- Author -->
+                <StackPanel Orientation="Horizontal" Margin="0,60,0,6">
+                    <TextBlock Text="Author" Width="80" VerticalAlignment="Center"/>
+                    <TextBox x:Name="AuthorTextBox" Width="238" Height="28" 
+                             materialDesign:HintAssist.Hint="-optional-"/>
+                </StackPanel>
+
+                <!-- Score -->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="ScoringLabel" Text="Time/Points" Width="80" VerticalAlignment="Center"/>
+                    <TextBox x:Name="ScoreBox" Width="238" Height="28"/>
+                    <TextBlock x:Name="TimeFormatLabel" Text="" Margin="12,0,0,0" VerticalAlignment="Center"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <!-- Message -->
+        <TextBlock Grid.Row="2" x:Name="MessageText" Foreground="Red" Margin="0,6,0,0" TextWrapping="Wrap"/>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
+            <Button Content="Cancel" Width="100" Margin="0,0,8,0" Click="Cancel_Click"/>
+            <Button Content="Create" Width="100" Click="Create_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
