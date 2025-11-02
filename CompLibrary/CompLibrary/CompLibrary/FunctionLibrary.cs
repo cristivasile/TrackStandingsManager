@@ -7,7 +7,7 @@ namespace CompLibrary
     {
 
         /// <summary>
-        /// Formats a string so that first letter is upercase and all others are lowercase.
+        /// Formats a string so that first letter is uppercase and all others are lowercase.
         /// </summary>
         public static string FirstLetterUpper(this string input)
         {
@@ -50,7 +50,7 @@ namespace CompLibrary
         /// <returns> - dictionary with vehicle ids as keys and corresponding indexes in GlobalData.vehicles as values</returns>
         public static Dictionary<int, int> MapVehicleIdsToIndexes()
         {
-            Dictionary<int, int> VehicleIdsToIndexes = new();
+            Dictionary<int, int> VehicleIdsToIndexes = [];
 
             for (int Index = 0; Index < GlobalData.Vehicles.Count; Index++)
                 VehicleIdsToIndexes[GlobalData.Vehicles[Index].Id] = Index;

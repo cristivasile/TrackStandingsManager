@@ -68,7 +68,7 @@ namespace CompUIWPF.Competitions
         {
             MessageText.Text = "";
 
-            double score = 0;
+            double score;
 
             // Points
             if (_competition.PlacementType == 1)
@@ -103,16 +103,16 @@ namespace CompUIWPF.Competitions
                     switch (_competition.TimingType)
                     {
                         case 0:
-                            t.Seconds = int.Parse(digits.Substring(0, 2));
+                            t.Seconds = int.Parse(digits[..2]);
                             t.Milliseconds = int.Parse(digits.Substring(2, 3));
                             break;
                         case 1:
-                            t.Minutes = int.Parse(digits.Substring(0, 2));
+                            t.Minutes = int.Parse(digits[..2]);
                             t.Seconds = int.Parse(digits.Substring(2, 2));
                             t.Milliseconds = int.Parse(digits.Substring(4, 3));
                             break;
                         case 2:
-                            t.Hours = int.Parse(digits.Substring(0, 2));
+                            t.Hours = int.Parse(digits[..2]);
                             t.Minutes = int.Parse(digits.Substring(2, 2));
                             t.Seconds = int.Parse(digits.Substring(4, 2));
                             t.Milliseconds = int.Parse(digits.Substring(6, 3));

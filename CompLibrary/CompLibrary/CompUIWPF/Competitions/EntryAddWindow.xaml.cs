@@ -14,8 +14,8 @@ namespace CompUIWPF.Competitions
     public partial class EntryAddWindow : Window
     {
         private readonly int _competitionId;
-        private CompetitionModel _competition;
-        private readonly System.Collections.Generic.Dictionary<string, int> _vehicleIds = new();
+        private readonly CompetitionModel _competition;
+        private readonly System.Collections.Generic.Dictionary<string, int> _vehicleIds = [];
         private ICollectionView _vehicleView;
 
         public string CompetitionName { get; set; }
@@ -167,10 +167,9 @@ namespace CompUIWPF.Competitions
         {
             MessageText.Text = "";
             if (string.IsNullOrEmpty(VehicleBox.Text)) { MessageText.Text = "Choose vehicle"; return; }
-            if (!_vehicleIds.ContainsKey(VehicleBox.Text)) { MessageText.Text = "Vehicle does not exist"; return; }
+            if (!_vehicleIds.TryGetValue(VehicleBox.Text, out int vid)) { MessageText.Text = "Vehicle does not exist"; return; }
 
-            int vid = _vehicleIds[VehicleBox.Text];
-            double score = 0;
+            double score;
 
             if (_competition.PlacementType == 1)
             {
@@ -194,16 +193,16 @@ namespace CompUIWPF.Competitions
                     switch (_competition.TimingType)
                     {
                         case 0:
-                            competitorTime.Seconds = int.Parse(digits.Substring(0, 2));
+                            competitorTime.Seconds = int.Parse(digits[..2]);
                             competitorTime.Milliseconds = int.Parse(digits.Substring(2, 3));
                             break;
                         case 1:
-                            competitorTime.Minutes = int.Parse(digits.Substring(0, 2));
+                            competitorTime.Minutes = int.Parse(digits[..2]);
                             competitorTime.Seconds = int.Parse(digits.Substring(2, 2));
                             competitorTime.Milliseconds = int.Parse(digits.Substring(4, 3));
                             break;
                         case 2:
-                            competitorTime.Hours = int.Parse(digits.Substring(0, 2));
+                            competitorTime.Hours = int.Parse(digits[..2]);
                             competitorTime.Minutes = int.Parse(digits.Substring(2, 2));
                             competitorTime.Seconds = int.Parse(digits.Substring(4, 2));
                             competitorTime.Milliseconds = int.Parse(digits.Substring(6, 3));
@@ -230,7 +229,7 @@ namespace CompUIWPF.Competitions
             if (VehicleBox.SelectedItem == null) return;
 
             dynamic selected = VehicleBox.SelectedItem;
-            string brandModel = selected.BrandModel;
+            _ = selected.BrandModel;
             int id = selected.Id;
 
             var vehicle = CRUD.GetVehicleById(id);

@@ -20,7 +20,7 @@ namespace CompUIWPF.Competitions
         private AddCompetitionWindow _addCompetitionWindow = new();
         // Filter state:0 = none,1 = brand,2 = category
         private int FilterType = 0;
-        private HashSet<string> FilterResult = new();
+        private HashSet<string> FilterResult = [];
 
         public CompetitionManager()
         {
@@ -179,7 +179,7 @@ namespace CompUIWPF.Competitions
                 // Medal for top 3
                 if (currentPosition <= 3)
                 {
-                    PackIconMaterial medalIcon = new PackIconMaterial
+                    PackIconMaterial medalIcon = new()
                     {
                         Kind = PackIconMaterialKind.Medal,
                         Width = 16,
@@ -244,7 +244,7 @@ namespace CompUIWPF.Competitions
 
                 // Actions
                 var actions = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right };
-                Button CreateIconButton(PackIconMaterialKind kind, string tooltip, int tag)
+                static Button CreateIconButton(PackIconMaterialKind kind, string tooltip, int tag)
                 {
                     var icon = new PackIconMaterial { Kind = kind, Width = 18, Height = 18, VerticalAlignment = VerticalAlignment.Center };
                     var btn = new Button { Content = icon, Width = 40, Height = 32, Margin = new Thickness(4, 0, 0, 0), Tag = tag, ToolTip = tooltip };
@@ -311,7 +311,7 @@ namespace CompUIWPF.Competitions
                 var dr = MessageBox.Show("Confirm delete entry?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (dr == MessageBoxResult.Yes)
                 {
-                    CRUD.DeleteCompetitor(_currentCompetition.Id, id);
+                    CRUD.DeleteCompetitor(_currentCompetition!.Id, id);
                     GlobalEvents.RaiseCompetitionEntriesChanged();
                 }
             }

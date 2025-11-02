@@ -194,7 +194,7 @@ namespace CompUI.Forms.Competition_Branch
                     return false;
                 }
 
-                // padzeroes Example: 01 23 47 to 01 23 47 000
+                // Pad Zeroes Example: 01 23 47 to 01 23 47 000
                 string CheckTimeFormat = CheckNumberOfDigits.PadZeroes(RequiredDigits);
 
                 //Time format SS.mmm

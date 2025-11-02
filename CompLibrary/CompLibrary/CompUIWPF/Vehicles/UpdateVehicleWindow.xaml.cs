@@ -13,9 +13,9 @@ namespace CompUIWPF.Vehicles
 {
     public partial class UpdateVehicleWindow : Window
     {
-        private VehicleModel StoredVehicle;
+        private VehicleModel? StoredVehicle;
         private bool ImageChanged = false;
-        private readonly Dictionary<string, int> VehicleIds = new();
+        private readonly Dictionary<string, int> VehicleIds = [];
 
         public UpdateVehicleWindow()
         {
@@ -49,7 +49,7 @@ namespace CompUIWPF.Vehicles
             Close();
         }
 
-        private void LoadVehicle(VehicleModel vehicle)
+        private void LoadVehicle(VehicleModel? vehicle)
         {
             ImageChanged = false;
             MessagePanel.Children.Clear();
@@ -215,12 +215,10 @@ namespace CompUIWPF.Vehicles
             if (source == null) return null!;
             BitmapEncoder encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(source));
-            using (var ms = new MemoryStream())
-            {
-                encoder.Save(ms);
-                ms.Position = 0;
-                return new System.Drawing.Bitmap(ms);
-            }
+            using var ms = new MemoryStream();
+            encoder.Save(ms);
+            ms.Position = 0;
+            return new System.Drawing.Bitmap(ms);
         }
 
         private void DeleteVehicleButton_Click(object sender, RoutedEventArgs e)

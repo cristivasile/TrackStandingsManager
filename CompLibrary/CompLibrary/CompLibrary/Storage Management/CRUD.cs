@@ -119,14 +119,14 @@ namespace CompLibrary.Storage_Management
 
                     //ascending
                     if(competition.OrderingType == 0)
-                        //compute position and Inseration index
+                        // Compute position and Insertion index
                         while(Index < competition.Competitors.Count 
                         && competition.Competitors[Index].Score <= NewCompetitor.Score)
                         {
-                            //the new competitor is behind
+                            // The new competitor is behind
                             if (competition.Competitors[Index].Score < NewCompetitor.Score)
                                 Position = competition.Competitors[Index].Position + 1;
-                            //competitors have same position
+                            // Competitors have same position
                             else if (competition.Competitors[Index].Score == NewCompetitor.Score)
                                 Position = competition.Competitors[Index].Position;
                             Index++;
@@ -202,16 +202,16 @@ namespace CompLibrary.Storage_Management
         /// <summary>
         /// Updates a vehicle in GlobalData.Vehicles and writes it to all storage solutions.
         /// </summary>
-        public static bool UpdateVehicle(VehicleModel updatedvehicle)
+        public static bool UpdateVehicle(VehicleModel updatedVehicle)
         {
 
             for (int i = 0; i < GlobalData.Vehicles.Count; i++)
-                if (GlobalData.Vehicles[i].Id == updatedvehicle.Id)
+                if (GlobalData.Vehicles[i].Id == updatedVehicle.Id)
                 {
-                    GlobalData.Vehicles[i].Brand = updatedvehicle.Brand.Trim();
-                    GlobalData.Vehicles[i].Model = updatedvehicle.Model.Trim();
-                    GlobalData.Vehicles[i].Category = updatedvehicle.Category.Trim().FirstLetterUpper();
-                    GlobalData.Vehicles[i].ImagePath = updatedvehicle.ImagePath;
+                    GlobalData.Vehicles[i].Brand = updatedVehicle.Brand.Trim();
+                    GlobalData.Vehicles[i].Model = updatedVehicle.Model.Trim();
+                    GlobalData.Vehicles[i].Category = updatedVehicle.Category.Trim().FirstLetterUpper();
+                    GlobalData.Vehicles[i].ImagePath = updatedVehicle.ImagePath;
 
                     foreach (IDataConnection storage in GlobalConfig.Connections)
                         storage.WriteVehicles();
@@ -242,7 +242,7 @@ namespace CompLibrary.Storage_Management
             {
 
                 //if it is found, delete it and update the json file
-                if (category.ToLower() == toBeDeleted.ToLower())
+                if (category.Equals(toBeDeleted, System.StringComparison.CurrentCultureIgnoreCase))
                 {
                     GlobalData.Categories.Remove(category);
                     foreach (IDataConnection storage in GlobalConfig.Connections)
@@ -342,7 +342,7 @@ namespace CompLibrary.Storage_Management
                     if (competition.ImagePath != "" && File.Exists(competition.ImagePath))
                         File.Delete(competition.ImagePath);
 
-                    //remove each position from sumpositions and decrement counter in each participating vehicle
+                    // Remove each position from positions sum and decrement counter in each participating vehicle
                     foreach (CompetitorModel competitor in competition.Competitors)
                     {
                         GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].NrCompetitions--;

@@ -59,7 +59,7 @@ namespace CompLibrary
             $"{CurrentBackupDirectory}\\{CategoriesFileName}".WriteToFile(GlobalData.Categories.GetJsonString());
             $"{CurrentBackupDirectory}\\{CompetitionsFileName}".WriteToFile(GlobalData.Competitions.GetJsonString());
 
-            List<string> BackupDirectories = new (Directory.GetDirectories(JsonConnectorProcessor.BackupDirectory));
+            List<string> BackupDirectories = [.. Directory.GetDirectories(JsonConnectorProcessor.BackupDirectory)];
             
             //only keep 5 back-ups at a time
             if(BackupDirectories.Count == 6)
@@ -85,7 +85,7 @@ namespace CompLibrary
         /// </summary>
         public void RestoreBackup()
         {
-            List<string> BackupDirectories = new(Directory.GetDirectories(JsonConnectorProcessor.BackupDirectory));
+            List<string> BackupDirectories = [.. Directory.GetDirectories(JsonConnectorProcessor.BackupDirectory)];
             string LastBackup = BackupDirectories[^1];
 
             VehiclesFile.WriteToFile($"{LastBackup}\\{VehiclesFileName}".ReadFromFile());

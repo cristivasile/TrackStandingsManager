@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CompLibrary
 {
-    public class CompetitorModel
+    public class CompetitorModel(int VehicleId, double Score, string Author)
     {
         /// <summary>
         /// Unique identifier of a competitor;
@@ -16,28 +16,20 @@ namespace CompLibrary
         /// <summary>
         /// The id of the vehicle that this competitor contains.
         /// </summary>
-        public int VehicleId { get; set; }
+        public int VehicleId { get; set; } = VehicleId;
 
         /// <summary>
         /// The points or timing in seconds of this competitor.
         /// </summary>
-        public double Score { get; set; } = 0;
+        public double Score { get; set; } = Score;
 
         /// <summary>
         /// The author of an entry.
         /// </summary>
-        public string Author { get; set; }
+        public string Author { get; set; } = Author;
         /// <summary>
         /// Current position in the competition.
         /// </summary>
         public int Position = 0;
-
-        public CompetitorModel(int VehicleId, double Score, string Author)
-        {
-            this.VehicleId = VehicleId;
-            this.Score = Score;
-            this.Author = Author;
-        }
-
     }
 }

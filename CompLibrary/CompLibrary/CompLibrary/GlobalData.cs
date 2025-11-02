@@ -5,9 +5,9 @@ namespace CompLibrary
 {
     public static class GlobalData
     {
-        public static BindingList<string> Categories { get; private set; } = new();
-        public static List<VehicleModel> Vehicles { get; private set; } = new();
-        public static List<CompetitionModel> Competitions { get; private set; } = new();
+        public static BindingList<string> Categories { get; private set; } = [];
+        public static List<VehicleModel> Vehicles { get; private set; } = [];
+        public static List<CompetitionModel> Competitions { get; private set; } = [];
 
         public static void InitializeLists()
         {

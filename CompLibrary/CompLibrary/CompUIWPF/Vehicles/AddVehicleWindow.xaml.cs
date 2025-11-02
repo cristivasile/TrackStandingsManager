@@ -12,7 +12,7 @@ namespace CompUIWPF.Vehicles
 {
     public partial class AddVehicleWindow : Window
     {
-        private System.Drawing.Image lastImageInserted;
+        private System.Drawing.Image? lastImageInserted;
 
         public AddVehicleWindow()
         {
@@ -149,12 +149,10 @@ namespace CompUIWPF.Vehicles
             if (source == null) return null!;
             BitmapEncoder encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(source));
-            using (var ms = new MemoryStream())
-            {
-                encoder.Save(ms);
-                ms.Position = 0;
-                return new System.Drawing.Bitmap(ms);
-            }
+            using var ms = new MemoryStream();
+            encoder.Save(ms);
+            ms.Position = 0;
+            return new System.Drawing.Bitmap(ms);
         }
 
         private void Image_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)

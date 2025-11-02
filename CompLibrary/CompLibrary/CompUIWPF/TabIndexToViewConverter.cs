@@ -13,18 +13,16 @@ namespace CompUIWPF
         private static readonly Lazy<CompUIWPF.Competitions.CompetitionManager> _competitionsInstance
             = new(() => new CompUIWPF.Competitions.CompetitionManager());
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is int index)
             {
-#pragma warning disable CS8603 // Possible null reference return.
                 return index switch
                 {
                     0 => _vehiclesInstance.Value,
                     1 => _competitionsInstance.Value,
                     _ => null
                 };
-#pragma warning restore CS8603 // Possible null reference return.
             }
             return null;
         }

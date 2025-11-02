@@ -17,7 +17,7 @@ namespace CompUIWPF.Vehicles
     {
         private int SortType = 1; // 1 = name, 2 = avg position
         private int FilterType = 0; // 0 = none, 1 = brand, 2 = category
-        private HashSet<string> FilterResult = new();
+        private HashSet<string> FilterResult = [];
         private AddVehicleWindow _addWindow = new();
         private UpdateVehicleWindow _updateWindow = new();
 
@@ -56,26 +56,26 @@ namespace CompUIWPF.Vehicles
 
         private void LoadVehiclePanel(int sortType, int filterType = 0)
         {
-            var vehicles = GlobalData.Vehicles ?? new List<VehicleModel>();
+            var vehicles = GlobalData.Vehicles ?? [];
             List<VehicleModel> filteredVehicles;
             VehiclesPanel.Children.Clear();
 
             // Apply filter if any
             if (filterType == 1 || filterType == 2)
             {
-                filteredVehicles = vehicles.Where(v =>
-                    FilterResult.Contains(filterType == 1 ? v.Brand : v.Category)).ToList();
+                filteredVehicles = [.. vehicles.Where(v =>
+                    FilterResult.Contains(filterType == 1 ? v.Brand : v.Category))];
                 vehicles = filteredVehicles;
             }
 
             // Apply sort
             if (sortType == 1)
             {
-                vehicles = vehicles.OrderBy(x => x.Brand).ThenBy(x => x.Model).ToList();
+                vehicles = [.. vehicles.OrderBy(x => x.Brand).ThenBy(x => x.Model)];
             }
             else
             {
-                vehicles = vehicles.OrderBy(x => x.AveragePosition()).ToList();
+                vehicles = [.. vehicles.OrderBy(x => x.AveragePosition())];
             }
 
             bool showPictures = ShowPicturesCheck.IsChecked == true;
@@ -133,7 +133,7 @@ namespace CompUIWPF.Vehicles
                 // Add medal for top 3 when sorting by average position
                 if (sortType == 2 && currentPosition <= 3)
                 {
-                    PackIconMaterial medalIcon = new PackIconMaterial
+                    PackIconMaterial medalIcon = new()
                     {
                         Kind = PackIconMaterialKind.Medal,
                         Width = 16,
@@ -424,11 +424,13 @@ namespace CompUIWPF.Vehicles
         private void FilterByBrand_Click(object sender, RoutedEventArgs e)
         {
             var choices = GlobalData.Vehicles.Select(v => v.Brand).Distinct().OrderBy(x => x).ToList();
-            var win = new FilterWindow(choices, "Brand filter");
-            win.Owner = Window.GetWindow(this);
+            var win = new FilterWindow(choices, "Brand filter")
+            {
+                Owner = Window.GetWindow(this)
+            };
             if (win.ShowDialog() == true)
             {
-                FilterResult = new HashSet<string>(win.Result);
+                FilterResult = [.. win.Result];
                 FilterType = 1;
                 ReloadVehiclePanels();
             }
@@ -437,11 +439,13 @@ namespace CompUIWPF.Vehicles
         private void FilterByCategory_Click(object sender, RoutedEventArgs e)
         {
             var choices = GlobalData.Vehicles.Select(v => v.Category).Distinct().OrderBy(x => x).ToList();
-            var win = new FilterWindow(choices, "Category filter");
-            win.Owner = Window.GetWindow(this);
+            var win = new FilterWindow(choices, "Category filter")
+            {
+                Owner = Window.GetWindow(this)
+            };
             if (win.ShowDialog() == true)
             {
-                FilterResult = new HashSet<string>(win.Result);
+                FilterResult = [.. win.Result];
                 FilterType = 2;
                 ReloadVehiclePanels();
             }
