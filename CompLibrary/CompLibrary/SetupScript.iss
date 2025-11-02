@@ -2,10 +2,11 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Track Standings Manager"
-#define MyAppVersion "1.0.2"
+#define MyAppVersion "2.0.0"
 #define MyAppExeName "TrackStandingsManager.exe"
 #define MyAppAssocName "executable"
 #define MyAppAssocExt ".exe"
+#define RepoPath "D:\Toolbars\Facultate\Repos\TrackStandingsManager\CompLibrary\CompLibrary"
 #define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
 
 [Setup]
@@ -18,13 +19,13 @@ AppVerName={#MyAppName}
 DefaultDirName={autopf}\{#MyAppName}
 ChangesAssociations=yes
 DisableProgramGroupPage=yes
-LicenseFile=D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\license.rtf
+LicenseFile={#RepoPath}\license.rtf
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
-OutputDir=D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\Installer
+OutputDir={#RepoPath}\Installer
 OutputBaseFilename=mysetup
-SetupIconFile=D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\Icon.ico
+SetupIconFile={#RepoPath}\CompUIWPF\Icon.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -37,21 +38,9 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}";
 
 [Files]
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\TrackStandingsManager.dll.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\TrackStandingsManager.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\CompLibrary.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\clrcompression.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\clrjit.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\coreclr.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\D3DCompiler_47_cor3.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\mscordaccore.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\PenImc_cor3.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\PresentationNative_cor3.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\vcruntime140_cor3.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\bin\Release\net5.0-windows\publish\wpfgfx_cor3.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\License.rtf"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\TrackStandingsManager\CompLibrary\CompLibrary\CompUI\Icon.ico"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#RepoPath}\CompUIWPF\bin\Release\net8.0-windows\publish\win-x64\*"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#RepoPath}\License.rtf"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#RepoPath}\CompUIWPF\Icon.ico"; DestDir: "{app}"; Flags: ignoreversion
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
