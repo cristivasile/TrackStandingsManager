@@ -218,8 +218,6 @@ namespace CompUIWPF.Competitions
             // Notify entries changed
             GlobalEvents.RaiseCompetitionEntriesChanged();
             GlobalEvents.RaiseVehiclesChanged();
-
-            this.Close();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e) => Close();
@@ -234,11 +232,6 @@ namespace CompUIWPF.Competitions
 
             var vehicle = CRUD.GetVehicleById(id);
             LoadVehicleImage(vehicle);
-        }
-
-        private void VehicleBox_SelectionChanged_1(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-
         }
     }
 }
