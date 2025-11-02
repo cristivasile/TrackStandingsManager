@@ -17,7 +17,6 @@ namespace CompUIWPF.Competitions
     public partial class CompetitionManager : UserControl
     {
         private CompetitionModel? _currentCompetition;
-        private AddCompetitionWindow _addCompetitionWindow = new();
         // Filter state:0 = none,1 = brand,2 = category
         private int FilterType = 0;
         private HashSet<string> FilterResult = [];
@@ -338,7 +337,7 @@ namespace CompUIWPF.Competitions
 
         private void AddCompetitionButton_Click(object sender, RoutedEventArgs e)
         {
-            _addCompetitionWindow = new AddCompetitionWindow
+            var addCompetitionWindow = new AddCompetitionWindow
             {
                 ShowInTaskbar = true,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
@@ -350,22 +349,22 @@ namespace CompUIWPF.Competitions
             // Prevent parent from closing while child is open
             void closingHandler(object? s, CancelEventArgs args)
             {
-                if (_addCompetitionWindow != null && _addCompetitionWindow.IsVisible)
+                if (addCompetitionWindow != null && addCompetitionWindow.IsVisible)
                 {
                     args.Cancel = true; // block the close
-                    _addCompetitionWindow.Activate(); // bring child forward
+                    addCompetitionWindow.Activate(); // bring child forward
                 }
             }
             parent.Closing += closingHandler;
 
-            _addCompetitionWindow.Closed += (s, args) =>
+            addCompetitionWindow.Closed += (s, args) =>
             {
                 parent.IsEnabled = true; // re-enable parent
                 parent.Activate();       // bring parent back to front
                 parent.Closing -= closingHandler; // remove handler
             };
 
-            _addCompetitionWindow.Show();
+            addCompetitionWindow.Show();
         }
 
         private void AddEntryButton_Click(object sender, RoutedEventArgs e)

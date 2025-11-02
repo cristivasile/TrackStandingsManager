@@ -111,7 +111,7 @@ namespace CompUIWPF.Competitions
 
         private void VehicleAddButton_Click(object sender, RoutedEventArgs e)
         {
-            var _addWindow = new AddVehicleWindow
+            var vehicleAddWindow = new AddVehicleWindow
             {
                 ShowInTaskbar = true,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
@@ -123,22 +123,22 @@ namespace CompUIWPF.Competitions
             // Prevent parent from closing while child is open
             void closingHandler(object? s, CancelEventArgs args)
             {
-                if (_addWindow != null && _addWindow.IsVisible)
+                if (vehicleAddWindow != null && vehicleAddWindow.IsVisible)
                 {
                     args.Cancel = true; // block the close
-                    _addWindow.Activate(); // bring child forward
+                    vehicleAddWindow.Activate(); // bring child forward
                 }
             }
             parent.Closing += closingHandler;
 
-            _addWindow.Closed += (s, args) =>
+            vehicleAddWindow.Closed += (s, args) =>
             {
                 parent.IsEnabled = true; // re-enable parent
                 parent.Activate();       // bring parent back to front
                 parent.Closing -= closingHandler; // remove handler
             };
 
-            _addWindow.Show();
+            vehicleAddWindow.Show();
         }
 
         private void LoadVehicleImage(VehicleModel vehicle)

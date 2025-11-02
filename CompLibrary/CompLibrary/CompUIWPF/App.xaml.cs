@@ -1,6 +1,10 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Data;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows;
+using System.Windows.Threading;
 using CompLibrary;
 
 namespace CompUIWPF
@@ -12,17 +16,21 @@ namespace CompUIWPF
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            // optional: global exception handlers
+            // Global exception handler
             this.DispatcherUnhandledException += App_DispatcherUnhandledException;
 
-            //Initializing DB Connection
+            // Log process exit for debugging
+            AppDomain.CurrentDomain.ProcessExit += (s, ev) =>
+            {
+                Debug.WriteLine("ProcessExit triggered.");
+            };
+
+            // Initializing DB and image connections
             GlobalConfig.InitializeDataConnections(true);
-            //Initializing image storage connection
             GlobalConfig.InitializeImageConnections();
 
             try
             {
-                //Initializing List variables
                 GlobalData.InitializeLists();
             }
             catch
@@ -31,26 +39,40 @@ namespace CompUIWPF
                 GlobalData.InitializeLists();
             }
 
-            // TODO - Recalculate the average positions for competitions on startup to avoid retarded issues.
-
-            //If the program got to this point a data back-up is created
             GlobalConfig.CreateBackup();
 
-            // Now create and show the first window (guaranteed to happen after init)
+            // Create and show main window
             var main = new MainWindow();
             main.Show();
 
-            // Do NOT call base.OnStartup(e) after showing window (base doesn't auto-show when StartupUri absent).
-            // but it's safe to call it before or after in most cases:
             base.OnStartup(e);
         }
 
-        private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            // handle/log exceptions, optionally set e.Handled = true;
             MessageBox.Show($"Unhandled exception: {e.Exception.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             e.Handled = true;
         }
-    }
 
+        protected override void OnExit(ExitEventArgs e)
+        {
+            Debug.WriteLine("Application.OnExit called");
+
+            // 1. Close all windows
+            foreach (Window w in this.Windows.Cast<Window>().ToList())
+            {
+                if (w.IsVisible)
+                {
+                    Debug.WriteLine($"Closing window: {w.Title}");
+                    w.Close();
+                }
+            }
+
+            // 2. Force Dispatcher shutdown
+            Dispatcher.CurrentDispatcher.BeginInvokeShutdown(DispatcherPriority.Background);
+
+            base.OnExit(e);
+        }
+
+    }
 }

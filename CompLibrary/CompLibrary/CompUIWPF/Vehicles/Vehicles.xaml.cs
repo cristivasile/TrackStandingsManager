@@ -18,8 +18,6 @@ namespace CompUIWPF.Vehicles
         private int SortType = 1; // 1 = name, 2 = avg position
         private int FilterType = 0; // 0 = none, 1 = brand, 2 = category
         private HashSet<string> FilterResult = [];
-        private AddVehicleWindow _addWindow = new();
-        private UpdateVehicleWindow _updateWindow = new();
 
         public Vehicles()
         {
@@ -292,7 +290,7 @@ namespace CompUIWPF.Vehicles
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            _addWindow = new AddVehicleWindow
+            var addWindow = new AddVehicleWindow
             {
                 ShowInTaskbar = true,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
@@ -304,27 +302,27 @@ namespace CompUIWPF.Vehicles
             // Prevent parent from closing while child is open
             void closingHandler(object? s, CancelEventArgs args)
             {
-                if (_addWindow != null && _addWindow.IsVisible)
+                if (addWindow != null && addWindow.IsVisible)
                 {
                     args.Cancel = true; // block the close
-                    _addWindow.Activate(); // bring child forward
+                    addWindow.Activate(); // bring child forward
                 }
             }
             parent.Closing += closingHandler;
 
-            _addWindow.Closed += (s, args) =>
+            addWindow.Closed += (s, args) =>
             {
                 parent.IsEnabled = true; // re-enable parent
                 parent.Activate();       // bring parent back to front
                 parent.Closing -= closingHandler; // remove handler
             };
 
-            _addWindow.Show();
+            addWindow.Show();
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            _updateWindow = new UpdateVehicleWindow
+            var updateWindow = new UpdateVehicleWindow
             {
                 ShowInTaskbar = true, // ensures it appears in the taskbar
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
@@ -336,22 +334,22 @@ namespace CompUIWPF.Vehicles
             // Prevent parent from closing while child is open
             void closingHandler(object? s, CancelEventArgs args)
             {
-                if (_updateWindow != null && _updateWindow.IsVisible)
+                if (updateWindow != null && updateWindow.IsVisible)
                 {
                     args.Cancel = true; // block the close
-                    _updateWindow.Activate(); // bring child forward
+                    updateWindow.Activate(); // bring child forward
                 }
             }
             parent.Closing += closingHandler;
 
-            _updateWindow.Closed += (s, args) =>
+            updateWindow.Closed += (s, args) =>
             {
                 parent.IsEnabled = true; // re-enable parent
                 parent.Activate();       // bring parent back to front
                 parent.Closing -= closingHandler; // remove handler
             };
 
-            _updateWindow.Show();
+            updateWindow.Show();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
