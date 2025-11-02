@@ -100,10 +100,28 @@ namespace CompUIWPF.Vehicles
                     toIncrement++;
                 }
 
-                // row container: alternate using white/black overlay brushes
+                // Determine base alternating color
+                var baseBrush = (currentIndex % 2 == 0) ? lightBrush : darkBrush;
+
+                // Apply medal tint if in top 3 (only when sorting by average position)
+                if (sortType == 2 && currentPosition <= 3)
+                {
+                    Color medalColor = currentPosition switch
+                    {
+                        1 => Colors.Gold,
+                        2 => Colors.Silver,
+                        3 => Colors.SandyBrown,
+                        _ => Colors.Transparent
+                    };
+
+                    // Blend the medal color with the base brush
+                    baseBrush = new SolidColorBrush(Color.FromArgb(40, medalColor.R, medalColor.G, medalColor.B));
+                    baseBrush.Freeze();
+                }
+
                 var rowBorder = new Border
                 {
-                    Background = (currentIndex % 2 == 0) ? lightBrush : darkBrush,
+                    Background = baseBrush,
                     Padding = new Thickness(6, 1, 6, 1),
                     Margin = new Thickness(0, 0, 0, 6),
                     CornerRadius = new CornerRadius(4)

@@ -155,9 +155,28 @@ namespace CompUIWPF.Competitions
                 }
                 else toIncrement++;
 
+                // Determine base alternating color
+                var baseBrush = (currentIndex % 2 == 0) ? lightBrush : darkBrush;
+
+                // Apply medal tint if in top 3
+                if (currentPosition <= 3)
+                {
+                    Color medalColor = currentPosition switch
+                    {
+                        1 => Colors.Gold,
+                        2 => Colors.Silver,
+                        3 => Colors.SandyBrown,
+                        _ => Colors.Transparent
+                    };
+
+                    // Blend with low opacity so it's subtle
+                    baseBrush = new SolidColorBrush(Color.FromArgb(40, medalColor.R, medalColor.G, medalColor.B));
+                    if (baseBrush.CanFreeze) baseBrush.Freeze();
+                }
+
                 var row = new Border
                 {
-                    Background = (currentIndex % 2 == 0) ? lightBrush : darkBrush,
+                    Background = baseBrush,
                     Padding = new Thickness(6, 1, 6, 1),
                     Margin = new Thickness(0, 0, 0, 6),
                     CornerRadius = new CornerRadius(4)
@@ -172,7 +191,6 @@ namespace CompUIWPF.Competitions
                 grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) });
                 grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(180) });
 
-                // Position + medal
                 // Position + medal
                 var posStack = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center };
 
