@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace CompLibrary
 {
+    /// TODO - It's stupid for the Write functions to not have parameters but oh well.
+    /// Might fix at some point
     public interface IDataConnection
     {
         void WriteVehicles();

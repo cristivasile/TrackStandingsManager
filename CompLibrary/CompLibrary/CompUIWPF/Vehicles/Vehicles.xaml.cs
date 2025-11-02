@@ -56,7 +56,7 @@ namespace CompUIWPF.Vehicles
 
         private void LoadVehiclePanel(int sortType, int filterType = 0)
         {
-            var vehicles = GlobalData.Vehicles ?? [];
+            var vehicles = GlobalData.Vehicles.Values.ToList();
             List<VehicleModel> filteredVehicles;
             VehiclesPanel.Children.Clear();
 
@@ -423,7 +423,7 @@ namespace CompUIWPF.Vehicles
 
         private void FilterByBrand_Click(object sender, RoutedEventArgs e)
         {
-            var choices = GlobalData.Vehicles.Select(v => v.Brand).Distinct().OrderBy(x => x).ToList();
+            var choices = GlobalData.Vehicles.Values.Select(v => v.Brand).Distinct().OrderBy(x => x).ToList();
             var win = new FilterWindow(choices, "Brand filter")
             {
                 Owner = Window.GetWindow(this)
@@ -438,7 +438,7 @@ namespace CompUIWPF.Vehicles
 
         private void FilterByCategory_Click(object sender, RoutedEventArgs e)
         {
-            var choices = GlobalData.Vehicles.Select(v => v.Category).Distinct().OrderBy(x => x).ToList();
+            var choices = GlobalData.Vehicles.Values.Select(v => v.Category).Distinct().OrderBy(x => x).ToList();
             var win = new FilterWindow(choices, "Category filter")
             {
                 Owner = Window.GetWindow(this)

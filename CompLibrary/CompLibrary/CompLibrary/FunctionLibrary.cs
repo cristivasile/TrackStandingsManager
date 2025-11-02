@@ -45,21 +45,6 @@ namespace CompLibrary
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <returns> - dictionary with vehicle ids as keys and corresponding indexes in GlobalData.vehicles as values</returns>
-        public static Dictionary<int, int> MapVehicleIdsToIndexes()
-        {
-            Dictionary<int, int> VehicleIdsToIndexes = [];
-
-            for (int Index = 0; Index < GlobalData.Vehicles.Count; Index++)
-                VehicleIdsToIndexes[GlobalData.Vehicles[Index].Id] = Index;
-
-            return VehicleIdsToIndexes;
-        }
-
-
-        /// <summary>
         /// Receives a time in seconds and returns a formatted string.
         /// </summary>
         /// <param name="time"> - received time in seconds</param>

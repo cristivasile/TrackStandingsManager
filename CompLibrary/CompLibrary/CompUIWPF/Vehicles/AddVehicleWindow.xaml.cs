@@ -57,7 +57,7 @@ namespace CompUIWPF.Vehicles
                 return false;
             }
 
-            var exists = GlobalData.Vehicles.Any(v =>
+            var exists = GlobalData.Vehicles.Values.Any(v =>
                 string.Equals(v.Brand.Trim(), BrandTextBox.Text.Trim(), StringComparison.OrdinalIgnoreCase)
                 && string.Equals(v.Model.Trim(), ModelTextBox.Text.Trim(), StringComparison.OrdinalIgnoreCase));
 

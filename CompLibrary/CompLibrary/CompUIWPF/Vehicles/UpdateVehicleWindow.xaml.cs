@@ -38,7 +38,7 @@ namespace CompUIWPF.Vehicles
         private void InitializeVehicleIds()
         {
             VehicleIds.Clear();
-            foreach (var v in GlobalData.Vehicles)
+            foreach (var v in GlobalData.Vehicles.Values)
             {
                 VehicleIds[v.Brand + " " + v.Model] = v.Id;
             }
@@ -161,7 +161,7 @@ namespace CompUIWPF.Vehicles
             if (!string.Equals(updated.Brand, StoredVehicle.Brand, StringComparison.OrdinalIgnoreCase) ||
                 !string.Equals(updated.Model, StoredVehicle.Model, StringComparison.OrdinalIgnoreCase))
             {
-                foreach (var v in GlobalData.Vehicles)
+                foreach (var v in GlobalData.Vehicles.Values)
                 {
                     if (v.Id != StoredVehicle.Id &&
                         string.Equals(v.Brand + v.Model, updated.Brand + updated.Model, StringComparison.OrdinalIgnoreCase))

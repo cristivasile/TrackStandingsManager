@@ -63,7 +63,7 @@ namespace CompUI.Forms.Competition_Branch
         {
             VehicleIds = new();
 
-            foreach (VehicleModel vehicle in GlobalData.Vehicles)
+            foreach (VehicleModel vehicle in GlobalData.Vehicles.Values)
                 VehicleIds[vehicle.Brand + " " + vehicle.Model] = vehicle.Id;
 
             VehicleComboBox.DataSource = VehicleIds.Keys.OrderBy(x => x).ToList<String>();

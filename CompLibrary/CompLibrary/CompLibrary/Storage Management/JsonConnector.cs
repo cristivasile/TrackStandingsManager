@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 
 namespace CompLibrary
 {
@@ -16,7 +17,9 @@ namespace CompLibrary
         
         public void WriteVehicles()
         {
-            VehiclesFile.WriteToFile(GlobalData.Vehicles.GetJsonString());
+            // convert dictionary to list for serialization
+            var vehicles = GlobalData.Vehicles.Values.ToList();
+            VehiclesFile.WriteToFile(vehicles.GetJsonString());
         }
 
         public void WriteCategories()

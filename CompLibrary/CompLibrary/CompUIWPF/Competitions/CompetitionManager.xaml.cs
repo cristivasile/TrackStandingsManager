@@ -131,7 +131,7 @@ namespace CompUIWPF.Competitions
             {
                 competitors = competitors.Where(c =>
                 {
-                    var v = GlobalData.Vehicles.FirstOrDefault(vv => vv.Id == c.VehicleId);
+                    var v = GlobalData.Vehicles.Values.FirstOrDefault(vv => vv.Id == c.VehicleId);
                     return v != null && FilterResult.Contains(v.Brand);
                 });
             }
@@ -139,7 +139,7 @@ namespace CompUIWPF.Competitions
             {
                 competitors = competitors.Where(c =>
                 {
-                    var v = GlobalData.Vehicles.FirstOrDefault(vv => vv.Id == c.VehicleId);
+                    var v = GlobalData.Vehicles.Values.FirstOrDefault(vv => vv.Id == c.VehicleId);
                     return v != null && FilterResult.Contains(v.Category);
                 });
             }
@@ -209,7 +209,7 @@ namespace CompUIWPF.Competitions
                 grid.Children.Add(posStack);
 
                 // Brand
-                var vehicle = GlobalData.Vehicles.FirstOrDefault(v => v.Id == competitor.VehicleId);
+                var vehicle = GlobalData.Vehicles.Values.FirstOrDefault(v => v.Id == competitor.VehicleId);
                 var brand = new TextBlock { Text = vehicle?.Brand ?? "-", VerticalAlignment = VerticalAlignment.Center };
                 Grid.SetColumn(brand, 2);
                 grid.Children.Add(brand);
@@ -395,7 +395,7 @@ namespace CompUIWPF.Competitions
 
         private void FilterByBrand_Click(object sender, RoutedEventArgs e)
         {
-            var choices = GlobalData.Vehicles.Select(v => v.Brand).Distinct().OrderBy(x => x).ToList();
+            var choices = GlobalData.Vehicles.Values.Select(v => v.Brand).Distinct().OrderBy(x => x).ToList();
             var win = new Common.FilterWindow(choices, "Brand filter") { Owner = Window.GetWindow(this) };
             if (win.ShowDialog() == true)
             {
@@ -409,7 +409,7 @@ namespace CompUIWPF.Competitions
 
         private void FilterByCategory_Click(object sender, RoutedEventArgs e)
         {
-            var choices = GlobalData.Vehicles.Select(v => v.Category).Distinct().OrderBy(x => x).ToList();
+            var choices = GlobalData.Vehicles.Values.Select(v => v.Category).Distinct().OrderBy(x => x).ToList();
             var win = new Common.FilterWindow(choices, "Category filter") { Owner = Window.GetWindow(this) };
             if (win.ShowDialog() == true)
             {

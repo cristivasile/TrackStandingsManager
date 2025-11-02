@@ -13,23 +13,20 @@ namespace CompLibrary.Storage_Management
         /// <returns>The vehicle information + id</returns>
         public static void CreateVehicle(VehicleModel newVehicle)
         {
-            //if vehicles already exist in our list, use last known Id and increment it
-            if (GlobalData.Vehicles.Count != 0)
+            int maxId = 0;
+            foreach (var pair in GlobalData.Vehicles)
             {
-                newVehicle.Id = GlobalData.Vehicles[^1].Id + 1; // ^1 = last element
+                if (pair.Key > maxId)
+                    maxId = pair.Key + 1;
             }
-            //otherwise, assign 0
-            else
-            {
-                newVehicle.Id = 0;
-            }
+            newVehicle.Id = maxId;
 
             //trim spaces from strings
             newVehicle.Brand = newVehicle.Brand.Trim();
             newVehicle.Model = newVehicle.Model.Trim();
             newVehicle.Category = newVehicle.Category.Trim().FirstLetterUpper();
 
-            GlobalData.Vehicles.Add(newVehicle);
+            GlobalData.Vehicles[newVehicle.Id] = newVehicle;
 
             foreach (IDataConnection storage in GlobalConfig.Connections)
                 storage.WriteVehicles();
@@ -97,8 +94,6 @@ namespace CompLibrary.Storage_Management
         /// <param name="NewCompetitor"></param>
         public static void CreateCompetitor(int CompetitionId, CompetitorModel NewCompetitor)
         {
-            Dictionary<int, int> VehicleIdsToIndexes = FunctionLibrary.MapVehicleIdsToIndexes();
-
             foreach(CompetitionModel competition in GlobalData.Competitions)
                 if(competition.Id == CompetitionId)
                 {
@@ -150,15 +145,15 @@ namespace CompLibrary.Storage_Management
                     competition.Competitors.Insert(Index, NewCompetitor);
 
                     //add position and increment NrCompetitions for current vehicle
-                    GlobalData.Vehicles[VehicleIdsToIndexes[NewCompetitor.VehicleId]].SumPositions += Position;
-                    GlobalData.Vehicles[VehicleIdsToIndexes[NewCompetitor.VehicleId]].NrCompetitions ++;
+                    GlobalData.Vehicles[NewCompetitor.VehicleId].SumPositions += Position;
+                    GlobalData.Vehicles[NewCompetitor.VehicleId].NrCompetitions ++;
 
                     //update position of all competitors that are now behind the new one
                     for (int i = Index + 1; i < competition.Competitors.Count; i++)
                     {
                         competition.Competitors[i].Position = competition.Competitors[i].Position + 1;
                         //add one position to SumPosition of vehicle
-                        GlobalData.Vehicles[VehicleIdsToIndexes[competition.Competitors[i].VehicleId]].SumPositions++;
+                        GlobalData.Vehicles[competition.Competitors[i].VehicleId].SumPositions++;
                     }
                 }
 
@@ -262,7 +257,7 @@ namespace CompLibrary.Storage_Management
         {
             string ImagePath;
 
-            foreach (VehicleModel vehicle in GlobalData.Vehicles)
+            foreach (VehicleModel vehicle in GlobalData.Vehicles.Values)
             {
                 if (vehicle.Id == Id)
                 {
@@ -274,7 +269,7 @@ namespace CompLibrary.Storage_Management
                     for (int Index = 0; Index < GlobalData.Competitions.Count; Index++)
                         DeleteVehicleFromCompetition(Index, Id);
 
-                    GlobalData.Vehicles.Remove(vehicle);
+                    GlobalData.Vehicles.Remove(vehicle.Id);
 
                     foreach (IDataConnection storage in GlobalConfig.Connections)
                     {
@@ -295,8 +290,6 @@ namespace CompLibrary.Storage_Management
         /// <param name="competitionIndex"> - current competition Index in GlobalData.competitions list</param>
         public static void DeleteVehicleFromCompetition(int competitionIndex, int vehicleId)
         {
-            Dictionary<int, int> VehicleIdsToIndexes = FunctionLibrary.MapVehicleIdsToIndexes();
-
             //remove all entries that contain the vehicle
             for (int index = 0; index < GlobalData.Competitions[competitionIndex].Competitors.Count; index++)
                 if (GlobalData.Competitions[competitionIndex].Competitors[index].VehicleId == vehicleId)
@@ -326,7 +319,7 @@ namespace CompLibrary.Storage_Management
                 }
 
                 //subtract old position from sum and add new one
-                GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].SumPositions = GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].SumPositions - competitor.Position + CurrentPosition;
+                GlobalData.Vehicles[competitor.VehicleId].SumPositions = GlobalData.Vehicles[competitor.VehicleId].SumPositions - competitor.Position + CurrentPosition;
 
                 competitor.Position = CurrentPosition;
             }
@@ -334,8 +327,6 @@ namespace CompLibrary.Storage_Management
 
         public static bool DeleteCompetition(int Id)
         {
-            Dictionary<int, int> VehicleIdsToIndexes = FunctionLibrary.MapVehicleIdsToIndexes();
-
             foreach(CompetitionModel competition in GlobalData.Competitions)
                 if(competition.Id == Id)
                 {
@@ -345,8 +336,8 @@ namespace CompLibrary.Storage_Management
                     // Remove each position from positions sum and decrement counter in each participating vehicle
                     foreach (CompetitorModel competitor in competition.Competitors)
                     {
-                        GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].NrCompetitions--;
-                        GlobalData.Vehicles[VehicleIdsToIndexes[competitor.VehicleId]].SumPositions -= competitor.Position;
+                        GlobalData.Vehicles[competitor.VehicleId].NrCompetitions--;
+                        GlobalData.Vehicles[competitor.VehicleId].SumPositions -= competitor.Position;
                     }
 
                     GlobalData.Competitions.Remove(competition);
@@ -363,8 +354,6 @@ namespace CompLibrary.Storage_Management
 
         public static bool DeleteCompetitor(int CompetitionId, int CompetitorId)
         {
-            Dictionary<int, int> VehicleIdsToIndexes = FunctionLibrary.MapVehicleIdsToIndexes();
-
             foreach (CompetitionModel competition in GlobalData.Competitions)
                 if (competition.Id == CompetitionId)
                 {
@@ -376,8 +365,8 @@ namespace CompLibrary.Storage_Management
                         Index++;
 
                     //update deleted vehicle info
-                    GlobalData.Vehicles[VehicleIdsToIndexes[competition.Competitors[Index].VehicleId]].SumPositions -= competition.Competitors[Index].Position;
-                    GlobalData.Vehicles[VehicleIdsToIndexes[competition.Competitors[Index].VehicleId]].NrCompetitions--;
+                    GlobalData.Vehicles[competition.Competitors[Index].VehicleId].SumPositions -= competition.Competitors[Index].Position;
+                    GlobalData.Vehicles[competition.Competitors[Index].VehicleId].NrCompetitions--;
 
                     DeletedPosition = competition.Competitors[Index].Position;
                     competition.Competitors.RemoveAt(Index);
@@ -390,7 +379,7 @@ namespace CompLibrary.Storage_Management
                     for (int i = Index; i < competition.Competitors.Count; i++)
                     {
                         competition.Competitors[i].Position--;
-                        GlobalData.Vehicles[VehicleIdsToIndexes[competition.Competitors[i].VehicleId]].SumPositions--;
+                        GlobalData.Vehicles[competition.Competitors[i].VehicleId].SumPositions--;
                     }
 
                     foreach (IDataConnection connection in GlobalConfig.Connections)
@@ -407,9 +396,8 @@ namespace CompLibrary.Storage_Management
 
         public static VehicleModel GetVehicleById(int Id)
         {
-            foreach (VehicleModel vehicle in GlobalData.Vehicles)
-                if (vehicle.Id == Id)
-                    return vehicle;
+            if (GlobalData.Vehicles.TryGetValue(Id, out VehicleModel value))
+                return value;
 
             return null;
         }

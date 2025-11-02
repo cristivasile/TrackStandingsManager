@@ -7,7 +7,7 @@ namespace CompLibrary
     public static class GlobalConfig
     {
 
-        public static List<IDataConnection> Connections { get; private set; } = new List<IDataConnection>();
+        public static List<IDataConnection> Connections { get; private set; } = [];
         public static IImagesConnection ImageStorage { get; private set; }
 
         /// <summary>
@@ -52,8 +52,8 @@ namespace CompLibrary
         /// <summary>
         /// Default values for categories
         /// </summary>
-        public static List<string> DefaultCategories { get; private set; } = new List<string>()
-        {
+        public static List<string> DefaultCategories { get; private set; } =
+        [
             "Coupe",
             "Sedan",
             "Cabriolet",
@@ -65,13 +65,13 @@ namespace CompLibrary
             "Wagon",
             "Ute",
             "Suv"
-        };
+        ];
 
-        public static List<string> DefaultTimings { get; private set; } = new List<string>()
-        {
+        public static List<string> DefaultTimings { get; private set; } =
+        [
             "SS.mmm",
             "MM:SS.mmm",
             "HH:MM:SS.mmm"
-        };
+        ];
     }
 }

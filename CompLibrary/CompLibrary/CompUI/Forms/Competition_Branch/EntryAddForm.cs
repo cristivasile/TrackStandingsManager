@@ -11,7 +11,7 @@ namespace CompUI.Forms.Competition_Branch
     public partial class EntryAddForm : TemplateFormNotResizable
     {
         private readonly CompetitionModel CurrentCompetition;
-        private readonly Dictionary<string, int> VehicleIds = new();
+        private readonly Dictionary<string, int> VehicleIds = [];
         public EntryAddForm(int CompetitionId)
         {
             this.CurrentCompetition = CRUD.GetCompetitionById(CompetitionId);
@@ -41,7 +41,7 @@ namespace CompUI.Forms.Competition_Branch
 
         public void InitializeVehicles()
         {
-            foreach (VehicleModel vehicle in GlobalData.Vehicles)
+            foreach (VehicleModel vehicle in GlobalData.Vehicles.Values)
                 VehicleIds[vehicle.Brand + " " + vehicle.Model] = vehicle.Id;
 
             VehicleComboBox.DataSource = VehicleIds.Keys.OrderBy(x => x).ToList<String>();

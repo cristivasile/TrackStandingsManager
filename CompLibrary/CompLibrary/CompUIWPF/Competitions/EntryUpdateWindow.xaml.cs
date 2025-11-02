@@ -1,6 +1,5 @@
 using CompLibrary;
 using CompLibrary.Storage_Management;
-using CompUI;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media.Imaging;
@@ -33,7 +32,7 @@ namespace CompUIWPF.Competitions
         private void LoadData()
         {
             // Load vehicle image
-            var vehicle = GlobalData.Vehicles.First(v => v.Id == _entry.VehicleId);
+            var vehicle = GlobalData.Vehicles.Values.First(v => v.Id == _entry.VehicleId);
 
             if (!string.IsNullOrWhiteSpace(vehicle.ImagePath))
             {

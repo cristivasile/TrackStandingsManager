@@ -6,7 +6,7 @@ namespace CompLibrary
     public static class GlobalData
     {
         public static BindingList<string> Categories { get; private set; } = [];
-        public static List<VehicleModel> Vehicles { get; private set; } = [];
+        public static Dictionary<int, VehicleModel> Vehicles { get; private set; } = [];
         public static List<CompetitionModel> Competitions { get; private set; } = [];
 
         public static void InitializeLists()
@@ -14,7 +14,10 @@ namespace CompLibrary
             foreach (IDataConnection storage in GlobalConfig.Connections)
             {
                 GlobalData.Categories = storage.ReadCategories();
-                GlobalData.Vehicles = storage.ReadVehicles();
+                foreach (var vehicle in storage.ReadVehicles())
+                {
+                    GlobalData.Vehicles[vehicle.Id] = vehicle;
+                }
                 GlobalData.Competitions = storage.ReadCompetitions();
             }
         }

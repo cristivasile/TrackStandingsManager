@@ -1,6 +1,5 @@
 using CompLibrary;
 using CompLibrary.Storage_Management;
-using CompUI;
 using CompUIWPF.Vehicles;
 using System;
 using System.ComponentModel;
@@ -41,10 +40,10 @@ namespace CompUIWPF.Competitions
             }
 
             // Populate vehicles
-            foreach (var v in GlobalData.Vehicles)
+            foreach (var v in GlobalData.Vehicles.Values)
                 _vehicleIds[v.Brand + " " + v.Model] = v.Id;
 
-            VehicleBox.ItemsSource = GlobalData.Vehicles.Select(v => new { v.Id, BrandModel = v.Brand + " " + v.Model }).ToList();
+            VehicleBox.ItemsSource = GlobalData.Vehicles.Values.Select(v => new { v.Id, BrandModel = v.Brand + " " + v.Model }).ToList();
 
             // Set up filterable view
             _vehicleView = CollectionViewSource.GetDefaultView(VehicleBox.ItemsSource);
@@ -86,11 +85,11 @@ namespace CompUIWPF.Competitions
         {
             // Rebuild dictionary
             _vehicleIds.Clear();
-            foreach (var v in GlobalData.Vehicles)
+            foreach (var v in GlobalData.Vehicles.Values)
                 _vehicleIds[v.Brand + " " + v.Model] = v.Id;
 
             // Rebuild ItemsSource
-            var list = GlobalData.Vehicles
+            var list = GlobalData.Vehicles.Values
                 .Select(v => new { v.Id, BrandModel = v.Brand + " " + v.Model })
                 .ToList();
 
