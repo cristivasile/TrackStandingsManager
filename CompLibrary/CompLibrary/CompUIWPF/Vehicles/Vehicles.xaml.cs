@@ -27,18 +27,12 @@ namespace CompUIWPF.Vehicles
             ShowPicturesCheck.IsChecked = false;
 
             // subscribe when control is loaded, unsubscribe when unloaded
-            Loaded += Vehicles_Loaded;
-            Unloaded += Vehicles_Unloaded;
+            GlobalEvents.VehiclesChanged += OnVehiclesChanged;
 
             ReloadVehiclePanels();
         }
 
-        private void Vehicles_Loaded(object sender, RoutedEventArgs e)
-        {
-            GlobalEvents.VehiclesChanged += OnVehiclesChanged;
-        }
-
-        private void Vehicles_Unloaded(object sender, RoutedEventArgs e)
+        ~Vehicles()
         {
             GlobalEvents.VehiclesChanged -= OnVehiclesChanged;
         }

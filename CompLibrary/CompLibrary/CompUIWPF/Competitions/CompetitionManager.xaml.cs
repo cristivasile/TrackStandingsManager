@@ -313,6 +313,7 @@ namespace CompUIWPF.Competitions
                 {
                     CRUD.DeleteCompetitor(_currentCompetition!.Id, id);
                     GlobalEvents.RaiseCompetitionEntriesChanged();
+                    GlobalEvents.RaiseVehiclesChanged();
                 }
             }
         }

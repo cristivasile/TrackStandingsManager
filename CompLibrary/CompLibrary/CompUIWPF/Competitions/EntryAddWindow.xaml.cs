@@ -217,6 +217,7 @@ namespace CompUIWPF.Competitions
 
             // Notify entries changed
             GlobalEvents.RaiseCompetitionEntriesChanged();
+            GlobalEvents.RaiseVehiclesChanged();
 
             this.Close();
         }

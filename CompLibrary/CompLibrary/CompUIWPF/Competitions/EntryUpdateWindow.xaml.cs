@@ -136,6 +136,7 @@ namespace CompUIWPF.Competitions
             CRUD.UpdateCompetitor(_competitionId, updated);
 
             GlobalEvents.RaiseCompetitionEntriesChanged();
+            GlobalEvents.RaiseVehiclesChanged();
             Close();
         }
 
