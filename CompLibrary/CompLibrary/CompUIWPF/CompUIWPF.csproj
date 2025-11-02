@@ -13,6 +13,7 @@
 	<Version>2.0.0</Version>
 	<StartupObject>CompUIWPF.App</StartupObject>
 	<Platforms>AnyCPU;x64</Platforms>
+	 <AssemblyName>TrackStandingsManager</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
