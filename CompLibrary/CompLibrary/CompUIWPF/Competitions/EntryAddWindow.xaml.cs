@@ -4,6 +4,7 @@ using CompUIWPF.Vehicles;
 using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
@@ -176,15 +177,36 @@ namespace CompUIWPF.Competitions
             }
             else // Timing
             {
-                int requiredDigits = _competition.TimingType switch
+                string input = ScoreBox.Text.Trim();
+
+                // Regex for each timing type, allowing 1–2 digits for hours/minutes/seconds and 1–3 digits for milliseconds
+                Regex? regex = _competition.TimingType switch
                 {
-                    0 => 5,
-                    1 => 7,
-                    2 => 9,
-                    _ => 5
+                    0 => new Regex(@"^(?<ss>\d{1,2})\.(?<ms>\d{1,3})$"),                     // SS.mmm
+                    1 => new Regex(@"^(?<mm>\d{1,2}):(?<ss>\d{1,2})\.(?<ms>\d{1,3})$"),      // MM:SS.mmm
+                    2 => new Regex(@"^(?<hh>\d{1,2}):(?<mm>\d{1,2}):(?<ss>\d{1,2})\.(?<ms>\d{1,3})$"), // HH:MM:SS.mmm
+                    _ => null
                 };
-                string digits = ScoreBox.Text.FilterDigits().PadZeroes(requiredDigits);
-                if (digits.Length != requiredDigits) { MessageText.Text = "Invalid time format"; return; }
+
+                if (regex == null)
+                {
+                    MessageText.Text = "Invalid timing type";
+                    return;
+                }
+
+                Match match = regex.Match(input);
+                if (!match.Success)
+                {
+                    string expectedFormat = _competition.TimingType switch
+                    {
+                        0 => "SS.mmm",
+                        1 => "MM:SS.mmm",
+                        2 => "HH:MM:SS.mmm",
+                        _ => ""
+                    };
+                    MessageText.Text = $"Invalid time format. Expected - {expectedFormat}";
+                    return;
+                }
 
                 var competitorTime = new Time();
                 try
@@ -192,24 +214,36 @@ namespace CompUIWPF.Competitions
                     switch (_competition.TimingType)
                     {
                         case 0:
-                            competitorTime.Seconds = int.Parse(digits[..2]);
-                            competitorTime.Milliseconds = int.Parse(digits.Substring(2, 3));
+                            competitorTime.Seconds = int.Parse(match.Groups["ss"].Value);
+                            competitorTime.Milliseconds = int.Parse(match.Groups["ms"].Value);
                             break;
                         case 1:
-                            competitorTime.Minutes = int.Parse(digits[..2]);
-                            competitorTime.Seconds = int.Parse(digits.Substring(2, 2));
-                            competitorTime.Milliseconds = int.Parse(digits.Substring(4, 3));
+                            competitorTime.Minutes = int.Parse(match.Groups["mm"].Value);
+                            competitorTime.Seconds = int.Parse(match.Groups["ss"].Value);
+                            competitorTime.Milliseconds = int.Parse(match.Groups["ms"].Value);
                             break;
                         case 2:
-                            competitorTime.Hours = int.Parse(digits[..2]);
-                            competitorTime.Minutes = int.Parse(digits.Substring(2, 2));
-                            competitorTime.Seconds = int.Parse(digits.Substring(4, 2));
-                            competitorTime.Milliseconds = int.Parse(digits.Substring(6, 3));
+                            competitorTime.Hours = int.Parse(match.Groups["hh"].Value);
+                            competitorTime.Minutes = int.Parse(match.Groups["mm"].Value);
+                            competitorTime.Seconds = int.Parse(match.Groups["ss"].Value);
+                            competitorTime.Milliseconds = int.Parse(match.Groups["ms"].Value);
                             break;
                     }
+
+                    // Validate ranges
+                    if (competitorTime.Seconds > 59 || competitorTime.Minutes > 59 || competitorTime.Hours > 23 || competitorTime.Milliseconds > 999)
+                    {
+                        MessageText.Text = "Invalid time value";
+                        return;
+                    }
+
                     score = competitorTime.GetTimeInSeconds();
                 }
-                catch { MessageText.Text = "Invalid time format"; return; }
+                catch
+                {
+                    MessageText.Text = "Invalid time format";
+                    return;
+                }
             }
 
             var entry = new CompetitorModel(vid, score, AuthorTextBox.Text.Trim());
