@@ -48,6 +48,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <ComboBox x:Name="VehicleBox" Height="30" IsEditable="True"
                               DisplayMemberPath="BrandModel"
@@ -56,8 +57,9 @@
                               SelectionChanged="VehicleBox_SelectionChanged"
                               Loaded="VehicleBox_Loaded"
                               Grid.Column="0"/>
-                    <Button x:Name="VehicleAddButton" Content="New" Width="60" Height="30" Margin="8,0,0,0"
-                            Click="VehicleAddButton_Click" Grid.Column="1"/>
+                    <Button x:Name="VehicleSelectButton" Content="Select" Width="65" Height="30" Margin="8,0,4,0" Click="VehicleSelectButton_Click" Grid.Column="1"/>
+                    <Button x:Name="VehicleAddButton" Content="New" Width="65" Height="30" Margin="4,0,0,0"
+                            Click="VehicleAddButton_Click" Grid.Column="2"/>
                 </Grid>
 
                 <!-- Author -->

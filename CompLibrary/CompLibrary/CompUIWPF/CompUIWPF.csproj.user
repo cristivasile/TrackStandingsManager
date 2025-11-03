@@ -4,6 +4,9 @@
     <_LastSelectedProfileId>D:\Toolbars\Facultate\Repos\TrackStandingsManager\CompLibrary\CompLibrary\CompUIWPF\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="Competitions\VehicleSelectWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Vehicles\Vehicles.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

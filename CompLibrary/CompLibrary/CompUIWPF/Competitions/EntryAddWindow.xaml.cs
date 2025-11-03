@@ -233,5 +233,27 @@ namespace CompUIWPF.Competitions
             var vehicle = CRUD.GetVehicleById(id);
             LoadVehicleImage(vehicle);
         }
+
+        private void VehicleSelectButton_Click(object sender, RoutedEventArgs e)
+        {
+            var win = new VehicleSelectWindow
+            {
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                WindowState = WindowState.Maximized
+            };
+
+            if (win.ShowDialog() == true && win.SelectedVehicleId != -1)
+            {
+                var vehicle = CRUD.GetVehicleById(win.SelectedVehicleId);
+                if (vehicle != null)
+                {
+                    string label = vehicle.Brand + " " + vehicle.Model;
+                    VehicleBox.Text = label;
+                    VehicleBox.SelectedValue = vehicle.Id;
+                    LoadVehicleImage(vehicle);
+                }
+            }
+        }
     }
 }
