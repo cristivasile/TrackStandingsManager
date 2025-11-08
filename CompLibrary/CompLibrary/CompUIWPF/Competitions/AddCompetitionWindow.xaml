@@ -67,25 +67,16 @@
 
 					<!-- Score Type -->
 					<TextBlock Text="Score type:" Margin="0,12,0,2"/>
-					<StackPanel Orientation="Horizontal">
-						<RadioButton x:Name="PointsButton"
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton x:Name="PointsButton"
                                      Content="Points"
-                                     IsChecked="True"
-                                     Checked="ScoreTypeChanged"/>
-						<RadioButton x:Name="TimingsButton"
+                                     IsChecked="True"/>
+                        <RadioButton x:Name="TimingsButton"
                                      Content="Timings"
-                                     Margin="16,0,0,0"
-                                     Checked="ScoreTypeChanged"/>
-					</StackPanel>
+                                     Margin="16,0,0,0"/>
+                    </StackPanel>
 
-					<!-- Timing format -->
-					<ComboBox x:Name="TimingTypeBox"
-                              Margin="0,8,0,0"
-                              MinWidth="240"
-                              IsEnabled="False"
-                              />
-
-					<!-- Sort -->
+                    <!-- Sort -->
 					<TextBlock Text="Sort order:" Margin="0,12,0,2"/>
 					<StackPanel Orientation="Horizontal">
 						<RadioButton x:Name="AscendingButton"

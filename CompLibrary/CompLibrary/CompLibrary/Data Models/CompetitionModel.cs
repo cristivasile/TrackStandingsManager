@@ -2,7 +2,8 @@
 
 namespace CompLibrary
 {
-    public class CompetitionModel
+    // TODO - for the love of god use proper enums instead of ints for PlacementType and OrderingType
+    public class CompetitionModel(string Name, string Description, string ImagePath, int PlacementType, int OrderingType)
     {
         /// <summary>
         /// Unique identifier of a competition;
@@ -11,12 +12,12 @@ namespace CompLibrary
         /// <summary>
         /// The name of a competition.
         /// </summary>
-        public string Name{ get; set; }
+        public string Name { get; set; } = Name;
 
         /// <summary>
         /// The description of this competition.
         /// </summary>
-        public string Description { get; set; }
+        public string Description { get; set; } = Description;
 
         /// <summary>
         /// The placement type used.
@@ -24,7 +25,7 @@ namespace CompLibrary
         /// <example>
         /// 0 = Timing, 1 = Points
         /// </example>
-        public int PlacementType { get; set; }
+        public int PlacementType { get; set; } = PlacementType;
 
         /// <summary>
         /// The type of ordering of the leaderboards.
@@ -32,34 +33,16 @@ namespace CompLibrary
         /// <example>
         /// 0 = Ascending, 1 = Descending
         /// </example>
-        public int OrderingType{ get; set; }
-        /// <summary>
-        /// Timing type of competition.
-        /// </summary>
-        /// <example>
-        /// 0 = SS.mmm, 1 = MM:SS.mmm, 2 = HH:MM:SS.mmm, -1 = no timing 
-        /// </example>
-        public int TimingType { get; set; }
+        public int OrderingType { get; set; } = OrderingType;
 
         /// <summary>
         /// Path to where the image is stored on disk
         /// </summary>
-        public string ImagePath { get; set; }
+        public string ImagePath { get; set; } = ImagePath;
 
         /// <summary>
         /// List of competitors in the current competition.
         /// </summary>
-        public List<CompetitorModel> Competitors { get; set; } = new List<CompetitorModel>();
-
-
-        public CompetitionModel(string Name, string Description, string ImagePath, int PlacementType, int OrderingType, int TimingType)
-        {
-            this.Name = Name;
-            this.Description = Description;
-            this.PlacementType = PlacementType;
-            this.OrderingType = OrderingType;
-            this.TimingType = TimingType;
-            this.ImagePath = ImagePath;
-        }
+        public List<CompetitorModel> Competitors { get; set; } = [];
     }
 }

@@ -251,7 +251,7 @@ namespace CompUIWPF.Competitions
                 }
                 else
                 {
-                    scoreText = FunctionLibrary.GetTimeString(competitor.Score, _currentCompetition.TimingType);
+                    scoreText = FunctionLibrary.GetTimeString(competitor.Score);
                     scoreAlignment = HorizontalAlignment.Left;
                 }
 

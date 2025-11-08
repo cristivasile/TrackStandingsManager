@@ -50,40 +50,48 @@ namespace CompLibrary
         /// <param name="time"> - received time in seconds</param>
         /// <param name="TimingType"> - 0 = SS.mmm, 1 = MM:SS.mmm, 2 = HH:MM:SS.mmm</param>
         /// <returns></returns>
-        public static string GetTimeString(double time, int TimingType)
+        public static string GetTimeString(double time)
         {
-            int hours, minutes, seconds, milliseconds;
-            hours = Convert.ToInt32(Math.Floor(time / 3600));
+            int hours = (int)(time / 3600);
             time %= 3600;
-            minutes = Convert.ToInt32(Math.Floor(time / 60));
+
+            int minutes = (int)(time / 60);
             time %= 60;
-            seconds = Convert.ToInt32(Math.Floor(time));
-            time = (time * 1000) % 1000;
-            milliseconds = Convert.ToInt32(time);
 
-            //9 -> 09
-            string HoursString = Convert.ToString(hours);
-            if (HoursString.Length == 1)
-                HoursString = "0" + HoursString;
+            int seconds = (int)Math.Floor(time);
+            int milliseconds = (int)Math.Round((time - seconds) * 1000);
 
-            string MinutesString = Convert.ToString(minutes);
-            if (MinutesString.Length == 1)
-                MinutesString = "0" + MinutesString;
+            // Handle rounding overflow (e.g., 12.999 → 13.000)
+            if (milliseconds == 1000)
+            {
+                milliseconds = 0;
+                seconds++;
+                if (seconds == 60)
+                {
+                    seconds = 0;
+                    minutes++;
+                    if (minutes == 60)
+                    {
+                        minutes = 0;
+                        hours++;
+                    }
+                }
+            }
 
-            string SecondsString = Convert.ToString(seconds);
-            if (SecondsString.Length == 1)
-                SecondsString = "0" + SecondsString;
+            // Format parts
+            string hh = hours.ToString("00");
+            string mm = minutes.ToString("00");
+            string ss = seconds.ToString("00");
+            string ms = milliseconds.ToString("000");
 
-            string MillisecondsString = Convert.ToString(milliseconds);
-            while (MillisecondsString.Length < 3)
-                MillisecondsString = "0" + MillisecondsString;
+            // Decide output automatically
+            if (hours > 0)
+                return $"{hh}:{mm}:{ss}.{ms}";
 
-            //0 = SS.mmm, 1 = MM:SS.mmm, 2 = HH:MM: SS.mmm 
-            if (TimingType == 0)
-                return $"{SecondsString}.{MillisecondsString}";
-            else if (TimingType == 1)
-                return $"{MinutesString}:{SecondsString}.{MillisecondsString}";
-            else return $"{HoursString}:{MinutesString}:{SecondsString}.{MillisecondsString}";
+            if (minutes > 0)
+                return $"{mm}:{ss}.{ms}";
+
+            return $"{ss}.{ms}";
         }
     }
 }

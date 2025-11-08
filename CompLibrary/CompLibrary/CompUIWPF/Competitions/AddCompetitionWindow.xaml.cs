@@ -16,7 +16,6 @@ namespace CompUIWPF.Competitions
         public AddCompetitionWindow()
         {
             InitializeComponent();
-            TimingTypeBox.ItemsSource = GlobalConfig.DefaultTimings;
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e) => Close();
@@ -42,12 +41,6 @@ namespace CompUIWPF.Competitions
                 return false;
             }
 
-            if (TimingsButton.IsChecked == true && TimingTypeBox.SelectedIndex < 0)
-            {
-                DisplayMessage("Please choose a timing format!", false);
-                return false;
-            }
-
             if (GlobalData.Competitions.Any(c =>
                 c.Name.Trim().Equals(NameBox.Text.Trim(), StringComparison.OrdinalIgnoreCase)))
             {
@@ -58,18 +51,11 @@ namespace CompUIWPF.Competitions
             return true;
         }
 
-        private void ScoreTypeChanged(object sender, RoutedEventArgs e)
-        {
-            if (TimingTypeBox == null) return;
-            TimingTypeBox.IsEnabled = TimingsButton.IsChecked == true;
-        }
-
         private void Create_Click(object sender, RoutedEventArgs e)
         {
             if (!ValidateFields()) return;
 
             int placementType = PointsButton.IsChecked == true ? 1 : 0;
-            int timingType = placementType == 0 ? TimingTypeBox.SelectedIndex : -1;
             int orderingType = DescendingButton.IsChecked == true ? 1 : 0;
 
             string imagePath = "";
@@ -81,8 +67,7 @@ namespace CompUIWPF.Competitions
                 DescriptionBox.Text.Trim(),
                 imagePath,
                 placementType,
-                orderingType,
-                timingType
+                orderingType
             );
 
             CRUD.CreateCompetition(comp);

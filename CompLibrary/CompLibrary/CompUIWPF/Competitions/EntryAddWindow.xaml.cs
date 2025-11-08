@@ -34,12 +34,15 @@ namespace CompUIWPF.Competitions
 
             // Setup scoring type
             ScoringLabel.Text = _competition.PlacementType == 0 ? "Time" : "Points";
-            switch (_competition.TimingType)
+
+            if (_competition.PlacementType == 1)
             {
-                case -1: TimeFormatLabel.Visibility = Visibility.Collapsed; break;
-                case 0: TimeFormatLabel.Text = "SS.mmm"; break;
-                case 1: TimeFormatLabel.Text = "MM:SS.mmm"; break;
-                case 2: TimeFormatLabel.Text = "HH:MM:SS.mmm"; break;
+                TimeFormatLabel.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                TimeFormatLabel.Visibility = Visibility.Visible;
+                TimeFormatLabel.Text = "Timing";
             }
 
             // Populate vehicles
@@ -65,7 +68,6 @@ namespace CompUIWPF.Competitions
             GlobalEvents.VehiclesChanged -= OnVehiclesChanged;
         }
 
-        // ✅ NEW ShowMessage method
         private void ShowMessage(string text, bool success)
         {
             MessagePanel.Children.Clear();
@@ -209,71 +211,9 @@ namespace CompUIWPF.Competitions
             {
                 string input = ScoreBox.Text.Trim();
 
-                Regex? regex = _competition.TimingType switch
+                if (!Utilities.ExtractTimeIfValid(input, out score))
                 {
-                    0 => new Regex(@"^(?<ss>\d{1,2})\.(?<ms>\d{1,3})$"),
-                    1 => new Regex(@"^(?<mm>\d{1,2}):(?<ss>\d{1,2})\.(?<ms>\d{1,3})$"),
-                    2 => new Regex(@"^(?<hh>\d{1,2}):(?<mm>\d{1,2}):(?<ss>\d{1,2})\.(?<ms>\d{1,3})$"),
-                    _ => null
-                };
-
-                if (regex == null)
-                {
-                    ShowMessage("Invalid timing type", false);
-                    return;
-                }
-
-                Match match = regex.Match(input);
-                if (!match.Success)
-                {
-                    string expected = _competition.TimingType switch
-                    {
-                        0 => "SS.mmm",
-                        1 => "MM:SS.mmm",
-                        2 => "HH:MM:SS.mmm",
-                        _ => ""
-                    };
-
-                    ShowMessage($"Invalid time format. Expected - {expected}", false);
-                    return;
-                }
-
-                var competitorTime = new Time();
-                try
-                {
-                    switch (_competition.TimingType)
-                    {
-                        case 0:
-                            competitorTime.Seconds = int.Parse(match.Groups["ss"].Value);
-                            competitorTime.Milliseconds = int.Parse(match.Groups["ms"].Value);
-                            break;
-                        case 1:
-                            competitorTime.Minutes = int.Parse(match.Groups["mm"].Value);
-                            competitorTime.Seconds = int.Parse(match.Groups["ss"].Value);
-                            competitorTime.Milliseconds = int.Parse(match.Groups["ms"].Value);
-                            break;
-                        case 2:
-                            competitorTime.Hours = int.Parse(match.Groups["hh"].Value);
-                            competitorTime.Minutes = int.Parse(match.Groups["mm"].Value);
-                            competitorTime.Seconds = int.Parse(match.Groups["ss"].Value);
-                            competitorTime.Milliseconds = int.Parse(match.Groups["ms"].Value);
-                            break;
-                    }
-
-                    if (competitorTime.Seconds > 59 ||
-                        competitorTime.Minutes > 59 ||
-                        competitorTime.Hours > 23 ||
-                        competitorTime.Milliseconds > 999)
-                    {
-                        ShowMessage("Invalid time value", false);
-                        return;
-                    }
-
-                    score = competitorTime.GetTimeInSeconds();
-                }
-                catch
-                {
-                    ShowMessage("Invalid time format", false);
+                    ShowMessage("Invalid time format. Valid formats: SS.mmm, MM:SS.mmm, HH:MM:SS.mmm", false);
                     return;
                 }
             }
