@@ -216,7 +216,7 @@ namespace CompUIWPF.Competitions
                 score = 0;
             }
 
-            var entry = new CompetitorModel(vid, score, AuthorTextBox.Text.Trim());
+            var entry = new CompetitorModel(vid, score, AuthorTextBox.Text.Trim(), DateTime.Now);
             CRUD.CreateCompetitor(_competitionId, entry, couldComplete);
 
             GlobalEvents.RaiseCompetitionEntriesChanged();

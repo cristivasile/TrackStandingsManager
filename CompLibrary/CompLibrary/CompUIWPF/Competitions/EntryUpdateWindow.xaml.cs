@@ -111,7 +111,7 @@ namespace CompUIWPF.Competitions
                 }
             }
 
-            var updated = new CompetitorModel(_entry.VehicleId, score, AuthorTextBox.Text.Trim())
+            var updated = new CompetitorModel(_entry.VehicleId, score, AuthorTextBox.Text.Trim(), DateTime.Now)
             {
                 Id = _entry.Id
             };

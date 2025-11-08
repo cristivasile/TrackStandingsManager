@@ -248,7 +248,6 @@ namespace CompUIWPF.Vehicles
                         Width = 18,
                         Height = 18,
                         VerticalAlignment = VerticalAlignment.Center,
-                        // Foreground will inherit from Button foreground, which in turn follows theme
                     };
                     var btn = new Button
                     {

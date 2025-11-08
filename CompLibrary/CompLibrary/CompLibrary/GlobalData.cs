@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace CompLibrary
@@ -19,6 +20,15 @@ namespace CompLibrary
                     GlobalData.Vehicles[vehicle.Id] = vehicle;
                 }
                 GlobalData.Competitions = storage.ReadCompetitions();
+
+                foreach (var competition in GlobalData.Competitions)
+                {
+                    foreach (var competitor in competition.Competitors)
+                    {
+                        if (competitor.Timestamp == DateTime.MinValue || competitor.Timestamp == default)
+                            competitor.Timestamp = DateTime.Now;
+                    }
+                }
             }
         }
     }

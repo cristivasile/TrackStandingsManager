@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CompUIWPF"
         Title="Track Standings Manager"
         mc:Ignorable="d"
-        Height="800" Width="1500"
+        Height="800" Width="1600"
         Style="{StaticResource MaterialDesignWindow}">
     <Window.Resources>
         <local:TabIndexToViewConverter x:Key="TabIndexToViewConverter"/>

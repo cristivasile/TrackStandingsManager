@@ -5,11 +5,13 @@ using MahApps.Metro.IconPacks;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
 using static System.Formats.Asn1.AsnWriter;
 
@@ -114,7 +116,6 @@ namespace CompUIWPF.Competitions
             CompetitorsPanel.Children.Clear();
             if (_currentCompetition == null) return;
 
-            bool showPictures = true; // could expose as option
             int currentIndex = 0;
             double lastScore = -1;
             int toIncrement = 1;
@@ -184,12 +185,13 @@ namespace CompUIWPF.Competitions
 
                 var grid = new Grid();
                 grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(60) }); // Pos
-                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = showPictures ? GridLength.Auto : new GridLength(0) });
-                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) });
-                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) });
-                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) });
-                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) });
-                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(180) });
+                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(430) });
+                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(430) });
+                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(160) });
+                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) }); // Timestamp
+                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) }); // Score
+                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(180) }); // Actions
 
                 // Position + medal
                 var posStack = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center };
@@ -229,37 +231,44 @@ namespace CompUIWPF.Competitions
                 // Brand
                 var vehicle = GlobalData.Vehicles.Values.FirstOrDefault(v => v.Id == competitor.VehicleId);
                 var brand = new TextBlock { Text = vehicle?.Brand ?? "-", VerticalAlignment = VerticalAlignment.Center };
-                Grid.SetColumn(brand, 2);
+                Grid.SetColumn(brand, 1);
                 grid.Children.Add(brand);
 
                 // Model
                 var model = new TextBlock { Text = vehicle?.Model ?? "-", VerticalAlignment = VerticalAlignment.Center };
-                Grid.SetColumn(model, 3);
+                Grid.SetColumn(model, 2);
                 grid.Children.Add(model);
 
                 // Category
                 var category = new TextBlock { Text = vehicle?.Category ?? "-", VerticalAlignment = VerticalAlignment.Center };
-                Grid.SetColumn(category, 4);
+                Grid.SetColumn(category, 3);
                 grid.Children.Add(category);
+
+                // Timestamp
+                var timestampBlock = new TextBlock
+                {
+                    Text = competitor.Timestamp.ToString("dd-MMM-yy", new CultureInfo("en-US")), // e.g., 11-Nov-25
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+                Grid.SetColumn(timestampBlock, 4); // assuming Timestamp is the 6th column
+                grid.Children.Add(timestampBlock);
 
                 // Score / DNF
                 string scoreText;
-                HorizontalAlignment scoreAlignment = HorizontalAlignment.Center;
                 if (_currentCompetition.PlacementType == 1)
                 {
                     scoreText = competitor.Score.ToString();
-                    scoreAlignment = HorizontalAlignment.Center;
                 }
                 else
                 {
                     scoreText = FunctionLibrary.GetTimeString(competitor.Score);
-                    scoreAlignment = HorizontalAlignment.Left;
                 }
 
                 var scoreBlock = new TextBlock
                 {
                     Text = scoreText,
-                    HorizontalAlignment = scoreAlignment,
+                    HorizontalAlignment = HorizontalAlignment.Right,
                     VerticalAlignment = VerticalAlignment.Center
                 };
 
@@ -273,13 +282,12 @@ namespace CompUIWPF.Competitions
                 Grid.SetColumn(scoreBlock, 5);
                 grid.Children.Add(scoreBlock);
 
-
                 // Actions
                 var actions = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right };
                 static Button CreateIconButton(PackIconMaterialKind kind, string tooltip, int tag)
                 {
                     var icon = new PackIconMaterial { Kind = kind, Width = 18, Height = 18, VerticalAlignment = VerticalAlignment.Center };
-                    var btn = new Button { Content = icon, Width = 40, Height = 32, Margin = new Thickness(4, 0, 0, 0), Tag = tag, ToolTip = tooltip };
+                    var btn = new Button { Content = icon, Width = 40, Height = 32, Margin = new Thickness(4, 0, 0, 0), Padding = new Thickness(0), Tag = tag, ToolTip = tooltip };
                     return btn;
                 }
 
@@ -290,7 +298,7 @@ namespace CompUIWPF.Competitions
                 actions.Children.Add(edit);
                 actions.Children.Add(del);
 
-                Grid.SetColumn(actions, 6);
+                Grid.SetColumn(actions, 7);
                 grid.Children.Add(actions);
 
                 row.Child = grid;
@@ -462,8 +470,37 @@ namespace CompUIWPF.Competitions
 
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
+
+
             LoadCompetitions();
             ReloadCompetitors();
         }
+
+        private void SortByDefault_Click(object sender, RoutedEventArgs e)
+        {
+            if (_currentCompetition == null) return;
+
+            // Restore original competition order (score + placement type)
+            ReloadCompetitors(); // Reloads with default ordering
+        }
+
+        private void SortByDateAsc_Click(object sender, RoutedEventArgs e)
+        {
+            if (_currentCompetition == null) return;
+
+            _currentCompetition.Competitors = [.. _currentCompetition.Competitors.OrderBy(c => c.Timestamp)];
+
+            ReloadCompetitors();
+        }
+
+        private void SortByDateDesc_Click(object sender, RoutedEventArgs e)
+        {
+            if (_currentCompetition == null) return;
+
+            _currentCompetition.Competitors = [.. _currentCompetition.Competitors.OrderByDescending(c => c.Timestamp)];
+
+            ReloadCompetitors();
+        }
+
     }
 }

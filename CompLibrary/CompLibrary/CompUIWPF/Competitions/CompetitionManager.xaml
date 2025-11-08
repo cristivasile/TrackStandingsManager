@@ -21,6 +21,11 @@
                 <MenuItem Header="Category" Click="FilterByCategory_Click"/>
                 <MenuItem Header="Clear filters" Click="ClearFilters_Click"/>
             </MenuItem>
+            <MenuItem Header="Sort by">
+                <MenuItem Header="Competition Default" Click="SortByDefault_Click"/>
+                <MenuItem Header="Date Ascending" Click="SortByDateAsc_Click"/>
+                <MenuItem Header="Date Descending" Click="SortByDateDesc_Click"/>
+            </MenuItem>
             <MenuItem Header="Reset" Click="Reset_Click"/>
             <MenuItem Header="Delete" Click="DeleteCompetition_Click"/>
         </Menu>
@@ -77,18 +82,20 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="60"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="430"/>
+                    <ColumnDefinition Width="430"/>
+                    <ColumnDefinition Width="160"/>
                     <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="180"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="Pos" HorizontalAlignment="Center" FontWeight="Bold"/>
-                <TextBlock Grid.Column="2" Text="Brand" FontWeight="Bold"/>
-                <TextBlock Grid.Column="3" Text="Model" FontWeight="Bold"/>
-                <TextBlock Grid.Column="4" Text="Category" FontWeight="Bold"/>
-                <TextBlock Grid.Column="5" Text="Score" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Text="Brand" FontWeight="Bold"/>
+                <TextBlock Grid.Column="2" Text="Model" FontWeight="Bold"/>
+                <TextBlock Grid.Column="3" Text="Category" FontWeight="Bold"/>
+                <TextBlock Grid.Column="4" Text="Date" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Grid.Column="5" Text="Score" HorizontalAlignment="Right" FontWeight="Bold"/>
             </Grid>
         </Border>
 
