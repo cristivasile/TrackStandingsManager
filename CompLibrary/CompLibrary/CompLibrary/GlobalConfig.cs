@@ -56,6 +56,9 @@ namespace CompLibrary
         [
             "Coupe",
             "Sedan",
+            "Supercar",
+            "Hypercar",
+            "Muscle Car",
             "Cabriolet",
             "Hatchback",
             "Limousine",
@@ -64,14 +67,9 @@ namespace CompLibrary
             "Roadster",
             "Wagon",
             "Ute",
-            "Suv"
-        ];
-
-        public static List<string> DefaultTimings { get; private set; } =
-        [
-            "SS.mmm",
-            "MM:SS.mmm",
-            "HH:MM:SS.mmm"
+            "Suv",
+            "Van",
+            "Truck"
         ];
     }
 }
