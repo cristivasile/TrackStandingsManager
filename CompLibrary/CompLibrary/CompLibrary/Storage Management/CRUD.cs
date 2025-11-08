@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 
 namespace CompLibrary.Storage_Management
 {
@@ -92,9 +93,19 @@ namespace CompLibrary.Storage_Management
         /// </summary>
         /// <param name="CompetitionId"></param>
         /// <param name="NewCompetitor"></param>
-        public static void CreateCompetitor(int CompetitionId, CompetitorModel NewCompetitor)
+        /// <param name="CouldComplete"></param>|
+        public static void CreateCompetitor(int CompetitionId, CompetitorModel NewCompetitor, bool CouldComplete)
         {
-            foreach(CompetitionModel competition in GlobalData.Competitions)
+            // Set score to infinity if competitor did not complete
+            if (!CouldComplete)
+            {
+                if (GlobalData.Competitions.First(c => c.Id == CompetitionId).OrderingType == 0)
+                    NewCompetitor.Score = double.PositiveInfinity; // ascending = time competitions
+                else
+                    NewCompetitor.Score = double.NegativeInfinity; // descending = points competitions
+            }
+
+            foreach (CompetitionModel competition in GlobalData.Competitions)
                 if(competition.Id == CompetitionId)
                 {
                     //generate Id if it has default value. if it does not, this was called from UpdateCompetitor
@@ -220,10 +231,10 @@ namespace CompLibrary.Storage_Management
         /// <summary>
         /// Updates a competitor by deleting and re-inserting.
         /// </summary>
-        public static void UpdateCompetitor(int CompetitionId, CompetitorModel ToUpdate)
+        public static void UpdateCompetitor(int CompetitionId, CompetitorModel ToUpdate, bool CouldComplete)
         {
             DeleteCompetitor(CompetitionId, ToUpdate.Id);
-            CreateCompetitor(CompetitionId, ToUpdate);
+            CreateCompetitor(CompetitionId, ToUpdate, CouldComplete);
         }
 
         /// <summary>

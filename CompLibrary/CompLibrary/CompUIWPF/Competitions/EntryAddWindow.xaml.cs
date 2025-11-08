@@ -35,16 +35,6 @@ namespace CompUIWPF.Competitions
             // Setup scoring type
             ScoringLabel.Text = _competition.PlacementType == 0 ? "Time" : "Points";
 
-            if (_competition.PlacementType == 1)
-            {
-                TimeFormatLabel.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                TimeFormatLabel.Visibility = Visibility.Visible;
-                TimeFormatLabel.Text = "Timing";
-            }
-
             // Populate vehicles
             foreach (var v in GlobalData.Vehicles.Values)
                 _vehicleIds[v.Brand + " " + v.Model] = v.Id;
@@ -197,34 +187,43 @@ namespace CompUIWPF.Competitions
                 return;
             }
 
-            double score;
+            double score = 0;
+            bool couldComplete = !DNFCheckBox.IsChecked.GetValueOrDefault(false);
 
-            if (_competition.PlacementType == 1)
+            if (couldComplete)
             {
-                if (!double.TryParse(ScoreBox.Text, out score))
+                if (_competition.PlacementType == 1)
                 {
-                    ShowMessage("Invalid points", false);
-                    return;
+                    if (!double.TryParse(ScoreBox.Text, out score))
+                    {
+                        ShowMessage("Invalid points", false);
+                        return;
+                    }
+                }
+                else
+                {
+                    string input = ScoreBox.Text.Trim();
+                    if (!Utilities.ExtractTimeIfValid(input, out score))
+                    {
+                        ShowMessage("Invalid time format. Valid formats: SS.mmm, MM:SS.mmm, HH:MM:SS.mmm", false);
+                        return;
+                    }
                 }
             }
             else
             {
-                string input = ScoreBox.Text.Trim();
-
-                if (!Utilities.ExtractTimeIfValid(input, out score))
-                {
-                    ShowMessage("Invalid time format. Valid formats: SS.mmm, MM:SS.mmm, HH:MM:SS.mmm", false);
-                    return;
-                }
+                // Set score to placeholder; CRUD.CreateCompetitor will convert to infinity
+                score = 0;
             }
 
             var entry = new CompetitorModel(vid, score, AuthorTextBox.Text.Trim());
-            CRUD.CreateCompetitor(_competitionId, entry);
+            CRUD.CreateCompetitor(_competitionId, entry, couldComplete);
 
             GlobalEvents.RaiseCompetitionEntriesChanged();
             GlobalEvents.RaiseVehiclesChanged();
 
             ScoreBox.Text = "";
+            DNFCheckBox.IsChecked = false;
 
             ShowMessage("Entry created!", true);
         }
@@ -262,6 +261,19 @@ namespace CompUIWPF.Competitions
                     LoadVehicleImage(vehicle);
                 }
             }
+        }
+
+        private void DNFCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            // Disable score input
+            ScoreBox.IsEnabled = false;
+            ScoreBox.Text = ""; // Clear current score
+        }
+
+        private void DNFCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            // Re-enable score input
+            ScoreBox.IsEnabled = true;
         }
     }
 }

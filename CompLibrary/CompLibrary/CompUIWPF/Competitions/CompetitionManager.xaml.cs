@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace CompUIWPF.Competitions
 {
@@ -241,7 +242,7 @@ namespace CompUIWPF.Competitions
                 Grid.SetColumn(category, 4);
                 grid.Children.Add(category);
 
-                // Score
+                // Score / DNF
                 string scoreText;
                 HorizontalAlignment scoreAlignment = HorizontalAlignment.Center;
                 if (_currentCompetition.PlacementType == 1)
@@ -255,9 +256,23 @@ namespace CompUIWPF.Competitions
                     scoreAlignment = HorizontalAlignment.Left;
                 }
 
-                var score = new TextBlock { Text = scoreText, HorizontalAlignment = scoreAlignment, VerticalAlignment = VerticalAlignment.Center };
-                Grid.SetColumn(score, 5);
-                grid.Children.Add(score);
+                var scoreBlock = new TextBlock
+                {
+                    Text = scoreText,
+                    HorizontalAlignment = scoreAlignment,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+
+                // If infinity, set DNF and color red
+                if (double.IsInfinity(competitor.Score))
+                {
+                    scoreBlock.Text = "DNF";
+                    scoreBlock.Foreground = new SolidColorBrush(Colors.IndianRed);
+                }
+
+                Grid.SetColumn(scoreBlock, 5);
+                grid.Children.Add(scoreBlock);
+
 
                 // Actions
                 var actions = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right };
