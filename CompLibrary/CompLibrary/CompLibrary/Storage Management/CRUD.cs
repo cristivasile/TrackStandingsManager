@@ -16,10 +16,9 @@ namespace CompLibrary.Storage_Management
             int maxId = 0;
             foreach (var pair in GlobalData.Vehicles)
             {
-                if (pair.Key > maxId)
+                if (pair.Key >= maxId)
                     maxId = pair.Key + 1;
             }
-            newVehicle.Id = maxId;
 
             //trim spaces from strings
             newVehicle.Brand = newVehicle.Brand.Trim();
