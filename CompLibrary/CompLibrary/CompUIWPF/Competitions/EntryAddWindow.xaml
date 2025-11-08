@@ -78,8 +78,8 @@
             </StackPanel>
         </Grid>
 
-        <!-- Message -->
-        <TextBlock Grid.Row="2" x:Name="MessageText" Foreground="Red" Margin="0,6,0,0" TextWrapping="Wrap"/>
+        <!-- Message Panel -->
+        <StackPanel Grid.Row="2" x:Name="MessagePanel" Margin="0,12,0,0"/>
 
         <!-- Buttons -->
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">

@@ -1,4 +1,4 @@
-using CompLibrary;
+ï»¿using CompLibrary;
 using CompLibrary.Storage_Management;
 using CompUIWPF.Vehicles;
 using System;
@@ -6,7 +6,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace CompUIWPF.Competitions
@@ -44,20 +46,42 @@ namespace CompUIWPF.Competitions
             foreach (var v in GlobalData.Vehicles.Values)
                 _vehicleIds[v.Brand + " " + v.Model] = v.Id;
 
-            VehicleBox.ItemsSource = GlobalData.Vehicles.Values.Select(v => new { v.Id, BrandModel = v.Brand + " " + v.Model }).ToList();
+            VehicleBox.ItemsSource = GlobalData.Vehicles.Values
+                .Select(v => new { v.Id, BrandModel = v.Brand + " " + v.Model })
+                .ToList();
 
             // Set up filterable view
             _vehicleView = CollectionViewSource.GetDefaultView(VehicleBox.ItemsSource);
-            VehicleBox.IsTextSearchEnabled = false; // we handle filtering ourselves
+            VehicleBox.IsTextSearchEnabled = false;
             VehicleBox.StaysOpenOnEdit = true;
             VehicleBox.IsEditable = true;
             VehicleBox.PreviewKeyUp += VehicleBox_PreviewKeyUp;
 
             GlobalEvents.VehiclesChanged += OnVehiclesChanged;
         }
+
         ~EntryAddWindow()
         {
             GlobalEvents.VehiclesChanged -= OnVehiclesChanged;
+        }
+
+        // âœ… NEW ShowMessage method
+        private void ShowMessage(string text, bool success)
+        {
+            MessagePanel.Children.Clear();
+
+            var tb = new TextBlock
+            {
+                Text = text,
+                Foreground = success
+                    ? new SolidColorBrush(Colors.Green)
+                    : new SolidColorBrush(Colors.IndianRed),
+                FontWeight = FontWeights.SemiBold,
+                Margin = new Thickness(0, 4, 0, 0),
+                TextWrapping = TextWrapping.Wrap
+            };
+
+            MessagePanel.Children.Add(tb);
         }
 
         private void VehicleBox_PreviewKeyUp(object sender, RoutedEventArgs e)
@@ -72,8 +96,6 @@ namespace CompUIWPF.Competitions
             _vehicleView.Refresh();
 
             VehicleBox.IsDropDownOpen = true;
-
-            // prevent auto-selection when typing
             VehicleBox.SelectedIndex = -1;
         }
 
@@ -84,28 +106,23 @@ namespace CompUIWPF.Competitions
 
         private void OnVehiclesChanged()
         {
-            // Rebuild dictionary
             _vehicleIds.Clear();
             foreach (var v in GlobalData.Vehicles.Values)
                 _vehicleIds[v.Brand + " " + v.Model] = v.Id;
 
-            // Rebuild ItemsSource
             var list = GlobalData.Vehicles.Values
                 .Select(v => new { v.Id, BrandModel = v.Brand + " " + v.Model })
                 .ToList();
 
             VehicleBox.ItemsSource = list;
 
-            // Recreate view and filter handler
             _vehicleView = CollectionViewSource.GetDefaultView(VehicleBox.ItemsSource);
             _vehicleView.Filter = null;
             _vehicleView.Refresh();
 
-            // Clear selection + text
             VehicleBox.Text = string.Empty;
             VehicleBox.SelectedIndex = -1;
 
-            // Hide previous image
             VehicleImage.Source = null;
             VehicleImage.Visibility = Visibility.Collapsed;
         }
@@ -119,24 +136,23 @@ namespace CompUIWPF.Competitions
             };
 
             var parent = Window.GetWindow(this);
-            parent.IsEnabled = false; // block parent
+            parent.IsEnabled = false;
 
-            // Prevent parent from closing while child is open
             void closingHandler(object? s, CancelEventArgs args)
             {
                 if (vehicleAddWindow != null && vehicleAddWindow.IsVisible)
                 {
-                    args.Cancel = true; // block the close
-                    vehicleAddWindow.Activate(); // bring child forward
+                    args.Cancel = true;
+                    vehicleAddWindow.Activate();
                 }
             }
             parent.Closing += closingHandler;
 
             vehicleAddWindow.Closed += (s, args) =>
             {
-                parent.IsEnabled = true; // re-enable parent
-                parent.Activate();       // bring parent back to front
-                parent.Closing -= closingHandler; // remove handler
+                parent.IsEnabled = true;
+                parent.Activate();
+                parent.Closing -= closingHandler;
             };
 
             vehicleAddWindow.Show();
@@ -165,46 +181,60 @@ namespace CompUIWPF.Competitions
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
-            MessageText.Text = "";
-            if (string.IsNullOrEmpty(VehicleBox.Text)) { MessageText.Text = "Choose vehicle"; return; }
-            if (!_vehicleIds.TryGetValue(VehicleBox.Text, out int vid)) { MessageText.Text = "Vehicle does not exist"; return; }
+            ShowMessage("", false);
+
+            if (string.IsNullOrEmpty(VehicleBox.Text))
+            {
+                ShowMessage("Choose vehicle", false);
+                return;
+            }
+
+            if (!_vehicleIds.TryGetValue(VehicleBox.Text, out int vid))
+            {
+                ShowMessage("Vehicle does not exist", false);
+                return;
+            }
 
             double score;
 
             if (_competition.PlacementType == 1)
             {
-                if (!double.TryParse(ScoreBox.Text, out score)) { MessageText.Text = "Invalid points"; return; }
+                if (!double.TryParse(ScoreBox.Text, out score))
+                {
+                    ShowMessage("Invalid points", false);
+                    return;
+                }
             }
-            else // Timing
+            else
             {
                 string input = ScoreBox.Text.Trim();
 
-                // Regex for each timing type, allowing 1–2 digits for hours/minutes/seconds and 1–3 digits for milliseconds
                 Regex? regex = _competition.TimingType switch
                 {
-                    0 => new Regex(@"^(?<ss>\d{1,2})\.(?<ms>\d{1,3})$"),                     // SS.mmm
-                    1 => new Regex(@"^(?<mm>\d{1,2}):(?<ss>\d{1,2})\.(?<ms>\d{1,3})$"),      // MM:SS.mmm
-                    2 => new Regex(@"^(?<hh>\d{1,2}):(?<mm>\d{1,2}):(?<ss>\d{1,2})\.(?<ms>\d{1,3})$"), // HH:MM:SS.mmm
+                    0 => new Regex(@"^(?<ss>\d{1,2})\.(?<ms>\d{1,3})$"),
+                    1 => new Regex(@"^(?<mm>\d{1,2}):(?<ss>\d{1,2})\.(?<ms>\d{1,3})$"),
+                    2 => new Regex(@"^(?<hh>\d{1,2}):(?<mm>\d{1,2}):(?<ss>\d{1,2})\.(?<ms>\d{1,3})$"),
                     _ => null
                 };
 
                 if (regex == null)
                 {
-                    MessageText.Text = "Invalid timing type";
+                    ShowMessage("Invalid timing type", false);
                     return;
                 }
 
                 Match match = regex.Match(input);
                 if (!match.Success)
                 {
-                    string expectedFormat = _competition.TimingType switch
+                    string expected = _competition.TimingType switch
                     {
                         0 => "SS.mmm",
                         1 => "MM:SS.mmm",
                         2 => "HH:MM:SS.mmm",
                         _ => ""
                     };
-                    MessageText.Text = $"Invalid time format. Expected - {expectedFormat}";
+
+                    ShowMessage($"Invalid time format. Expected - {expected}", false);
                     return;
                 }
 
@@ -230,10 +260,12 @@ namespace CompUIWPF.Competitions
                             break;
                     }
 
-                    // Validate ranges
-                    if (competitorTime.Seconds > 59 || competitorTime.Minutes > 59 || competitorTime.Hours > 23 || competitorTime.Milliseconds > 999)
+                    if (competitorTime.Seconds > 59 ||
+                        competitorTime.Minutes > 59 ||
+                        competitorTime.Hours > 23 ||
+                        competitorTime.Milliseconds > 999)
                     {
-                        MessageText.Text = "Invalid time value";
+                        ShowMessage("Invalid time value", false);
                         return;
                     }
 
@@ -241,7 +273,7 @@ namespace CompUIWPF.Competitions
                 }
                 catch
                 {
-                    MessageText.Text = "Invalid time format";
+                    ShowMessage("Invalid time format", false);
                     return;
                 }
             }
@@ -249,9 +281,10 @@ namespace CompUIWPF.Competitions
             var entry = new CompetitorModel(vid, score, AuthorTextBox.Text.Trim());
             CRUD.CreateCompetitor(_competitionId, entry);
 
-            // Notify entries changed
             GlobalEvents.RaiseCompetitionEntriesChanged();
             GlobalEvents.RaiseVehiclesChanged();
+
+            ShowMessage("Entry created!", true);
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e) => Close();
@@ -261,7 +294,6 @@ namespace CompUIWPF.Competitions
             if (VehicleBox.SelectedItem == null) return;
 
             dynamic selected = VehicleBox.SelectedItem;
-            _ = selected.BrandModel;
             int id = selected.Id;
 
             var vehicle = CRUD.GetVehicleById(id);
