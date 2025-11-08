@@ -410,5 +410,32 @@ namespace CompLibrary.Storage_Management
             return null;
         }
 
+        // TODO - instead of doing this every single time we should just switch to storing these in-memory only
+        public static void RecalculateVehiclePositions()
+        {
+            // Reset all counters
+            foreach (var v in GlobalData.Vehicles.Values)
+            {
+                v.SumPositions = 0;
+                v.NrCompetitions = 0;
+            }
+
+            // Re-scan all competitions and re-compute positions for vehicles
+            foreach (var comp in GlobalData.Competitions)
+            {
+                foreach (var competitor in comp.Competitors)
+                {
+                    if (GlobalData.Vehicles.TryGetValue(competitor.VehicleId, out var vehicle))
+                    {
+                        vehicle.SumPositions += competitor.Position;
+                        vehicle.NrCompetitions++;
+                    }
+                }
+            }
+
+            foreach (IDataConnection c in GlobalConfig.Connections)
+                c.WriteVehicles();
+        }
+
     }
 }

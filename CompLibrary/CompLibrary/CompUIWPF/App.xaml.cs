@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
 using CompLibrary;
+using CompLibrary.Storage_Management;
 
 namespace CompUIWPF
 {
@@ -32,6 +33,8 @@ namespace CompUIWPF
             try
             {
                 GlobalData.InitializeLists();
+                // Recalculate all average positions to ensure data integrity
+                CRUD.RecalculateVehiclePositions();
             }
             catch
             {
