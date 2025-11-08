@@ -19,6 +19,7 @@ namespace CompLibrary.Storage_Management
                 if (pair.Key >= maxId)
                     maxId = pair.Key + 1;
             }
+            newVehicle.Id = maxId;
 
             //trim spaces from strings
             newVehicle.Brand = newVehicle.Brand.Trim();
