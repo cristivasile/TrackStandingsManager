@@ -284,6 +284,8 @@ namespace CompUIWPF.Competitions
             GlobalEvents.RaiseCompetitionEntriesChanged();
             GlobalEvents.RaiseVehiclesChanged();
 
+            ScoreBox.Text = "";
+
             ShowMessage("Entry created!", true);
         }
 
