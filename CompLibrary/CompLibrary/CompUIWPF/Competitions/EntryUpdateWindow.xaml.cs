@@ -64,8 +64,6 @@ namespace CompUIWPF.Competitions
                 catch { VehicleImage.Visibility = Visibility.Collapsed; }
             }
 
-            AuthorTextBox.Text = _entry.Author;
-
             // Scoring type
             ScoringLabel.Text = _competition.PlacementType == 0 ? "Time" : "Points";
 
@@ -111,7 +109,7 @@ namespace CompUIWPF.Competitions
                 }
             }
 
-            var updated = new CompetitorModel(_entry.VehicleId, score, AuthorTextBox.Text.Trim(), DateTime.Now)
+            var updated = new CompetitorModel(_entry.VehicleId, score, DateTime.Now)
             {
                 Id = _entry.Id
             };

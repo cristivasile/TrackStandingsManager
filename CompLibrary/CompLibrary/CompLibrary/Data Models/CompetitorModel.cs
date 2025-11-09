@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CompLibrary
 {
-    public class CompetitorModel(int vehicleId, double score, string author, DateTime dt)
+    public class CompetitorModel(int vehicleId, double score, DateTime dt)
     {
         /// <summary>
         /// Unique identifier of a competitor;
@@ -24,10 +24,6 @@ namespace CompLibrary
         /// </summary>
         public double Score { get; set; } = score;
 
-        /// <summary>
-        /// The author of an entry.
-        /// </summary>
-        public string Author { get; set; } = author;
         /// <summary>
         /// Current position in the competition.
         /// </summary>

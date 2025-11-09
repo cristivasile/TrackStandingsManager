@@ -39,17 +39,10 @@
 			</Border>
 
 			<!-- Fields -->
-			<StackPanel x:Name="FieldsPanel" Grid.Column="2" VerticalAlignment="Top">
-
-				<!-- Author -->
-				<StackPanel Orientation="Horizontal" Margin="0,0,0,6">
-					<TextBlock Text="Author" Width="80" VerticalAlignment="Center"/>
-					<TextBox x:Name="AuthorTextBox" Width="238" Height="28"
-                             materialDesign:HintAssist.Hint="-optional-"/>
-				</StackPanel>
+            <StackPanel x:Name="FieldsPanel" Grid.Column="2" VerticalAlignment="Top">
 
                 <!-- Score + DNF -->
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                <StackPanel Orientation="Horizontal" Margin="0,144,0,6">
                     <TextBlock x:Name="ScoringLabel" Text="Time/Points" Width="80" VerticalAlignment="Center"/>
                     <TextBox x:Name="ScoreBox" Width="238" Height="28"/>
                     <CheckBox x:Name="DNFCheckBox" Content="DNF" Margin="12,0,0,0" VerticalAlignment="Center" Checked="DNFCheckBox_Checked" Unchecked="DNFCheckBox_Unchecked"/>
