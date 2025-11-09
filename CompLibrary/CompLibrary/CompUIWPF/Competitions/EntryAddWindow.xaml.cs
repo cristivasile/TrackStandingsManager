@@ -41,6 +41,7 @@ namespace CompUIWPF.Competitions
 
             VehicleBox.ItemsSource = GlobalData.Vehicles.Values
                 .Select(v => new { v.Id, BrandModel = v.Brand + " " + v.Model })
+                .OrderBy(v => v.BrandModel)
                 .ToList();
 
             // Set up filterable view
@@ -104,6 +105,7 @@ namespace CompUIWPF.Competitions
 
             var list = GlobalData.Vehicles.Values
                 .Select(v => new { v.Id, BrandModel = v.Brand + " " + v.Model })
+                .OrderBy(v => v.BrandModel)
                 .ToList();
 
             VehicleBox.ItemsSource = list;
