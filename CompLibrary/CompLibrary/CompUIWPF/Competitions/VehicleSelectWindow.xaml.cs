@@ -51,7 +51,7 @@ namespace CompUIWPF.Competitions
         private void LoadVehicles()
         {
             // We now populate the ListBox with VehicleDisplayItem objects
-            _allDisplayItems = GlobalData.Vehicles.Values
+            _allDisplayItems = [.. GlobalData.Vehicles.Values
                 .Select(v =>
                 {
                     // Check if the vehicle has an existing entry
@@ -77,8 +77,7 @@ namespace CompUIWPF.Competitions
                         ImagePath = v.ImagePath // Pass the image path from the original model
                     };
                 })
-                .OrderBy(v => v.Brand + v.Model)
-                .ToList();
+                .OrderBy(v => v.Brand + v.Model)];
 
             VehicleGrid.ItemsSource = _allDisplayItems;
         }

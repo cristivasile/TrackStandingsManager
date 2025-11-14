@@ -4,6 +4,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <History>True|2021-11-29T21:51:13.5645672Z;True|2021-11-29T23:49:39.6874802+02:00;True|2021-11-29T23:49:02.4085464+02:00;True|2021-11-29T23:46:19.7354425+02:00;</History>
+    <History>False|2025-11-14T23:55:27.8602873Z||;False|2025-11-15T01:55:03.2279577+02:00||;False|2025-11-15T01:54:49.7255375+02:00||;True|2021-11-29T23:51:13.5645672+02:00||;True|2021-11-29T23:49:39.6874802+02:00||;True|2021-11-29T23:49:02.4085464+02:00||;True|2021-11-29T23:46:19.7354425+02:00||;</History>
+    <LastFailureDetails />
   </PropertyGroup>
 </Project>

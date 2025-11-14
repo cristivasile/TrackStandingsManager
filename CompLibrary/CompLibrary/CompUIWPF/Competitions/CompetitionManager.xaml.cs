@@ -20,10 +20,10 @@ namespace CompUIWPF.Competitions
     public partial class CompetitionManager : UserControl
     {
         private CompetitionModel? _currentCompetition;
-        private List<CompetitorModel> _viewCompetitors = new List<CompetitorModel>();
+        private List<CompetitorModel> _viewCompetitors = [];
         // Filter state:0 = none,1 = brand,2 = category
         private int FilterType = 0;
-        private HashSet<string> FilterResult = new HashSet<string>();
+        private HashSet<string> FilterResult = [];
 
         private enum SortType { Default, DateAsc, DateDesc }
         private SortType _currentSort = SortType.Default;

@@ -37,6 +37,11 @@ namespace CompUIWPF.Competitions
                 else
                     return false;
             }
+
+            public override int GetHashCode()
+            {
+                return Id.GetHashCode();
+            }
         }
 
         public string CompetitionName { get; set; }
@@ -281,7 +286,7 @@ namespace CompUIWPF.Competitions
                 return;
             }
 
-            double score = 0;
+            double score;
             bool couldComplete = !DNFCheckBox.IsChecked.GetValueOrDefault(false);
 
             if (couldComplete)
