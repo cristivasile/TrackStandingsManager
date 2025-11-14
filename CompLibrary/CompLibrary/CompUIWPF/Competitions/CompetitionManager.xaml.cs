@@ -1,4 +1,4 @@
-using CompLibrary;
+﻿using CompLibrary;
 using CompLibrary.Storage_Management;
 using CompUIWPF.Vehicles;
 using MahApps.Metro.IconPacks;
@@ -20,25 +20,61 @@ namespace CompUIWPF.Competitions
     public partial class CompetitionManager : UserControl
     {
         private CompetitionModel? _currentCompetition;
+        private List<CompetitorModel> _viewCompetitors = new List<CompetitorModel>();
         // Filter state:0 = none,1 = brand,2 = category
         private int FilterType = 0;
-        private HashSet<string> FilterResult = [];
+        private HashSet<string> FilterResult = new HashSet<string>();
+
+        private enum SortType { Default, DateAsc, DateDesc }
+        private SortType _currentSort = SortType.Default;
 
         public CompetitionManager()
         {
             InitializeComponent();
             LoadCompetitions();
-            ReloadCompetitors();
+
+            // Ensure view list is built from currently selected competition (if any)
+            if (CompetitionSelect.SelectedItem is string selected)
+            {
+                _currentCompetition = GlobalData.Competitions.FirstOrDefault(c => c.Name == selected);
+            }
+            RefreshView();
 
             // Subscribe to entry updates
-            GlobalEvents.CompetitionEntriesChanged += ReloadCompetitors;
-            GlobalEvents.CompetitionsChanged += LoadCompetitions;
+            GlobalEvents.CompetitionEntriesChanged += OnCompetitionEntriesChanged;
+            GlobalEvents.CompetitionsChanged += OnCompetitionsChanged;
         }
 
         ~CompetitionManager()
         {
-            GlobalEvents.CompetitionEntriesChanged -= ReloadCompetitors;
-            GlobalEvents.CompetitionsChanged -= LoadCompetitions;
+            GlobalEvents.CompetitionEntriesChanged -= OnCompetitionEntriesChanged;
+            GlobalEvents.CompetitionsChanged -= OnCompetitionsChanged;
+        }
+
+        private void OnCompetitionEntriesChanged()
+        {
+            RefreshView();
+        }
+
+        private void OnCompetitionsChanged()
+        {
+            // competitions list changed — reload selector and rebuild view
+            LoadCompetitions();
+            // Keep current selection if possible
+            if (_currentCompetition != null)
+            {
+                var found = GlobalData.Competitions.FirstOrDefault(c => c.Id == _currentCompetition.Id);
+                if (found == null)
+                {
+                    _currentCompetition = null;
+                    _viewCompetitors.Clear();
+                }
+                else
+                {
+                    _currentCompetition = found;
+                }
+            }
+            RefreshView();
         }
 
         private void LoadCompetitions()
@@ -58,7 +94,8 @@ namespace CompUIWPF.Competitions
             {
                 _currentCompetition = GlobalData.Competitions.FirstOrDefault(c => c.Name == name);
                 UpdateCompetitionDetails();
-                ReloadCompetitors();
+
+                RefreshView();
             }
         }
 
@@ -111,13 +148,64 @@ namespace CompUIWPF.Competitions
             }
         }
 
+        private void RefreshView()
+        {
+            // Start from original list
+            if (_currentCompetition == null) return;
+            _viewCompetitors = [.. _currentCompetition.Competitors.Select(c => c.Clone())];
+
+            // Apply ordering if any
+            switch (_currentSort)
+            {
+                case SortType.DateAsc:
+                    _viewCompetitors = [.. _viewCompetitors.OrderBy(c => c.Timestamp)];
+                    break;
+                case SortType.DateDesc:
+                    _viewCompetitors = [.. _viewCompetitors.OrderByDescending(c => c.Timestamp)];
+                    break;
+                case SortType.Default:
+                default:
+                    break; // keep original order
+            }
+
+            // Apply filters if any
+            if (FilterType == 1 && FilterResult?.Count > 0)
+                _viewCompetitors = [.. _viewCompetitors.Where(c =>
+                {
+                    var v = GlobalData.Vehicles.Values.FirstOrDefault(vv => vv.Id == c.VehicleId);
+                    return v != null && FilterResult.Contains(v.Brand);
+                })];
+            else if (FilterType == 2 && FilterResult?.Count > 0)
+                _viewCompetitors = [.. _viewCompetitors.Where(c =>
+                {
+                    var v = GlobalData.Vehicles.Values.FirstOrDefault(vv => vv.Id == c.VehicleId);
+                    return v != null && FilterResult.Contains(v.Category);
+                })];
+
+            // Update UI display of current sort
+            CurrentSortOutput.Text = _currentSort switch
+            {
+                SortType.Default => "Default",
+                SortType.DateAsc => "Date Asc",
+                SortType.DateDesc => "Date Desc",
+                _ => "Unknown"
+            };
+
+            ReloadCompetitors();
+        }
+
+
         public void ReloadCompetitors()
         {
             CompetitorsPanel.Children.Clear();
             if (_currentCompetition == null) return;
 
+            // ALWAYS use the view list (deep copy) as the source of truth for UI rendering.
+            IEnumerable<CompetitorModel> competitors = _viewCompetitors;
+
             int currentIndex = 0;
             double lastScore = -1;
+            DateTime lastDate = DateTime.MinValue;
             int toIncrement = 1;
             int currentPosition = 0;
 
@@ -126,8 +214,6 @@ namespace CompUIWPF.Competitions
             if (lightBrush.CanFreeze) lightBrush.Freeze();
             if (darkBrush.CanFreeze) darkBrush.Freeze();
 
-            // prepare list applying current filters
-            IEnumerable<CompetitorModel> competitors = _currentCompetition.Competitors ?? Enumerable.Empty<CompetitorModel>();
             if (FilterType == 1 && FilterResult?.Count > 0)
             {
                 competitors = competitors.Where(c =>
@@ -148,19 +234,35 @@ namespace CompUIWPF.Competitions
             foreach (var competitor in competitors)
             {
                 currentIndex++;
-                if (competitor.Score != lastScore)
+
+                // Position calculation
+                if (_currentSort == SortType.Default)
                 {
-                    currentPosition += toIncrement;
-                    lastScore = competitor.Score;
-                    toIncrement = 1;
+                    if (competitor.Score != lastScore)
+                    {
+                        currentPosition += toIncrement;
+                        lastScore = competitor.Score;
+                        toIncrement = 1;
+                    }
+                    else
+                    {
+                        toIncrement++;
+                    }
                 }
-                else toIncrement++;
+                else
+                {
+                    if (competitor.Timestamp.Day != lastDate.Day || competitor.Timestamp.Month != lastDate.Month || competitor.Timestamp.Year != lastDate.Year)
+                    {
+                        currentPosition += 1;
+                        lastDate = competitor.Timestamp;
+                    }
+                }
 
                 // Determine base alternating color
                 var baseBrush = (currentIndex % 2 == 0) ? lightBrush : darkBrush;
 
-                // Apply medal tint if in top 3
-                if (currentPosition <= 3)
+                // Apply medal tint if in top 3, only for default sorting
+                if (_currentSort == SortType.Default && currentPosition <= 3)
                 {
                     Color medalColor = currentPosition switch
                     {
@@ -197,7 +299,7 @@ namespace CompUIWPF.Competitions
                 var posStack = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center };
 
                 // Medal for top 3
-                if (currentPosition <= 3)
+                if (_currentSort == SortType.Default && currentPosition <= 3)
                 {
                     PackIconMaterial medalIcon = new()
                     {
@@ -251,7 +353,7 @@ namespace CompUIWPF.Competitions
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center
                 };
-                Grid.SetColumn(timestampBlock, 4); // assuming Timestamp is the 6th column
+                Grid.SetColumn(timestampBlock, 4);
                 grid.Children.Add(timestampBlock);
 
                 // Score / DNF
@@ -338,6 +440,9 @@ namespace CompUIWPF.Competitions
                     parent.IsEnabled = true; // re-enable parent
                     parent.Activate();       // bring parent back to front
                     parent.Closing -= closingHandler; // remove handler
+
+                    // After editing an entry, underlying data likely changed — rebuild view to reflect edits
+                    RefreshView();
                 };
 
                 win.Show();
@@ -352,6 +457,8 @@ namespace CompUIWPF.Competitions
                 if (dr == MessageBoxResult.Yes)
                 {
                     CRUD.DeleteCompetitor(_currentCompetition!.Id, id);
+                    // Rebuild view after delete
+                    RefreshView();
                     GlobalEvents.RaiseCompetitionEntriesChanged();
                     GlobalEvents.RaiseVehiclesChanged();
                 }
@@ -385,6 +492,9 @@ namespace CompUIWPF.Competitions
                 parent.IsEnabled = true; // re-enable parent
                 parent.Activate();       // bring parent back to front
                 parent.Closing -= closingHandler; // remove handler
+
+                // After adding a competition, reload the competition list
+                LoadCompetitions();
             };
 
             addCompetitionWindow.Show();
@@ -415,6 +525,10 @@ namespace CompUIWPF.Competitions
                     parent.IsEnabled = true; // re-enable parent
                     parent.Activate();       // bring parent back to front
                     parent.Closing -= closingHandler; // remove handler
+
+                    // After adding an entry, rebuild the view and reload
+                    RefreshView();
+                    GlobalEvents.RaiseCompetitionEntriesChanged();
                 };
 
                 win.Show();
@@ -430,6 +544,17 @@ namespace CompUIWPF.Competitions
                 {
                     CRUD.DeleteCompetition(_currentCompetition.Id);
                     LoadCompetitions();
+
+                    // Reset current and view
+                    _currentCompetition = null;
+                    if (GlobalData.Competitions.Count > 0)
+                    {
+                        _currentCompetition = GlobalData.Competitions[0];
+                        CompetitionSelect.SelectedItem = _currentCompetition.Name;
+                    }
+
+                    _viewCompetitors.Clear();
+                    RefreshView();
                 }
             }
         }
@@ -444,7 +569,8 @@ namespace CompUIWPF.Competitions
                 // persist and apply
                 FilterResult = set;
                 FilterType = 1;
-                ReloadCompetitors();
+                
+                RefreshView();
             }
         }
 
@@ -457,7 +583,7 @@ namespace CompUIWPF.Competitions
                 var set = new HashSet<string>(win.Result);
                 FilterResult = set;
                 FilterType = 2;
-                ReloadCompetitors();
+                RefreshView();
             }
         }
 
@@ -465,42 +591,43 @@ namespace CompUIWPF.Competitions
         {
             FilterType = 0;
             FilterResult.Clear();
-            ReloadCompetitors();
+            // Rebuild view to remove any filter-induced state
+            RefreshView();
         }
 
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
+            // Clear filters
+            FilterType = 0;
+            FilterResult.Clear();
 
+            // Current sort
+            _currentSort = SortType.Default;
 
-            LoadCompetitions();
-            ReloadCompetitors();
+            // Restore original ordering for the current competition
+            RefreshView();
         }
 
         private void SortByDefault_Click(object sender, RoutedEventArgs e)
         {
-            if (_currentCompetition == null) return;
-
-            // Restore original competition order (score + placement type)
-            ReloadCompetitors(); // Reloads with default ordering
+            _currentSort = SortType.Default;
+            RefreshView();
         }
 
         private void SortByDateAsc_Click(object sender, RoutedEventArgs e)
         {
             if (_currentCompetition == null) return;
 
-            _currentCompetition.Competitors = [.. _currentCompetition.Competitors.OrderBy(c => c.Timestamp)];
-
-            ReloadCompetitors();
+            _currentSort = SortType.DateAsc;
+            RefreshView();
         }
 
         private void SortByDateDesc_Click(object sender, RoutedEventArgs e)
         {
             if (_currentCompetition == null) return;
 
-            _currentCompetition.Competitors = [.. _currentCompetition.Competitors.OrderByDescending(c => c.Timestamp)];
-
-            ReloadCompetitors();
+            _currentSort = SortType.DateDesc;
+            RefreshView();
         }
-
     }
 }

@@ -33,5 +33,14 @@ namespace CompLibrary
         /// Timestamp when the competitor entry was created or recorded.
         /// </summary>
         public DateTime Timestamp { get; set; } = dt;
+
+        public CompetitorModel Clone()
+        {
+            return new CompetitorModel(this.VehicleId, this.Score, this.Timestamp)
+            {
+                Id = this.Id,
+                Position = this.Position,
+            };
+        }
     }
 }

@@ -65,8 +65,12 @@
                         <TextBlock x:Name="ScoreTypeOutput" Text="&lt;null&gt;" HorizontalAlignment="Right"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,0,12,0">
-                        <TextBlock Text="Sorted:" FontWeight="Bold" HorizontalAlignment="Right"/>
+                        <TextBlock Text="Ordering:" FontWeight="Bold" HorizontalAlignment="Right"/>
                         <TextBlock x:Name="SortedTypeOutput" Text="&lt;null&gt;" HorizontalAlignment="Right"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,0,12,0">
+                        <TextBlock Text="Sorted by:" FontWeight="Bold" HorizontalAlignment="Right"/>
+                        <TextBlock x:Name="CurrentSortOutput" Text="Default" HorizontalAlignment="Right"/>
                     </StackPanel>
                 </StackPanel>
 

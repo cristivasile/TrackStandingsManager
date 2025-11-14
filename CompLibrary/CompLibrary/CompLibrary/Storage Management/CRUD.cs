@@ -448,5 +448,14 @@ namespace CompLibrary.Storage_Management
                 c.WriteVehicles();
         }
 
+        public static CompetitorModel GetCompetitorByCompetitionAndVehicleId(CompetitionModel competition, int vehicleId)
+        {
+            foreach (var competitor in competition.Competitors)
+            {
+                if (competitor.VehicleId == vehicleId)
+                    return competitor;
+            }
+            return null;
+        }
     }
 }
