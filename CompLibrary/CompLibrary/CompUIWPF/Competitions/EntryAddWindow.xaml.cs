@@ -120,6 +120,18 @@ namespace CompUIWPF.Competitions
 
         private void VehicleBox_PreviewKeyUp(object sender, RoutedEventArgs e)
         {
+            // Ignore navigation keys
+            if (e is System.Windows.Input.KeyEventArgs kea)
+            {
+                if (kea.Key == System.Windows.Input.Key.Down ||
+                    kea.Key == System.Windows.Input.Key.Up ||
+                    kea.Key == System.Windows.Input.Key.Enter ||
+                    kea.Key == System.Windows.Input.Key.Escape)
+                {
+                    return;
+                }
+            }
+
             string text = VehicleBox.Text.ToLower();
 
             _vehicleView.Filter = o =>
