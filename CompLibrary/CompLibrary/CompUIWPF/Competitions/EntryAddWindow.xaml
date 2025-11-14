@@ -50,13 +50,36 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <ComboBox x:Name="VehicleBox" Height="30" IsEditable="True"
-                              DisplayMemberPath="BrandModel"
-                              SelectedValuePath="Id"
-                              StaysOpenOnEdit="True"
-                              SelectionChanged="VehicleBox_SelectionChanged"
-                              Loaded="VehicleBox_Loaded"
-                              Grid.Column="0"/>
+                    <ComboBox x:Name="VehicleBox"
+                      IsEditable="True"
+                      StaysOpenOnEdit="True"
+                      IsTextSearchEnabled="False"
+                      PreviewKeyUp="VehicleBox_PreviewKeyUp"
+                      SelectionChanged="VehicleBox_SelectionChanged">
+
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <!-- Vehicle name left-aligned -->
+                                        <ColumnDefinition Width="Auto" />
+                                        <!-- Score right-aligned -->
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="{Binding BrandModel}" 
+                                        VerticalAlignment="Center" />
+
+                                    <TextBlock Text="{Binding ScoreText}" 
+                                       Grid.Column="1"
+                                       Margin="10,0,0,0"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Center"
+                                       Foreground="Gray" />
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                     <Button x:Name="VehicleSelectButton" Content="Select" Width="65" Height="30" Margin="8,0,4,0" Click="VehicleSelectButton_Click" Grid.Column="1"/>
                     <Button x:Name="VehicleAddButton" Content="New" Width="65" Height="30" Margin="4,0,0,0"
                             Click="VehicleAddButton_Click" Grid.Column="2"/>

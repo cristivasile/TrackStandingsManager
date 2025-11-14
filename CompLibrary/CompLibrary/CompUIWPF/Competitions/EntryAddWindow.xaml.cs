@@ -1,10 +1,7 @@
 ﻿using CompLibrary;
 using CompLibrary.Storage_Management;
 using CompUIWPF.Vehicles;
-using System;
 using System.ComponentModel;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -17,8 +14,20 @@ namespace CompUIWPF.Competitions
     {
         private readonly int _competitionId;
         private readonly CompetitionModel _competition;
-        private readonly System.Collections.Generic.Dictionary<string, int> _vehicleIds = [];
+        private readonly Dictionary<string, int> _vehicleIds = [];
         private ICollectionView _vehicleView;
+
+        public class VehicleDisplayItem
+        {
+            public int Id { get; set; }
+            public string BrandModel { get; set; } = "";
+            public string ScoreText { get; set; } = "";
+            // Do not delete - used by ComboBox to display the left side text
+            public override string ToString()
+            {
+                return BrandModel;
+            }
+        }
 
         public string CompetitionName { get; set; }
 
@@ -40,7 +49,28 @@ namespace CompUIWPF.Competitions
                 _vehicleIds[v.Brand + " " + v.Model] = v.Id;
 
             VehicleBox.ItemsSource = GlobalData.Vehicles.Values
-                .Select(v => new { v.Id, BrandModel = v.Brand + " " + v.Model })
+                .Select(v =>
+                {
+                    // Check if the vehicle has an existing entry
+                    var entry = CRUD.GetCompetitorByCompetitionAndVehicleId(_competition, v.Id);
+                    string scoreText;
+
+                    if (entry == null)
+                        scoreText = "";
+                    else if (double.IsInfinity(entry.Score))
+                        scoreText = "DNF";
+                    else if (_competition.PlacementType == 1)
+                        scoreText = $"{entry.Score} pts";
+                    else
+                        scoreText = FunctionLibrary.GetTimeString(entry.Score);
+
+                    return new VehicleDisplayItem
+                    {
+                        Id = v.Id,
+                        BrandModel = v.Brand + " " + v.Model, // left side
+                        ScoreText = scoreText // right side
+                    };
+                })
                 .OrderBy(v => v.BrandModel)
                 .ToList();
 
@@ -50,6 +80,7 @@ namespace CompUIWPF.Competitions
             VehicleBox.StaysOpenOnEdit = true;
             VehicleBox.IsEditable = true;
             VehicleBox.PreviewKeyUp += VehicleBox_PreviewKeyUp;
+            VehicleBox.SelectedValuePath = "Id";
 
             GlobalEvents.VehiclesChanged += OnVehiclesChanged;
         }
@@ -104,7 +135,28 @@ namespace CompUIWPF.Competitions
                 _vehicleIds[v.Brand + " " + v.Model] = v.Id;
 
             var list = GlobalData.Vehicles.Values
-                .Select(v => new { v.Id, BrandModel = v.Brand + " " + v.Model })
+                .Select(v =>
+                {
+                    // Check if the vehicle has an existing entry
+                    var entry = CRUD.GetCompetitorByCompetitionAndVehicleId(_competition, v.Id);
+                    string scoreText;
+
+                    if (entry == null)
+                        scoreText = "";
+                    else if (double.IsInfinity(entry.Score))
+                        scoreText = "DNF";
+                    else if (_competition.PlacementType == 1)
+                        scoreText = $"{entry.Score} pts";
+                    else
+                        scoreText = FunctionLibrary.GetTimeString(entry.Score);
+
+                    return new
+                    {
+                        v.Id,
+                        BrandModel = v.Brand + " " + v.Model, // left side
+                        ScoreText = scoreText // right side
+                    };
+                })
                 .OrderBy(v => v.BrandModel)
                 .ToList();
 
@@ -183,7 +235,7 @@ namespace CompUIWPF.Competitions
                 return;
             }
 
-            if (!_vehicleIds.TryGetValue(VehicleBox.Text, out int vid))
+            if (VehicleBox.SelectedValue is not int vid)
             {
                 ShowMessage("Vehicle does not exist", false);
                 return;
@@ -236,8 +288,10 @@ namespace CompUIWPF.Competitions
         {
             if (VehicleBox.SelectedItem == null) return;
 
-            dynamic selected = VehicleBox.SelectedItem;
-            int id = selected.Id;
+            if (VehicleBox.SelectedItem is not VehicleDisplayItem item) return;
+
+
+            int id = item.Id;
 
             var vehicle = CRUD.GetVehicleById(id);
             LoadVehicleImage(vehicle);
@@ -245,7 +299,7 @@ namespace CompUIWPF.Competitions
 
         private void VehicleSelectButton_Click(object sender, RoutedEventArgs e)
         {
-            var win = new VehicleSelectWindow
+            var win = new VehicleSelectWindow(competitionId: _competitionId)
             {
                 Owner = this,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner,
@@ -257,8 +311,6 @@ namespace CompUIWPF.Competitions
                 var vehicle = CRUD.GetVehicleById(win.SelectedVehicleId);
                 if (vehicle != null)
                 {
-                    string label = vehicle.Brand + " " + vehicle.Model;
-                    VehicleBox.Text = label;
                     VehicleBox.SelectedValue = vehicle.Id;
                     LoadVehicleImage(vehicle);
                 }
