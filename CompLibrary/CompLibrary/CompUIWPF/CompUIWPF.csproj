@@ -8,9 +8,9 @@
     <UseWPF>true</UseWPF>   
 
     <ApplicationIcon>Icon.ico</ApplicationIcon>
-	<AssemblyVersion>2.0.2.0</AssemblyVersion>
-	<FileVersion>2.0.2.0</FileVersion>
-	<Version>2.0.2</Version>
+	<AssemblyVersion>2.0.3.0</AssemblyVersion>
+	<FileVersion>2.0.3.0</FileVersion>
+	<Version>2.0.3</Version>
 	<StartupObject>CompUIWPF.App</StartupObject>
 	<Platforms>AnyCPU;x64</Platforms>
 	 <AssemblyName>TrackStandingsManager</AssemblyName>
