@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace CompLibrary
 {
@@ -23,6 +24,17 @@ namespace CompLibrary
 
                 foreach (var competition in GlobalData.Competitions)
                 {
+                    // Workaround to preserve data integrity
+                    // The proper way to fix this would be to assure data integrity at the source (i.e., the class, using constructors and methods)
+                    if (competition.OrderingType == 0)
+                    {
+                        competition.Competitors = [.. competition.Competitors.OrderBy(c => c.Score)];
+                    }
+                    else
+                    {
+                        competition.Competitors = [.. competition.Competitors.OrderByDescending(c => c.Score)];
+                    }
+
                     foreach (var competitor in competition.Competitors)
                     {
                         if (competitor.Timestamp == DateTime.MinValue || competitor.Timestamp == default)
