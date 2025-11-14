@@ -27,6 +27,16 @@ namespace CompUIWPF.Competitions
             {
                 return BrandModel;
             }
+
+            public override bool Equals(object? obj)
+            {
+                if (object.ReferenceEquals(this, obj))
+                    return true;
+                else if (obj is VehicleDisplayItem other)
+                    return this.Id == other.Id;
+                else
+                    return false;
+            }
         }
 
         public string CompetitionName { get; set; }
@@ -130,6 +140,9 @@ namespace CompUIWPF.Competitions
 
         private void OnVehiclesChanged()
         {
+            bool found = true;
+            var oldItem = VehicleBox.SelectedItem;
+
             _vehicleIds.Clear();
             foreach (var v in GlobalData.Vehicles.Values)
                 _vehicleIds[v.Brand + " " + v.Model] = v.Id;
@@ -150,12 +163,19 @@ namespace CompUIWPF.Competitions
                     else
                         scoreText = FunctionLibrary.GetTimeString(entry.Score);
 
-                    return new
+                    var newItem = new VehicleDisplayItem
                     {
-                        v.Id,
+                        Id = v.Id,
                         BrandModel = v.Brand + " " + v.Model, // left side
                         ScoreText = scoreText // right side
                     };
+
+                    if (newItem == oldItem)
+                    {
+                        found = true;
+                    }
+
+                    return newItem;
                 })
                 .OrderBy(v => v.BrandModel)
                 .ToList();
@@ -167,10 +187,18 @@ namespace CompUIWPF.Competitions
             _vehicleView.Refresh();
 
             VehicleBox.Text = string.Empty;
-            VehicleBox.SelectedIndex = -1;
 
-            VehicleImage.Source = null;
-            VehicleImage.Visibility = Visibility.Collapsed;
+            // attempt to restore previous selection
+            if (!found)
+            {
+                VehicleBox.SelectedIndex = -1;
+                VehicleImage.Source = null;
+                VehicleImage.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                VehicleBox.SelectedItem = oldItem;
+            }
         }
 
         private void VehicleAddButton_Click(object sender, RoutedEventArgs e)
